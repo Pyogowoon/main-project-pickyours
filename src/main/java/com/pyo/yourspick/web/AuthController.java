@@ -1,11 +1,11 @@
-package com.pyo.yourspick;
+package com.pyo.yourspick.web;
 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
-public class YourspickViewTestController {
+@Controller
+public class AuthController {
 
 
     @GetMapping("/")
@@ -13,15 +13,15 @@ public class YourspickViewTestController {
 
         return "index";
     }
-    @GetMapping("user/signin")
+    @GetMapping("/auth/signin")
     public String signin(){
 
-        return "user/signin";
+        return "auth/signin";
     }
-    @GetMapping("/user/join")
+    @GetMapping("/auth/join")
     public String join(){
 
-        return "user/join";
+        return "auth/join";
     }
 
     @GetMapping("/board/board")
