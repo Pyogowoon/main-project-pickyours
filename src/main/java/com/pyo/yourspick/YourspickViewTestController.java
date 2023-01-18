@@ -14,8 +14,25 @@ public class YourspickViewTestController {
         return "index";
     }
     @GetMapping("/signin")
-    public String 메인(){
+    public String signin(){
 
-        return "signin";
+        return "user/signin";
+    }
+    @GetMapping("/join")
+    public String join(){
+
+        return "user/join";
+    }
+
+    @GetMapping("/board/board")
+    public String board(){
+
+        return "board/board";
+    }
+
+    @GetMapping("/board/post")
+    public String post(){
+
+        return "board/post";
     }
 }
