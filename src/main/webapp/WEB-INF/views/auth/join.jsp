@@ -7,20 +7,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="../image/png" href="../images/icons/favicon.ico"/>
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="../vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="../css/signin/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/join/join.css">
-<!--===============================================================================================-->
+
+	<!--===============================================================================================-->
+
 </head>
 <body>
 
@@ -31,10 +33,31 @@
 					<img src="../images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form" action="/auth/join" method="post">
 					<span class="login100-form-title">
 						Member Join
 					</span>
+
+
+					<div class="wrap-input100 validate-input" data-validate = "username is required">
+                        <input class="input100" type="text" name="username" placeholder="username">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+
+                    </div>
+
+
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
@@ -44,20 +67,13 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
 
-					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "name is required">
                     						<input class="input100" type="text" name="name" placeholder="Name">
                     						<span class="focus-input100"></span>
                     						<span class="symbol-input100">
-                    							<i class="fa fa-id-card-o" aria-hidden="true"></i>
+                    							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     						</span>
 
                     					</div>
@@ -74,6 +90,8 @@
             </br>
                 </br>
                     </br>
+                        </br>
+                            </br>
 
 
 
