@@ -29,7 +29,17 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    private String website;
+
     private String name;
+
+    private String bio;
+
+    private String gender;
+
+    private String phone;
+
+    private String profileImageUrl;
 
     private LocalDateTime createDate;
 

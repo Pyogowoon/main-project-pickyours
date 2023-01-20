@@ -12,7 +12,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Yours pick! 유얼스픽에 오신걸 환영합니다.</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="css/index/bootstrap_main.css" />
       <!-- font awesome style -->
@@ -24,11 +24,11 @@
    </head>
    <body>
    <!-- header -->
-
+<header>
 
    <%@ include file="./layout/header.jsp"%>
 
-
+</header>
    <!-- header End -->
 
     <!-- slider section -->

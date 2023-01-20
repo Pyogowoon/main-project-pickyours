@@ -8,6 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<!-- Style -->
+	<!--
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/story.css">
 	<link rel="stylesheet" href="/css/popular.css">
@@ -15,12 +16,18 @@
 	<link rel="stylesheet" href="/css/upload.css">
 	<link rel="stylesheet" href="/css/update.css">
 	<link rel="shortcut icon" href="/images/insta.svg">
-
+ -->
 	<!-- Fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 
+
+<%@ include file="../layout/userheader.jsp"%>
+<header>
+
+
+</header>
 <main class="main">
 	<section class="container">
 		<!--전체 리스트 시작-->

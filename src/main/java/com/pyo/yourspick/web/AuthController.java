@@ -25,11 +25,7 @@ public class AuthController {
     private final AuthService authService;
 
 
-    @GetMapping("/")
-    public String index() {
 
-        return "index";
-    }
 
 
     @GetMapping("/auth/signin")
