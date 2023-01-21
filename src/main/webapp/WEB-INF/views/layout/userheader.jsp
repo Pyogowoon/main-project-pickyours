@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +33,21 @@
 
 <body>
 
-<!-- principalId 담아두는 곳 -->
-    <input type="hidden" id="principalId" value="${principal.user.id}"/>
+
+
+
+
+<!-- Spring Security taglib -->
+
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
+<sec:authorize access ="isAuthenticated()">
+    <sec:authentication property="principal" var="principal"/>
+    </sec:authorize>
+
+<!-- Spring Security taglib 끝 -->
+
+
 
 
 	<header class="header">

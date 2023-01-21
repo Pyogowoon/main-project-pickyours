@@ -11,9 +11,9 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
 
-       <!--
+       <!-- 없어도됨
        	<link rel="stylesheet" href="/css/post2.css">
-       	얘 없어도 된다..??
+
        	-->
 
 
