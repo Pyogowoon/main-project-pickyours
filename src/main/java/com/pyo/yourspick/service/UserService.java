@@ -3,6 +3,7 @@ package com.pyo.yourspick.service;
 
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
+import com.pyo.yourspick.handler.ex.CustomValidationApiException;
 import com.pyo.yourspick.handler.ex.CustomValidationException;
 import com.pyo.yourspick.web.dto.CMRespDto;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,8 @@ public class UserService {
     @Transactional
     public User 회원수정(int id, User user) {
         User userEntity = userRepository.findById(id).orElseThrow(()->
-                new IllegalArgumentException("아이디 못찾음!" + id));
+        {return new CustomValidationApiException("찾을 수 없는 아이디 입니다.");});
+
 
         userEntity.setName(user.getName());
 
