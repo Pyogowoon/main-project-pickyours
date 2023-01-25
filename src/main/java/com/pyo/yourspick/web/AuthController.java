@@ -25,9 +25,6 @@ public class AuthController {
     private final AuthService authService;
 
 
-
-
-
     @GetMapping("/auth/signin")
     public String signin() {
 
@@ -42,19 +39,19 @@ public class AuthController {
     }
 
     @PostMapping("/auth/join")
-    public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult){
+    public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
 
-            for(FieldError error : bindingResult.getFieldErrors()){
-            errorMap.put(error.getField(), error.getDefaultMessage());
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errorMap.put(error.getField(), error.getDefaultMessage());
             }
 
-            throw new CustomValidationException("유효성 검사 실패" , errorMap);
+            throw new CustomValidationException("유효성 검사 실패", errorMap);
 
 
-            }else{
+        } else {
             User user = joinDto.toEntity();
             authService.회원가입(user);
 
@@ -66,5 +63,6 @@ public class AuthController {
     }
 
 }
+
 
 

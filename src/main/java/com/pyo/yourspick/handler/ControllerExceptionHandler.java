@@ -2,6 +2,7 @@ package com.pyo.yourspick.handler;
 
 
 import com.pyo.yourspick.handler.ex.CustomApiException;
+import com.pyo.yourspick.handler.ex.CustomException;
 import com.pyo.yourspick.handler.ex.CustomValidationApiException;
 import com.pyo.yourspick.handler.ex.CustomValidationException;
 import com.pyo.yourspick.util.Script;
@@ -21,7 +22,11 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(CustomValidationException.class)
     public String validationException(CustomValidationException e){
 
+        if(e.getErrorMap() == null){
+            return Script.back(e.getMessage());
+        }else{
         return Script.back(e.getErrorMap().toString());
+        }
     }
 
     @ExceptionHandler(CustomValidationApiException.class)
@@ -35,6 +40,11 @@ public class ControllerExceptionHandler {
 
         return new ResponseEntity<>(new CMRespDto<>(-1,e.getMessage(),null),HttpStatus.BAD_REQUEST);
 
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public String exception(CustomException e){
+        return Script.back(e.getMessage());
     }
 
 

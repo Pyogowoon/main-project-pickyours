@@ -40,7 +40,7 @@
 
 
 					<div class="wrap-input100 validate-input" data-validate = "username is required">
-                        <input class="input100" type="text" name="username" placeholder="username">
+                        <input class="input100" type="text" name="username" placeholder="username" required="required">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-id-card-o" aria-hidden="true"></i>
@@ -49,7 +49,7 @@
 
 
                     <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="Password" required="required">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
 
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100" type="text" name="email" placeholder="Email" required="required" >
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -70,7 +70,7 @@
 
 
 					<div class="wrap-input100 validate-input" data-validate = "name is required">
-                    						<input class="input100" type="text" name="name" placeholder="Name">
+                    						<input class="input100" type="text" name="name" placeholder="Name" required="required">
                     						<span class="focus-input100"></span>
                     						<span class="symbol-input100">
                     							<i class="fa fa-user-circle-o" aria-hidden="true"></i>

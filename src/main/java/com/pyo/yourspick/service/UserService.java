@@ -3,9 +3,11 @@ package com.pyo.yourspick.service;
 
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
+import com.pyo.yourspick.handler.ex.CustomException;
 import com.pyo.yourspick.handler.ex.CustomValidationApiException;
 import com.pyo.yourspick.handler.ex.CustomValidationException;
 import com.pyo.yourspick.web.dto.CMRespDto;
+import com.pyo.yourspick.web.dto.user.UserProfileDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,23 @@ public class UserService {
 
         return userEntity;
 
+    }
+
+    @Transactional(readOnly = true)
+    public UserProfileDto 회원프로필(int pageUserId, int principalId){
+
+        UserProfileDto dto = new UserProfileDto();
+
+        User userEntity = userRepository.findById(pageUserId).orElseThrow(() ->{
+            throw new CustomException("해당 유저 프로필 페이지는 찾을 수 없습니다.");
+        });
+
+        dto.setUser(userEntity);
+        dto.setPageOwnerState(pageUserId == principalId);
+        dto.setImageCount(userEntity.getImages().size());
+
+        return dto;
 
     }
 }
+
