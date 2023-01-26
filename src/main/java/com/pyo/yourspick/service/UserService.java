@@ -1,6 +1,7 @@
 package com.pyo.yourspick.service;
 
 
+import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.handler.ex.CustomException;
@@ -18,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private final SubscribeRepository subscribeRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -55,6 +58,13 @@ public class UserService {
         dto.setUser(userEntity);
         dto.setPageOwnerState(pageUserId == principalId);
         dto.setImageCount(userEntity.getImages().size());
+
+         int subscribeState = subscribeRepository.mSubscribeState(principalId,pageUserId);
+         int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
+
+        dto.setSubscribeState(subscribeState==1);
+        dto.setSubscribeCount(subscribeCount);
+
 
         return dto;
 
