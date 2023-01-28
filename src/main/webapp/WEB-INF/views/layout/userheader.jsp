@@ -57,7 +57,7 @@
 			</a>
 			<nav class="navi">
 				<ul class="navi-list">
-					<li class="navi-item"><a href="/">
+					<li class="navi-item"><a href="/user/board/">
 							<i class="fas fa-home"></i>
 						</a></li>
 					<li class="navi-item"><a href="/image/popular">
