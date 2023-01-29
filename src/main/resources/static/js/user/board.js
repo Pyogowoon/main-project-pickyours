@@ -192,12 +192,12 @@ function addComment(imageId) {
         content: commentInput.val()
 	}
 
-
-
-	if (data.content === "") {
-		alert("댓글을 작성해주세요!");
-		return;
-	}
+//
+//
+//	if (data.content === "") {
+//		alert("댓글을 작성해주세요.");
+//		return;
+//	}
 
     $.ajax({
         type:"post",
@@ -217,13 +217,16 @@ function addComment(imageId) {
         			      <b>${comment.user.name}</b>
         			           ${comment.content}
         			    </p>
-        			    <button><i class="fas fa-times"></i></button>
+        			    <button type="button" onclick="deleteComment(${comment.id})">
+        			    <i class="fas fa-times"></i>
+        			    </button>
         			  </div>
         	`;
         	commentList.prepend(content);
 
     }).fail(error => {
-      console.log(error,"댓글 달기 실패");
+      console.log(error.responseJSON.data.content,"댓글 달기 실패");
+      alert(error.responseJSON.data.content);
     });
 
 
