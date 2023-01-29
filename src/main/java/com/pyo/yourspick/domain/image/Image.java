@@ -2,6 +2,7 @@ package com.pyo.yourspick.domain.image;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.pyo.yourspick.domain.comment.Comment;
 import com.pyo.yourspick.domain.likes.Likes;
 import com.pyo.yourspick.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -38,6 +39,12 @@ public class Image {
     @JsonIgnoreProperties({"image"})
     @OneToMany(mappedBy = "image")
     private List<Likes> likes;
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image")
+    private List<Comment> comments;
+
 
     @Transient
     private boolean likeState;

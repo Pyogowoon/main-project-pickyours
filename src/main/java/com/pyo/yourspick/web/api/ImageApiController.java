@@ -45,4 +45,6 @@ public class ImageApiController {
         return new ResponseEntity<>(new CMRespDto<>(1,"좋아요 취소성공",null), HttpStatus.OK);
     }
 
+
+
 }

@@ -34,9 +34,6 @@
 <body>
 
 
-
-
-
 <!-- Spring Security taglib -->
 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
@@ -46,6 +43,11 @@
     </sec:authorize>
 
 <!-- Spring Security taglib 끝 -->
+
+<!-- principalId 담아두는 곳 -->
+   <input type="hidden" id="principalId" value="${principal.user.id}"/>
+
+<!-- principalId 담아두는 곳 end -->
 
 
 
@@ -70,3 +72,5 @@
 			</nav>
 		</div>
 	</header>
+
+
