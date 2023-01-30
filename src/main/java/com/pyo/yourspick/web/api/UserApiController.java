@@ -39,35 +39,27 @@ public class UserApiController {
             , @PathVariable int id
             , @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errorMap = new HashMap<>();
-
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                errorMap.put(error.getField(), error.getDefaultMessage());
-            }
-            throw new CustomValidationApiException("유효성 검사 실패", errorMap);
-        } else {
-            User userEntity = userService.회원수정(id, userUpdateDto.toEntity());
-            principalDetails.setUser(userEntity);
-            return new CMRespDto<>(1, "업데이트 완료", userEntity);
-        }
-    }
-
-        @GetMapping("/api/user/{pageUserId}/subscribe")
-        public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails){
-
-        List<SubscribeDto> subscribeDto = subscribeSerivce.구독리스트( principalDetails.getUser().getId(),pageUserId);
-
-        return new ResponseEntity<>(new CMRespDto<>(1,"구독 정보 리스트 가져오기 성공",subscribeDto), HttpStatus.OK);
-    }
-
-
-        @PutMapping("/api/user/{principalId}/profileImageUrl")
-    public ResponseEntity<?> profileImageUrlUpdate(@PathVariable int principalId, MultipartFile profileImageFile,
-@AuthenticationPrincipal PrincipalDetails principalDetails){
-
-        User userEntity = userService.회원프로필사진변경(principalId , profileImageFile);
+        User userEntity = userService.회원수정(id, userUpdateDto.toEntity());
         principalDetails.setUser(userEntity);
-            return new ResponseEntity<>(new CMRespDto<>(1,"프로필사진 변경 성공",null), HttpStatus.OK);
-        }
+        return new CMRespDto<>(1, "업데이트 완료", userEntity);
+
+    }
+
+    @GetMapping("/api/user/{pageUserId}/subscribe")
+    public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        List<SubscribeDto> subscribeDto = subscribeSerivce.구독리스트(principalDetails.getUser().getId(), pageUserId);
+
+        return new ResponseEntity<>(new CMRespDto<>(1, "구독 정보 리스트 가져오기 성공", subscribeDto), HttpStatus.OK);
+    }
+
+
+    @PutMapping("/api/user/{principalId}/profileImageUrl")
+    public ResponseEntity<?> profileImageUrlUpdate(@PathVariable int principalId, MultipartFile profileImageFile,
+                                                   @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        User userEntity = userService.회원프로필사진변경(principalId, profileImageFile);
+        principalDetails.setUser(userEntity);
+        return new ResponseEntity<>(new CMRespDto<>(1, "프로필사진 변경 성공", null), HttpStatus.OK);
+    }
 }

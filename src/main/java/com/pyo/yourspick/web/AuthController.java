@@ -41,26 +41,13 @@ public class AuthController {
     @PostMapping("/auth/join")
     public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errorMap = new HashMap<>();
+        User user = joinDto.toEntity();
+        authService.회원가입(user);
 
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                errorMap.put(error.getField(), error.getDefaultMessage());
-            }
-
-            throw new CustomValidationException("유효성 검사 실패", errorMap);
-
-
-        } else {
-            User user = joinDto.toEntity();
-            authService.회원가입(user);
-
-            return "auth/signin";
-
-        }
-
+        return "auth/signin";
 
     }
+
 
 }
 
