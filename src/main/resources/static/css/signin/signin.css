@@ -29,8 +29,8 @@
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -459,4 +459,24 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
+  /* 페이스북로그인 영역 */
+  .login__facebook {
+    padding: 0 40px;
+    margin-top: 15px;
+  }
+  /*페이스북 로그인 버튼*/
+  .login__facebook button {
+    background-color: #fff;
+    width: 100%;
+    height: 30px;
+    border: 0;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  /*페이스북 로그인 색깔*/
+  .login__facebook button i,
+  span {
+    color: #385185;
+  }
+
 }

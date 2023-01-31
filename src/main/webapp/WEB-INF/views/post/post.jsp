@@ -9,12 +9,8 @@
         <title>Blog Home - Start Bootstrap Template</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
 
-       <!-- 없어도됨
-       	<link rel="stylesheet" href="/css/post2.css">
 
-       	-->
 
 
     </head>
