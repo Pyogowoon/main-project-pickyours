@@ -62,7 +62,14 @@
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
+                            <!-- Oauth 소셜로그인 -->
+                        <div class="login__facebook">
+                           <button onclick="javascript:location.href='/oauth2/authorization/facebook'">
+                             <img src="../images/facebook.png">
+                            </button>
+                        </div>
 
+                        <!-- Oauth 소셜로그인end -->
 
 
 					</div>

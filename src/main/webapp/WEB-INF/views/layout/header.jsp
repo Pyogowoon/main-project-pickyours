@@ -64,16 +64,16 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">vytjdgus1234@naver.com</span></a>
+              <a href="" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">vytjdgus1234@naver.com</span></a>
               <span class="mx-md-2 d-inline-block"></span>
               <a href="#" class=""><span class="mr-2  icon-phone"></span> <span class="d-none d-md-inline-block">010 2217 4367</span></a>
 
 
               <div class="float-right">
 
-                <a href="#" class=""><span class="mr-2  icon-twitter"></span> <span class="d-none d-md-inline-block">github</span></a>
+                <a href="https://github.com/Pyogowoon" target="_blank" class=""><span class="mr-2  icon-twitter"></span> <span class="d-none d-md-inline-block">github</span></a>
                 <span class="mx-md-2 d-inline-block"></span>
-                <a href="#" class=""><span class="mr-2  icon-facebook"></span> <span class="d-none d-md-inline-block">tistory</span></a>
+                <a href="https://pyogowoon.tistory.com/" target="_blank" class=""><span class="mr-2  icon-facebook"></span> <span class="d-none d-md-inline-block">tistory</span></a>
 
               </div>
 
