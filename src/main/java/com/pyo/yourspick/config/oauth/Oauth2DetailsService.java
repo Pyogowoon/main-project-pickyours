@@ -27,26 +27,23 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User oauth2User = super.loadUser(userRequest);
-        System.out.println("oauth2user 요청 : " + oauth2User.getAttributes());
-        System.out.println("oauth2user 닉네임 : " + oauth2User.getAttributes().get("properties"));
-        System.out.println("oauth2user 이메일 : " + oauth2User.getAttributes().get("email"));
-
-
 
 
         String provider = userRequest.getClientRegistration().getRegistrationId();
-        System.out.println("getRegistrationId 요청 : " + provider);
+
 
         /* kakao */
         if (provider.equals("kakao")) {
-            System.out.println("카카오 요청");
+
             Map<String, Object> userKakaoInfo = oauth2User.getAttributes();
+            String nickname= ((Map)userKakaoInfo.get("properties")).get("nickname").toString();
+            String kakaoEmail = ((Map)userKakaoInfo.get("kakao_account")).get("email").toString();
 
             String username = "Kakao_" + userKakaoInfo.get("id");
-            String name = (String) userKakaoInfo.get("properties");
-//            String email = (String) userKakaoInfo.get("email");
-            String email = "vytjdgus1234@naver.com";
+            String name = nickname;
+            String email = kakaoEmail;
             String password = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
+
 
             User userEntity = userRepository.findByUsername(username);
 
