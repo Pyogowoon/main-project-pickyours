@@ -63,13 +63,26 @@
 							Username / Password?
 						</a>
                             <!-- Oauth 소셜로그인 -->
+                            <!-- facebook -->
                         <div class="login__facebook">
                            <button onclick="javascript:location.href='/oauth2/authorization/facebook'">
                              <img src="../images/facebook.png">
                             </button>
                         </div>
+                        <br/>
+                            <!-- facebook End-->
 
-                        <!-- Oauth 소셜로그인end -->
+                            <!-- kakao Login -->
+
+                            <div class="login__facebook">
+                           <button onclick="javascript:location.href='/oauth2/authorization/kakao'">
+                             <img src="../images/facebook.png">
+                            </button>
+                        </div>
+
+                           <!-- kakao Login End-->
+
+                        <!-- Oauth 소셜로그인 End -->
 
 
 					</div>

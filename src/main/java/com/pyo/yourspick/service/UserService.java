@@ -43,18 +43,34 @@ public class UserService {
         {return new CustomValidationApiException("찾을 수 없는 아이디 입니다.");});
 
 
-        userEntity.setName(user.getName());
 
-        String rawPassword = user.getPassword();
-        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+        if(user.getPassword().equals("")){
 
-        userEntity.setPassword(encPassword);
-        userEntity.setWebsite(user.getWebsite());
-        userEntity.setBio(user.getBio());
-        userEntity.setPhone(user.getPhone());
-        userEntity.setGender(user.getGender());
+            userEntity.setName(user.getName());
+            userEntity.setWebsite(user.getWebsite());
+            userEntity.setBio(user.getBio());
+            userEntity.setPhone(user.getPhone());
+            userEntity.setGender(user.getGender());
 
-        return userEntity;
+            return userEntity;
+        }else{
+
+            userEntity.setName(user.getName());
+
+
+            String rawPassword = user.getPassword();
+            String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+
+            userEntity.setPassword(encPassword);
+            userEntity.setWebsite(user.getWebsite());
+            userEntity.setBio(user.getBio());
+            userEntity.setPhone(user.getPhone());
+            userEntity.setGender(user.getGender());
+
+            return userEntity;
+
+        }
+
 
     }
 
