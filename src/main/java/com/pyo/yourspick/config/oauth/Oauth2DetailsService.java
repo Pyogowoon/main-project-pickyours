@@ -62,7 +62,7 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
             }else{
                 return new PrincipalDetails(userEntity, oauth2User.getAttributes());
             }
-
+                /* kakao End */
 
             /* facebook */
         } else if (provider.equals("facebook")) {
