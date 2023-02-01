@@ -90,9 +90,10 @@
                                                     class="img-fluid mr-4 w-100">
                                             </div>
                                         </div>
-                                        <h3 class="mt-5 mb-3">endTitle :  끝제목 </h3>
 
-                                        <p>endContent : 끝본문   </p>
+                                     <br/>
+                                     <br/>
+                                     <br/>
 
 
                                     </div>
@@ -125,7 +126,7 @@
                         <div class="author-content pl-4">
                             <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">userId : 유저아이디</a>
                             </h4>
-                            <p>content : 댓글내용</p>
+                            <p>user자기소개 : 자기소개 user꺼 ??</p>
 
 
                         </div>
@@ -203,10 +204,10 @@
                                 <div class="about-author">
                                     <img src="../images/author.jpg" alt="" class="img-fluid">
                                 </div>
-                                <h4 class="mb-0 mt-4">Liam Mason</h4>
-                                <p>Travel Blogger</p>
-                                <p>I'm Liam, last year I decided to quit my job and travel the world. You can follow my
-                                    journey on this blog!</p>
+                                <h4 class="mb-0 mt-4">actor 배우 이름</h4>
+                                <p>job : 직업 </p>
+                                <p> 키 : 178 </p>
+                                <p> 몸무게 : 70kg </p>
                                 <img src="../images/liammason.png" alt="" class="img-fluid">
                             </div>
 
@@ -230,8 +231,7 @@
                                     <div class="mt-3 media-body">
                                         <span class="text-muted letter-spacing text-uppercase font-sm">September 10,
                                             2019</span>
-                                        <h4><a href="blog-single.html">Meeting With Clarissa, Founder Of Purple
-                                                Conversation App</a></h4>
+                                        <h4><a href="blog-single.html"> 뭘할지 미정인데 광고를 넣을까 ?</a></h4>
                                     </div>
                                 </div>
 

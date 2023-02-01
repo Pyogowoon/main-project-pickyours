@@ -53,7 +53,7 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
                         .name(name)
                         .email(email)
                         .password(password)
-                        .role(String.valueOf(Role.USER)).
+                        .role(Role.USER).
 
                         build();
 
@@ -81,7 +81,7 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
                         .password(password)
                         .email(email)
                         .name(name)
-                        .role(String.valueOf(Role.USER))
+                        .role(Role.USER)
                         .build();
 
                 return new PrincipalDetails(userRepository.save(user), oauth2User.getAttributes());

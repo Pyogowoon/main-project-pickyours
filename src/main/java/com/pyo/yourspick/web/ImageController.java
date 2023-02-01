@@ -30,15 +30,7 @@ public class ImageController {
         return "index";
     }
 
-    @GetMapping("/post/postview")
-    public String post() {
-        return "post/postview";
-    }
 
-    @GetMapping("/post/post")
-    public String postview() {
-        return "post/post";
-    }
 
     @GetMapping("/image/upload")
     public String upload() {

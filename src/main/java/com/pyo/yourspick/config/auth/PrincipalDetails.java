@@ -28,7 +28,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Collection<GrantedAuthority> collector = new ArrayList<>();
-        collector.add(()->{ return user.getRole();
+        collector.add(()->{ return String.valueOf(user.getRole());
     });
         return  collector;
     }

@@ -47,8 +47,8 @@ public class User {
 
     private LocalDateTime createDate;
 
-
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
