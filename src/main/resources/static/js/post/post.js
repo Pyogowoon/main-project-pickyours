@@ -1,24 +1,23 @@
 
-      function postSave(){
+      function postSave(userId){
+                alert(userId);
 
-            console.log("시발");
                 let data = $("#postSave")[0];
 
                 let formData = new FormData(data);
 
             $.ajax({
-                type: "POST",
+                type:"post",
                 data: formData,
-                url: "/api/post/save/",
+                url: "/api/post/postsave",
                 contentType:false,
                 processData:false,
                 enctype:"multipart/form-data",
                 dataType: "json"
 
                 }).done( res => {
-                console.log(res,"성공");
-                alert(res,"저장 성공");
-
+           location.href="/post/post";
+                alert("성공");
                 }).fail(error =>{
                 console.log(error,"실패");
                 alert(error,"저장 실패");

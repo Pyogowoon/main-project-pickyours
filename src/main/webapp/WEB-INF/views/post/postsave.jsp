@@ -3,7 +3,7 @@
 <%@include file="../layout/postheader.jsp" %>
 
 
-   <form id="postSave" onsubmit="postSave()" enctype="multipart/form-data">
+   <form method="post" id="postSave" enctype="multipart/form-data" >
 
     <div class="container">
 
@@ -49,22 +49,24 @@
         </div>
 
         <div class="form-group">
-                                  <label for="content">actorImage : 소본문(배우or드라마 사진) </label>
-                                  <input type="file" class="form-control" name="actorImage" id="actorImage">
-                                </div>
-                        <div class="form-group">
-                                          <label for="content">clotheImage : 소본문(옷 사진) </label>
-                                          <input type="file" class="form-control" name="clotheImage" id="clotheImage">
-                                        </div>
+      <label for="content">actorImage : 소본문(배우or드라마 사진) </label>
+      <input type="file" class="form-control" name="actorImage" id="actorImage">
+    </div>
+
+                      <div class="form-group">
+                      <label for="content">clotheImage : 소본문(옷 사진) </label>
+                      <input type="file" class="form-control" name="clotheImage" id="clotheImage">
+                    </div>
 
                        <div class="form-group">
-                                          <label for="content">video : 영상 </label>
-                                          <input type="file" class="form-control" name="video" id="video">
-                                        </div>
+                  <label for="content">video : 영상 </label>
+                  <input type="file" class="form-control" name="video" id="video">
+                </div>
 
 
-<button class="btn btn-primary">글쓰기완료</button>
+        <input type="button" value="확인" onclick="postSave(${principal.user.id})">
         </form>
+
 
 
  </div>

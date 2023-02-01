@@ -28,7 +28,7 @@ public class PostDto {
     /* 영상은 일단 보류 */
     private MultipartFile video;
 
-    public Post toEntity(User user){
+    public Post toEntity(User user, String actorImage , String clotheImage , String video){
         return Post.builder()
                 .title(title)
                 .content(content)
@@ -39,6 +39,9 @@ public class PostDto {
                 .height(height)
                 .weight(weight)
                 .user(user)
+                .postImageUrlLeft(actorImage)
+                .postImageUrlRight(clotheImage)
+                .postVideoUrl(video)
 
                 .build();
     }
