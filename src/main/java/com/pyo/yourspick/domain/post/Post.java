@@ -1,6 +1,7 @@
 package com.pyo.yourspick.domain.post;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.pyo.yourspick.domain.postcomment.PostComment;
 import com.pyo.yourspick.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -42,6 +44,11 @@ public class Post {
     @JoinColumn(name="userId")
     @ManyToOne
     private User user;
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"post"})
+    @OneToMany(mappedBy = "post")
+    private List<PostComment> postComment;
 
     private String postImageUrlLeft;
 

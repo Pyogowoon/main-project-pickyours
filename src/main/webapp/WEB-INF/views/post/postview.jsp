@@ -145,8 +145,7 @@
                                         class="ti-time mr-2"></i>June 7, 2019 </span>
 
                                 <div class="comment-content mt-3">
-                                    <p>Lorem ipsum dolor sit amet, usu ut perfecto postulant deterruisset, libris causae
-                                        volutpat at est, ius id modus laoreet urbanitas. Mel ei delenit dolores.</p>
+                                    <p>${post.postComment[0].id}</p>
                                 </div>
                                 <div class="comment-meta mt-4 mt-lg-0 mt-md-0">
                                     <a href="#" class="text-underline ">Reply</a>
@@ -173,19 +172,23 @@
                         </div>
                     </div>
 
-                    <form class="comment-form mb-5 gray-bg p-5" id="comment-form">
+                 <!-- <form class="comment-form mb-5 gray-bg p-5" id="comment-form" method="post"> -->
+
                         <h3 class="mb-4 text-center">Leave a comment</h3>
                         <div class="row">
                             <div class="col-lg-12">
-                                <textarea class="form-control mb-3" name="comment" id="comment" cols="30" rows="5"
+                                <textarea class="form-control mb-3" id="postContent" name="content" cols="30" rows="5"
                                     placeholder="Comment"></textarea>
+
+                        <input class="btn btn-primary" type="button" onclick="postComment(${post.id})"
+                                                value="Submit Message">
                             </div>
 
                         </div>
 
-                        <input class="btn btn-primary" type="submit" name="submit-contact" id="submit_contact"
-                            value="Submit Message">
-                    </form>
+
+
+                  <!--  </form>   -->
 
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -293,7 +296,10 @@
 
 
     <!-- main js -->
-    <script src="/js/custom.js"></script>
+
+    <script src="/js/post/postview.js"></script>
+
+    <!-- <script src="/js/custom.js"></script> -->
 
 
 </body>
