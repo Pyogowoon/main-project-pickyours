@@ -23,6 +23,7 @@ public class PostDto {
     private String weight;
 
     private MultipartFile actorImage;
+
     private MultipartFile clotheImage;
 
     /* 영상은 일단 보류 */

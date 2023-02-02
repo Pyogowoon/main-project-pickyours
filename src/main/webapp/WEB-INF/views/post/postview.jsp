@@ -56,37 +56,37 @@
                                 <div class="post-header mb-5 text-center">
 
                                     <h2 class="post-title mt-2">
-                                      title : 아스날
+                                      title : ${post.title}
                                     </h2>
 
                                     <div class="post-meta">
-                                        <span class="text-uppercase font-sm letter-spacing-1 mr-3">writer : by 표성현</span>
-                                        <span class="text-uppercase font-sm letter-spacing-1">Date : January 17,2019</span>
+                                        <span class="text-uppercase font-sm letter-spacing-1 mr-3">writer : ${post.user.username}</span>
+                                        <span class="text-uppercase font-sm letter-spacing-1">Date : ${post.createDate}</span>
                                     </div>
                                 </div>
 
                                <!--video post start-->
-                                                              <div class="post-img position-relative mb-4">
-                                                                  <a href="#"><img class="img-fluid w-100" src="../images/fashion/b6.jpg" alt=""></a>
-                                                                  <a href="https://www.youtube.com/watch?v=m2h8T1RGTag"
-                                                                      class="play-btn popup-youtube"><i class="ti-control-play"></i></a>
-                                                              </div>
-                                                              <!--video post end-->
+                                      <div class="post-img position-relative mb-4">
+                                          <a href="#"><img class="img-fluid w-100" src="/upload/${post.postVideoUrl}" alt=""></a>
+                                          <a href="https://www.youtube.com/watch?v=m2h8T1RGTag"
+                                              class="play-btn popup-youtube"><i class="ti-control-play"></i></a>
+                                      </div>
+                                      <!--video post end-->
 
                                 <div class="post-body">
                                     <div class="entry-content">
-                                        <p> content(본문) : 본문 텍스트.</p>
-                                        <h2 class="mt-4 mb-3">entryTitle(소제목) : 완벽한 디자인</h2>
-                                        <p> entryContent(소본문) : 소본문 소본문 </p>
+                                        <p> content(본문) : ${post.content}</p>
+                                        <h2 class="mt-4 mb-3">entryTitle(소제목) : ${post.entryTitle}</h2>
+                                        <p> entryContent(소본문) : ${post.entryContent} </p>
 
 
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
-                                                <img src="../images/fashion/single-img1.png" alt="post-img1"
+                                                <img src="/upload/${post.postImageUrlLeft}"style="height: 300px;width:250px" alt="post-img1"
                                                     class="img-fluid mr-4 w-100">
                                             </div>
                                             <div class="col-lg-6 col-md-6">
-                                                <img src="../images/fashion/single-img2.png" alt="post-img2"
+                                                <img src="/upload/${post.postImageUrlRight}"style="height: 300px;width:250px" alt="post-img2"
                                                     class="img-fluid mr-4 w-100">
                                             </div>
                                         </div>
@@ -119,14 +119,14 @@
                     </div>
                     <div class="post-author d-flex my-5">
                         <div class="author-img">
-                            <img alt="" src="../images/author.jpg" class="avatar avatar-100 photo" width="100"
+                            <img alt="" src="${post.user.profileImageUrl}" class="avatar avatar-100 photo" width="100"
                                 height="100">
                         </div>
 
                         <div class="author-content pl-4">
-                            <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">userId : 유저아이디</a>
+                            <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">userId : ${post.user.username}</a>
                             </h4>
-                            <p>user자기소개 : 자기소개 user꺼 ??</p>
+                            <p>user자기소개 : ${post.user.bio}</p>
 
 
                         </div>
@@ -180,16 +180,7 @@
                                 <textarea class="form-control mb-3" name="comment" id="comment" cols="30" rows="5"
                                     placeholder="Comment"></textarea>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="name" id="name" placeholder="Name:">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="mail" id="mail" placeholder="Email:">
-                                </div>
-                            </div>
+
                         </div>
 
                         <input class="btn btn-primary" type="submit" name="submit-contact" id="submit_contact"
@@ -202,12 +193,12 @@
                         <div class="sidebar-wrap mt-5 mt-lg-0">
                             <div class="sidebar-widget about mb-5 text-center p-3">
                                 <div class="about-author">
-                                    <img src="../images/author.jpg" alt="" class="img-fluid">
+                                    <img src="/upload/${post.postImageUrlLeft}" alt="" class="img-fluid">
                                 </div>
-                                <h4 class="mb-0 mt-4">actor 배우 이름</h4>
-                                <p>job : 직업 </p>
-                                <p> 키 : 178 </p>
-                                <p> 몸무게 : 70kg </p>
+                                <h4 class="mb-0 mt-4">${post.actor}</h4>
+                                <p>job : ${post.job} </p>
+                                <p> 키 : ${post.height} </p>
+                                <p> 몸무게 : ${post.weight} </p>
                                 <img src="../images/liammason.png" alt="" class="img-fluid">
                             </div>
 
@@ -299,22 +290,10 @@
 
     <!-- THEME JAVASCRIPT FILES
 ================================================== -->
-    <!-- initialize jQuery Library -->
-    <script src="../plugins/jquery/jquery.js"></script>
-    <!-- Bootstrap jQuery -->
-    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../plugins/bootstrap/js/popper.min.js"></script>
-    <!-- Owl caeousel -->
-    <script src="../plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../plugins/slick-carousel/slick.min.js"></script>
-    <script src="../plugins/magnific-popup/magnific-popup.js"></script>
-    <!-- Instagram Feed Js -->
-    <script src="../plugins/instafeed-js/instafeed.min.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-    <script src="../plugins/google-map/gmap.js"></script>
+
+
     <!-- main js -->
-    <script src="../js/custom.js"></script>
+    <script src="/js/custom.js"></script>
 
 
 </body>

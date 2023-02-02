@@ -71,9 +71,9 @@
 
               <div class="float-right">
 
-                <a href="https://github.com/Pyogowoon" target="_blank" class=""><span class="mr-2  icon-twitter"></span> <span class="d-none d-md-inline-block">github</span></a>
+                <a href="https://github.com/Pyogowoon" target="_blank" class=""><span class="mr-2  icon-github"></span> <span class="d-none d-md-inline-block">github</span></a>
                 <span class="mx-md-2 d-inline-block"></span>
-                <a href="https://pyogowoon.tistory.com/" target="_blank" class=""><span class="mr-2  icon-facebook"></span> <span class="d-none d-md-inline-block">tistory</span></a>
+                <a href="https://pyogowoon.tistory.com/" target="_blank" class=""><span class="mr-2  icon-tumblr"></span> <span class="d-none d-md-inline-block">tistory</span></a>
 
               </div>
 
@@ -97,7 +97,7 @@
 
             <div class="col-12">
               <nav class="site-navigation text-right ml-auto " role="navigation">
-                    <button>로그인하기</button>
+                    <button type="button" onclick="location.href='auth/signin'">로그인하기</button>
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li><a href="/" class="nav-link">Home</a></li>
                   <li><a href="/user/board" class="nav-link">유저마당</a></li>

@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="/css/header/header.css">
     <!-- Header css End -->
 
+    <!-- post 전체 css(blog) -->
+       <link rel="stylesheet" href="/css/postview/style.css">
+    <!-- post 전체 End -->
+
      <!-- 아이콘 css -->
      <link rel="stylesheet" href="/fonts/header/icomoon/style.css">
      <!-- 아이콘 css end -->
@@ -94,7 +98,7 @@
 
             <div class="col-12">
               <nav class="site-navigation text-right ml-auto " role="navigation">
-                    <button>로그인하기</button>
+                 <button type="button" onclick="location.href='auth/signin'">로그인하기</button>
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li><a href="/" class="nav-link">Home</a></li>
                   <li><a href="/user/board" class="nav-link">유저마당</a></li>

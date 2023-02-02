@@ -1,27 +1,24 @@
 
-      function postSave(userId){
-                alert(userId);
 
-                let data = $("#postSave")[0];
-
-                let formData = new FormData(data);
-
-            $.ajax({
-                type:"post",
-                data: formData,
-                url: "/api/post/postsave",
-                contentType:false,
-                processData:false,
-                enctype:"multipart/form-data",
-                dataType: "json"
-
-                }).done( res => {
-           location.href="/post/post";
-                alert("성공");
-                }).fail(error =>{
-                console.log(error,"실패");
-                alert(error,"저장 실패");
-                });
-
-            }
-
+//      function postLoad(){
+//          alert("실행되었음");
+//
+//
+//          $.ajax({
+//            type:"get",
+//            url:"/api/post/post",
+//            dataType: "text"
+//
+//
+//          }).done(res =>{
+//          console.log(res,"로드 성공")
+//          }).fail(error => {
+//          console.log(error,"로드 실패")
+//          });
+//
+//      }
+//
+//
+//
+//
+//       postLoad();

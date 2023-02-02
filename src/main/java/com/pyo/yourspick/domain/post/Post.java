@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Builder
 @NoArgsConstructor
@@ -43,14 +44,15 @@ public class Post {
     private User user;
 
     private String postImageUrlLeft;
+
     private String postImageUrlRight;
     private String postVideoUrl;
 
-    private LocalDateTime createDate;
+    private String createDate;
 
     @PrePersist
     public void createDate(){
-        this.createDate = LocalDateTime.now();
+        this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
 }

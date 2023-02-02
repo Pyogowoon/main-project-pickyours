@@ -45,17 +45,17 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 100% Off
+                                  Yours Pick!
                                     </span>
                                     <br>
-                                    On Everything
+                                    hi
                                  </h1>
                                  <p>
                                     Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
                                  </p>
                                  <div class="btn-box">
                                     <a href="" class="btn1">
-                                    Shop Now
+                                   보러가기
                                     </a>
                                  </div>
                               </div>
@@ -70,7 +70,7 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 200% Off
+                                   Yours pick 에 오신걸 환영합니다.
                                     </span>
                                     <br>
                                     On Everything

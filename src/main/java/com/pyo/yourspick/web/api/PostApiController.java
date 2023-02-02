@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -32,23 +33,23 @@ public class PostApiController {
         System.out.println(postDto);
 
         MultipartFile clotheImage = postDto.getClotheImage();
-        MultipartFile actorImage = postDto.getClotheImage();
+        MultipartFile actorImage = postDto.getActorImage();
         MultipartFile video = postDto.getVideo();
-//        System.out.println(id);
-//        System.out.println(principalDetails.getUser().getRole());
+
       postService.게시글저장(postDto, principalDetails, clotheImage,actorImage,video);
 
       return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 실패", null), HttpStatus.OK);
 
     }
+
+    @GetMapping("/api/post/post")
+    public ResponseEntity<?> postLoad(Model model){
+//            System.out.println("나 실행은 됨??");
+//        model.addAttribute("post", postService.포스트로드());
+
+
+        return new ResponseEntity<>(new CMRespDto<>(1, " 로드 실패", null), HttpStatus.OK);
+    }
+
+
 }
-    /*String fileName ="";
-
-    Iterator<String> files = multi.getFileNames();
-        while(files.hasNext()){
-                String uploadFile = files.next();
-
-                MultipartFile mFile = multi.getFile(uploadFile);
-                fileName = mFile.getOriginalFilename();
-                System.out.println("실제 파일 이름 : " + fileName);
-                }*/

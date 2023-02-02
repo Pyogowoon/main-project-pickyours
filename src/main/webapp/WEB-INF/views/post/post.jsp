@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
+
  <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -10,94 +13,136 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-
-
-
     </head>
     <body>
+
     <header>
-    <%@ include file="../layout/header.jsp"%>
+
+  <%@include file="../layout/header.jsp" %>
+
+
     </header>
+
 <a class="btn btn-primary" href="/post/postsave">어드민용 글쓰기</a>
+
         <!-- Page content-->
         <div class="container">
             <div class="row">
                 <!-- Blog entries-->
+
+
+            <!--col 8 -->
+
+            <!-- forEach 문 시작 -->
+
+            <c:forEach var="post" items="${post.content}" begin="0" end="0">
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
+
+                    <!-- card -->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+
+                        <a href="/post/postview/${post.id}">
+                        <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"
+                         style="height: 400px;width:360px"  alt="..." />
+                        <img class="card-img-top" src="/upload/${post.postImageUrlRight}"
+                         style="height: 400px;width:360px"  alt="..." />
+                         </a>
+
                         <div class="card-body">
-                            <div class="small text-muted">createDate : 날짜 January 1, 2022</div>
-                            <h2 class="card-title">title : 제목 </h2>
-                            <p class="card-text"> content : 내용</p>
-                            <a class="btn btn-primary" href="/post/postview">Read more →</a>
+                            <div class="small text-muted">createDate : ${post.createDate} </div>
+                            <h2 class="card-title">title : ${post.title} </h2>
+                            <p class="card-text"> content : ${post.content}</p>
+                            <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
                         </div>
                     </div>
+                     <!-- card End-->
+
+                        </div>
+                    <!--col 8 end -->
+
+                    </c:forEach>
+                       <!-- forEach 문 End -->
+
+<a class="btn btn-primary" href="/post/postsave">쇼핑몰사이트</a>
+<a class="btn btn-primary" href="/post/postsave">쇼핑몰사이트</a>
 
 
-                    <!-- Nested row for non-featured blog posts-->
-                    <div class="row">
+                     <!-- col 6 -->
+
+                       <!-- forEach 문 시작 -->
+                     <c:forEach var="post" items="${post.content}" begin="1">
+
                         <div class="col-lg-6">
 
-
                             <!-- Blog post-->
+
+                            <!-- card 4 -->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="/post/postview/${post.id}">
+                                <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"
+                                 style="height: 300px;width:280px" alt="..." />
+                                 <img class="card-img-top" src="/upload/${post.postImageUrlRight}"
+                                  style="height: 300px;width:250px" alt="..." />
+                                 </a>
+
+                                <!-- card body -->
                                 <div class="card-body">
                                     <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">title : 제목</h2>
+                                    <h2 class="card-title h4">title : ${post.title}</h2>
                                     <p class="card-text">content : 내용</p>
-                                    <a class="btn btn-primary" href="/post/postview!">Read more →</a>
+                                    <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
                                 </div>
+                                 <!-- card body -->
+
                             </div>
+                            <!-- card 4 End-->
 
 
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                        </div>
+                     </div>
+                    <!-- col 6 End -->
 
-                        <div class="col-lg-6">
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-
-                            <!-- Blog post-->
-
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
+                    </c:forEach>
+                       <!-- forEach 문 End -->
 
 
-                        </div>
                     </div>
+                    <!-- row End -->
 
 
-                </div>
+                 <!-- 페이징 버튼 -->
+                <ul class="pagination justify-content-center">
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+                <c:choose>
+                <c:when test="${post.first}">
+                 <li class="page-item disabled"><a class="page-link" href="?page=${post.number-1}">Previous</a></li>
+                </c:when>
+
+                <c:otherwise>
+                <li class="page-item"><a class="page-link" href="?page=${post.number-1}">Previous</a></li>
+                </c:otherwise>
+                </c:choose>
+                 <c:forEach var="i" begin="1" end="${post.totalPages}">
+                            <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                        </c:forEach>
+                <c:choose>
+                <c:when test="${post.last}">
+                 <li class="page-item disabled"><a class="page-link" href="?page=${post.number+1}">Next</a></li>
+                </c:when>
+                <c:otherwise>
+                 <li class="page-item"><a class="page-link" href="?page=${post.number+1}">Next</a></li>
+                </c:otherwise>
+                </c:choose>
+
+                <!-- 페이징 버튼 End -->
+
+
+       <!-- container End -->
+        </div>
+
+
+
+<script src="/js/post/post.js"></script>
+
     </body>
 </html>

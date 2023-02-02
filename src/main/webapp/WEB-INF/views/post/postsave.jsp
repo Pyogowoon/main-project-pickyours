@@ -51,17 +51,18 @@
         <div class="form-group">
       <label for="content">actorImage : 소본문(배우or드라마 사진) </label>
       <input type="file" class="form-control" name="actorImage" id="actorImage">
+        </div>
+
+
+      <div class="form-group">
+      <label for="content">clotheImage : 소본문(옷 사진) </label>
+      <input type="file" class="form-control" name="clotheImage" id="clotheImage">
     </div>
 
-                      <div class="form-group">
-                      <label for="content">clotheImage : 소본문(옷 사진) </label>
-                      <input type="file" class="form-control" name="clotheImage" id="clotheImage">
-                    </div>
-
-                       <div class="form-group">
-                  <label for="content">video : 영상 </label>
-                  <input type="file" class="form-control" name="video" id="video">
-                </div>
+       <div class="form-group">
+  <label for="content">video : 영상 </label>
+  <input type="file" class="form-control" name="video" id="video">
+        </div>
 
 
         <input type="button" value="확인" onclick="postSave(${principal.user.id})">
@@ -87,7 +88,7 @@
       });
     </script>
 
-<script src="/js/post/post.js"></script>
+<script src="/js/post/postsave.js"></script>
 
 
 
