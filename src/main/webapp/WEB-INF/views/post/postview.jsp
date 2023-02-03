@@ -104,7 +104,7 @@
                                     <div
                                         class="tags-share-box center-box d-flex text-center justify-content-between border-top border-bottom py-3">
 
-                                        <span class="single-comment-o"><i class="fa fa-comment-o"></i>${postComment.size()} comment : 댓글</span>
+
 
                                         <div class="post-share">
                                             <span class="count-number-like">likes : 좋아요 2</span>
@@ -126,7 +126,7 @@
                         <div class="author-content pl-4">
                             <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">userId : ${post.user.username}</a>
                             </h4>
-                            <p>user자기소개 : ${post.user.bio}, ${post.user.profileImageUrl}, ${post.user.username}</p>
+                            <p>user자기소개 : ${post.user.bio} </p>
 
 
                         </div>
@@ -135,14 +135,23 @@
 
                         <!-- comment 전체 박스 -->
                     <div class="comment-area my-5" id="commentContent">
-                        <h3 class="mb-4 text-center">${postComment.size()} Comments</h3>
+
+
+
+
+
+ <span class="text" style = " font-size:1.5em;" id="commentSize">${postComment.size()}</span>
+<span class="text-uppercase" style = " font-size:1.5em;" >Comments</span>
+
+<hr/>
+
 
 
                          <c:forEach var="list" items="${postComment}">
 
                          <!-- 댓글 박스 area -->
                         <div class="comment-area-box media">
-                            <img alt="" src="/upload/${post.user.profileImageUrl}" style="height: 70px;width:90px" class="img-fluid float-left mr-3 mt-2">
+                            <img alt="" src="/upload/${post.user.profileImageUrl}" onerror="this.src='/images/person.jpeg'" style="height: 70px;width:90px" class="img-fluid float-left mr-3 mt-2">
 
 
 

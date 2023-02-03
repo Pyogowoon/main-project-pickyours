@@ -37,12 +37,24 @@ function postComment(postId){
         let user = res.data.commentUser;
         let profile = res.data.user.profileImageUrl;
         let createDate = res.data.createDate;
+        let onerror="this.src='/images/person.jpeg";
+
+        let commentCountStr = $("#commentSize").text();
+        let commentCount = Number(commentCountStr)+1;
+
+         $("#commentSize").text(commentCount);
 
 
 
-        let div= "${post.id}";
 
-        $("#commentContent").append("<img alt='' src='/upload/"+profile+"' style='height: 70px;width:90px' class='img-fluid float-left mr-3 mt-2'>"
+
+//         let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
+//        	  let likeCount = Number(likeCountStr) + 1;
+//$(`#storyLikeCount-${imageId}`).text(likeCount);
+
+
+
+        $("#commentContent").append("<img alt='' src='/upload/"+profile+"' onerror="+onerror+"' style='height: 70px;width:90px' class='img-fluid float-left mr-3 mt-2'>"
         +"<div class=media-body ml-4>"
         +"<h4 class='mb-0'>"+user+"</h4>"
         +"<span class='date-comm font-sm text-capitalize text-color'><i class='ti-time mr-2'></i>"+createDate+"</span>"
@@ -53,7 +65,7 @@ function postComment(postId){
         +"</div>"
         +"</div>"
          );
-                                                        onerror="this.src='/images/person.jpeg'"
+
 
      }).fail( error => {
         console.log(error,"실패");
