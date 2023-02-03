@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -25,6 +24,8 @@ public class PostComment {
 
     @Column(length = 100 , nullable = false)
     private String content;
+
+    private String commentUser;
 
 
     @JsonIgnoreProperties({"images"})

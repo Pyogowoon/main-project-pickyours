@@ -31,6 +31,7 @@ public class PostCommentService {
         postComment.setUser(userEntity);
         postComment.setContent(content);
         postComment.setPost(post);
+        postComment.setCommentUser(userEntity.getUsername());
 
         return postCommentRepository.save(postComment);
 

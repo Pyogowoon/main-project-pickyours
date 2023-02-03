@@ -10,5 +10,7 @@ public class PostCommentDto {
 
     private String content;
 
+    private String commentUser;
+
 
 }

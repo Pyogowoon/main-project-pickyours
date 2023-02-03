@@ -1,6 +1,7 @@
 package com.pyo.yourspick.web;
 
 
+import com.pyo.yourspick.config.auth.PrincipalDetails;
 import com.pyo.yourspick.domain.post.Post;
 import com.pyo.yourspick.domain.post.PostRepository;
 import com.pyo.yourspick.service.PostService;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +28,9 @@ public class PostController {
 
 
     @GetMapping("/post/postview/{id}")
-    public String postview(@PathVariable int id, Model model) {
+    public String postview(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("post", postService.포스트상세보기(id));
-        model.addAttribute("postComment", postService.댓글불러오기(id));
+        model.addAttribute("postComment", postService.댓글불러오기(id,principalDetails.getUser().getId()));
         return "post/postview";
     }
 

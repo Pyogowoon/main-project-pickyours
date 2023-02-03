@@ -96,9 +96,10 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public List<PostComment> 댓글불러오기(int postId){
+    public List<PostComment> 댓글불러오기(int postId, int userId){
 
       List<PostComment> comment = postCommentRepository.findByPostId(postId);
+
 
 
             return comment;

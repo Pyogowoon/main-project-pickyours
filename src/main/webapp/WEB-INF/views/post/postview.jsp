@@ -126,7 +126,7 @@
                         <div class="author-content pl-4">
                             <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">userId : ${post.user.username}</a>
                             </h4>
-                            <p>user자기소개 : ${post.user.bio}</p>
+                            <p>user자기소개 : ${post.user.bio}, ${post.user.profileImageUrl}, ${post.user.username}</p>
 
 
                         </div>
@@ -134,7 +134,7 @@
 
 
                         <!-- comment 전체 박스 -->
-                    <div class="comment-area my-5">
+                    <div class="comment-area my-5" id="commentContent">
                         <h3 class="mb-4 text-center">${postComment.size()} Comments</h3>
 
 
@@ -148,12 +148,12 @@
 
                            <!-- 댓글 박스 -->
                             <div class="media-body ml-4-${list.id}">
-                                <h4 class="mb-0">아이디 : </h4>
+                                <h4 class="mb-0">${list.commentUser} </h4>
                                 <span class="date-comm font-sm text-capitalize text-color"><i
                                         class="ti-time mr-2"></i>${list.createDate} </span>
 
                             <!-- 댓글 칸 -->
-                                <div class="comment-content mt-1" id="commentContent">
+                                <div class="comment-content mt-1">
                                     <p>${list.content}</p>
                                 </div>
                             <!-- 댓글 칸 End-->
@@ -178,8 +178,10 @@
                             <div class="col-lg-12">
                                 <textarea class="form-control mb-3" id="postContent" name="content" cols="30" rows="5"
                                     placeholder="Comment"></textarea>
-
-                        <input class="btn btn-primary" type="button" onclick="postComment(${post.id})"
+                                <input type="hidden" name="profile" id="profileImage" value="${post.user.profileImageUrl}"/>
+                                <input type="hidden" name="username" id="profileUsername" value="${principal.user.username}"/>
+                        <input class="btn btn-primary" type="button"
+                        onclick="postComment(${post.id})"
                                                 value="Submit Message">
                             </div>
 
