@@ -3,10 +3,7 @@ package com.pyo.yourspick.domain.post;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pyo.yourspick.domain.postcomment.PostComment;
 import com.pyo.yourspick.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,7 +13,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 public class Post {
 
@@ -40,10 +38,11 @@ public class Post {
 
     private String weight;
 
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties({"images"})
     @JoinColumn(name="userId")
     @ManyToOne
     private User user;
+
 
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"post"})
@@ -61,5 +60,6 @@ public class Post {
     public void createDate(){
         this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
+
 
 }

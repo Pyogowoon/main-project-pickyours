@@ -4,16 +4,15 @@ package com.pyo.yourspick.domain.postcomment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pyo.yourspick.domain.post.Post;
 import com.pyo.yourspick.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -24,6 +23,7 @@ public class PostComment {
     @Id
     private int id;
 
+    @Column(length = 100 , nullable = false)
     private String content;
 
 
@@ -32,7 +32,7 @@ public class PostComment {
     @JoinColumn(name = "userId")
     private User user;
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties()
     @ManyToOne
     @JoinColumn(name = "postId")
     private Post post;
@@ -44,4 +44,15 @@ public class PostComment {
         this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
+    @Override
+    public String toString() {
+        return "PostComment{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", user=" + user +
+                ", post=" + post +
+                ", createDate='" + createDate + '\'' +
+                '}';
+    }
 }
+

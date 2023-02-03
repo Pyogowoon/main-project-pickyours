@@ -2,7 +2,7 @@
 
 
       function postSave(userId){
-                alert(userId);
+
 
                 let data = $("#postSave")[0];
 
@@ -19,7 +19,7 @@
 
                 }).done( res => {
            location.href="/post/post";
-                alert("성공");
+
                 }).fail(error =>{
                 console.log(error,"실패");
                 alert(error,"저장 실패");

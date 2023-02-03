@@ -25,13 +25,14 @@ public class PostCommentApicontroller {
 
 
 
-    @PostMapping("/api/post/comment")
+    @PostMapping("/api/post/comment/{postId}")
     public ResponseEntity<?> postComment(@RequestBody PostCommentDto postCommentDto,
-                                         @AuthenticationPrincipal PrincipalDetails principalDetails){
+                                         @AuthenticationPrincipal PrincipalDetails principalDetails
+    ,@PathVariable int postId){
 
 
         System.out.println(postCommentDto);
-        PostComment postComment = postCommentService.댓글달기(principalDetails.getUser().getId(),postCommentDto.getContent());
+        PostComment postComment = postCommentService.댓글달기(principalDetails.getUser().getId(),postCommentDto.getContent(),postId);
 
         return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기 성공",postComment), HttpStatus.OK);
 

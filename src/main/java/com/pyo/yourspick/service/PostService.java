@@ -4,6 +4,8 @@ package com.pyo.yourspick.service;
 import com.pyo.yourspick.config.auth.PrincipalDetails;
 import com.pyo.yourspick.domain.post.Post;
 import com.pyo.yourspick.domain.post.PostRepository;
+import com.pyo.yourspick.domain.postcomment.PostComment;
+import com.pyo.yourspick.domain.postcomment.PostCommentRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.web.dto.post.PostDto;
@@ -29,6 +31,7 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final PostCommentRepository postCommentRepository;
 
 
     @Value("${file.path}")
@@ -89,8 +92,16 @@ public class PostService {
         Post postEntity = postRepository.findById(postId).orElseThrow(()->{
             throw new IllegalArgumentException("게시글을 찾을 수 없습니다");
         });
-
             return postEntity;
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostComment> 댓글불러오기(int postId){
+
+      List<PostComment> comment = postCommentRepository.findByPostId(postId);
+
+
+            return comment;
     }
 }
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -104,7 +104,7 @@
                                     <div
                                         class="tags-share-box center-box d-flex text-center justify-content-between border-top border-bottom py-3">
 
-                                        <span class="single-comment-o"><i class="fa fa-comment-o"></i>0 comment : 댓글</span>
+                                        <span class="single-comment-o"><i class="fa fa-comment-o"></i>${postComment.size()} comment : 댓글</span>
 
                                         <div class="post-share">
                                             <span class="count-number-like">likes : 좋아요 2</span>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="post-author d-flex my-5">
                         <div class="author-img">
-                            <img alt="" src="${post.user.profileImageUrl}" class="avatar avatar-100 photo" width="100"
+                            <img alt="" src="/upload/${post.user.profileImageUrl}" class="avatar avatar-100 photo" width="100"
                                 height="100">
                         </div>
 
@@ -133,44 +133,43 @@
                     </div>
 
 
-
+                        <!-- comment 전체 박스 -->
                     <div class="comment-area my-5">
-                        <h3 class="mb-4 text-center">2 Comments</h3>
+                        <h3 class="mb-4 text-center">${postComment.size()} Comments</h3>
+
+
+                         <c:forEach var="list" items="${postComment}">
+
+                         <!-- 댓글 박스 area -->
                         <div class="comment-area-box media">
-                            <img alt="" src="../images/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
+                            <img alt="" src="/upload/${post.user.profileImageUrl}" style="height: 70px;width:90px" class="img-fluid float-left mr-3 mt-2">
 
-                            <div class="media-body ml-4">
-                                <h4 class="mb-0">Micle harison </h4>
+
+
+                           <!-- 댓글 박스 -->
+                            <div class="media-body ml-4-${list.id}">
+                                <h4 class="mb-0">아이디 : </h4>
                                 <span class="date-comm font-sm text-capitalize text-color"><i
-                                        class="ti-time mr-2"></i>June 7, 2019 </span>
+                                        class="ti-time mr-2"></i>${list.createDate} </span>
 
-                                <div class="comment-content mt-3">
-                                    <p>${post.postComment[0].id}</p>
+                            <!-- 댓글 칸 -->
+                                <div class="comment-content mt-1" id="commentContent">
+                                    <p>${list.content}</p>
                                 </div>
-                                <div class="comment-meta mt-4 mt-lg-0 mt-md-0">
-                                    <a href="#" class="text-underline ">Reply</a>
-                                </div>
+                            <!-- 댓글 칸 End-->
+
+                            </br>
+
                             </div>
+                            <!-- 댓글 박스 End -->
+
+
                         </div>
+                          <!-- 댓글 박스 area End-->
+                                 </c:forEach>
 
-                        <div class="comment-area-box media mt-5">
-                            <img alt="" src="../mages/blog-user-3.jpg" class="mt-2 img-fluid float-left mr-3">
-
-                            <div class="media-body ml-4">
-                                <h4 class="mb-0 ">John Doe </h4>
-                                <span class="date-comm font-sm text-capitalize text-color"><i
-                                        class="ti-time mr-2"></i>June 7, 2019 </span>
-
-                                <div class="comment-content mt-3">
-                                    <p>Some consultants are employed indirectly by the client via a consultancy staffing
-                                        company. </p>
-                                </div>
-                                <div class="comment-meta mt-4 mt-lg-0 mt-md-0">
-                                    <a href="#" class="text-underline">Reply</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    <!-- comment 전체 박스 End -->
 
                  <!-- <form class="comment-form mb-5 gray-bg p-5" id="comment-form" method="post"> -->
 

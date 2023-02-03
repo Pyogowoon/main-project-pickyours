@@ -18,15 +18,19 @@ public class PostCommentService {
     private final PostCommentRepository postCommentRepository;
     private final UserRepository userRepository;
 
-    public PostComment 댓글달기(int userId,String content){
+    public PostComment 댓글달기(int userId,String content,int postId){
 
        User userEntity = userRepository.findById(userId).orElseThrow(()->{
            throw new IllegalArgumentException("아이디를 찾을 수 없습니다");
        });
+       Post post = new Post();
+       post.setId(postId);
+
 
         PostComment postComment = new PostComment();
         postComment.setUser(userEntity);
         postComment.setContent(content);
+        postComment.setPost(post);
 
         return postCommentRepository.save(postComment);
 

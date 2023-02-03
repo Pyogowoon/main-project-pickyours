@@ -27,7 +27,8 @@ public class PostController {
 
     @GetMapping("/post/postview/{id}")
     public String postview(@PathVariable int id, Model model) {
-        model.addAttribute(postService.포스트상세보기(id));
+        model.addAttribute("post", postService.포스트상세보기(id));
+        model.addAttribute("postComment", postService.댓글불러오기(id));
         return "post/postview";
     }
 
