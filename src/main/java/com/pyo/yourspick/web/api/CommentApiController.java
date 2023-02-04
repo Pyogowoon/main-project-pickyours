@@ -38,6 +38,6 @@ public class CommentApiController {
     public ResponseEntity<?> commentDelete(@PathVariable int id){
         commentService.댓글삭제(id);
 
-        return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기 완료", null), HttpStatus.OK);
+        return new ResponseEntity<>(new CMRespDto<>(1,"댓글삭제 완료", null), HttpStatus.OK);
     }
 }

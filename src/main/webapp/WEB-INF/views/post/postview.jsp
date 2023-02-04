@@ -150,15 +150,32 @@
                          <c:forEach var="list" items="${postComment}">
 
                          <!-- 댓글 박스 area -->
-                        <div class="comment-area-box media">
+
+
+                         <!--댓글 동적 박스-->
+    <span class="test" id="deleteArea-${list.id}">
+
+
+            <c:choose>
+            <c:when test="${principal.user.username ==  list.commentUser}">
+             <span class="delete" onclick="deleteButton(${list.id})" style="cursor:pointer; cursor:hand;"> X</span>
+            </c:when>
+            <c:otherwise>
+         <span class="delete"> </span>
+            </c:otherwise>
+            </c:choose>
+
+
+                        <div class="comment-area-box media-${list.id}">
+
                             <img alt="" src="/upload/${post.user.profileImageUrl}" onerror="this.src='/images/person.jpeg'" style="height: 70px;width:90px" class="img-fluid float-left mr-3 mt-2">
 
 
 
                            <!-- 댓글 박스 -->
-                            <div class="media-body ml-4-${list.id}">
-                                <h4 class="mb-0">${list.commentUser} </h4>
-                                <span class="date-comm font-sm text-capitalize text-color"><i
+                            <div class="media-body ml-4" >
+                                <h4 class="mb-0">${list.commentUser}</h4>
+                                <span class="date-comm font-sm text-capitalize text-color"> <i
                                         class="ti-time mr-2"></i>${list.createDate} </span>
 
                             <!-- 댓글 칸 -->
@@ -177,6 +194,9 @@
                           <!-- 댓글 박스 area End-->
                                  </c:forEach>
 
+
+                                </span>
+                                <!--댓글 동적 박스 End-->
                     </div>
                     <!-- comment 전체 박스 End -->
 

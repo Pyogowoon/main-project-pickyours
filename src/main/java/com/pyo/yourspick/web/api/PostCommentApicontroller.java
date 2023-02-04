@@ -8,14 +8,14 @@ import com.pyo.yourspick.service.PostCommentService;
 import com.pyo.yourspick.web.dto.CMRespDto;
 import com.pyo.yourspick.web.dto.postcomment.PostCommentDto;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.boot.autoconfigure.gson.GsonProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,5 +36,13 @@ public class PostCommentApicontroller {
 
         return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기 성공",postComment), HttpStatus.OK);
 
+    }
+    @DeleteMapping("/api/post/comment/{commentId}")
+    public ResponseEntity<?> postCommentDelete(@PathVariable int commentId){
+        System.out.println("컨트롤러 도달");
+
+        postCommentService.댓글삭제(commentId);
+
+        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 삭제 성공",null),HttpStatus.OK);
     }
 }

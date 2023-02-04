@@ -6,6 +6,7 @@ import com.pyo.yourspick.domain.postcomment.PostComment;
 import com.pyo.yourspick.domain.postcomment.PostCommentRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
+import com.pyo.yourspick.handler.ex.CustomApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
@@ -34,10 +35,16 @@ public class PostCommentService {
         postComment.setCommentUser(userEntity.getUsername());
 
         return postCommentRepository.save(postComment);
-
-
-
     }
+
+        public void 댓글삭제(int commentId){
+
+
+                postCommentRepository.deleteById(commentId);
+
+
+        }
+
 
 
 }
