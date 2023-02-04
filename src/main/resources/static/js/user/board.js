@@ -52,7 +52,7 @@ function getStoryItem(image) {
 						<img class="profile-image" src="/upload/${image.user.profileImageUrl}"
 							onerror="this.src='/images/person.jpeg'" />
 					</div>
-					<div>${image.user.name}</div>
+					<div onclick="location.href='/user/${image.user.id}'">${image.user.name} </div>
 				</div>
 
 				<div class="sl__item__img">

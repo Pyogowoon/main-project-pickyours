@@ -8,6 +8,7 @@ import com.pyo.yourspick.service.PostService;
 import com.pyo.yourspick.web.dto.CMRespDto;
 import com.pyo.yourspick.web.dto.post.PostDto;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -42,13 +43,19 @@ public class PostApiController {
 
     }
 
-    @GetMapping("/api/post/post")
-    public ResponseEntity<?> postLoad(Model model){
-//            System.out.println("나 실행은 됨??");
-//        model.addAttribute("post", postService.포스트로드());
+    @PostMapping("/api/post/likes/{postId}")
+    public ResponseEntity<?> postLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+            System.out.println("컨트롤러 도달");
+            System.out.println(postId);
+            postService.좋아요하기(postId,principalDetails.getUser().getId());
 
+        return new ResponseEntity<>(new CMRespDto<>(1,"좋아요 성공", null),HttpStatus.OK);
+    }
+    @DeleteMapping("/api/post/likes/{postId}")
+    public ResponseEntity<?> postUnLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        postService.좋아요취소하기(postId, principalDetails.getUser().getId());
 
-        return new ResponseEntity<>(new CMRespDto<>(1, " 로드 실패", null), HttpStatus.OK);
+        return new ResponseEntity<>(new CMRespDto<>(1,"좋아요취소 성공", null),HttpStatus.OK);
     }
 
 

@@ -95,6 +95,63 @@ function postComment(postId){
 
         });
 
+    }
+
+    function toggleLike(postId){
+    alert("작동됨");
+
+    let likeIcon = $(`#postLikeIcon-${postId}`);
+    	if (likeIcon.hasClass("far")) {
+
+    $.ajax({
+
+        type:"post",
+        url:`/api/post/likes/${postId}`,
+        dataType:" json"
+
+        }).done(res =>{
+        console.log(res, "좋아요 성공");
+        }).fail(error =>{
+        console.log(error , "좋아요 실패");
+         alert("잘못된 접근입니다.")
+        });
+
+}
+            likeIcon.removeClass("far");
+        		likeIcon.addClass("active");
+
+
+    }
+
+
+
+
+    function toggleUnLike(postId){
+    alert("작동됨");
+
+     let unlikeIcon = $(`#postUnLikeIcon-${postId}`);
+        if (unlikeIcon.hasClass("active")) {
+            console.log("액티브 맞노 ㅋ")
+     $.ajax({
+
+          type:"delete",
+          url:`/api/post/likes/${postId}`,
+          dataType:"json"
+
+          }).done(res => {
+          console.log(res,"좋아요 취소 성공");
+
+          }).fail(error => {
+           console.log(error,"좋아요 취소 실패");
+           alert("잘못된 접근입니다.")
+          });
+
+
+        }
+
+        unlikeIcon.removeClass("fas fa-heart active");
+        unlikeIcon.addClass("fa-heart far");
+
 
 
     }

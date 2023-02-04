@@ -6,6 +6,7 @@ import com.pyo.yourspick.domain.post.Post;
 import com.pyo.yourspick.domain.post.PostRepository;
 import com.pyo.yourspick.domain.postcomment.PostComment;
 import com.pyo.yourspick.domain.postcomment.PostCommentRepository;
+import com.pyo.yourspick.domain.postlikes.PostLikesRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.web.dto.post.PostDto;
@@ -30,8 +31,10 @@ import java.util.UUID;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final UserRepository userRepository;
+
     private final PostCommentRepository postCommentRepository;
+
+    private final PostLikesRepository postLikesRepository;
 
 
     @Value("${file.path}")
@@ -96,13 +99,23 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public List<PostComment> 댓글불러오기(int postId, int userId){
+    public List<PostComment> 댓글불러오기(int postId){
 
       List<PostComment> comment = postCommentRepository.findByPostId(postId);
 
-
-
             return comment;
+    }
+
+    @Transactional
+    public void 좋아요하기(int postId , int userId){
+
+        postLikesRepository.mLikes(postId , userId);
+    }
+
+    @Transactional
+    public void 좋아요취소하기(int postId, int userId){
+
+        postLikesRepository.mUnLikes(postId,userId);
     }
 }
 

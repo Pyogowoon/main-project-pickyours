@@ -39,7 +39,6 @@ public class PostCommentApicontroller {
     }
     @DeleteMapping("/api/post/comment/{commentId}")
     public ResponseEntity<?> postCommentDelete(@PathVariable int commentId){
-        System.out.println("컨트롤러 도달");
 
         postCommentService.댓글삭제(commentId);
 

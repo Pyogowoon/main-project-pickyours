@@ -108,8 +108,8 @@
 
                                         <div class="post-share">
                                             <span class="count-number-like">likes : 좋아요 2</span>
-                                            <a class="penci-post-like single-like-button"><i class="ti-heart"></i></a>
-                                        </div>
+                                           <!--  <a class="penci-post-like single-like-button" onclick="toggleLike(${post.id})"><i class="fa-heart far" id="postLikeIcon-${post.id}" ></i></a> -->
+                                                 <a class="penci-post-like single-like-button" onclick="toggleUnLike(${post.id})"><i class= "fas fa-heart active" style="color:red;" id="postUnLikeIcon-${post.id}"></i></a>
 
 
                                     </div>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="post-author d-flex my-5">
                         <div class="author-img">
-                            <img alt="" src="/upload/${post.user.profileImageUrl}" class="avatar avatar-100 photo" width="100"
+                            <img alt="" src="/upload/${post.user.profileImageUrl}" onerror="this.src='/images/person.jpeg'" class="avatar avatar-100 photo" width="100"
                                 height="100">
                         </div>
 
