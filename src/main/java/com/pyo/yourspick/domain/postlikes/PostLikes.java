@@ -29,6 +29,7 @@ public class PostLikes {
     @Id
     private int id;
 
+
     @JsonIgnoreProperties({"user"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postId")
@@ -42,12 +43,21 @@ public class PostLikes {
     private LocalDateTime createDate;
 
 
+
+
     @PrePersist
     public void createDate(){
         this.createDate = LocalDateTime.now();
 
     }
 
-
-
+    @Override
+    public String toString() {
+        return "PostLikes{" +
+                "id=" + id +
+                ", post=" + post +
+                ", user=" + user +
+                ", createDate=" + createDate +
+                '}';
+    }
 }

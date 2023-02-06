@@ -98,7 +98,7 @@ function postComment(postId){
     }
 
     function toggleLike(postId){
-    alert("작동됨");
+    alert("좋아요 하기 작동");
 
     let likeIcon = $(`#postLikeIcon-${postId}`);
     	if (likeIcon.hasClass("far")) {
@@ -111,14 +111,26 @@ function postComment(postId){
 
         }).done(res =>{
         console.log(res, "좋아요 성공");
+
+
+         let likeCountStr = $("#likeSize").text();
+         let likeCount = Number(likeCountStr)+1;
+
+         $("#likeSize").text(likeCount);
+
+         $("#toggle").removeAttr("onclick");
+         $("#toggle").attr("onclick","toggleUnLike("+postId+")");
+         $("#postLikeIcon-"+postId+"").attr("id","postUnLikeIcon-"+postId+"");
+
+
         }).fail(error =>{
         console.log(error , "좋아요 실패");
-         alert("잘못된 접근입니다.")
+         alert("좋아요 시도 실패.")
         });
 
 }
-            likeIcon.removeClass("far");
-        		likeIcon.addClass("active");
+            likeIcon.removeClass("fa-heart far");
+        		likeIcon.addClass("fas fa-heart active");
 
 
     }
@@ -127,11 +139,11 @@ function postComment(postId){
 
 
     function toggleUnLike(postId){
-    alert("작동됨");
+    alert("좋아요 취소하기 작동");
 
      let unlikeIcon = $(`#postUnLikeIcon-${postId}`);
         if (unlikeIcon.hasClass("active")) {
-            console.log("액티브 맞노 ㅋ")
+
      $.ajax({
 
           type:"delete",
@@ -141,9 +153,21 @@ function postComment(postId){
           }).done(res => {
           console.log(res,"좋아요 취소 성공");
 
+
+          let likeCountStr = $("#likeSize").text();
+          let likeCount = Number(likeCountStr)-1;
+
+           $("#likeSize").text(likeCount);
+
+            $("#toggle").removeAttr("onclick");
+            $("#toggle").attr("onclick","toggleLike("+postId+")");
+            $("#postUnLikeIcon-"+postId+"").attr("id","postLikeIcon-"+postId+"");
+
+
+
           }).fail(error => {
            console.log(error,"좋아요 취소 실패");
-           alert("잘못된 접근입니다.")
+           alert("좋아요 취소를 실패했습니다.")
           });
 
 
@@ -151,6 +175,7 @@ function postComment(postId){
 
         unlikeIcon.removeClass("fas fa-heart active");
         unlikeIcon.addClass("fa-heart far");
+
 
 
 

@@ -6,6 +6,7 @@ import com.pyo.yourspick.domain.post.Post;
 import com.pyo.yourspick.domain.post.PostRepository;
 import com.pyo.yourspick.domain.postcomment.PostComment;
 import com.pyo.yourspick.domain.postcomment.PostCommentRepository;
+import com.pyo.yourspick.domain.postlikes.PostLikes;
 import com.pyo.yourspick.domain.postlikes.PostLikesRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.swing.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,6 +37,8 @@ public class PostService {
     private final PostCommentRepository postCommentRepository;
 
     private final PostLikesRepository postLikesRepository;
+
+    private final UserRepository userRepository;
 
 
     @Value("${file.path}")
@@ -90,11 +94,12 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public Post 포스트상세보기(int postId){
+    public Post 포스트상세보기(int postId,int userId){
 
         Post postEntity = postRepository.findById(postId).orElseThrow(()->{
             throw new IllegalArgumentException("게시글을 찾을 수 없습니다");
         });
+
             return postEntity;
     }
 
@@ -103,19 +108,40 @@ public class PostService {
 
       List<PostComment> comment = postCommentRepository.findByPostId(postId);
 
+
             return comment;
     }
+
+
+    @Transactional(readOnly = true)
+    public PostLikes 좋아요목록(int userId,int postId){
+
+      PostLikes postLikes =  postLikesRepository.findByUserIdAndPostId(userId,postId);
+
+      System.out.println("postLikes"+postLikes);
+
+
+        return postLikes;
+    }
+
 
     @Transactional
     public void 좋아요하기(int postId , int userId){
 
-        postLikesRepository.mLikes(postId , userId);
+
+    int postLikes = postLikesRepository.mLikes(postId , userId);
+
+
     }
 
     @Transactional
     public void 좋아요취소하기(int postId, int userId){
 
-        postLikesRepository.mUnLikes(postId,userId);
+
+          postLikesRepository.mUnLikes(userId,postId);
+
+
+
     }
 }
 

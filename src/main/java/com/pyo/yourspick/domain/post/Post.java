@@ -2,6 +2,7 @@ package com.pyo.yourspick.domain.post;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pyo.yourspick.domain.postcomment.PostComment;
+import com.pyo.yourspick.domain.postlikes.PostLikes;
 import com.pyo.yourspick.domain.user.User;
 import lombok.*;
 
@@ -44,17 +45,31 @@ public class Post {
     private User user;
 
 
-    @OrderBy("id DESC")
-    @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post")
-    private List<PostComment> postComment;
-
     private String postImageUrlLeft;
 
     private String postImageUrlRight;
     private String postVideoUrl;
 
     private String createDate;
+
+
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"post"})
+    @OneToMany(mappedBy = "post")
+    private List<PostComment> postComment;
+
+    @JsonIgnoreProperties({"post"})
+    @OneToMany(mappedBy = "post")
+    private List<PostLikes> postLikes;
+
+
+    @Transient
+    private int likeState;
+
+    @Transient
+    private int likeUser;
+
 
     @PrePersist
     public void createDate(){

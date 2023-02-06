@@ -106,10 +106,29 @@
 
 
 
-                                        <div class="post-share">
-                                            <span class="count-number-like">likes : 좋아요 2</span>
-                                           <!--  <a class="penci-post-like single-like-button" onclick="toggleLike(${post.id})"><i class="fa-heart far" id="postLikeIcon-${post.id}" ></i></a> -->
-                                                 <a class="penci-post-like single-like-button" onclick="toggleUnLike(${post.id})"><i class= "fas fa-heart active" style="color:red;" id="postUnLikeIcon-${post.id}"></i></a>
+                        <div class="post-share">
+                           <span class="count-number-like">likes :</span>
+                           <span class="count-number-like" id="likeSize"> ${post.postLikes.size()}</span>
+
+                           <!-- 좋아요 -->
+
+                            <c:choose>
+
+                        <c:when test="${postLikes.user.id == principal.user.id}">
+                        <a class="penci-post-like single-like-button" id="toggle" onclick="toggleUnLike(${post.id})"><i class= "fas fa-heart active" style="color:red;" id="postUnLikeIcon-${post.id}"></i></a>
+                        </c:when>
+
+
+                        <c:otherwise>
+
+ <a class="penci-post-like single-like-button" id="toggle"  onclick="toggleLike(${post.id})"><i class="fa-heart far" style="color:red;" id="postLikeIcon-${post.id}" ></i></a>
+
+                        </c:otherwise>
+
+                        </c:choose>
+    <!-- 좋아요 끝 -->
+
+
 
 
                                     </div>
@@ -144,6 +163,8 @@
 <span class="text-uppercase" style = " font-size:1.5em;" >Comments</span>
 
 <hr/>
+
+
 
 
 
