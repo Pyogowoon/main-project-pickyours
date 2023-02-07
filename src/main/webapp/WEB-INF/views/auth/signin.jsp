@@ -79,8 +79,18 @@
                              <img src="../images/facebook.png">
                             </button>
                         </div>
-
+                         <br/>
                            <!-- kakao Login End-->
+
+                           <!-- naver Login -->
+                             <div class="login__facebook">
+                              <button onclick="javascript:location.href='/oauth2/authorization/naver'">
+                                <img src="../images/facebook.png">
+                               </button>
+                           </div>
+
+
+                           <!-- naver Login End -->
 
                         <!-- Oauth 소셜로그인 End -->
 

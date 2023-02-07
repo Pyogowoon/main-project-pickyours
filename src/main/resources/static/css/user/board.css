@@ -7,7 +7,7 @@
 /*컨테이너*/
 .main .container {
   padding-top: 30px;
-  width: 1050px;
+  width: 80%;
   display: flex;
   /*flex-direction: column;*/
   margin: 0 auto;
@@ -24,6 +24,8 @@
 
 /*게시물 리스트 아이템*/
 .main .container .story-list .story-list__item {
+    width: 60%;
+    margin : 0 auto;
   margin-bottom: 30px;
   border: 1px solid #dbdbdb;
   border-radius: 4px;
@@ -222,14 +224,14 @@
 
 /* 사이드 */
 aside{
-            flex-basis: 150px;
+            flex-basis: 250px;
             flex-shrink: 0;
             height : 80px;
         }
 
 .recommend{
 
-    border : 2px solid red;
+
     position: fixed;
     top: 99px;
       left: 155px;

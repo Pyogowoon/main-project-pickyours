@@ -29,7 +29,14 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
         OAuth2User oauth2User = super.loadUser(userRequest);
 
 
+
+
         String provider = userRequest.getClientRegistration().getRegistrationId();
+
+        System.out.println(oauth2User.getAttributes());
+        System.out.println(provider);
+
+
 
 
         /* kakao */
@@ -89,11 +96,36 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
                 return new PrincipalDetails(userEntity, oauth2User.getAttributes());
             }
             /* facebook End */
-        } else {
-            return null;
+        } else if(provider.equals("naver")){
+
+            Map<String, Object> userNaverInfo = oauth2User.getAttributes();
+
+            String email= ((Map)userNaverInfo.get("response")).get("email").toString();
+            String name = ((Map)userNaverInfo.get("response")).get("name").toString();
+            String password = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
+
+            String username =  "Naver_" + ((Map)userNaverInfo.get("response")).get("id").toString();
+
+              User userEntity = userRepository.findByUsername(username);
+
+            if (userEntity == null) {
+                User user = User.builder()
+                        .username(username)
+                        .name(name)
+                        .email(email)
+                        .password(password)
+                        .role(Role.USER).
+
+                        build();
+
+
+                return new PrincipalDetails(userRepository.save(user), oauth2User.getAttributes());
+        }else{
+                return new PrincipalDetails(userEntity, oauth2User.getAttributes());
+            }
         }
 
-
+        return null;
     }
 
 
