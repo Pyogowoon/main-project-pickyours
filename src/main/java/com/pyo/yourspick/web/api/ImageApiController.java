@@ -47,4 +47,14 @@ public class ImageApiController {
 
 
 
+    @DeleteMapping("/api/user/board/{imageId}")
+    public ResponseEntity<?> storyContentDelete(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+
+        imageService.게시글삭제(imageId);
+
+
+        return new ResponseEntity<>(new CMRespDto<>(1,"삭제 성공" , null), HttpStatus.OK);
+    }
+
+
 }

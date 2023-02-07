@@ -46,6 +46,7 @@
 
 <!-- principalId 담아두는 곳 -->
    <input type="hidden" id="principalId" value="${principal.user.id}"/>
+   <input type="hidden" id="principalRole" value="${principal.user.role}"/>
 
 <!-- principalId 담아두는 곳 end -->
 

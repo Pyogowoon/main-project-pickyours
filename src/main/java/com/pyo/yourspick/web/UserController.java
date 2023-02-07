@@ -1,10 +1,17 @@
 package com.pyo.yourspick.web;
 
 import com.pyo.yourspick.config.auth.PrincipalDetails;
+import com.pyo.yourspick.domain.image.Image;
+import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
 import com.pyo.yourspick.domain.user.User;
+import com.pyo.yourspick.service.ImageService;
+import com.pyo.yourspick.service.SubscribeService;
 import com.pyo.yourspick.service.UserService;
 import com.pyo.yourspick.web.dto.user.UserProfileDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +24,21 @@ public class UserController{
 
    private final UserService userService;
 
-    @GetMapping("user/board")
-    public String board(){
+   private final SubscribeService subscribeService;
 
+   private final SubscribeRepository subscribeRepository;
+
+   private final ImageService imageService;
+
+    @GetMapping("user/board")
+    public String board(@AuthenticationPrincipal PrincipalDetails principalDetails , @PageableDefault(size=3) Pageable pageable){
+        int userid = principalDetails.getUser().getId();
+
+        int subscribeState = subscribeRepository.mSubscribeState(userid,1);
+        if(subscribeState != 1){
+            subscribeService.구독하기(userid, 1);
+        }
+//        Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(),pageable);
 
         return "user/board";
     }

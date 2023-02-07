@@ -37,12 +37,12 @@ public class Image {
 
 
     @JsonIgnoreProperties({"image"})
-    @OneToMany(mappedBy = "image")
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
     private List<Likes> likes;
 
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"image"})
-    @OneToMany(mappedBy = "image")
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
     private List<Comment> comments;
 
 

@@ -9,6 +9,7 @@
  // (0) 현재 로그인한 사용자 아이디
 
  let principalId = $("#principalId").val();
+ let principalRole = $("#principalRole").val();
 
 
 
@@ -26,10 +27,12 @@ function storyLoad() {
 
     }).done(res =>{
     console.log(res, "성공");
+
     res.data.content.forEach((image) =>{
 
 
     let storyItem = getStoryItem(image);
+    console.log(principalRole);
     $("#storyList").append(storyItem);
 
  });
@@ -46,13 +49,27 @@ function storyLoad() {
 
 function getStoryItem(image) {
     let item=`
-<div class="story-list__item">
-				<div class="sl__item__header">
+<div class="story-list__item" id="contentsItem-${image.id}">
+				<div class="sl__item__header" >
 					<div>
 						<img class="profile-image" src="/upload/${image.user.profileImageUrl}"
 							onerror="this.src='/images/person.jpeg'" />
 					</div>
-					<div onclick="location.href='/user/${image.user.id}'">${image.user.name} </div>
+					  <div class="sl__item__contents__delete">
+					   <span onclick="location.href='/user/${image.user.id}'">${image.user.name} </span>
+                        `;
+                        if(principalId == image.user.id || principalRole =="ADMIN" || principalRole=="SUPERADMIN"){
+                        item+=`
+
+					     <button type="button" onclick="contentsDelete(${image.id},principalId)">삭제하기</button>
+					     `;
+					     }
+					     item+=`
+					   </div>
+
+
+
+
 				</div>
 
 				<div class="sl__item__img">
@@ -78,6 +95,10 @@ function getStoryItem(image) {
 
 					<div class="sl__item__contents__content">
 						<p>${image.caption}</p>
+
+                        <br/>
+						<hr/>
+                        <br/>
 					</div>
 
 					<div id="storyCommentList-${image.id}">`;
@@ -245,12 +266,41 @@ function deleteComment(userId) {
         }).done( res =>{
             console.log(res ,"성공")
             alert("정말 댓글을 삭제하시겠습니까?");
-            $(`#storyCommentItem-${userId}`).remove();
+//            $(`#storyCommentItem-${userId}`).remove();
         }).fail( error =>{
            console.log(error,"삭제 실패");
 
 
         });
+
+}
+
+function contentsDelete(imageId,principalId){
+
+    alert("삭제버튼 작동");
+    console.log("이미지아이디",imageId);
+    console.log("프린시팔",principalId);
+
+
+
+    $.ajax({
+
+        type:"delete",
+        url:`/api/user/board/${imageId}`,
+        dataType:"json"
+
+
+    }).done(res =>{
+       console.log("지우기 성공", res);
+       alert("정말 삭제하시겠습니까?")
+
+       $(`#contentsItem-${imageId}`).remove();
+
+
+
+    }).fail(error => {
+       console.log("지우기 실패",error)
+    })
 
 }
 
