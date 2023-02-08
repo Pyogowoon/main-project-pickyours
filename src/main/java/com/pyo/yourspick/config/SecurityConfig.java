@@ -23,12 +23,12 @@ public class SecurityConfig {
 
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-               http.authorizeRequests()
-                .antMatchers("/","/board","/auth/**","/images/**", "/js/**", "/webjars/**","/css/**","/vendor/**"
-                        ,"/fonts/**","/plugins/**","/scss/**","/post/post","/upload/**")
+        http.authorizeRequests()
+                .antMatchers("/", "/board", "/auth/**", "/images/**", "/js/**", "/webjars/**", "/css/**", "/vendor/**"
+                        , "/fonts/**", "/plugins/**", "/scss/**", "/post", "/upload/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -36,9 +36,12 @@ public class SecurityConfig {
                 .loginPage("/auth/signin")
                 .loginProcessingUrl("/auth/signin")
                 .defaultSuccessUrl("/")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
 
 
-               .and()
+                .and()
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(oauth2DetailsService);
@@ -48,7 +51,7 @@ public class SecurityConfig {
 
 
     @Bean
-    public BCryptPasswordEncoder encodePWD(){
+    public BCryptPasswordEncoder encodePWD() {
         return new BCryptPasswordEncoder();
 
 

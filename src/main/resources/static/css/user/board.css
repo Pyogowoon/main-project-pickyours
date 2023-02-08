@@ -24,7 +24,7 @@
 
 /*게시물 리스트 아이템*/
 .main .container .story-list .story-list__item {
-    width: 60%;
+    width: 90%;
     margin : 0 auto;
   margin-bottom: 30px;
   border: 1px solid #dbdbdb;

@@ -33,11 +33,6 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
 
         String provider = userRequest.getClientRegistration().getRegistrationId();
 
-        System.out.println(oauth2User.getAttributes());
-        System.out.println(provider);
-
-
-
 
         /* kakao */
         if (provider.equals("kakao")) {

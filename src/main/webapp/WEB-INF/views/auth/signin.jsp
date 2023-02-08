@@ -62,35 +62,39 @@
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
+						<br/>
+						<br/>
+
+
                             <!-- Oauth 소셜로그인 -->
-                            <!-- facebook -->
-                        <div class="login__facebook">
-                           <button onclick="javascript:location.href='/oauth2/authorization/facebook'">
-                             <img src="../images/facebook.png">
-                            </button>
-                        </div>
-                        <br/>
-                            <!-- facebook End-->
 
                             <!-- kakao Login -->
 
-                            <div class="login__facebook">
+                            <div class="login__kakao">
                            <button onclick="javascript:location.href='/oauth2/authorization/kakao'">
-                             <img src="../images/facebook.png">
+                             <img src="../images/kakaologin.png" style="height:53px;width:280px">
                             </button>
                         </div>
-                         <br/>
+
                            <!-- kakao Login End-->
 
                            <!-- naver Login -->
-                             <div class="login__facebook">
+                             <div class="login__naver">
                               <button onclick="javascript:location.href='/oauth2/authorization/naver'">
-                                <img src="../images/facebook.png">
+                                <img src="../images/naverlogin.png" style="height:53px;width:280px">
                                </button>
                            </div>
 
-
                            <!-- naver Login End -->
+
+                               <!-- facebook -->
+                           <div class="login__facebook">
+                              <button onclick="javascript:location.href='/oauth2/authorization/facebook'">
+                                <img src="../images/facebooklogin.png" style="height:53px;width:280px">
+                               </button>
+                           </div>
+
+                             <!-- facebook End-->
 
                         <!-- Oauth 소셜로그인 End -->
 
