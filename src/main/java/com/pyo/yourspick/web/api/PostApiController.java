@@ -7,6 +7,7 @@ import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.service.PostService;
 import com.pyo.yourspick.web.dto.CMRespDto;
 import com.pyo.yourspick.web.dto.post.PostDto;
+import com.pyo.yourspick.web.dto.post.PostUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
