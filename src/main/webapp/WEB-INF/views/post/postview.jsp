@@ -53,14 +53,18 @@
                         <div class="col-md-12">
                             <article class="post">
 
+
+                            <span class="update"><a href="/post/postupdate/${post.id}" >수정하기</a></span>
+
+
                                 <div class="post-header mb-5 text-center">
 
                                     <h2 class="post-title mt-2">
-                                      title : ${post.title}
+                                      ${post.title}
                                     </h2>
 
                                     <div class="post-meta">
-                                        <span class="text-uppercase font-sm letter-spacing-1 mr-3">writer : ${post.user.username}</span>
+                                        <span class="text-uppercase font-sm letter-spacing-1 mr-3">writerr : ${post.user.username}</span>
                                         <span class="text-uppercase font-sm letter-spacing-1">Date : ${post.createDate}</span>
                                     </div>
                                 </div>
@@ -68,8 +72,7 @@
                                <!--video post start-->
                                       <div class="post-img position-relative mb-4">
                                           <a href="#"><img class="img-fluid w-100" src="/upload/${post.postVideoUrl}" alt=""></a>
-                                          <a href="https://www.youtube.com/watch?v=m2h8T1RGTag"
-                                              class="play-btn popup-youtube"><i class="ti-control-play"></i></a>
+
                                       </div>
                                       <!--video post end-->
 
@@ -143,9 +146,9 @@
                         </div>
 
                         <div class="author-content pl-4">
-                            <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">userId : ${post.user.username}</a>
+                            <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">글쓴이 : ${post.user.username}</a>
                             </h4>
-                            <p>user자기소개 : ${post.user.bio} </p>
+                            <p>자기소개 : ${post.user.bio} </p>
 
 
                         </div>
@@ -259,11 +262,11 @@
                             <div class="sidebar-widget follow mb-5 text-center">
                                 <h4 class="text-center widget-title">Follow Me</h4>
                                 <div class="follow-socials">
-                                    <a href="#"><i class="ti-facebook"></i></a>
-                                    <a href="#"><i class="ti-twitter"></i></a>
-                                    <a href="#"><i class="ti-instagram"></i></a>
-                                    <a href="#"><i class="ti-youtube"></i></a>
-                                    <a href="#"><i class="ti-pinterest"></i></a>
+                                    <a href="https://www.facebook.com" target="_blank"><i class="ti-facebook"></i></a>
+                                    <a href="https://twitter.com/?lang=ko" target="_blank"><i class="ti-twitter"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank"><i class="ti-instagram"></i></a>
+                                    <a href="https://www.youtube.com" target="_blank"><i class="ti-youtube"></i></a>
+                                    <a href="https://www.pinterest.co.kr/" target="_blank"><i class="ti-pinterest"></i></a>
                                 </div>
                             </div>
 
@@ -300,33 +303,7 @@
                             </div>
 
 
-                            <div class="sidebar-widget category mb-5">
-                                <h4 class="text-center widget-title">Catgeories</h4>
-                                <ul class="list-unstyled">
-                                    <li class="align-items-center d-flex justify-content-between">
-                                        <a href="#">Innovation</a>
-                                        <span>14</span>
-                                    </li>
-                                    <li class="align-items-center d-flex justify-content-between">
-                                        <a href="#">Software</a>
-                                        <span>2</span>
-                                    </li>
-                                    <li class="align-items-center d-flex justify-content-between">
-                                        <a href="#">Social</a>
-                                        <span>10</span>
-                                    </li>
-                                    <li class="align-items-center d-flex justify-content-between">
-                                        <a href="#">Trends</a>
-                                        <span>5</span>
-                                    </li>
-                                </ul>
-                            </div>
 
-                            <div class="sidebar-widget subscribe mb-5">
-                                <h4 class="text-center widget-title">Newsletter</h4>
-                                <input type="text" class="form-control" placeholder="Email Address">
-                                <a href="#" class="btn btn-primary d-block mt-3">Sign Up</a>
-                            </div>
 
                             <div class="sidebar-widget sidebar-adv mb-5">
                                 <a href="#"><img src="../images/sidebar-banner3.png" alt="" class="img-fluid w-100"></a>

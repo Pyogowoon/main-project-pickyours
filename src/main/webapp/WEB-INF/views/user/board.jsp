@@ -27,7 +27,7 @@
                 <span> 다른사람도 구독해보세요 ! </span>
                 <br/>
                 <span> User 1 </span>
-                <button class="cta" onclick="toggleSubscribe(${dto.user.id},this)">구독하기</button>
+                <button class="cta" onclick="toggleSubscribe(${dto.user.id},this)">구경하기</button>
                 </div>
             </aside>
 	</section>

@@ -8,6 +8,7 @@ body {
   color: #0c0c0c;
   background-color: #ffffff;
   overflow-x: hidden;
+
 }
 
 .layout_padding {
@@ -258,6 +259,7 @@ a:focus {
           align-items: center;
   position: relative;
   padding: 90px 0 75px 0;
+  height: 80%;
 }
 
 .slider_section .row {

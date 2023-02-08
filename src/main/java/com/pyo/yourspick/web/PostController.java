@@ -29,14 +29,14 @@ public class PostController {
 
     @GetMapping("/post/postview/{id}")
     public String postview(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        model.addAttribute("post", postService.포스트상세보기(id,principalDetails.getUser().getId()));
+        model.addAttribute("post", postService.포스트상세보기(id));
         model.addAttribute("postComment", postService.댓글불러오기(id));
         model.addAttribute("postLikes", postService.좋아요목록(principalDetails.getUser().getId(),id));
 
         return "post/postview";
     }
 
-    @GetMapping("/post/post")
+    @GetMapping("/post")
     public String post(Model model ,  @PageableDefault(size=7, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
 
   model.addAttribute("post", postService.포스트로드(pageable));
@@ -50,11 +50,11 @@ public class PostController {
         return "post/postsave";
     }
 
-    @GetMapping("/post/pagintest")
-    public Page<Post> pageList(@PageableDefault(size=2, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
-        Page<Post> pagingPost = postRepository.findAll(pageable);
 
-        return pagingPost;
+    @GetMapping("post/postupdate/{postId}")
+    public String postUpdate(@PathVariable int postId, Model model){
+        model.addAttribute("post", postService.포스트상세보기(postId));
+
+        return "post/postupdate";
     }
-
 }

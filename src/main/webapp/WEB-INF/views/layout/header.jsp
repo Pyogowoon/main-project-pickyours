@@ -107,31 +107,26 @@
 
             <div class="col-12">
               <nav class="site-navigation text-right ml-auto " role="navigation">
-                    <button type="button" onclick="location.href='/auth/signin'">로그인하기</button>
+
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li><a href="/" class="nav-link">Home</a></li>
                   <li><a href="/user/board" class="nav-link">유저마당</a></li>
 
 
-                  <li class="has-children">
-                    <a href="/post/post" class="nav-link">게시글</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="#team-section" class="nav-link">Team</a></li>
-                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                      <li class="has-children">
-                        <a href="#">More Links</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>
-                        </ul>
-                      </li>
-                    </ul>
+                  <li class="has">
+                    <a href="/post" class="nav-link">게시글</a>
+
                   </li>
 
+                <c:choose>
+                <c:when test="${principal.user.id != null}">
+            <li><a href="/logout" class="nav-link">LOGOUT</a></li>
+                </c:when>
+                <c:otherwise>
+                 <li><a href="/auth/signin" class="nav-link">LOGIN</a></li>
+                </c:otherwise>
+                </c:choose>
 
-                  <li><a href="/post/postview" class="nav-link">Contact</a></li>
                 </ul>
               </nav>
 

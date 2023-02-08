@@ -33,7 +33,8 @@ public class PostComment {
     @JoinColumn(name = "userId")
     private User user;
 
-    @JsonIgnoreProperties()
+
+    @JsonIgnoreProperties({"postComment"})
     @ManyToOne
     @JoinColumn(name = "postId")
     private Post post;
@@ -45,15 +46,6 @@ public class PostComment {
         this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
-    @Override
-    public String toString() {
-        return "PostComment{" +
-                "id=" + id +
-                ", content='" + content + '\'' +
-                ", user=" + user +
-                ", post=" + post +
-                ", createDate='" + createDate + '\'' +
-                '}';
-    }
+
 }
 

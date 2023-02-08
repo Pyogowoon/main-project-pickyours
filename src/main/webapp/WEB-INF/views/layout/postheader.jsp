@@ -105,7 +105,7 @@
 
 
                   <li class="has-children">
-                    <a href="/post/post" class="nav-link">게시글</a>
+                    <a href="/post" class="nav-link">게시글</a>
                     <ul class="dropdown arrow-top">
                       <li><a href="#team-section" class="nav-link">Team</a></li>
                       <li><a href="#pricing-section" class="nav-link">Pricing</a></li>

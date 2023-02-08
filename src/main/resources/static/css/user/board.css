@@ -24,7 +24,7 @@
 
 /*게시물 리스트 아이템*/
 .main .container .story-list .story-list__item {
-    width: 60%;
+    width: 75%;
     margin : 0 auto;
   margin-bottom: 30px;
   border: 1px solid #dbdbdb;
@@ -244,7 +244,7 @@ display:flex;
   }
 
 .sl__item__contents__delete{
-width:820px;
+width:100%;
 justify-content: space-between;
 display:flex;
 

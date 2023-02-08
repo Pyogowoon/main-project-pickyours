@@ -17,8 +17,10 @@
                 enctype:"multipart/form-data",
                 dataType: "json"
 
-                }).done( res => {
-           location.href="/post/post";
+                }).done(res => {
+                console.log(res,"성공");
+                console.log("res Data :" ,res.data);
+//           location.href="/post";
 
                 }).fail(error =>{
                 console.log(error,"실패");

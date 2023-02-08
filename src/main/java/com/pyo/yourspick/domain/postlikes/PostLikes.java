@@ -36,7 +36,7 @@ public class PostLikes {
     private Post post;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private User user;
 

@@ -26,7 +26,7 @@ public class PostDto {
 
     private MultipartFile clotheImage;
 
-    /* 영상은 일단 보류 */
+
     private MultipartFile video;
 
     public Post toEntity(User user, String actorImage , String clotheImage , String video){

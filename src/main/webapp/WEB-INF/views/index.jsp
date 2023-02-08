@@ -34,7 +34,7 @@
     <!-- slider section -->
          <section class="slider_section ">
             <div class="slider_bg_box">
-               <img src="images/slider-bg.jpg" alt="">
+               <img src="images/background3.png" alt="">
             </div>
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
@@ -51,11 +51,11 @@
                                     hi
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                    Yours pick 의 소셜 서비스로 당신의 궁금증을 해소하세요, 옷 정보가 궁금하다면!
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
-                                   보러가기
+                                    <a href="/user/board" class="btn1">
+                                   유저마당 보기
                                     </a>
                                  </div>
                               </div>
@@ -70,17 +70,17 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                   Yours pick 에 오신걸 환영합니다.
+                                   Yours pick!
                                     </span>
                                     <br>
                                     On Everything
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                     Yours pick 의 소셜 서비스로 당신의 궁금증을 해소하세요, 옷 정보가 궁금하다면!
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    Shop Now
+                                    <a href="/post" class="btn1">
+                                    블로그 보기
                                     </a>
                                  </div>
                               </div>
@@ -95,17 +95,17 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 300% Off
+                                    Yours pick!
                                     </span>
                                     <br>
                                     On Everything
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                   Yours pick 의 소셜 서비스로 당신의 궁금증을 해소하세요, 옷 정보가 궁금하다면!
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    Shop Now
+                                    <a href="/auth/signin" class="btn1">
+                                    로그인하기
                                     </a>
                                  </div>
                               </div>
@@ -128,23 +128,6 @@
          <!-- end slider section -->
 
 
-              <div class="classa">
-
-                        <h2> 공간 </h2
-
-                        </div>
-
-                             <div class="classa">
-
-                                       <h2> 공간 </h2
-
-                                       </div>
-
-                                            <div class="classa">
-
-                                                      <h2> 공간 </h2
-
-                                                      </div>
 
 
 

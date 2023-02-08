@@ -56,7 +56,7 @@ public class Post {
 
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post" )
     private List<PostComment> postComment;
 
     @JsonIgnoreProperties({"post"})
@@ -75,6 +75,7 @@ public class Post {
     public void createDate(){
         this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
+
 
 
 }

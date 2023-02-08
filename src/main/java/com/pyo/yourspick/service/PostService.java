@@ -11,6 +11,7 @@ import com.pyo.yourspick.domain.postlikes.PostLikesRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.web.dto.post.PostDto;
+import com.pyo.yourspick.web.dto.post.PostUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.gson.GsonProperties;
@@ -46,7 +47,7 @@ public class PostService {
 
 
     @Transactional
-    public void 게시글저장(PostDto postDto, PrincipalDetails principalDetails
+    public Post 게시글저장(PostDto postDto, PrincipalDetails principalDetails
             , MultipartFile clotheImage, MultipartFile actorImage, MultipartFile video) {
 
 
@@ -57,9 +58,6 @@ public class PostService {
 //            System.out.println("유저가 아닙니다.");
 //        }
 //        userRepository.findById(userId);
-
-
-
 
 
         UUID uuid = UUID.randomUUID();
@@ -81,10 +79,12 @@ public class PostService {
         }
 
         User user = principalDetails.getUser();
-        System.out.println("여기까지도달");
+
         Post post = postDto.toEntity(user, actorImageFileName, clotheImageFileName, videoFileName);
 
         postRepository.save(post);
+
+        return post;
 
     }
 
@@ -94,31 +94,31 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public Post 포스트상세보기(int postId,int userId){
+    public Post 포스트상세보기(int postId) {
 
-        Post postEntity = postRepository.findById(postId).orElseThrow(()->{
+        Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
             throw new IllegalArgumentException("게시글을 찾을 수 없습니다");
         });
 
-            return postEntity;
+        return postEntity;
     }
 
     @Transactional(readOnly = true)
-    public List<PostComment> 댓글불러오기(int postId){
+    public List<PostComment> 댓글불러오기(int postId) {
 
-      List<PostComment> comment = postCommentRepository.findByPostId(postId);
+        List<PostComment> comment = postCommentRepository.findByPostId(postId);
 
 
-            return comment;
+        return comment;
     }
 
 
     @Transactional(readOnly = true)
-    public PostLikes 좋아요목록(int userId,int postId){
+    public PostLikes 좋아요목록(int userId, int postId) {
 
-      PostLikes postLikes =  postLikesRepository.findByUserIdAndPostId(userId,postId);
+        PostLikes postLikes = postLikesRepository.findByUserIdAndPostId(userId, postId);
 
-      System.out.println("postLikes"+postLikes);
+
 
 
         return postLikes;
@@ -126,19 +126,76 @@ public class PostService {
 
 
     @Transactional
-    public void 좋아요하기(int postId , int userId){
+    public void 좋아요하기(int postId, int userId) {
 
 
-    int postLikes = postLikesRepository.mLikes(postId , userId);
+        int postLikes = postLikesRepository.mLikes(postId, userId);
 
 
     }
 
     @Transactional
-    public void 좋아요취소하기(int postId, int userId){
+    public void 좋아요취소하기(int postId, int userId) {
 
 
-          postLikesRepository.mUnLikes(userId,postId);
+        postLikesRepository.mUnLikes(userId, postId);
+
+    }
+
+    @Transactional
+    public Post 게시글수정(Post post, MultipartFile actorImage,
+                      MultipartFile clotheImage,MultipartFile video, PrincipalDetails principalDetails,int postId ) {
+
+         Post postEntity= postRepository.findById(postId).orElseThrow(()->{
+             throw new IllegalArgumentException("아이디 찾기 불가");
+         });
+
+
+
+        UUID uuid = UUID.randomUUID();
+        String actorImageFileName = uuid + "_" + actorImage.getOriginalFilename();
+        String clotheImageFileName = uuid + "_" + clotheImage.getOriginalFilename();
+        String videoFileName = uuid + "_" + video.getOriginalFilename();
+
+
+
+
+        Path actorImageFilePath = Paths.get(uploadFolder + actorImageFileName);
+        Path clotheImageFilePath = Paths.get(uploadFolder + clotheImageFileName);
+        Path videoFilePath = Paths.get(uploadFolder + videoFileName);
+
+        try {
+            Files.write(actorImageFilePath, actorImage.getBytes());
+            Files.write(clotheImageFilePath, clotheImage.getBytes());
+            Files.write(videoFilePath, video.getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        User userEntity = principalDetails.getUser();
+
+
+        postEntity.setUser(userEntity);
+        postEntity.setTitle(post.getTitle());
+        postEntity.setContent(post.getContent());
+        postEntity.setEntryContent(post.getEntryContent());
+        postEntity.setActor(post.getActor());
+
+
+        if(!actorImage.getOriginalFilename().isEmpty()){
+            postEntity.setPostImageUrlLeft(actorImageFileName.toString());
+        }
+
+        if(!clotheImage.getOriginalFilename().isEmpty()){
+
+            postEntity.setPostImageUrlRight(clotheImageFileName.toString());
+        }
+        if(!video.getOriginalFilename().isEmpty()){
+
+            postEntity.setPostVideoUrl(videoFileName.toString());
+        }
+        return postEntity;
 
 
 
