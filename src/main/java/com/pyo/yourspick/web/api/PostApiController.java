@@ -7,7 +7,6 @@ import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.service.PostService;
 import com.pyo.yourspick.web.dto.CMRespDto;
 import com.pyo.yourspick.web.dto.post.PostDto;
-import com.pyo.yourspick.web.dto.post.PostUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -32,21 +31,22 @@ public class PostApiController {
     @PostMapping("/api/post/postsave")
     public ResponseEntity<?> postSave(PostDto postDto, @AuthenticationPrincipal  PrincipalDetails principalDetails) {
 
-
+        System.out.println(postDto);
 
         MultipartFile clotheImage = postDto.getClotheImage();
         MultipartFile actorImage = postDto.getActorImage();
         MultipartFile video = postDto.getVideo();
 
-    Post post = postService.게시글저장(postDto, principalDetails, clotheImage,actorImage,video);
+      postService.게시글저장(postDto, principalDetails, clotheImage,actorImage,video);
 
-      return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 성공", post), HttpStatus.OK);
+      return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 실패", null), HttpStatus.OK);
 
     }
 
     @PostMapping("/api/post/likes/{postId}")
     public ResponseEntity<?> postLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails){
-
+            System.out.println("컨트롤러 도달");
+            System.out.println(postId);
             postService.좋아요하기(postId,principalDetails.getUser().getId());
 
         return new ResponseEntity<>(new CMRespDto<>(1,"좋아요 성공", null),HttpStatus.OK);
