@@ -28,7 +28,7 @@ public class PostComment {
     private String commentUser;
 
 
-    @JsonIgnoreProperties({"images"})
+    @JsonIgnoreProperties({"posts"})
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;

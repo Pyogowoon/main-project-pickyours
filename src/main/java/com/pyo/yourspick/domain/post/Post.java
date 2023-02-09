@@ -23,12 +23,16 @@ public class Post {
     @Id
     private int id;
 
+    @Column(length = 100)
     private String title;
 
+    @Column(length = 1000)
     private String content;
 
+    @Column(length = 100)
     private String entryTitle;
 
+    @Column(length = 1000)
     private String entryContent;
 
     private String actor;
@@ -56,7 +60,7 @@ public class Post {
 
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post" )
+    @OneToMany(mappedBy = "post" , orphanRemoval = true )
     private List<PostComment> postComment;
 
     @JsonIgnoreProperties({"post"})

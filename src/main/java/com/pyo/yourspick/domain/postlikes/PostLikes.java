@@ -51,13 +51,5 @@ public class PostLikes {
 
     }
 
-    @Override
-    public String toString() {
-        return "PostLikes{" +
-                "id=" + id +
-                ", post=" + post +
-                ", user=" + user +
-                ", createDate=" + createDate +
-                '}';
-    }
+
 }

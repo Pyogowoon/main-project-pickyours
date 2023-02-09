@@ -22,14 +22,28 @@
            <!-- 전체 리스트 아이템 End -->
 		</article>
 <aside>
+
+
                 <div class="recommend" onclick="javascript:location.href='/'" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
-                <div class="subs">
+
                 <span> 다른사람도 구독해보세요 ! </span>
+
+
+                 <c:forEach var="item" items="${user}">
+                     <div class="subs">
                 <br/>
-                <span> User 1 </span>
+                <span> ${item.id} </span>
+                <span>  ${item.name}</span>
                 <button class="cta" onclick="toggleSubscribe(${dto.user.id},this)">구경하기</button>
-                </div>
+                   </div>
+                  </c:forEach>
+
+
+
             </aside>
+
+
+
 	</section>
 </main>
 

@@ -73,5 +73,11 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1,"수정 성공",postEntity), HttpStatus.OK );
     }
 
+    @DeleteMapping("/api/post/delete/{postId}")
+    public ResponseEntity<?> postDelete(@PathVariable int postId){
+        postService.게시글삭제(postId);
+
+            return new ResponseEntity<>(new CMRespDto<>(1, "삭제 성공",null), HttpStatus.OK);
+        }
 
 }

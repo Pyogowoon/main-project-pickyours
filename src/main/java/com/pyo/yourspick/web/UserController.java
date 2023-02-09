@@ -31,14 +31,14 @@ public class UserController{
    private final ImageService imageService;
 
     @GetMapping("user/board")
-    public String board(@AuthenticationPrincipal PrincipalDetails principalDetails , @PageableDefault(size=3) Pageable pageable){
+    public String board(@AuthenticationPrincipal PrincipalDetails principalDetails , @PageableDefault(size=3) Pageable pageable,Model model){
         int userid = principalDetails.getUser().getId();
 
         int subscribeState = subscribeRepository.mSubscribeState(userid,1);
         if(subscribeState != 1){
             subscribeService.구독하기(userid, 1);
         }
-//        Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(),pageable);
+      model.addAttribute("user",userService.유저이름사진정보찾기());
 
         return "user/board";
     }

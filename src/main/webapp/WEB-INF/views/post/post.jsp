@@ -63,10 +63,10 @@
 
                     </c:forEach>
                        <!-- forEach 문 End -->
-
+<!--
 <a class="btn btn-primary" href="/post/postsave">쇼핑몰사이트</a>
 <a class="btn btn-primary" href="/post/postsave">쇼핑몰사이트</a>
-
+ -->
 
                      <!-- col 6 -->
 

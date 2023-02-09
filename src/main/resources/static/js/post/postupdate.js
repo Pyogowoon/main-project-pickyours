@@ -2,9 +2,6 @@
 
 
       function postUpdate(postId){
-      alert("업데이트 실행됨");
-
-
 
          let data = $("#postUpdate")[0];
          console.log(data)
@@ -21,9 +18,12 @@
       dataType:"json"
 
       }).done(res =>{
-        console.log(res.data);
+       alert("수정이 완료되었습니다.");
+        location.href="/post";
+
+
       }).fail(error =>{
-        console.log(error,"업데이트 실패");
+        alert("수정 권한이 없습니다. 관리자에게 문의하세요.");
       })
 
 

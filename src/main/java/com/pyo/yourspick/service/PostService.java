@@ -10,6 +10,7 @@ import com.pyo.yourspick.domain.postlikes.PostLikes;
 import com.pyo.yourspick.domain.postlikes.PostLikesRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
+import com.pyo.yourspick.handler.ex.CustomApiException;
 import com.pyo.yourspick.web.dto.post.PostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -94,7 +95,7 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public Post 포스트상세보기(int postId,int userId){
+    public Post 포스트상세보기(int postId){
 
         Post postEntity = postRepository.findById(postId).orElseThrow(()->{
             throw new IllegalArgumentException("게시글을 찾을 수 없습니다");
@@ -198,6 +199,13 @@ public class PostService {
         return postEntity;
 
 
+
+    }
+
+    @Transactional
+    public void 게시글삭제(int postId){
+
+        postRepository.deleteById(postId);
 
     }
 }

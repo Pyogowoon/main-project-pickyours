@@ -29,7 +29,7 @@
 
          <div class="form-group">
             <label for="content">actor : 배우 </label>
-            <input type="text" class="form-control" name="actor" placeholder="Enter title" id="actor" value="${post.actor}">
+            <input type="text" class="form-control" name="actor" placeholder="Enter title" id="actor" value="${post.actor}" size="6">
           </div>
 
 
@@ -68,14 +68,12 @@
 
         <input type="button" value="확인" onclick="postUpdate(${post.id})">
         </form>
+        <br/>
+        <br/>
 
 
 
  </div>
-
-
-
-
 
 
  <script>

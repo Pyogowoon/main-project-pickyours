@@ -1279,8 +1279,12 @@ footer
 
 .update{
 position : relative;
+    float: right;
+    margin-right : 20px;
+}
+.delete{
+position : relative;
+float: right;
 
-    left: 700px;
-    margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

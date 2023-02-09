@@ -3,6 +3,7 @@ package com.pyo.yourspick.service;
 
 import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
 import com.pyo.yourspick.domain.user.User;
+import com.pyo.yourspick.domain.user.UserInfoMapping;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.handler.ex.CustomApiException;
 import com.pyo.yourspick.handler.ex.CustomException;
@@ -20,7 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
+
+
 
 @RequiredArgsConstructor
 @Service
@@ -118,8 +122,14 @@ public class UserService {
             throw new CustomApiException("유저를 찾을 수 없습니다.");
         });
 
+
         userEntity.setProfileImageUrl(imageFileName);
         return userEntity;
+    }
+    public List<UserInfoMapping> 유저이름사진정보찾기(){
+
+       List<UserInfoMapping> user = userRepository.mFindUser();
+       return user;
     }
 }
 

@@ -69,9 +69,6 @@ function postComment(postId){
 
     function deleteButton(commentId){
 
-        console.log("잘됨");
-        console.log(commentId);
-
         $.ajax({
 
             type:"delete",
@@ -98,7 +95,7 @@ function postComment(postId){
     }
 
     function toggleLike(postId){
-    alert("좋아요 하기 작동");
+
 
     let likeIcon = $(`#postLikeIcon-${postId}`);
     	if (likeIcon.hasClass("far")) {
@@ -139,7 +136,7 @@ function postComment(postId){
 
 
     function toggleUnLike(postId){
-    alert("좋아요 취소하기 작동");
+
 
      let unlikeIcon = $(`#postUnLikeIcon-${postId}`);
         if (unlikeIcon.hasClass("active")) {
@@ -178,5 +175,22 @@ function postComment(postId){
 
 
 
+
+    }
+
+    function postDelete(postId){
+        confirm("정말 삭제하시겠습니까?");
+
+    $.ajax({
+        type:"delete",
+        url:`/api/post/delete/${postId}`,
+        dataType:"json"
+
+    }).done(res => {
+      console.log("성공",res)
+       location.href="/post";
+    }).fail(error => {
+      console.log("실패",error)
+    })
 
     }

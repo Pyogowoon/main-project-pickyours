@@ -28,6 +28,7 @@ public class Image {
 
     private String postImageUrl;
 
+
     @JsonIgnoreProperties({"images"})
     @ManyToOne
     @JoinColumn(name = "userId")

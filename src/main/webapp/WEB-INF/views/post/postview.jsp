@@ -46,6 +46,7 @@
     <!--search overlay end-->
 
     <section class="single-block-wrapper section-padding">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -54,17 +55,18 @@
                             <article class="post">
 
 
-                            <span class="update"><a href="/post/postupdate/${post.id}" >수정하기</a></span>
 
 
                                 <div class="post-header mb-5 text-center">
-
+                <span class="delete" onclick="postDelete(${post.id})" style="cursor:pointer;" >삭제하기</span>
+                <span class="update"><a href="/post/postupdate/${post.id}" >수정하기</a></span>
+                <br/>
                                     <h2 class="post-title mt-2">
                                       ${post.title}
                                     </h2>
 
                                     <div class="post-meta">
-                                        <span class="text-uppercase font-sm letter-spacing-1 mr-3">writerr : ${post.user.username}</span>
+                                        <span class="text-uppercase font-sm letter-spacing-1 mr-3">writer : ${post.user.username}</span>
                                         <span class="text-uppercase font-sm letter-spacing-1">Date : ${post.createDate}</span>
                                     </div>
                                 </div>
@@ -273,40 +275,30 @@
                             <div class="sidebar-widget mb-5 ">
                                 <h4 class="text-center widget-title">Trending Posts</h4>
 
-                                <div class="sidebar-post-item-big">
-                                    <a href="blog-single.html"><img src="../images/news/img-1.jpg" alt=""
-                                            class="img-fluid"></a>
+                            <c:forEach  var="item" items="${post.user.posts}" begin="0" end="2">
+
+                                <div class="sidebar-post-item-big" style="display:block;">
+
                                     <div class="mt-3 media-body">
-                                        <span class="text-muted letter-spacing text-uppercase font-sm">September 10,
-                                            2019</span>
-                                        <h4><a href="blog-single.html"> 뭘할지 미정인데 광고를 넣을까 ?</a></h4>
+                                        <span class="text-muted letter-spacing text-uppercase font-sm">${item.createDate}
+                                           </span>
+                                        <h4><a href="/post/postview/${item.id}">${item.title}</a></h4>
                                     </div>
+                                     <a href="/post/postview/${item.id}"><img src="/upload/${item.postVideoUrl}"
+                                      style="height: 150px;width:230px"alt=""
+                                            class="img-fluid"></a>
                                 </div>
 
-                                <div class="media border-bottom py-3 sidebar-post-item">
-                                    <a href="#"><img class="mr-4" src="../images/news/thumb-1.jpg" alt=""></a>
-                                    <div class="media-body">
-                                        <span class="text-muted letter-spacing text-uppercase font-sm">September 10,
-                                            2019</span>
-                                        <h4><a href="blog-single.html">Thoughtful living in los Angeles</a></h4>
-                                    </div>
-                                </div>
+                                </c:forEach>
 
-                                <div class="media py-3 sidebar-post-item">
-                                    <a href="#"><img class="mr-4" src="../images/news/thumb-2.jpg" alt=""></a>
-                                    <div class="media-body">
-                                        <span class="text-muted letter-spacing text-uppercase font-sm">September 10,
-                                            2019</span>
-                                        <h4><a href="blog-single.html">Vivamus molestie gravida turpis.</a></h4>
-                                    </div>
-                                </div>
+
                             </div>
 
 
 
 
                             <div class="sidebar-widget sidebar-adv mb-5">
-                                <a href="#"><img src="../images/sidebar-banner3.png" alt="" class="img-fluid w-100"></a>
+                                <a href="#"><img src="/images/yourspick_logo.png" alt="" class="img-fluid w-100"></a>
                             </div>
 
                         </div>

@@ -18,13 +18,12 @@
                 dataType: "json"
 
                 }).done(res => {
-                console.log(res,"성공");
-                console.log("res Data :" ,res.data);
-//           location.href="/post";
+
+               location.href="/post";
 
                 }).fail(error =>{
-                console.log(error,"실패");
-                alert(error,"저장 실패");
+
+                alert("저장 권한이 없습니다. 관리자에게 문의하세요.");
                 });
 
             }

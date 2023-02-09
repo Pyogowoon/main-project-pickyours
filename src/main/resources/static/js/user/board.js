@@ -32,7 +32,7 @@ function storyLoad() {
 
 
     let storyItem = getStoryItem(image);
-    console.log(principalRole);
+
     $("#storyList").append(storyItem);
 
  });
@@ -61,7 +61,7 @@ function getStoryItem(image) {
                         if(principalId == image.user.id || principalRole =="ADMIN" || principalRole=="SUPERADMIN"){
                         item+=`
 
-					     <button type="button" onclick="contentsDelete(${image.id},principalId)">삭제하기</button>
+					     <button type="button" class onclick="contentsDelete(${image.id},principalId)" style="border:none;outline:none;background:white;margin-right:20px;">   <i class="fas fa-times"></i></button>
 					     `;
 					     }
 					     item+=`
@@ -111,7 +111,7 @@ function getStoryItem(image) {
                                     <b>${comment.user.name} :</b> ${comment.content}
                                 </p>`;
 
-                                if(principalId == comment.user.id){
+                                if(principalId == comment.user.id || principalRole =="ADMIN" || principalRole =="SUPERADMIN"){
                                 item+=
                                 `
                                 <button type="button" onclick="deleteComment(${comment.id})">
@@ -266,7 +266,7 @@ function deleteComment(userId) {
         }).done( res =>{
             console.log(res ,"성공")
             alert("정말 댓글을 삭제하시겠습니까?");
-//            $(`#storyCommentItem-${userId}`).remove();
+           $(`#storyCommentItem-${userId}`).remove();
         }).fail( error =>{
            console.log(error,"삭제 실패");
 
@@ -277,11 +277,7 @@ function deleteComment(userId) {
 
 function contentsDelete(imageId,principalId){
 
-    alert("삭제버튼 작동");
-    console.log("이미지아이디",imageId);
-    console.log("프린시팔",principalId);
-
-
+    confirm("정말 삭제하시겠습니까?")
 
     $.ajax({
 
@@ -292,8 +288,6 @@ function contentsDelete(imageId,principalId){
 
     }).done(res =>{
        console.log("지우기 성공", res);
-       alert("정말 삭제하시겠습니까?")
-
        $(`#contentsItem-${imageId}`).remove();
 
 
