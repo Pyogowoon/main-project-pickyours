@@ -49,11 +49,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Image> images;
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 

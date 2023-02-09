@@ -57,4 +57,11 @@ public class PostController {
 
         return "post/postupdate";
     }
+
+    @GetMapping("post/video")
+    public String postVideo(){
+
+        return "post/postvideo";
+    }
+
 }
