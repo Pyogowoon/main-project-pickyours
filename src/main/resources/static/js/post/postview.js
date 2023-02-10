@@ -194,3 +194,28 @@ function postComment(postId){
     })
 
     }
+
+function modalOpen() {
+  console.log("작동");
+     $(".videoContents").css("display", "flex");
+     $("#video2").css("display", "flex");
+
+}
+
+
+/* 모달 닫기 */
+function modalClose() {
+	$(".videoContents").css("display", "none");
+    document.getElementById("video2").pause();
+}
+
+function toggle(){
+$(".actorInfo").css("display", "none");
+  $(".shopInfo").toggle();
+
+}
+
+function actorToggle(){
+$(".shopInfo").css("display", "none");
+   $(".actorInfo").toggle();
+}

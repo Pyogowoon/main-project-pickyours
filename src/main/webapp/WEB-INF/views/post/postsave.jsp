@@ -8,54 +8,54 @@
     <div class="container">
 
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">제목</label>
             <input type="text" class="form-control" name="title" placeholder="Enter title" id="title">
           </div>
 
          <div class="form-group">
-           <label for="content">content</label>
+           <label for="content">내용</label>
            <textarea class="form-control summernote" name="content" rows="5" id="content"></textarea>
          </div>
 
          <div class="form-group">
-            <label for="content">entrytitle : 소제목 </label>
+            <label for="content"> 소제목 </label>
             <input type="text" class="form-control" name="entryTitle" placeholder="Enter title" id="entryTitle">
           </div>
 
         <div class="form-group">
-              <label for="content">entryContent : 소본문 </label>
+              <label for="content"> 쇼핑몰 정보(링크와 설명) </label>
               <textarea class="form-control summernote" name="entryContent" rows="1" id="entryContent"></textarea>
             </div>
 
          <div class="form-group">
-            <label for="content">actor : 배우 </label>
+            <label for="content"> 배우 이름 </label>
             <input type="text" class="form-control" name="actor" placeholder="Enter title" id="actor">
           </div>
 
 
         <div class="form-group">
-          <label for="content">job : 직업 </label>
+          <label for="content"> 배우의 instagram 링크 </label>
           <input type="text" class="form-control" name="job" placeholder="Enter title" id="job">
         </div>
 
       <div class="form-group">
-            <label for="content">height : 키 </label>
+            <label for="content"> 키 </label>
             <input type="text" class="form-control" name="height" placeholder="Enter title" id="height">
           </div>
 
       <div class="form-group">
-          <label for="content">weight : 몸무게 </label>
+          <label for="content"> 몸무게 </label>
           <input type="text" class="form-control" name="weight" placeholder="Enter title" id="weight">
         </div>
 
         <div class="form-group">
-      <label for="content">actorImage : 소본문(배우or드라마 사진) </label>
+      <label for="content"> 배우 사진 </label>
       <input type="file" class="form-control" name="actorImage" id="actorImage">
         </div>
 
 
       <div class="form-group">
-      <label for="content">clotheImage : 소본문(옷 사진) </label>
+      <label for="content">옷 사진 </label>
       <input type="file" class="form-control" name="clotheImage" id="clotheImage">
     </div>
 

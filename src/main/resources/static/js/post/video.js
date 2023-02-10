@@ -1,27 +1,27 @@
 
-        $(document).ready(function() {
-            let options = {
-                sources: [
-                    {src: "/video/play", type: "video/mp4"}
-                ],
-                playbackRates: [.5, .75, 1, 1.25, 1.5],
-                poster: "[이미지 주소 등록]",
-                controls: true,
-                preload: "auto",
-                width: 540,
-                height: 320,
-                controlBar: {
-                    playToggle: false,
-                    pictureInPictureToggle: false,
-                    remainingTimeDisplay: true,
-                    progressControl: false,
-                    qualitySelector: true,
-                }
-            };
-
-
-
-
+//        $(document).ready(function() {
+//            let options = {
+//                sources: [
+//                    {src: "/video/play", type: "video/mp4"}
+//                ],
+//                playbackRates: [.5, .75, 1, 1.25, 1.5],
+//                poster: "[이미지 주소 등록]",
+//                controls: true,
+//                preload: "auto",
+//                width: 540,
+//                height: 320,
+//                controlBar: {
+//                    playToggle: false,
+//                    pictureInPictureToggle: false,
+//                    remainingTimeDisplay: true,
+//                    progressControl: false,
+//                    qualitySelector: true,
+//                }
+//            };
+//
+//
+//
+//});
 
 
 
@@ -122,6 +122,27 @@
 //}
 
 
-function subscribeInfoModalOpen(pageUserId) {
-	$(".modal-subscribe").css("display", "flex");
+function subscribeInfoModalOpen() {
+//	$(".modal-subscribe").css("display", "flex");
+  console.log("작동");
+     $(".videoContents").css("display", "flex");
+     $("#video2").css("display", "flex");
+
+}
+
+/* 모달 닫기 */
+function modalClose() {
+	$(".videoContents").css("display", "none");
+	location.reload();
+}
+
+function toggle(){
+$(".actorInfo").css("display", "none");
+  $(".shopInfo").toggle();
+
+}
+
+function actorToggle(){
+$(".shopInfo").css("display", "none");
+   $(".actorInfo").toggle();
 }

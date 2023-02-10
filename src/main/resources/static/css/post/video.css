@@ -3,7 +3,7 @@
 body{
 	margin : 0px;
 	padding : 0px;
-	background-color : #000;
+
 	box-sizing : border-box;
 	overflow : hidden;
 }
@@ -14,218 +14,53 @@ button{
 
 .video_contain{
 	display : flex;
+
 }
 
 #video_play{
 	/*height : 100%;*/
+
+}
+.videoContents{
+   /*  border: 1px solid black; */
+    position : absolute;
+    display:none;
+    left:20%;
+    top:10%;
+    width : 1200px;
+    height : 650px;
+  /*  background-color : black;*/
 }
 
 #video2{
-	/*position : absolute;*/
-	left : 0;
-	bottom : 0;
-	min-width : 100%;
-	min-height : 100%;
+
+	left : 30%;
+	top : 30%;
 	/*width : auto;
 	height : auto;*/
+	width: 75%;
+	height : 100%;
+	object-fit : fill;
+
 }
 
-#video_play>.frm_video_play .adbuttons{
-	display : none;
-	position : absolute;
-	min-width : 100%;
-	height : 120px;
-	background-color : #fff2;
-	z-index : 2;
+.toggle-1{
+    position : absolute;
+    right:90%;
+    z-index: 999;
+    opacity: 0.5;
+}
+.toggle-2{
+    position : absolute;
+    right:78%;
+    z-index: 999;
+    opacity: 0.5;
 }
 
-#video_play>.frm_video_play .adbuttons button{
-	border : none;
-	width : 100px;
-	height : 70px;
-	color : #fff;
-	background-color : inherit;
-	font-size : 50px;
-	z-index : 1;
-	margin-top : 30px;
-	margin-left : 15px;
-	text-shadow : 1px 1px 2px #000;
+.shopInfo{
+display:none;
 }
 
-#video_play>.frm_video_play .adbuttons button:hover{
-	color : #aaa;
-	text-shadow : 3px 3px 5px #000;
-}
-
-#video_play>.frm_video_play .adbuttons>div{
-	flex-basis : 150px;
-	flex : 1;
-}
-
-#video_play>.frm_video_play .adbuttons>.video_flag{
-	flex : 0;
-}
-
-#video_play>.frm_video_play .adbuttons>.video_flag>button{
-	font-size : 30px;
-}
-
-#video_play #ads{
-	display : none;
-	width : 25%;
-	height : 99vh;
-	overflow : auto;
-}
-
-.video-js .vjs-time-control {
-    display: block;
-}
-
-.video-js .vjs-control-bar {
-	height : 100px;
-	background-color : transparent;
-}
-
-.video-js .vjs-progress-control{
-	position : absolute;
-	min-width : 100%;
-	height : 25px;
-}
-
-.video-js .vjs-play-control,
-.video-js .vjs-fullscreen-control,
-.video-js .vjs-picture-in-picture-control{
-	margin-top : 25px;
-	height : 75px;
-	font-size : 25px;
-	box-sizing : border-box;
-}
-
-.video-js .vjs-playback-rate,
-.video-js .vjs-duration,
-.video-js .vjs-current-time{
-	margin-top : 25px;
-	height : 75px;
-	font-size : 20px;
-	box-sizing : border-box;
-	text-shadow: 1px 2px 1px #000;
-}
-
-.video-js .vjs-load-progress{
-	background-color : gray;
-}
-
-.video-js .vjs-slider-bar{
-	background-color : #f00;
-}
-
-.video-js .vjs-slider-bar::before{
-	color : #f00;
-	font-size : 20px;
-}
-
-.video-js .vjs-volume-panel{
-	display : flex;
-	flex : 1;
-	margin-top : 25px;
-	height : 75px;
-	font-size : 25px;
-	box-sizing : border-box;
-}
-
-.video-js .vjs-fullscreen-control{
-	margin-top : 25px;
-	height : 75px;
-	font-size : 25px;
-	box-sizing : border-box;
-}
-
-.video-js .vjs-remaining-time {
-    display: none;
-}
-
-.vjs-time-divider {
-    display: block !important;
-}
-
-.video-js .vjs-current-time{
-	display : block !important;
-}
-
-/*
-.video-js .vjs-duration{
-    display: block !important;
-}
-*/
-
-
-.modal-subscribe {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-.modal-subscribe .subscribe {
-  width: 600px;
-  height: 500px;
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.modal-subscribe .subscribe .subscribe-header {
-  text-align: center;
-  line-height: 50px;
-  font-weight: bold;
-  border-bottom: 1px solid #ddd;
-  position: relative;
-}
-.modal-subscribe .subscribe .subscribe-header button {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  background-color: transparent;
-  border: 0;
-}
-.modal-subscribe .subscribe .subscribe-header button i {
-  font-size: 20px;
-}
-.modal-subscribe .subscribe .subscribe-list {
-  overflow: hidden;
-  overflow-y: auto;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item {
-  display: flex;
-  height: 70px;
-  padding: 10px;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item .subscribe__img {
-  width: 80px;
-  text-align: center;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item .subscribe__img {
-  width: 80px;
-  text-align: center;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item .subscribe__img img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item .subscribe__text {
-  padding-top: 5px;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item .subscribe__text h2 {
-  font-size: 16px;
-  line-height: 50px;
-}
-.modal-subscribe .subscribe .subscribe-list .subscribe__item .subscribe__btn {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
+.actorInfo{
+display:none;
 }
