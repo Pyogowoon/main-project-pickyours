@@ -23,10 +23,11 @@
 
     </header>
 
-<a class="btn btn-primary" href="/post/postsave">어드민용 글쓰기</a>
 
+        <a class="btn btn-primary" id="admin" href="/post/postsave" >어드민용 글쓰기</a>
         <!-- Page content-->
         <div class="container">
+
             <div class="row">
                 <!-- Blog entries-->
 
@@ -36,11 +37,11 @@
             <!-- forEach 문 시작 -->
 
             <c:forEach var="post" items="${post.content}" begin="0" end="0">
-                <div class="col-lg-8">
+                <div class="col-lg-8" id="bigColumn">
                     <!-- Featured blog post-->
 
                     <!-- card -->
-                    <div class="card mb-4">
+                    <div class="card mb-4" id="largeColumn">
 
                         <a href="/post/postview/${post.id}">
                         <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"

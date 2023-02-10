@@ -24,21 +24,28 @@
 <aside>
 
 
-                <div class="recommend" onclick="javascript:location.href='/'" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
-
-                <span> 다른사람도 구독해보세요 ! </span>
+                <div class="back" onclick="javascript:location.href='/'" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
 
 
-                 <c:forEach var="item" items="${user}">
+
+                 <div class="recommend">
+
+                <span>다른사람도 구독해보세요!</span>
+
+
+                 <c:forEach var="item" items="${user}" begin="0" end="5">
                      <div class="subs">
                 <br/>
-                <span> ${item.id} </span>
-                <span>  ${item.name}</span>
-                <button class="cta" onclick="toggleSubscribe(${dto.user.id},this)">구경하기</button>
+               <img class="profile-image" src="/upload/${item.profileImageUrl}" style="width:50px;height:50px;"
+               							onerror="this.src='/images/person.jpeg'" />
+                    <span class="text-box">
+                <span class="username">  ${item.name}</span>
+                <button class="cta" onclick="javascript:location.href='/user/${item.id}'" style="cursor:pointer; cursor:hand;">구경하기</button>
+                            </span>
                    </div>
                   </c:forEach>
 
-
+                    </div>
 
             </aside>
 

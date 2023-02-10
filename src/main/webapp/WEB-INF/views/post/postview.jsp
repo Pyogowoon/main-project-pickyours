@@ -73,7 +73,71 @@
 
                                <!--video post start-->
                                       <div class="post-img position-relative mb-4">
-                                          <a href="#"><img class="img-fluid w-100" src="/upload/${post.postVideoUrl}" alt=""></a>
+
+
+        <!-- toggle시 나오는 videoContents 시작 -->
+ <div class="videoContents">
+	 <video id="video2"  controls preload="auto" width="640" height="268" data-setup='{}'>
+	    <source src="/upload/${post.postVideoUrl}" >
+
+
+      Your browser does not support the video tag.</video>
+
+     <!-- shopInfo -->
+         <div class="shopInfo">
+          <img src="/upload/${post.postImageUrlRight}"style="height:600px;width:300px" alt="post-img2"
+         class="img-fluid mr-4 w-100">
+
+         <br/>
+
+
+          </div>
+
+       <!-- shopInfo End -->
+
+    <!-- actorInfo -->
+      <div class="actorInfo" style="height:600px;width:300px">
+       <div class="sidebar-widget about mb-5 text-center p-3">
+                                      <div class="about-authors" >
+                                          <img src="/upload/${post.postImageUrlLeft}" alt="" class="img-fluid">
+                                      </div>
+                                      <h4 class="mb-0 mt-4">${post.actor}</h4>
+
+                                      <p> 키 : ${post.height} </p>
+                                      <p> 몸무게 : ${post.weight} </p>
+                                          <p>instagram : ${post.job} </p>
+                                          <p> 구매 정보 : ${post.entryContent}
+
+                                  </div>
+      </div>
+
+          <!-- actorInfo End-->
+
+                    <!--닫기-->
+                  <button onclick="modalClose()" style="width:30px;height:30px;">
+      				<i class="fas fa-times"></i>
+      			</button>
+                      <!-- 닫기 End -->
+
+
+
+<button class="toggle-1" onclick="toggle()" style="width:120px;height:70px;">
+<i class="fa-solid fa-shirt fa-2x"></i>
+</button>
+
+<button class="toggle-2" onclick="actorToggle()" style="width:120px;height:70px;">
+<i class="fa-sharp fa-solid fa-id-card fa-2x"></i>
+</button>
+
+                </div>
+                <!-- toggle 시 나오는 videoContent End  -->
+                                    <span
+                                   class="play-btn popup-youtube" onclick="modalOpen()"><i class="ti-control-play"></i></span>
+
+                                      <video id="mainVideo"    data-setup='{}'>
+                                      	    <source src="/upload/${post.postVideoUrl}" >
+
+
 
                                       </div>
                                       <!--video post end-->
@@ -82,7 +146,7 @@
                                     <div class="entry-content">
                                         <p> content(본문) : ${post.content}</p>
                                         <h2 class="mt-4 mb-3">entryTitle(소제목) : ${post.entryTitle}</h2>
-                                        <p> entryContent(소본문) : ${post.entryContent} </p>
+
 
 
                                         <div class="row">
@@ -150,7 +214,7 @@
                         <div class="author-content pl-4">
                             <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">글쓴이 : ${post.user.username}</a>
                             </h4>
-                            <p>자기소개 : ${post.user.bio} </p>
+                            <p>구매 정보 : ${post.entryContent} </p>
 
 
                         </div>
@@ -255,9 +319,10 @@
                                     <img src="/upload/${post.postImageUrlLeft}" alt="" class="img-fluid">
                                 </div>
                                 <h4 class="mb-0 mt-4">${post.actor}</h4>
-                                <p>job : ${post.job} </p>
+
                                 <p> 키 : ${post.height} </p>
                                 <p> 몸무게 : ${post.weight} </p>
+                                    <p>instagram : ${post.job} </p>
                                 <img src="../images/liammason.png" alt="" class="img-fluid">
                             </div>
 

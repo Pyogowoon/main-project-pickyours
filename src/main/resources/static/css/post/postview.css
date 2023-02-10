@@ -850,6 +850,7 @@ overlay search
   padding-top: 38px;
   background: #ce8460;
   color: #fff;
+    z-index:5000;
 }
 
 .play-btn:hover {
@@ -878,10 +879,12 @@ overlay search
   }
 
   .play-btn {
+
     width: 90px;
     height: 90px;
     font-size: 30px;
     padding-top: 24px;
+
   }
 }
 
@@ -1287,4 +1290,78 @@ position : relative;
 float: right;
 
 }
-/*# sourceMappingURL=style.css.map */
+
+
+/* video */
+
+
+#video_play{
+	/*height : 100%;*/
+
+}
+.videoContents{
+   /*  border: 1px solid black; */
+    position : absolute;
+    display:none;
+    left:-25%;
+    top:0%;
+    width : 1400px;
+    height : 1000px;
+  /*  background-color : black;*/
+  z-index:5001;
+}
+
+#video2{
+
+	left : 30%;
+	top : 30%;
+	/*width : auto;
+	height : auto;*/
+	width: 85%;
+	height : 60%;
+	object-fit : fill;
+z-index: 5002;
+}
+
+.toggle-1{
+    position : absolute;
+    right:90%;
+    z-index: 5003;
+    opacity: 0.5;
+}
+.toggle-2{
+    position : absolute;
+    right:78%;
+    z-index: 5003;
+    opacity: 0.5;
+}
+
+.shopInfo{
+display:none;
+}
+
+.actorInfo{
+display:none;
+background-color : black;
+color : white;
+}
+
+.actorInfo h4{
+ color : white;
+}
+
+.actorInfo .about-authors img{
+border-radius: 100%;
+width:180px;
+height:180px;
+ border: 5px solid black;
+}
+
+.actorInfo p{
+ color : white;
+}
+#mainVideo{
+
+width :700px;
+height : 400px;
+}

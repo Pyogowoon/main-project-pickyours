@@ -145,7 +145,7 @@ $(window).scroll(() => {
 
     let checkNum = $(window).scrollTop()- ( $(document).height() - $(window).height() );
 
-    if(checkNum < 1 && checkNum > -1){
+    if(checkNum < 1.5 && checkNum > -1.5){
         page++;
         storyLoad();
     }

@@ -229,8 +229,7 @@ aside{
             height : 80px;
         }
 
-.recommend{
-
+.back{
 
     position: fixed;
     top: 99px;
@@ -247,6 +246,33 @@ display:flex;
 width:820px;
 justify-content: space-between;
 display:flex;
+
+}
+
+.recommend{
+position:fixed;
+top : 300px;
+
+}
+
+.subs{
+display : flex;
+align-items : center;
+margin : 15px;
+padding-bottom : 40px;
+}
+.subs .profile-image{
+border-radius : 50%;
+}
+
+.text-box{
+
+margin-left : 15px;
+}
+
+.username{
+display: inline-block;
+width : 55px;
 
 }
 
