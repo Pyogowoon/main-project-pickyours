@@ -29,7 +29,7 @@ public class SecurityConfig {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/", "/board", "/auth/**", "/images/**", "/js/**", "/webjars/**", "/css/**", "/vendor/**"
-                        , "/fonts/**", "/plugins/**", "/scss/**", "/post", "/upload/**")
+                        , "/fonts/**", "/plugins/**", "/scss/**", "/post","/post/search/**", "/upload/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

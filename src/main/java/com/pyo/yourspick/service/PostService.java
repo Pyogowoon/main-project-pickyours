@@ -51,18 +51,6 @@ public class PostService {
             , MultipartFile clotheImage, MultipartFile actorImage, MultipartFile video) {
 
 
-//        if(userRole.equals("USER")){
-//            System.out.println("유저입니다");
-//            postRepository.save(post);
-//        }else{
-//            System.out.println("유저가 아닙니다.");
-//        }
-//        userRepository.findById(userId);
-
-
-
-
-
         UUID uuid = UUID.randomUUID();
         String actorImageFileName = uuid + "_" + actorImage.getOriginalFilename();
         String clotheImageFileName = uuid + "_" + clotheImage.getOriginalFilename();
@@ -138,7 +126,6 @@ public class PostService {
     @Transactional
     public void 좋아요취소하기(int postId, int userId){
 
-
           postLikesRepository.mUnLikes(userId,postId);
 
     }
@@ -208,5 +195,16 @@ public class PostService {
         postRepository.deleteById(postId);
 
     }
+
+    @Transactional(readOnly = true)
+    public Page<Post> 게시글검색(String keyword,Pageable pageable){
+
+       Page<Post> postSearch =  postRepository.findByTitleContaining(keyword,pageable);
+
+
+       return postSearch;
+    }
+
+
 }
 

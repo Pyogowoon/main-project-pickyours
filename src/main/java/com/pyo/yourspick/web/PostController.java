@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.JsonPath;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -51,17 +52,22 @@ public class PostController {
     }
 
 
-    @GetMapping("post/postupdate/{postId}")
+    @GetMapping("/post/postupdate/{postId}")
     public String postUpdate(@PathVariable int postId, Model model){
         model.addAttribute("post", postService.포스트상세보기(postId));
 
         return "post/postupdate";
     }
 
-    @GetMapping("post/video")
-    public String postVideo(){
 
-        return "post/postvideo";
+    @GetMapping("/post/search/title")
+    public String postSearch(String keyword, Model model, @PageableDefault(size=7, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
+
+        Page<Post> postSearch = postService.게시글검색(keyword,pageable);
+
+        model.addAttribute("postSearch" , postSearch);
+        model.addAttribute("keyword" , keyword);
+        return "/post/postsearch";
     }
 
 }

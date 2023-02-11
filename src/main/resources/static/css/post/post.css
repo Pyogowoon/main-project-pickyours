@@ -13,6 +13,7 @@ left : 22%;
 
 }
 #bigColumn{
+    padding-top : 30px;
     width: 910px;
     max-width: 910px;
 }
@@ -37,6 +38,7 @@ left : 54%;
 }
 
 .form-outline{
+display:inline-block;
     height : 40px;
 
 }
@@ -52,5 +54,11 @@ left : 54%;
 
     width: 570px;
     max-width: 620px;
+
+}
+
+#form1{
+display: inline-block;
+width:200px;
 
 }

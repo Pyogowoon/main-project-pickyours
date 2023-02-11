@@ -59,7 +59,7 @@
 
             <!-- forEach 문 시작 -->
 
-            <c:forEach var="post" items="${post.content}" begin="0" end="0">
+            <c:forEach var="post" items="${postSearch.content}" begin="0" end="0">
                 <div class="col-lg-8" id="bigColumn">
                     <!-- Featured blog post-->
 
@@ -95,7 +95,7 @@
                      <!-- col 6 -->
 
                        <!-- forEach 문 시작 -->
-                     <c:forEach var="post" items="${post.content}" begin="1">
+                     <c:forEach var="post" items="${postSearch.content}" begin="1">
 
                         <div class="col-lg-6" id="mediumColumn">
 
@@ -138,23 +138,23 @@
                 <ul class="pagination justify-content-center">
 
                 <c:choose>
-                <c:when test="${post.first}">
-                 <li class="page-item disabled"><a class="page-link" href="?page=${post.number-1}">Previous</a></li>
+                <c:when test="${postSearch.first}">
+                 <li class="page-item disabled"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number-1}">Previous</a></li>
                 </c:when>
 
                 <c:otherwise>
-                <li class="page-item"><a class="page-link" href="?page=${post.number-1}">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number-1}">Previous</a></li>
                 </c:otherwise>
                 </c:choose>
-                 <c:forEach var="i" begin="1" end="${post.totalPages}">
-                            <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                 <c:forEach var="i" begin="1" end="${postSearch.totalPages}">
+                            <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${i-1}">${i}</a></li>
                         </c:forEach>
                 <c:choose>
-                <c:when test="${post.last}">
-                 <li class="page-item disabled"><a class="page-link" href="?page=${post.number+1}">Next</a></li>
+                <c:when test="${postSearch.last}">
+                 <li class="page-item disabled"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+1}">Next</a></li>
                 </c:when>
                 <c:otherwise>
-                 <li class="page-item"><a class="page-link" href="?page=${post.number+1}">Next</a></li>
+                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+1}">Next</a></li>
                 </c:otherwise>
                 </c:choose>
 
