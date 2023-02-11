@@ -1,7 +1,7 @@
 .card{
 
-width : 600px;
-padding : 30px;
+width : 560px;
+
 margin : 15px;
 
 }
@@ -9,12 +9,48 @@ margin : 15px;
 #admin{
 
 position : relative;
-left : 60%;
+left : 22%;
 
 }
-
+#bigColumn{
+    width: 910px;
+    max-width: 910px;
+}
 
 
 #largeColumn{
  width : 900px;
+}
+
+.search-wrap{
+
+
+width: 200px;
+height : 200px;
+}
+
+.input-group{
+position: relative;
+left : 54%;
+    width : 400px;
+    height : 40px;
+}
+
+.form-outline{
+    height : 40px;
+
+}
+
+.container{
+    margin : 0 auto;
+    padding-right : 15px;
+    padding-right : 15px;
+    padding-bottom : 20px;
+
+}
+#mediumColumn{
+
+    width: 570px;
+    max-width: 620px;
+
 }

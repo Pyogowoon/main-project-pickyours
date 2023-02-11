@@ -23,6 +23,20 @@
 
     </header>
 
+    <!-- search overlay -->
+    <div class="input-group">
+      <div class="form-outline">
+        <input type="search" id="form1" class="form-control" placeholder="제목을 입력해주세요." />
+      </div>
+      <button type="button" class="btn btn-primary" style="height:35px;">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+
+    <!-- search overlay End -->
+
+
 
         <a class="btn btn-primary" id="admin" href="/post/postsave" >어드민용 글쓰기</a>
         <!-- Page content-->
@@ -45,9 +59,9 @@
 
                         <a href="/post/postview/${post.id}">
                         <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"
-                         style="height: 400px;width:360px"  alt="..." />
+                         style="height: 400px;width:425px;margin:10px;"  alt="..." />
                         <img class="card-img-top" src="/upload/${post.postImageUrlRight}"
-                         style="height: 400px;width:360px"  alt="..." />
+                         style="height: 400px;width:425px;margin:10px;"  alt="..." />
                          </a>
 
                         <div class="card-body">
@@ -74,7 +88,7 @@
                        <!-- forEach 문 시작 -->
                      <c:forEach var="post" items="${post.content}" begin="1">
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" id="mediumColumn">
 
                             <!-- Blog post-->
 
@@ -82,9 +96,9 @@
                             <div class="card mb-4">
                                 <a href="/post/postview/${post.id}">
                                 <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"
-                                 style="height: 300px;width:280px" alt="..." />
+                                 style="height: 300px;width:270px" alt="..." />
                                  <img class="card-img-top" src="/upload/${post.postImageUrlRight}"
-                                  style="height: 300px;width:250px" alt="..." />
+                                  style="height: 300px;width:270px" alt="..." />
                                  </a>
 
                                 <!-- card body -->
