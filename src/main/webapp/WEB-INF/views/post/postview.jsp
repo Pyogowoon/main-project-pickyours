@@ -58,9 +58,17 @@
 
 
                                 <div class="post-header mb-5 text-center">
-                <span class="delete" onclick="postDelete(${post.id})" style="cursor:pointer;" >삭제하기</span>
-                <span class="update"><a href="/post/postupdate/${post.id}" >수정하기</a></span>
-                <br/>
+
+                                <c:if test="${principal.user.role eq 'ADMIN' || principal.user.role eq 'SUPERADMIN'}">
+
+                                 <span class="delete" onclick="postDelete(${post.id})" style="cursor:pointer;" > 삭제하기</span>
+                                                <span class="update"><a href="/post/postupdate/${post.id}" >수정하기</a></span>
+
+                                                <br/>
+                                </c:if>
+
+
+
                                     <h2 class="post-title mt-2">
                                       ${post.title}
                                     </h2>
