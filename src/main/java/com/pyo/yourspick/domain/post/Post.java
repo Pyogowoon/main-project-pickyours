@@ -7,6 +7,7 @@ import com.pyo.yourspick.domain.user.User;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -23,24 +24,29 @@ public class Post {
     @Id
     private int id;
 
+    @NotNull
     @Column(length = 100)
     private String title;
 
+    @NotNull
     @Column(length = 1000)
     private String content;
 
+    @NotNull
     @Column(length = 100)
     private String entryTitle;
 
+    @NotNull
     @Column(length = 1000)
     private String entryContent;
 
+    @NotNull
     private String actor;
-
+    @NotNull
     private String job;
-
+    @NotNull
     private String height;
-
+    @NotNull
     private String weight;
 
     @JsonIgnoreProperties({"images"})
@@ -48,10 +54,11 @@ public class Post {
     @ManyToOne
     private User user;
 
-
+    @NotNull
     private String postImageUrlLeft;
-
+    @NotNull
     private String postImageUrlRight;
+    @NotNull
     private String postVideoUrl;
 
     private String createDate;

@@ -52,9 +52,6 @@ public class ImageService {
     @Transactional(readOnly = true)
     public Page<Image> 이미지스토리(int principalId , Pageable pageable){
 
-//        imageRepository.findById(principalId).orElseThrow(()->{
-//            throw new CustomApiException("아이디를 찾을 수 없습니다. .");
-//        });
         Page<Image> images = imageRepository.mStory(principalId, pageable);
 
             images.forEach((image) ->{
@@ -84,7 +81,7 @@ public class ImageService {
     @Transactional
     public void 게시글삭제(int imageId){
         imageRepository.deleteById(imageId);
-        System.out.println("삭제서비스 도달");
+
 
     }
 

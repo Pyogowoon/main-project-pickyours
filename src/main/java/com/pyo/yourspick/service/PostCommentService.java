@@ -22,7 +22,7 @@ public class PostCommentService {
     public PostComment 댓글달기(int userId,String content,int postId){
 
        User userEntity = userRepository.findById(userId).orElseThrow(()->{
-           throw new IllegalArgumentException("아이디를 찾을 수 없습니다");
+           throw new CustomApiException("아이디를 찾을 수 없습니다");
        });
        Post post = new Post();
        post.setId(postId);

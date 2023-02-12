@@ -11,6 +11,7 @@ import com.pyo.yourspick.domain.postlikes.PostLikesRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.handler.ex.CustomApiException;
+import com.pyo.yourspick.handler.ex.CustomException;
 import com.pyo.yourspick.web.dto.post.PostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -70,7 +71,6 @@ public class PostService {
         }
 
         User user = principalDetails.getUser();
-        System.out.println("여기까지도달");
         Post post = postDto.toEntity(user, actorImageFileName, clotheImageFileName, videoFileName);
 
         postRepository.save(post);
@@ -86,7 +86,7 @@ public class PostService {
     public Post 포스트상세보기(int postId){
 
         Post postEntity = postRepository.findById(postId).orElseThrow(()->{
-            throw new IllegalArgumentException("게시글을 찾을 수 없습니다");
+            throw new CustomException("게시글을 찾을 수 없습니다");
         });
 
             return postEntity;
@@ -106,8 +106,6 @@ public class PostService {
     public PostLikes 좋아요목록(int userId,int postId){
 
       PostLikes postLikes =  postLikesRepository.findByUserIdAndPostId(userId,postId);
-
-      System.out.println("postLikes"+postLikes);
 
 
         return postLikes;
@@ -135,7 +133,7 @@ public class PostService {
                       MultipartFile clotheImage,MultipartFile video, PrincipalDetails principalDetails,int postId ) {
 
          Post postEntity= postRepository.findById(postId).orElseThrow(()->{
-             throw new IllegalArgumentException("아이디 찾기 불가");
+             throw new CustomApiException("아이디 찾기 불가");
          });
 
 
