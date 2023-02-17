@@ -480,3 +480,11 @@ iframe {
   }
 
 }
+.back{
+
+    height: 56px;
+    width:56px;
+    position: fixed;
+     top: 19%;
+       left: 27%;
+}

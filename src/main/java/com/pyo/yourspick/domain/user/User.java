@@ -7,6 +7,7 @@ import com.pyo.yourspick.domain.post.Post;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 

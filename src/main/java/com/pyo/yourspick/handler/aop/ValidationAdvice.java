@@ -38,24 +38,28 @@ public class ValidationAdvice {
         return proceedingJoinPoint.proceed();
     }
 
-    @Around("execution(* com.pyo.yourspick.web.*Controller.*(..))")
-    public Object advice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-
-        Object[] args = proceedingJoinPoint.getArgs();
-        for (Object arg : args) {
-            if (arg instanceof BindingResult) {
-
-                BindingResult bindingResult = (BindingResult) arg;
-                if (bindingResult.hasErrors()) {
-                    Map<String, String> errorMap = new HashMap<>();
-
-                    for (FieldError error : bindingResult.getFieldErrors()) {
-                        errorMap.put(error.getField(), error.getDefaultMessage());
-                    }
-                    throw new CustomValidationException("유효성 검사 실패" , errorMap);
-                }
-            }
-        }
-        return proceedingJoinPoint.proceed();
-    }
+//    @Around("execution(* com.pyo.yourspick.web.*Controller.*(..))")
+//    public Object advice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+//
+//        Object[] args = proceedingJoinPoint.getArgs();
+//        for (Object arg : args) {
+//            if (arg instanceof BindingResult) {
+//
+//                BindingResult bindingResult = (BindingResult) arg;
+//                if (bindingResult.hasErrors()) {
+//
+//                    Map<String, String> errorMap = new HashMap<>();
+//
+//
+//                    for (FieldError error : bindingResult.getFieldErrors()) {
+//                        errorMap.put(error.getField(), error.getDefaultMessage());
+//
+//                    }
+//
+//                   throw new CustomValidationException("유효성 검사 실패" , errorMap);
+//                }
+//            }
+//        }
+//        return proceedingJoinPoint.proceed();
+//    }
 }

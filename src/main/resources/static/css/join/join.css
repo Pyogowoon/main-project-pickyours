@@ -460,3 +460,20 @@ iframe {
     opacity: 1;
   }
 }
+
+.valid{
+    color:red;
+    font-size:15px;
+    display:inline-block;
+    margin-bottom: 10px;
+    width:300px;
+    text-align: center;
+}
+.back{
+
+    height: 56px;
+    width:56px;
+    position: fixed;
+    top: 12%;
+    left: 27%;
+}

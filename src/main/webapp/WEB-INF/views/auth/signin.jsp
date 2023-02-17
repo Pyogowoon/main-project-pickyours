@@ -20,9 +20,12 @@
 </head>
 <body>
 
+
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+			<div class="back" onclick="javascript:location.href='/'" ><img src="/images/left.png" style="width:50px;height:50px;"></div>
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="../images/img-01.png" alt="IMG">
 				</div>
@@ -120,7 +123,6 @@
 <!--===============================================================================================-->
 	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../vendor/bootstrap/js/popper.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>

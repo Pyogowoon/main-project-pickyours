@@ -7,8 +7,10 @@ import com.pyo.yourspick.service.AuthService;
 import com.pyo.yourspick.web.dto.auth.JoinDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,8 +41,11 @@ public class AuthController {
     }
 
     @PostMapping("/auth/join")
-    public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult) {
-
+    public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("valid", joinDto);
+            return "auth/join";
+        }
         User user = joinDto.toEntity();
         authService.회원가입(user);
 
