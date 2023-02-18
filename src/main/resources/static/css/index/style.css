@@ -259,7 +259,8 @@ a:focus {
           align-items: center;
   position: relative;
   padding: 90px 0 75px 0;
-  height: 80%;
+  height: 100%;
+  width: 100%;
 }
 
 .slider_section .row {

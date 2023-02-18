@@ -13,20 +13,13 @@
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
       <title>Yours pick! 유얼스픽에 오신걸 환영합니다.</title>
-      <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="css/index/bootstrap_main.css" />
-      <!-- font awesome style -->
-      <link href="fonts/index/font-awesome-main.min.css" rel="stylesheet" />
-      <!-- Custom styles for this template -->
-      <link href="css/index/style.css" rel="stylesheet" />
-      <!-- responsive style -->
-      <link href="css/index/responsive_main.css" rel="stylesheet" />
+
    </head>
    <body>
    <!-- header -->
 <header>
 
-   <%@ include file="./layout/header.jsp"%>
+   <%@ include file="./layout/indexheader.jsp"%>
 
 </header>
    <!-- header End -->

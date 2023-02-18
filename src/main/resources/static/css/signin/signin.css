@@ -485,6 +485,12 @@ iframe {
     height: 56px;
     width:56px;
     position: fixed;
-     top: 19%;
-       left: 27%;
+     top: 18%;
+       left: 26%;
+}
+
+#valid{
+
+    color: red;
+
 }

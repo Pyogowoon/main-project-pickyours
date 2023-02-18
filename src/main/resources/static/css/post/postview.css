@@ -1365,3 +1365,10 @@ height:180px;
 width :700px;
 height : 400px;
 }
+.sidebar-post-item-big{
+
+display: inline-block;
+width: 100%;
+margin: 0 auto;
+text-align: center;
+}

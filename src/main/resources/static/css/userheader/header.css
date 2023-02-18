@@ -8,13 +8,14 @@
 }
 
 .header {
-  height: 54px;
+  height: 10%;
   background: #fff;
   width: 100%;
   border: 1px solid gainsboro;
   position: fixed;
   top: 0;
   z-index: 10;
+  margin-bottom: 15px;
 }
 
 .header .container {

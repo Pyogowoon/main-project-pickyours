@@ -2,6 +2,7 @@ package com.pyo.yourspick.config;
 
 
 import com.pyo.yourspick.config.oauth.Oauth2DetailsService;
+import com.pyo.yourspick.handler.ex.CustomValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @RequiredArgsConstructor
 @Configuration
@@ -21,6 +23,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final Oauth2DetailsService oauth2DetailsService;
+
+    private final AuthenticationFailureHandler customLoginValidationException;
 
 
     @Bean
@@ -36,6 +40,7 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/auth/signin")
                 .loginProcessingUrl("/auth/signin")
+                .failureHandler(customLoginValidationException)
                 .defaultSuccessUrl("/")
                 .and()
                 .logout()

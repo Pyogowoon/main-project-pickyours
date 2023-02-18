@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
@@ -28,8 +29,12 @@ public class AuthController {
 
 
     @GetMapping("/auth/signin")
-    public String signin() {
+    public String signin(@RequestParam(value = "error", required = false) String error,
+                         @RequestParam(value = "exception", required = false) String exception,
+                         Model model) {
 
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
         return "auth/signin";
     }
 

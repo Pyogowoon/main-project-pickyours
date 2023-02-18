@@ -350,14 +350,14 @@
 
                             <c:forEach  var="item" items="${post.user.posts}" begin="0" end="2">
 
-                                <div class="sidebar-post-item-big" style="display:block;">
+                                <div class="sidebar-post-item-big">
 
                                     <div class="mt-3 media-body">
                                         <span class="text-muted letter-spacing text-uppercase font-sm">${item.createDate}
                                            </span>
                                         <h4><a href="/post/postview/${item.id}">${item.title}</a></h4>
                                     </div>
-                                     <a href="/post/postview/${item.id}"><img src="/upload/${item.postVideoUrl}"
+                                     <a href="/post/postview/${item.id}"><img src="/upload/${item.postImageUrlLeft}"
                                       style="height: 150px;width:230px"alt=""
                                             class="img-fluid"></a>
                                 </div>

@@ -8,24 +8,35 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class PostDto {
 
+    @NotBlank
     private String title;
+    @NotBlank
     private String content;
+    @NotBlank
     private String entryTitle;
+    @NotBlank
     private String entryContent;
+    @NotBlank
     private String actor;
+    @NotBlank
     private String job;
+    @NotBlank
     private String height;
+    @NotBlank
     private String weight;
+
 
     private MultipartFile actorImage;
 
     private MultipartFile clotheImage;
-
 
     private MultipartFile video;
 

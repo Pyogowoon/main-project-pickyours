@@ -108,7 +108,7 @@ function getStoryItem(image) {
                         item+=
                        ` <div class="sl__item__contents__comment" id="storyCommentItem-${comment.id}">
                                 <p>
-                                    <b>${comment.user.name} :</b> ${comment.content}
+                                    <b>${comment.user.name}  :  </b> ${comment.content}
                                 </p>`;
 
                                 if(principalId == comment.user.id || principalRole =="ADMIN" || principalRole =="SUPERADMIN"){
@@ -236,7 +236,7 @@ function addComment(imageId) {
         			  <div class="sl__item__contents__comment" id="storyCommentItem-${comment.id}">
         			    <p>
         			      <b>${comment.user.name}</b>
-        			           ${comment.content}
+        			         :   ${comment.content}
         			    </p>
         			    <button type="button" onclick="deleteComment(${comment.id})">
         			    <i class="fas fa-times"></i>

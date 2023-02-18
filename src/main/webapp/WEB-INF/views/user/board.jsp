@@ -2,10 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/userheader.jsp"%>
-<header>
 
-
-</header>
 <main class="main">
 	<section class="container">
 		<!--전체 리스트 시작-->
@@ -30,7 +27,7 @@
 
                  <div class="recommend">
 
-                <span>다른사람도 구독해보세요!</span>
+                <span class="recTitle">다른사람도 구독해보세요!</span>
 
 
                  <c:forEach var="item" items="${user}" begin="0" end="5">

@@ -25,7 +25,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-			<div class="back" onclick="javascript:location.href='/'" ><img src="/images/left.png" style="width:50px;height:50px;"></div>
+			<div class="back" onclick="javascript:location.href='/' " style="cursor:pointer" ><img src="/images/left.png" style="width:50px;height:50px;"></div>
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="../images/img-01.png" alt="IMG">
 				</div>
@@ -36,7 +36,7 @@
 						Member Login
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" data-validate = "아이디를 적어주세요!">
 						<input class="input100" type="text" name="username" placeholder="username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -44,7 +44,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input" data-validate = "비밀번호를 적어주세요!">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -60,11 +60,12 @@
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
-							Forgot
+                            <c:if test="${error}">
+                                <p id="valid" class="alert alert-danger">${exception}</p>
+                            </c:if>
+                        </span>
 						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
+
 						<br/>
 						<br/>
 

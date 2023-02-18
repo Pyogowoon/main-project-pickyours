@@ -24,9 +24,10 @@
 
 /*게시물 리스트 아이템*/
 .main .container .story-list .story-list__item {
-    width: 75%;
+    width: 65%;
     margin : 0 auto;
   margin-bottom: 30px;
+  margin-top: 20px;
   border: 1px solid #dbdbdb;
   border-radius: 4px;
 }
@@ -251,8 +252,8 @@ display:flex;
 
 .recommend{
 position:fixed;
-top : 300px;
-
+top : 15%;
+border : 1px solid #dbdbdb;
 }
 
 .subs{
@@ -260,6 +261,7 @@ display : flex;
 align-items : center;
 margin : 15px;
 padding-bottom : 40px;
+
 }
 .subs .profile-image{
 border-radius : 50%;
@@ -273,6 +275,14 @@ margin-left : 15px;
 .username{
 display: inline-block;
 width : 55px;
+
+}
+
+.recTitle{
+display:inline-block;
+width : 100%;
+
+text-align:center;
 
 }
 
