@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-md-2 col-3 text-right">
                             <div class="search_toggle toggle-wrap d-inline-block">
-
+                                <i class="ti-close"></i>
                             </div>
                         </div>
                     </div>
@@ -122,8 +122,8 @@
           <!-- actorInfo End-->
 
                     <!--닫기-->
-                  <button onclick="modalClose()" class="modalbuttun" style="width:50px;height:50px;">
-            	<i class="fa-solid fa-x fa-2x"></i>
+                  <button onclick="modalClose()" style="width:30px;height:30px;">
+      				<i class="fas fa-times"></i>
       			</button>
                       <!-- 닫기 End -->
 
@@ -140,7 +140,7 @@
                 </div>
                 <!-- toggle 시 나오는 videoContent End  -->
                                     <span
-                                   class="play-btn popup-youtube" onclick="modalOpen()"><i class="fa-solid fa-play"></i></span>
+                                   class="play-btn popup-youtube" onclick="modalOpen()"><i class="ti-control-play"></i></span>
 
                                       <video id="mainVideo"    data-setup='{}'>
                                       	    <source src="/upload/${post.postVideoUrl}" >
@@ -337,11 +337,11 @@
                             <div class="sidebar-widget follow mb-5 text-center">
                                 <h4 class="text-center widget-title">Follow Me</h4>
                                 <div class="follow-socials">
-                                    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
-                                    <a href="https://twitter.com/?lang=ko" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                                    <a href="https://www.pinterest.co.kr/" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+                                    <a href="https://www.facebook.com" target="_blank"><i class="ti-facebook"></i></a>
+                                    <a href="https://twitter.com/?lang=ko" target="_blank"><i class="ti-twitter"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank"><i class="ti-instagram"></i></a>
+                                    <a href="https://www.youtube.com" target="_blank"><i class="ti-youtube"></i></a>
+                                    <a href="https://www.pinterest.co.kr/" target="_blank"><i class="ti-pinterest"></i></a>
                                 </div>
                             </div>
 
@@ -391,7 +391,7 @@
     <!-- main js -->
 
     <script src="/js/post/postview.js"></script>
-<script src="https://kit.fontawesome.com/0323ea36d6.js" crossorigin="anonymous"></script>
+
     <!-- <script src="/js/custom.js"></script> -->
 
 

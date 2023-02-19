@@ -12,7 +12,7 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-<script src="https://kit.fontawesome.com/0323ea36d6.js" crossorigin="anonymous"></script>
+
 
     <!-- Header css -->
     <link rel="stylesheet" href="/css/header/header.css">
@@ -29,13 +29,13 @@
 
 
     <!-- bootstrap core css -->
-       <link rel="stylesheet" type="text/css" href="/css/index/bootstrap_main.css" />
+       <link rel="stylesheet" type="text/css" href="css/index/bootstrap_main.css" />
        <!-- font awesome style -->
-       <link href="/fonts/index/font-awesome-main.min.css" rel="stylesheet" />
+       <link href="fonts/index/font-awesome-main.min.css" rel="stylesheet" />
        <!-- Custom styles for this template -->
-       <link href="/css/index/style.css" rel="stylesheet" />
+       <link href="css/index/style.css" rel="stylesheet" />
        <!-- responsive style -->
-       <link href="/css/index/responsive_main.css" rel="stylesheet" />
+       <link href="css/index/responsive_main.css" rel="stylesheet" />
 
        <!-- postview -->
 
