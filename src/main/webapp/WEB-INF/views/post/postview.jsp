@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Yours pick!</title>
+    <title>Pick yours!</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -93,7 +93,7 @@
 
      <!-- shopInfo -->
          <div class="shopInfo">
-          <img src="/upload/${post.postImageUrlRight}"style="height:600px;width:300px" alt="post-img2"
+          <img src="/upload/${post.postImageUrlRight}"style="height:600px;width:350px" alt="post-img2"
          class="img-fluid mr-4 w-100">
 
          <br/>
@@ -104,7 +104,7 @@
        <!-- shopInfo End -->
 
     <!-- actorInfo -->
-      <div class="actorInfo" style="height:600px;width:300px">
+      <div class="actorInfo" style="height:600px;width:350px">
        <div class="sidebar-widget about mb-5 text-center p-3">
                                       <div class="about-authors" >
                                           <img src="/upload/${post.postImageUrlLeft}" alt="" class="img-fluid">
@@ -114,7 +114,7 @@
                                       <p> 키 : ${post.height} </p>
                                       <p> 몸무게 : ${post.weight} </p>
                                           <p>instagram : ${post.job} </p>
-                                          <p> 구매 정보 : ${post.entryContent}
+                                          <p> 구매 정보 : <a href="${post.entryContent}"></a> </p>
 
                                   </div>
       </div>
@@ -140,7 +140,7 @@
                 </div>
                 <!-- toggle 시 나오는 videoContent End  -->
                                     <span
-                                   class="play-btn popup-youtube" onclick="modalOpen()"><i class="ti-control-play"></i></span>
+                                   class="play-btn popup-youtube" onclick="modalOpen()"><i class="fa-solid fa-play"></i></i></span>
 
                                       <video id="mainVideo"    data-setup='{}'>
                                       	    <source src="/upload/${post.postVideoUrl}" >
@@ -152,8 +152,10 @@
 
                                 <div class="post-body">
                                     <div class="entry-content">
-                                        <p> content(본문) : ${post.content}</p>
-                                        <h2 class="mt-4 mb-3">entryTitle(소제목) : ${post.entryTitle}</h2>
+
+                                       <h1 class="hangle">${post.content} </h1>
+
+                                        <h2 class="mt-4 mb-3">브랜드  : ${post.entryTitle}</h2>
 
 
 
@@ -220,9 +222,10 @@
                         </div>
 
                         <div class="author-content pl-4">
-                            <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">글쓴이 : ${post.user.username}</a>
+                            <h4 class="mb-3"><a href="#" title="" rel="author" class="hangle">글쓴이 : ${post.user.username}</a>
                             </h4>
-                            <p>구매 정보 : ${post.entryContent} </p>
+                            <p class="hangle">구매 정보: </p>
+                            <h1 class="hangle">${post.entryContent} </h1>
 
 
                         </div>
@@ -278,7 +281,7 @@
 
                             <!-- 댓글 칸 -->
                                 <div class="comment-content mt-1">
-                                    <p>${list.content}</p>
+                                    <p class="hangle">${list.content}</p>
                                 </div>
                             <!-- 댓글 칸 End-->
 
@@ -326,22 +329,22 @@
                                 <div class="about-author">
                                     <img src="/upload/${post.postImageUrlLeft}" alt="" class="img-fluid">
                                 </div>
-                                <h4 class="mb-0 mt-4">${post.actor}</h4>
+                                <h4 class="mb-0 mt-4" id="hangle">${post.actor}</h4>
 
-                                <p> 키 : ${post.height} </p>
-                                <p> 몸무게 : ${post.weight} </p>
-                                    <p>instagram : ${post.job} </p>
+                                <p class="hangle"> 키 : ${post.height} </p>
+                                <p class="hangle"> 몸무게 : ${post.weight} </p>
+                                    <p class="hangle">instagram : ${post.job} </p>
                                 <img src="../images/liammason.png" alt="" class="img-fluid">
                             </div>
 
                             <div class="sidebar-widget follow mb-5 text-center">
                                 <h4 class="text-center widget-title">Follow Me</h4>
                                 <div class="follow-socials">
-                                    <a href="https://www.facebook.com" target="_blank"><i class="ti-facebook"></i></a>
-                                    <a href="https://twitter.com/?lang=ko" target="_blank"><i class="ti-twitter"></i></a>
-                                    <a href="https://www.instagram.com/" target="_blank"><i class="ti-instagram"></i></a>
-                                    <a href="https://www.youtube.com" target="_blank"><i class="ti-youtube"></i></a>
-                                    <a href="https://www.pinterest.co.kr/" target="_blank"><i class="ti-pinterest"></i></a>
+                                    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                                    <a href="https://twitter.com/?lang=ko" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                                    <a href="https://www.pinterest.co.kr/" target="_blank"><i class="fa-brands fa-square-pinterest"></i></a>
                                 </div>
                             </div>
 
@@ -355,11 +358,15 @@
                                     <div class="mt-3 media-body">
                                         <span class="text-muted letter-spacing text-uppercase font-sm">${item.createDate}
                                            </span>
-                                        <h4><a href="/post/postview/${item.id}">${item.title}</a></h4>
+                                        <h4><a class="hangle" href="/post/postview/${item.id}">${item.title}</a></h4>
                                     </div>
                                      <a href="/post/postview/${item.id}"><img src="/upload/${item.postImageUrlLeft}"
-                                      style="height: 150px;width:230px"alt=""
+                                      style="height: 150px;width:110px"alt=""
                                             class="img-fluid"></a>
+                                             <a href="/post/postview/${item.id}"><img src="/upload/${item.postImageUrlRight}"
+                                                                                  style="height: 150px;width:110px"alt=""
+                                                                                        class="img-fluid"></a>
+
                                 </div>
 
                                 </c:forEach>

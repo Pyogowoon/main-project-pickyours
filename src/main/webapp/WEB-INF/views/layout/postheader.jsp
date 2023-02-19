@@ -46,7 +46,7 @@
 
  <!-- sec taglib End -->
 
-    <title>yours pick!</title>
+    <title>Pick yours!</title>
   </head>
   <body>
 
@@ -92,7 +92,7 @@
 
 
             <div class="site-logo">
-              <a href="/" class="text-black"><span class="text-primary"><img src="/images/logo2.jpg">Yours pick!</a>
+              <a href="/" class="text-black"><span class="text-primary"><img src="/images/logo.png">Yours pick!</a>
             </div>
 
 

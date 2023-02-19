@@ -56,7 +56,7 @@
 	<header class="header">
 		<div class="container">
 			<a href="/" class="logo">
-				<img src="/images/board_logo.png" style="height: 76px;width:160px">
+				<img src="/images/board_logo2.png" style="height: 76px;width:160px">
 			</a>
 			<nav class="navi">
 				<ul class="navi-list">

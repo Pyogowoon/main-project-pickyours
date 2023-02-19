@@ -12,7 +12,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Yours pick! 유얼스픽에 오신걸 환영합니다.</title>
+      <title>Pick Yours! 픽유얼스에 오신걸 환영합니다.</title>
 
    </head>
    <body>
@@ -38,16 +38,16 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                  Yours Pick!
+                                  Pick yours!
                                     </span>
                                     <br>
-                                    hi
+                                    On Everything
                                  </h1>
-                                 <p>
-                                    Yours pick 의 소셜 서비스로 당신의 궁금증을 해소하세요, 옷 정보가 궁금하다면!
+                                 <p class="hangle">
+                                      Pick yours 의 유저마당 서비스로 당신이 원하는 정보를 찾고 공유해보세요!
                                  </p>
                                  <div class="btn-box">
-                                    <a href="/user/board" class="btn1">
+                                    <a href="/user/board" class="btn1" id="hangle">
                                    유저마당 보기
                                     </a>
                                  </div>
@@ -63,16 +63,16 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                   Yours pick!
+                                   Pick yours!
                                     </span>
                                     <br>
                                     On Everything
                                  </h1>
-                                 <p>
-                                     Yours pick 의 소셜 서비스로 당신의 궁금증을 해소하세요, 옷 정보가 궁금하다면!
+                                 <p class="hangle">
+                                    Pick yours 의 블로그 서비스로 당신이 원하는 정보를 검색하고 찾아보세요!
                                  </p>
                                  <div class="btn-box">
-                                    <a href="/post" class="btn1">
+                                    <a href="/post" class="btn1" id="hangle">
                                     블로그 보기
                                     </a>
                                  </div>
@@ -88,16 +88,16 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Yours pick!
+                                    Pick yours!
                                     </span>
                                     <br>
                                     On Everything
                                  </h1>
-                                 <p>
-                                   Yours pick 의 소셜 서비스로 당신의 궁금증을 해소하세요, 옷 정보가 궁금하다면!
+                                 <p class="hangle">
+                                   Pick yours 의 소셜 서비스와 블로그 서비스를 경험해보세요!
                                  </p>
                                  <div class="btn-box">
-                                    <a href="/auth/signin" class="btn1">
+                                    <a href="/auth/signin" class="btn1" id="hangle">
                                     로그인하기
                                     </a>
                                  </div>
@@ -137,7 +137,7 @@
                  <!-- footer -->
 
 
-                  <%@ include file="./layout/footer1.jsp"%>
+                  <%@ include file="./layout/footer.jsp"%>
 
 
                   <!-- footer End -->

@@ -75,8 +75,8 @@
 
                         <div class="card-body">
                             <div class="small text-muted">createDate : ${post.createDate} </div>
-                            <h2 class="card-title">title : ${post.title} </h2>
-                            <p class="card-text"> content : ${post.content}</p>
+                            <h2 class="card-title"> ${post.title} </h2>
+                            <p class="card-text">  ${post.content}</p>
                             <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
                         </div>
                     </div>

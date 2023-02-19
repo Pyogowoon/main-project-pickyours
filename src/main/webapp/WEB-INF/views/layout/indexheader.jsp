@@ -110,7 +110,7 @@
 
 
             <div class="site-logo">
-              <a href="/" class="text-black"><span class="text-primary"><img src="/images/logo2.jpg">Yours pick!</a>
+              <a href="/" class="text-black"><span class="text-primary"><img src="/images/logo.png">Pick yours!</a>
             </div>
 
 
@@ -119,11 +119,11 @@
 
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li><a href="/" class="nav-link">Home</a></li>
-                  <li><a href="/user/board" class="nav-link">유저마당</a></li>
+                  <li><a href="/user/board" class="nav-link" id="hangle">유저마당</a></li>
 
 
                   <li class="has">
-                    <a href="/post" class="nav-link">게시글</a>
+                    <a href="/post" class="nav-link" id="hangle">게시글</a>
 
                   </li>
 
