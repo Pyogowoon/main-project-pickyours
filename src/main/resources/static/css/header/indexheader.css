@@ -50,6 +50,7 @@ a {
   background-repeat: no-repeat; }
 
 .top-bar {
+
   padding: .5rem 0;
   background: #eee; }
   .top-bar a {
@@ -366,14 +367,26 @@ a {
         padding-bottom: 30px !important; } }
 
 
-        .delete{
-        position : relative;
+    .delete{
+    position : relative;
 
-          float: right;
-        }
+      float: right;
+    }
 
-        #tobBar{
-        padding-top : 15px;
-        padding-bottom : 15px;
+    #tobBar{
+    padding-top : 15px;
+    padding-bottom : 15px;
+    width : 80%;
+    max-width: 100%;
 
-        }
+    }
+
+    #logoBar{
+     width : 80%;
+        max-width: 100%;
+    }
+
+
+
+
+

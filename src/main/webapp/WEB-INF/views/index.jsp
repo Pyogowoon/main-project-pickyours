@@ -27,7 +27,7 @@
     <!-- slider section -->
          <section class="slider_section ">
             <div class="slider_bg_box">
-               <img src="images/background3.png" alt="">
+               <img src="images/background3.png"  alt="">
             </div>
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">

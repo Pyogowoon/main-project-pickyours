@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="/css/user/upload.css">
 	<link rel="stylesheet" href="/css/user/popular.css">
 	<link rel="stylesheet" href="/css/user/update.css">
-
+    <!-- Style End -->
 
 <link rel="shortcut icon" href="/images/insta.svg">
 
