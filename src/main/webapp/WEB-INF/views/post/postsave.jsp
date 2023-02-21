@@ -9,64 +9,66 @@
 
           <div class="form-group">
             <label for="title">제목</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter title" id="title">
+            <input type="text" class="form-control" name="title" placeholder="Enter title" id="title" required>
           </div>
 
          <div class="form-group">
            <label for="content">내용</label>
-           <textarea class="form-control summernote" name="content" rows="5" id="content"></textarea>
+           <textarea class="form-control summernote" name="content" rows="5" id="content" required></textarea>
          </div>
 
          <div class="form-group">
             <label for="content"> 소제목 </label>
-            <input type="text" class="form-control" name="entryTitle" placeholder="Enter title" id="entryTitle">
+            <input type="text" class="form-control" name="entryTitle" placeholder="Enter title" id="entryTitle" required>
           </div>
 
         <div class="form-group">
               <label for="content"> 쇼핑몰 정보(링크와 설명) </label>
-              <textarea class="form-control summernote" name="entryContent" rows="1" id="entryContent"></textarea>
+              <textarea class="form-control summernote" name="entryContent" rows="1" id="entryContent" required></textarea>
             </div>
 
          <div class="form-group">
             <label for="content"> 배우 이름 </label>
-            <input type="text" class="form-control" name="actor" placeholder="Enter title" id="actor">
+            <input type="text" class="form-control" name="actor" placeholder="Enter title" id="actor" required>
           </div>
 
 
         <div class="form-group">
           <label for="content"> 배우의 instagram 링크 </label>
-          <input type="text" class="form-control" name="job" placeholder="Enter title" id="job">
+          <input type="text" class="form-control" name="job" placeholder="Enter title" id="job" required>
         </div>
 
       <div class="form-group">
             <label for="content"> 키 </label>
-            <input type="text" class="form-control" name="height" placeholder="Enter title" id="height">
+            <input type="text" class="form-control" name="height" placeholder="Enter title" id="height" required>
           </div>
 
       <div class="form-group">
           <label for="content"> 몸무게 </label>
-          <input type="text" class="form-control" name="weight" placeholder="Enter title" id="weight">
+          <input type="text" class="form-control" name="weight" placeholder="Enter title" id="weight" required>
         </div>
 
         <div class="form-group">
       <label for="content"> 배우 사진 </label>
-      <input type="file" class="form-control" name="actorImage" id="actorImage">
+      <input type="file" class="form-control" name="actorImage" id="actorImage" required>
         </div>
 
 
       <div class="form-group">
       <label for="content">옷 사진 </label>
-      <input type="file" class="form-control" name="clotheImage" id="clotheImage">
+      <input type="file" class="form-control" name="clotheImage" id="clotheImage" required>
     </div>
 
        <div class="form-group">
   <label for="content">video : 영상 </label>
-  <input type="file" class="form-control" name="video" id="video">
+  <input type="file" class="form-control" name="video" id="video" required>
         </div>
 
 
-        <input type="button" value="확인" onclick="postSave(${principal.user.id})">
+        <input type="button" value="확인" onclick="postSave(${principal.user.id})" required>
         </form>
+        <br/>
+        <br/>
 
 
 

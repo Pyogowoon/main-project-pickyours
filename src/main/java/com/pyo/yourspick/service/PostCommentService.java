@@ -7,6 +7,8 @@ import com.pyo.yourspick.domain.postcomment.PostCommentRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.handler.ex.CustomApiException;
+import com.pyo.yourspick.handler.ex.CustomException;
+import com.pyo.yourspick.handler.ex.CustomValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,15 @@ public class PostCommentService {
         postComment.setPost(post);
         postComment.setCommentUser(userEntity.getUsername());
 
-        return postCommentRepository.save(postComment);
+
+        if(postComment.getContent().isBlank()) {
+
+            throw new CustomValidationException("내용을 입력해주세요." , null);
+        }else {
+            return postCommentRepository.save(postComment);
+        }
+
+
     }
 
         public void 댓글삭제(int commentId){

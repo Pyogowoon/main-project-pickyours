@@ -9,6 +9,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByUsername(String username);
 
-    @Query(value = "SELECT id, name, profileImageUrl FROM user", nativeQuery = true)
+    @Query(value = "SELECT id, name, profileImageUrl FROM User", nativeQuery = true)
     List<UserInfoMapping> mFindUser();
 }

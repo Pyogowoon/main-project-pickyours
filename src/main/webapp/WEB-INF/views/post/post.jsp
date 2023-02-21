@@ -113,8 +113,8 @@
                                 <!-- card body -->
                                 <div class="card-body">
                                     <div class="small text-muted">${post.createDate}</div>
-                                    <h2 class="card-title h4">title : ${post.title}</h2>
-                                    <p class="card-text">content : 내용</p>
+                                    <h2 class="card-title h4"> ${post.title}</h2>
+                                    <p class="card-text">${post.content} </p>
                                     <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
                                 </div>
                                  <!-- card body -->

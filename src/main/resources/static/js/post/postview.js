@@ -76,7 +76,7 @@ function postComment(postId){
             dataType:"json"
 
         }).done(res => {
-            console.log(res,"댓글 삭제 성공");
+
             alert("댓글을 삭제하시겠습니까? ");
 
             $("#deleteArea-"+commentId).remove();
@@ -179,7 +179,9 @@ function postComment(postId){
     }
 
     function postDelete(postId){
-        confirm("정말 삭제하시겠습니까?");
+
+     if(confirm('정말 삭제하시겠습니까?'))
+     {
 
     $.ajax({
         type:"delete",
@@ -187,11 +189,17 @@ function postComment(postId){
         dataType:"json"
 
     }).done(res => {
-      console.log("성공",res)
+
        location.href="/post";
     }).fail(error => {
-      console.log("실패",error)
-    })
+       alert("삭제에 실패했습니다. 관리자에게 문의하세요.");
+    });
+
+    }
+    else
+    {
+    return false;
+    }
 
     }
 

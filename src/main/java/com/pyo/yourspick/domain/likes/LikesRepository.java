@@ -8,11 +8,11 @@ import org.springframework.data.repository.query.Param;
 public interface LikesRepository extends JpaRepository<Likes , Integer> {
 
     @Modifying
-    @Query(value = "INSERT INTO likes(imageId, userId, createDate) VALUES(:imageId, :userId, NOW()) " , nativeQuery = true)
+    @Query(value = "INSERT INTO Likes(imageId, userId, createDate) VALUES(:imageId, :userId, NOW()) " , nativeQuery = true)
     int mLikes(@Param("imageId") int imageId , @Param("userId") int userId);
 
 
     @Modifying
-    @Query(value = "DELETE FROM likes WHERE imageId = :imageId AND userId = :userId " , nativeQuery = true)
+    @Query(value = "DELETE FROM Likes WHERE imageId = :imageId AND userId = :userId " , nativeQuery = true)
     int mUnLikes(@Param("imageId") int imageId , @Param("userId") int userId);
 }

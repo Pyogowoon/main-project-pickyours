@@ -108,7 +108,7 @@ function getStoryItem(image) {
                         item+=
                        ` <div class="sl__item__contents__comment" id="storyCommentItem-${comment.id}">
                                 <p>
-                                    <b>${comment.user.name}  :  </b> ${comment.content}
+                  <span onclick="location.href='/user/${comment.user.id}'">  <b>${comment.user.name} </span>  :  </b> ${comment.content}
                                 </p>`;
 
                                 if(principalId == comment.user.id || principalRole =="ADMIN" || principalRole =="SUPERADMIN"){

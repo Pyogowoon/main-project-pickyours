@@ -13,8 +13,11 @@ import org.springframework.boot.autoconfigure.gson.GsonProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Binding;
+import javax.validation.Valid;
 import java.security.Principal;
 
 @RequiredArgsConstructor
@@ -26,7 +29,7 @@ public class PostCommentApicontroller {
 
 
     @PostMapping("/api/post/comment/{postId}")
-    public ResponseEntity<?> postComment(@RequestBody PostCommentDto postCommentDto,
+    public ResponseEntity<?> postComment(@Valid @RequestBody PostCommentDto postCommentDto, BindingResult bindingResult,
                                          @AuthenticationPrincipal PrincipalDetails principalDetails
     ,@PathVariable int postId){
 

@@ -15,11 +15,11 @@ public interface PostLikesRepository extends JpaRepository<PostLikes , Integer> 
     PostLikes findByUserIdAndPostId(int userId, int PostId);
 
     @Modifying
-    @Query(value ="INSERT INTO postlikes(postId ,userId,createDate) VALUES(:postId, :userId , NOW())" ,nativeQuery = true)
+    @Query(value ="INSERT INTO PostLikes(postId ,userId,createDate) VALUES(:postId, :userId , NOW())" ,nativeQuery = true)
     int mLikes(@Param("postId") int postId , @Param("userId") int userId );
 
     @Modifying
-    @Query(value="DELETE FROM postlikes where userId = :userId AND postId = :postId", nativeQuery = true)
+    @Query(value="DELETE FROM PostLikes where userId = :userId AND postId = :postId", nativeQuery = true)
     int mUnLikes(@Param("userId") int userId, @Param("postId") int postId);
 
 

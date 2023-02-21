@@ -861,7 +861,7 @@ overlay search
   padding-top: 38px;
   background: #ce8460;
   color: #fff;
-    z-index:5000;
+    z-index:1;
 }
 
 .play-btn:hover {

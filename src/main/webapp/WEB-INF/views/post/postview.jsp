@@ -277,7 +277,7 @@
                             <div class="media-body ml-4" >
                                 <h4 class="mb-0">${list.commentUser}</h4>
                                 <span class="date-comm font-sm text-capitalize text-color"> <i
-                                        class="ti-time mr-2"></i>${list.createDate} </span>
+                                        class="fa-solid fa-clock"></i>${list.createDate} </span>
 
                             <!-- 댓글 칸 -->
                                 <div class="comment-content mt-1">

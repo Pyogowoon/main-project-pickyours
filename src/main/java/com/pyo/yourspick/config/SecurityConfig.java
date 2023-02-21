@@ -35,6 +35,8 @@ public class SecurityConfig {
                 .antMatchers("/", "/board", "/auth/**", "/images/**", "/js/**", "/webjars/**", "/css/**", "/vendor/**"
                         , "/fonts/**", "/plugins/**", "/scss/**", "/post","/post/search/**", "/upload/**")
                 .permitAll()
+                .antMatchers("/post/postsave").hasAuthority("ADMIN")
+                .antMatchers("/post/postupdate").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -54,6 +56,12 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+
+
+
+
+
 
 
     @Bean
