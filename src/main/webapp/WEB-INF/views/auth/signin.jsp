@@ -74,7 +74,7 @@
 
                             <!-- kakao Login -->
 
-                            <div class="login__kakao">
+                            <div class="login__kakao" id="loginBtn">
                            <button onclick="javascript:location.href='/oauth2/authorization/kakao'">
                              <img src="../images/kakaologin.png" style="height:53px;width:280px">
                             </button>
@@ -91,14 +91,7 @@
 
                            <!-- naver Login End -->
 
-                               <!-- facebook -->
-                           <div class="login__facebook">
-                              <button onclick="javascript:location.href='/oauth2/authorization/facebook'">
-                                <img src="../images/facebooklogin.png" style="height:53px;width:280px">
-                               </button>
-                           </div>
 
-                             <!-- facebook End-->
 
                         <!-- Oauth 소셜로그인 End -->
 

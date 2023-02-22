@@ -1,2 +1,10 @@
 .text-center {text-align: center;}
-.p-t-12 {padding-top: 12px;}
+.p-t-12 {
+padding-top: 12px;
+padding-bottom : 40px;
+}
+
+#loginBtn{
+
+margin-bottom: 15px;
+}

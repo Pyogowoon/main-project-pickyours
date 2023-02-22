@@ -73,7 +73,7 @@ function getStoryItem(image) {
 				</div>
 
 				<div class="sl__item__img">
-					<img src="/upload/${image.postImageUrl}" />
+					<img src="/upload/${image.postImageUrl}" style="width:65%; height:600px;" />
 				</div>
 
 				<div class="sl__item__contents">

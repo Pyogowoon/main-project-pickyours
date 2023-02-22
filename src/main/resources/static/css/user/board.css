@@ -76,6 +76,7 @@
 .main .container .story-list .story-list__item .sl__item__img {
   height: 600px;
   min-height: 300px;
+  text-align : center;
 }
 
 /* 게시물 이미지*/

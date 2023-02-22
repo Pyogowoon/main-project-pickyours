@@ -49,18 +49,18 @@
         </div>
 
         <div class="form-group">
-      <label for="content"> 배우 사진 </label>
+      <label for="content"> 배우 사진 (최대 20MB까지 가능합니다.) </label>
       <input type="file" class="form-control" name="actorImage" id="actorImage" required>
         </div>
 
 
       <div class="form-group">
-      <label for="content">옷 사진 </label>
+      <label for="content">옷 사진 (최대 20MB까지 가능합니다.) </label>
       <input type="file" class="form-control" name="clotheImage" id="clotheImage" required>
     </div>
 
        <div class="form-group">
-  <label for="content">video : 영상 </label>
+  <label for="content"> 동영상 (최대 20MB까지 가능합니다.) </label>
   <input type="file" class="form-control" name="video" id="video" required>
         </div>
 

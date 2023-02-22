@@ -32,12 +32,21 @@ public class UserController{
 
     @GetMapping("user/board")
     public String board(@AuthenticationPrincipal PrincipalDetails principalDetails , @PageableDefault(size=3) Pageable pageable,Model model){
-        int userid = principalDetails.getUser().getId();
+        int userId = principalDetails.getUser().getId();
 
-        int subscribeState = subscribeRepository.mSubscribeState(userid,1);
+        int subscribeState = subscribeRepository.mSubscribeState(userId,1);
         if(subscribeState != 1){
-            subscribeService.구독하기(userid, 1);
+
+            if(userId==1) {
+
+                subscribeService.구독하기(userId, userId);
+            }else{
+            subscribeService.구독하기(userId, 1);
+            subscribeService.구독하기(userId, userId);
+            }
         }
+
+
       model.addAttribute("user",userService.유저이름사진정보찾기());
 
         return "user/board";
