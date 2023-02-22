@@ -14,17 +14,17 @@
 
          <div class="form-group">
            <label for="content">내용</label>
-           <textarea class="form-control summernote" name="content" rows="5" id="content" >${post.content}</textarea>
+           <textarea class="form-control summernote" name="content" rows="5" id="content" value="${post.content}">${post.content}</textarea>
          </div>
 
          <div class="form-group">
-            <label for="content">소제목 </label>
+            <label for="entryTitle">옷 상세정보 </label>
             <input type="text" class="form-control" name="entryTitle" placeholder="Enter title" id="entryTitle" value="${post.entryTitle}">
           </div>
 
         <div class="form-group">
               <label for="content">쇼핑몰 정보(링크와 설명) </label>
-              <textarea class="form-control summernote" name="entryContent" rows="1" id="entryContent">${post.entryContent}</textarea>
+              <textarea class="form-control summernote" name="entryContent" rows="1" id="entryContent" value="${post.entryContent}">${post.entryContent}</textarea>
             </div>
 
          <div class="form-group">

@@ -18,7 +18,7 @@
          </div>
 
          <div class="form-group">
-            <label for="content"> 소제목 </label>
+            <label for="content"> 옷 상세정보 </label>
             <input type="text" class="form-control" name="entryTitle" placeholder="Enter title" id="entryTitle" required>
           </div>
 

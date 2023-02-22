@@ -13,6 +13,7 @@ import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.handler.ex.CustomApiException;
 import com.pyo.yourspick.handler.ex.CustomException;
 import com.pyo.yourspick.web.dto.post.PostDto;
+import com.pyo.yourspick.web.dto.post.PostUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.gson.GsonProperties;
@@ -129,12 +130,13 @@ public class PostService {
     }
 
     @Transactional
-    public Post 게시글수정(Post post, MultipartFile actorImage,
-                      MultipartFile clotheImage,MultipartFile video, PrincipalDetails principalDetails,int postId ) {
+    public Post 게시글수정(PostUpdateDto postUpdateDto, MultipartFile actorImage,
+                      MultipartFile clotheImage, MultipartFile video, PrincipalDetails principalDetails, int postId ) {
 
          Post postEntity= postRepository.findById(postId).orElseThrow(()->{
              throw new CustomApiException("아이디 찾기 불가");
          });
+
 
 
 
@@ -161,25 +163,33 @@ public class PostService {
 
         User userEntity = principalDetails.getUser();
 
+        postEntity.update(
+                userEntity,
+                postUpdateDto.getTitle(),
+                postUpdateDto.getContent(),
+                postUpdateDto.getEntryTitle(),
+                postUpdateDto.getEntryContent(),
+                postUpdateDto.getActor(),
+                postUpdateDto.getJob(),
+                postUpdateDto.getHeight(),
+                postUpdateDto.getWeight()
+        );
 
-        postEntity.setUser(userEntity);
-        postEntity.setTitle(post.getTitle());
-        postEntity.setContent(post.getContent());
-        postEntity.setEntryContent(post.getEntryContent());
-        postEntity.setActor(post.getActor());
+
 
 
         if(!actorImage.getOriginalFilename().isEmpty()){
-            postEntity.setPostImageUrlLeft(actorImageFileName.toString());
+            postEntity.leftImageUpdate(actorImageFileName);
+
         }
 
         if(!clotheImage.getOriginalFilename().isEmpty()){
+            postEntity.rightImageUpdate(clotheImageFileName);
 
-            postEntity.setPostImageUrlRight(clotheImageFileName.toString());
         }
         if(!video.getOriginalFilename().isEmpty()){
+            postEntity.videoUpdate(videoFileName);
 
-            postEntity.setPostVideoUrl(videoFileName.toString());
         }
         return postEntity;
 

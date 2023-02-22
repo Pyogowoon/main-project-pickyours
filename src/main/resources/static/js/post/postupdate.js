@@ -18,6 +18,7 @@
       dataType:"json"
 
       }).done(res =>{
+
        alert("수정이 완료되었습니다.");
         location.href="/post";
 

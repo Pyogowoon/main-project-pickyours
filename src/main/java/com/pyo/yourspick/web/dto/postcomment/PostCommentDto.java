@@ -14,8 +14,6 @@ public class PostCommentDto {
     @NotBlank
     private String content;
 
-    @NotNull
-    private String commentUser;
 
 
 }

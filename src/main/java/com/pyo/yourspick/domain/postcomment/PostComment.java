@@ -46,6 +46,13 @@ public class PostComment {
         this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
+    public void CommentSave(User user, String content, Post post, String CommentUser){
+        this.user = user;
+        this.content = content;
+        this.post = post;
+        this.commentUser= commentUser;
+
+    }
 
 }
 

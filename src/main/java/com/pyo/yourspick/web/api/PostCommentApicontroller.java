@@ -34,7 +34,7 @@ public class PostCommentApicontroller {
     ,@PathVariable int postId){
 
 
-        System.out.println(postCommentDto);
+
         PostComment postComment = postCommentService.댓글달기(principalDetails.getUser().getId(),postCommentDto.getContent(),postId);
 
         return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기 성공",postComment), HttpStatus.OK);

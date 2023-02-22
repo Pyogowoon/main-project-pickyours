@@ -69,7 +69,7 @@
 
 
 
-                                    <h2 class="post-title mt-2">
+                                    <h2 class="post-title mt-2" id="hangle">
                                       ${post.title}
                                     </h2>
 
@@ -109,12 +109,12 @@
                                       <div class="about-authors" >
                                           <img src="/upload/${post.postImageUrlLeft}" alt="" class="img-fluid">
                                       </div>
-                                      <h4 class="mb-0 mt-4">${post.actor}</h4>
+                                      <p class="hangle">${post.actor}</p>
 
-                                      <p> 키 : ${post.height} </p>
-                                      <p> 몸무게 : ${post.weight} </p>
-                                          <p>instagram : ${post.job} </p>
-                                          <p> 구매 정보 : <a href="${post.entryContent}"></a> </p>
+                                      <p class="hangle"> 키 : ${post.height} </p>
+                                      <p class="hangle"> 몸무게 : ${post.weight} </p>
+                                          <p> ${post.job} </p>
+                                          <p> <a href="${post.entryContent}"></a>${post.entryContent} </p>
 
                                   </div>
       </div>
@@ -155,17 +155,21 @@
 
                                        <h1 class="hangle">${post.content} </h1>
 
-                                        <h2 class="mt-4 mb-3">브랜드  : ${post.entryTitle}</h2>
+                                       <br/>
+                                       <br/>
+                                       <br/>
+
+                                        <h3 class="hangle" id="brand"> ${post.entryTitle}</h2>
 
 
 
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
-                                                <img src="/upload/${post.postImageUrlLeft}"style="height: 300px;width:250px" alt="post-img1"
+                                                <img src="/upload/${post.postImageUrlLeft}"style="height: 600px;width:250px" alt="post-img1"
                                                     class="img-fluid mr-4 w-100">
                                             </div>
                                             <div class="col-lg-6 col-md-6">
-                                                <img src="/upload/${post.postImageUrlRight}"style="height: 300px;width:250px" alt="post-img2"
+                                                <img src="/upload/${post.postImageUrlRight}"style="height: 600px;width:250px" alt="post-img2"
                                                     class="img-fluid mr-4 w-100">
                                             </div>
                                         </div>
@@ -222,10 +226,10 @@
                         </div>
 
                         <div class="author-content pl-4">
-                            <h4 class="mb-3"><a href="#" title="" rel="author" class="hangle">글쓴이 : ${post.user.username}</a>
+                            <h4 class="mb-3"><a href="/user/${post.user.id}" title="" rel="author" class="hangle">글쓴이 : ${post.user.username}</a>
                             </h4>
                             <p class="hangle">구매 정보: </p>
-                            <h1 class="hangle">${post.entryContent} </h1>
+                            <h4 class="hangle">${post.entryContent} </h1>
 
 
                         </div>
@@ -378,7 +382,7 @@
 
 
                             <div class="sidebar-widget sidebar-adv mb-5">
-                                <a href="#"><img src="/images/yourspick_logo.png" alt="" class="img-fluid w-100"></a>
+                                <a href="#"><img src="/images/logo.png" alt="" class="img-fluid w-100"></a>
                             </div>
 
                         </div>

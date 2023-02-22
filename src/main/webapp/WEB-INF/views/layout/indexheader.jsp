@@ -64,7 +64,7 @@
 
 
 
-    <title>yours pick!</title>
+    <title>Pick yours!</title>
   </head>
   <body>
 

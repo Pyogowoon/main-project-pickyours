@@ -75,7 +75,7 @@ public class PostApiController {
         MultipartFile video = postUpdateDto.getVideo();
 
 
-        Post postEntity = postService.게시글수정(postUpdateDto.toEntity(), actorImage, clotheImage, video, principalDetails, postId);
+        Post postEntity = postService.게시글수정(postUpdateDto, actorImage, clotheImage, video, principalDetails, postId);
 
         return new ResponseEntity<>(new CMRespDto<>(1, "수정 성공", postEntity), HttpStatus.OK);
     }

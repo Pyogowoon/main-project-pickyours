@@ -63,8 +63,35 @@ public class Post {
 
     private String createDate;
 
+    public void update(User user, String title, String content, String entryTitle, String entryContent
+    ,String actor, String job, String height, String weight){
+        this.user = user;
+        this.title = title;
+        this.content = content;
+        this.entryTitle = entryTitle;
+        this.entryContent = entryContent;
+        this.actor = actor;
+        this.job = job;
+        this.height= height;
+        this.weight = weight;
 
+    }
+    public void leftImageUpdate(String postImageUrlLeft){
+        this.postImageUrlLeft = postImageUrlLeft;
 
+    }
+    public void rightImageUpdate(String postImageUrlRight){
+        this.postImageUrlRight = postImageUrlRight;
+
+    }
+    public void videoUpdate(String postVideoUrl){
+        this.postVideoUrl = postVideoUrl;
+    }
+
+    public void commentId (int id){
+        this.id = id;
+
+    }
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"post"})
     @OneToMany(mappedBy = "post" , orphanRemoval = true )
@@ -86,6 +113,7 @@ public class Post {
     public void createDate(){
         this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
+
 
 
 

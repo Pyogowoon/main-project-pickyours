@@ -14,7 +14,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PostDto {
+public class
+PostDto {
 
     @NotBlank
     private String title;
