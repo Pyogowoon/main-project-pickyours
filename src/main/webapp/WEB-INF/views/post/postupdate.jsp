@@ -50,19 +50,22 @@
 
         <div class="form-group">
       <label for="content"> 배우 사진 (최대 20MB까지 가능합니다.)</label>
-      <input type="file" class="form-control" name="actorImage" id="actorImage" >
+      <input type="file" class="form-control" name="actorImage" id="actorImage" onchange="setThumbnail(event);" >
+       <div id="imageContainer"></div>
         </div>
 
 
       <div class="form-group">
       <label for="content">옷 사진 (최대 20MB까지 가능합니다.) </label>
-      <input type="file" class="form-control" name="clotheImage" id="clotheImage" >
+      <input type="file" class="form-control" name="clotheImage"  onchange="setThumbnail2(event);" id="clotheImage" >
+        <div id="clothesContainer"></div>
     </div>
 
        <div class="form-group">
   <label for="content"> 동영상 (최대 20MB까지 가능합니다.) </label>
-  <input type="file" class="form-control" name="video" id="video"  >
+  <input type="file" class="form-control" name="video" id="video"  onchange="setThumbnailVideo(event);" >
    <input type="hidden" class="form-control" >
+    <div id="videoContainer"></div>
         </div>
 
 

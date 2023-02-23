@@ -178,6 +178,9 @@ public class PostService {
 
 
 
+
+
+
         if(!actorImage.getOriginalFilename().isEmpty()){
             postEntity.leftImageUpdate(actorImageFileName);
 

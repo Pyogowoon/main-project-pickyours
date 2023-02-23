@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="/css/header/postheader.css">
     <!-- Header css End -->
 
-    <!-- post 전체 css(blog) -->
-
-    <!-- post 전체 End -->
+    <!-- postsave css -->
+ <link rel="stylesheet" href="/css/post/postsave.css">
+    <!-- postsave End -->
 
      <!-- 아이콘 css -->
      <link rel="stylesheet" href="/fonts/header/icomoon/style.css">
@@ -104,7 +104,7 @@
                   <li><a href="/user/board" class="nav-link">유저마당</a></li>
 
 
-                  <li class="has-children">
+                  <li>
                     <a href="/post" class="nav-link">게시글</a>
 
                   </li>

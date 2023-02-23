@@ -38,7 +38,7 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public String post(Model model ,  @PageableDefault(size=7, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String post(Model model ,  @PageableDefault(size=5, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
 
   model.addAttribute("post", postService.포스트로드(pageable));
 

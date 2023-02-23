@@ -29,3 +29,42 @@
 
             }
 
+  function setThumbnail(event) {
+
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          document.querySelector("div#imageContainer").appendChild(img);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+
+      function setThumbnail2(event) {
+              var reader = new FileReader();
+
+              reader.onload = function(event) {
+                var img = document.createElement("img");
+                img.setAttribute("src", event.target.result);
+                document.querySelector("div#clothesContainer").appendChild(img);
+              };
+
+              reader.readAsDataURL(event.target.files[0]);
+            }
+
+
+ function setThumbnailVideo(event) {
+              var reader = new FileReader();
+
+              reader.onload = function(event) {
+                var img = document.createElement("video");
+                img.setAttribute("src", event.target.result);
+                document.querySelector("div#videoContainer").appendChild(img);
+              };
+
+              reader.readAsDataURL(event.target.files[0]);
+            }
+
