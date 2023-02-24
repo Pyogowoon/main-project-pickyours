@@ -77,15 +77,50 @@
  <li>Linux</li>
  
  ## 3. ERD 설계 
+ <details>
+ <summary> <h3> ERD 이미지 펼치기 </h3> </summary>
  
- <br/>
- <br/>
+ <img src="./src/main/resources/static/images/ERD.png">
+ 
+ </details>
  
  ## 4. 주요 기능
  
  이 서비스의 주요 기능은 블로그 + 소셜 서비스 입니다.
- 사용자는 원하는 정보를 블로그 시스템을 통해 간편히 찾을 수 있고, 소셜 서비스를 통하여 
+ 사용자는 원하는 정보를 블로그 시스템을 통해 간편히 찾을 수 있고, 소셜 서비스를 통하여 상호간의 소통으로
+ 원하는 정보를 찾을 수 있습니다.
+ 
+
+
+<details>
+ <summary> <H2>블로그 포스팅 </h2></summary> 
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 접은 제목
+접은 내용
+</details>
+
+<details>
+ <summary> <h2> 소셜 서비스 </h2> </summary>
+ 
+ 
+ 내용
+ </details>
   
+  
+ 
+ ## 5. Refactoring
+ 
+ <br/>
+ 
+
+ ## 6. Troubleshooting
+ <br/>
+ 
+ ## 7. 향후 개선 방안
+ 
+  DB 테이블 설계에서 FK 사용이 너무 잦음 - > JOIN 키로 바꿀 수 있도록
+  DTO의 Response , Request 분리 필요
   
   
  
