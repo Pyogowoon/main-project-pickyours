@@ -32,7 +32,6 @@ public class UserController {
 
     private final SubscribeRepository subscribeRepository;
 
-    private final ImageService imageService;
 
     @GetMapping("user/board")
     public String board(@AuthenticationPrincipal PrincipalDetails principalDetails, @PageableDefault(size = 3) Pageable pageable, Model model) {

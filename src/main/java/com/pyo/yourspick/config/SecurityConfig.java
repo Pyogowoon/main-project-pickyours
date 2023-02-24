@@ -26,14 +26,14 @@ public class SecurityConfig {
 
     private final AuthenticationFailureHandler customLoginValidationException;
 
-
+    /* 스프링 시큐리티 설정 */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/", "/board", "/auth/**", "/images/**", "/js/**", "/webjars/**", "/css/**", "/vendor/**"
-                        , "/fonts/**", "/plugins/**", "/scss/**", "/post","/post/search/**", "/upload/**")
+                        , "/fonts/**", "/plugins/**", "/scss/**", "/post", "/post/search/**", "/upload/**")
                 .permitAll()
                 .antMatchers("/post/postsave").hasAuthority("ADMIN")
                 .antMatchers("/post/postupdate").hasAuthority("ADMIN")
@@ -56,20 +56,17 @@ public class SecurityConfig {
 
         return http.build();
     }
+    /*        */
 
 
-
-
-
-
-
-
+    /* 복호화 */
     @Bean
     public BCryptPasswordEncoder encodePWD() {
         return new BCryptPasswordEncoder();
 
 
     }
+    /* */
 }
 
 

@@ -47,7 +47,7 @@ public class AuthController {
 
     @PostMapping("/auth/join")
     public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             model.addAttribute("valid", joinDto);
             return "auth/join";
         }

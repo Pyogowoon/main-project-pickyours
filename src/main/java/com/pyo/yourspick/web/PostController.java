@@ -27,33 +27,32 @@ public class PostController {
     private final PostService postService;
 
 
-
     @GetMapping("/post/postview/{id}")
     public String postview(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("post", postService.포스트상세보기(id));
         model.addAttribute("postComment", postService.댓글불러오기(id));
-        model.addAttribute("postLikes", postService.좋아요목록(principalDetails.getUser().getId(),id));
+        model.addAttribute("postLikes", postService.좋아요목록(principalDetails.getUser().getId(), id));
 
         return "post/postview";
     }
 
     @GetMapping("/post")
-    public String post(Model model ,  @PageableDefault(size=5, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String post(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-  model.addAttribute("post", postService.포스트로드(pageable));
+        model.addAttribute("post", postService.포스트로드(pageable));
 
         return "post/post";
     }
 
     @GetMapping("/post/postsave")
-    public String postsave(){
+    public String postsave() {
 
         return "post/postsave";
     }
 
 
     @GetMapping("/post/postupdate/{postId}")
-    public String postUpdate(@PathVariable int postId, Model model){
+    public String postUpdate(@PathVariable int postId, Model model) {
         model.addAttribute("post", postService.포스트상세보기(postId));
 
         return "post/postupdate";
@@ -61,12 +60,12 @@ public class PostController {
 
 
     @GetMapping("/post/search/title")
-    public String postSearch(String keyword, Model model, @PageableDefault(size=7, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
+    public String postSearch(String keyword, Model model, @PageableDefault(size = 7, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-        Page<Post> postSearch = postService.게시글검색(keyword,pageable);
+        Page<Post> postSearch = postService.게시글검색(keyword, pageable);
 
-        model.addAttribute("postSearch" , postSearch);
-        model.addAttribute("keyword" , keyword);
+        model.addAttribute("postSearch", postSearch);
+        model.addAttribute("keyword", keyword);
         return "/post/postsearch";
     }
 

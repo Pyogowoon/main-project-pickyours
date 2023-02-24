@@ -27,24 +27,23 @@ public class PostCommentApicontroller {
     private final PostCommentService postCommentService;
 
 
-
     @PostMapping("/api/post/comment/{postId}")
     public ResponseEntity<?> postComment(@Valid @RequestBody PostCommentDto postCommentDto, BindingResult bindingResult,
                                          @AuthenticationPrincipal PrincipalDetails principalDetails
-    ,@PathVariable int postId){
+            , @PathVariable int postId) {
 
 
+        PostComment postComment = postCommentService.댓글달기(principalDetails.getUser().getId(), postCommentDto.getContent(), postId);
 
-        PostComment postComment = postCommentService.댓글달기(principalDetails.getUser().getId(),postCommentDto.getContent(),postId);
-
-        return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기 성공",postComment), HttpStatus.OK);
+        return new ResponseEntity<>(new CMRespDto<>(1, "댓글쓰기 성공", postComment), HttpStatus.OK);
 
     }
+
     @DeleteMapping("/api/post/comment/{commentId}")
-    public ResponseEntity<?> postCommentDelete(@PathVariable int commentId){
+    public ResponseEntity<?> postCommentDelete(@PathVariable int commentId) {
 
         postCommentService.댓글삭제(commentId);
 
-        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 삭제 성공",null),HttpStatus.OK);
+        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 삭제 성공", null), HttpStatus.OK);
     }
 }

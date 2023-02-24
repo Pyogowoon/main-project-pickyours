@@ -37,11 +37,11 @@ public class PostApiController {
     ) {
         if (postDto.getClotheImage().isEmpty() || postDto.getActorImage().isEmpty() || postDto.getVideo().isEmpty()) {
             throw new CustomException("모든 항목을 입력해야 저장 가능합니다.");
-        }else {
+        } else {
 
             MultipartFile clotheImage = postDto.getClotheImage();
             MultipartFile actorImage = postDto.getActorImage();
-            MultipartFile video = postDto. getVideo();
+            MultipartFile video = postDto.getVideo();
 
             postService.게시글저장(postDto, principalDetails, clotheImage, actorImage, video);
 

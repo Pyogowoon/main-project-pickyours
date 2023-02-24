@@ -30,17 +30,17 @@ public class ImageService {
 
 
     @Transactional(readOnly = true)
-    public void 이미지업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails){
+    public void 이미지업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
         UUID uuid = UUID.randomUUID();
-        String imageFileName = uuid+"_"+imageUploadDto.getFile().getOriginalFilename();
+        String imageFileName = uuid + "_" + imageUploadDto.getFile().getOriginalFilename();
 
-        Path imageFilePath = Paths.get(uploadFolder+imageFileName);
+        Path imageFilePath = Paths.get(uploadFolder + imageFileName);
 
 
-        try{
+        try {
             Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -50,28 +50,28 @@ public class ImageService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Image> 이미지스토리(int principalId , Pageable pageable){
+    public Page<Image> 이미지스토리(int principalId, Pageable pageable) {
 
         Page<Image> images = imageRepository.mStory(principalId, pageable);
 
-            images.forEach((image) ->{
+        images.forEach((image) -> {
 
-                image.setLikeCount(image.getLikes().size());
+            image.setLikeCount(image.getLikes().size());
 
-                image.getLikes().forEach((like) ->{
-                    if(like.getUser().getId() == principalId){
-                        image.setLikeState(true);
-                    }
-
-                });
+            image.getLikes().forEach((like) -> {
+                if (like.getUser().getId() == principalId) {
+                    image.setLikeState(true);
+                }
 
             });
 
-            return images;
+        });
+
+        return images;
     }
 
     @Transactional(readOnly = true)
-    public List<Image> 인기사진(){
+    public List<Image> 인기사진() {
 
         return imageRepository.mPopular();
 
@@ -79,7 +79,7 @@ public class ImageService {
     }
 
     @Transactional
-    public void 게시글삭제(int imageId){
+    public void 게시글삭제(int imageId) {
         imageRepository.deleteById(imageId);
 
 

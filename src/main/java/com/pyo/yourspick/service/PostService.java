@@ -84,29 +84,29 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public Post 포스트상세보기(int postId){
+    public Post 포스트상세보기(int postId) {
 
-        Post postEntity = postRepository.findById(postId).orElseThrow(()->{
+        Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
             throw new CustomException("게시글을 찾을 수 없습니다");
         });
 
-            return postEntity;
+        return postEntity;
     }
 
     @Transactional(readOnly = true)
-    public List<PostComment> 댓글불러오기(int postId){
+    public List<PostComment> 댓글불러오기(int postId) {
 
-      List<PostComment> comment = postCommentRepository.findByPostId(postId);
+        List<PostComment> comment = postCommentRepository.findByPostId(postId);
 
 
-            return comment;
+        return comment;
     }
 
 
     @Transactional(readOnly = true)
-    public PostLikes 좋아요목록(int userId,int postId){
+    public PostLikes 좋아요목록(int userId, int postId) {
 
-      PostLikes postLikes =  postLikesRepository.findByUserIdAndPostId(userId,postId);
+        PostLikes postLikes = postLikesRepository.findByUserIdAndPostId(userId, postId);
 
 
         return postLikes;
@@ -114,38 +114,34 @@ public class PostService {
 
 
     @Transactional
-    public void 좋아요하기(int postId , int userId){
+    public void 좋아요하기(int postId, int userId) {
 
 
-    int postLikes = postLikesRepository.mLikes(postId , userId);
+        int postLikes = postLikesRepository.mLikes(postId, userId);
 
 
     }
 
     @Transactional
-    public void 좋아요취소하기(int postId, int userId){
+    public void 좋아요취소하기(int postId, int userId) {
 
-          postLikesRepository.mUnLikes(userId,postId);
+        postLikesRepository.mUnLikes(userId, postId);
 
     }
 
     @Transactional
     public Post 게시글수정(PostUpdateDto postUpdateDto, MultipartFile actorImage,
-                      MultipartFile clotheImage, MultipartFile video, PrincipalDetails principalDetails, int postId ) {
+                      MultipartFile clotheImage, MultipartFile video, PrincipalDetails principalDetails, int postId) {
 
-         Post postEntity= postRepository.findById(postId).orElseThrow(()->{
-             throw new CustomApiException("아이디 찾기 불가");
-         });
-
-
+        Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
+            throw new CustomApiException("아이디 찾기 불가");
+        });
 
 
         UUID uuid = UUID.randomUUID();
         String actorImageFileName = uuid + "_" + actorImage.getOriginalFilename();
         String clotheImageFileName = uuid + "_" + clotheImage.getOriginalFilename();
         String videoFileName = uuid + "_" + video.getOriginalFilename();
-
-
 
 
         Path actorImageFilePath = Paths.get(uploadFolder + actorImageFileName);
@@ -176,44 +172,38 @@ public class PostService {
         );
 
 
-
-
-
-
-
-        if(!actorImage.getOriginalFilename().isEmpty()){
+        if (!actorImage.getOriginalFilename().isEmpty()) {
             postEntity.leftImageUpdate(actorImageFileName);
 
         }
 
-        if(!clotheImage.getOriginalFilename().isEmpty()){
+        if (!clotheImage.getOriginalFilename().isEmpty()) {
             postEntity.rightImageUpdate(clotheImageFileName);
 
         }
-        if(!video.getOriginalFilename().isEmpty()){
+        if (!video.getOriginalFilename().isEmpty()) {
             postEntity.videoUpdate(videoFileName);
 
         }
         return postEntity;
 
 
-
     }
 
     @Transactional
-    public void 게시글삭제(int postId){
+    public void 게시글삭제(int postId) {
 
         postRepository.deleteById(postId);
 
     }
 
     @Transactional(readOnly = true)
-    public Page<Post> 게시글검색(String keyword,Pageable pageable){
+    public Page<Post> 게시글검색(String keyword, Pageable pageable) {
 
-       Page<Post> postSearch =  postRepository.findByTitleContaining(keyword,pageable);
+        Page<Post> postSearch = postRepository.findByTitleContaining(keyword, pageable);
 
 
-       return postSearch;
+        return postSearch;
     }
 
 

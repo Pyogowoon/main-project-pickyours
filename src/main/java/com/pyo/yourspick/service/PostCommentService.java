@@ -21,13 +21,13 @@ public class PostCommentService {
     private final PostCommentRepository postCommentRepository;
     private final UserRepository userRepository;
 
-    public PostComment 댓글달기(int userId,String content,int postId){
+    public PostComment 댓글달기(int userId, String content, int postId) {
 
-       User userEntity = userRepository.findById(userId).orElseThrow(()->{
-           throw new CustomApiException("아이디를 찾을 수 없습니다");
-       });
-       Post post = new Post();
-       post.setId(postId);
+        User userEntity = userRepository.findById(userId).orElseThrow(() -> {
+            throw new CustomApiException("아이디를 찾을 수 없습니다");
+        });
+        Post post = new Post();
+        post.setId(postId);
 
 
         PostComment postComment = new PostComment();
@@ -37,24 +37,23 @@ public class PostCommentService {
         postComment.setCommentUser(userEntity.getUsername());
 
 
-        if(postComment.getContent().isBlank()) {
+        if (postComment.getContent().isBlank()) {
 
-            throw new CustomValidationException("내용을 입력해주세요." , null);
-        }else {
+            throw new CustomValidationException("내용을 입력해주세요.", null);
+        } else {
             return postCommentRepository.save(postComment);
         }
 
 
     }
 
-        public void 댓글삭제(int commentId){
+    public void 댓글삭제(int commentId) {
 
 
-                postCommentRepository.deleteById(commentId);
+        postCommentRepository.deleteById(commentId);
 
 
-        }
-
+    }
 
 
 }

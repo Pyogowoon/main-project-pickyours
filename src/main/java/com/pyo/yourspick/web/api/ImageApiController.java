@@ -27,33 +27,32 @@ public class ImageApiController {
 
     @GetMapping("/api/image")
     public ResponseEntity<?> imageStory(@AuthenticationPrincipal PrincipalDetails principalDetails,
-       @PageableDefault(size=3) Pageable pageable){
-       Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(),pageable);
+                                        @PageableDefault(size = 3) Pageable pageable) {
+        Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(), pageable);
 
-        return new ResponseEntity<>( new CMRespDto<>(1,"리스트 로딩 완료",images),HttpStatus.OK);
+        return new ResponseEntity<>(new CMRespDto<>(1, "리스트 로딩 완료", images), HttpStatus.OK);
     }
 
     @PostMapping("/api/image/{imageId}/likes")
-    public ResponseEntity<?> likes(@PathVariable int imageId , @AuthenticationPrincipal PrincipalDetails principalDetails){
-          likesService.좋아요(imageId , principalDetails.getUser().getId());
-        return new ResponseEntity<>(new CMRespDto<>(1,"좋아요 성공",null), HttpStatus.OK);
+    public ResponseEntity<?> likes(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        likesService.좋아요(imageId, principalDetails.getUser().getId());
+        return new ResponseEntity<>(new CMRespDto<>(1, "좋아요 성공", null), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/image/{imageId}/likes")
-    public ResponseEntity<?> unLikes(@PathVariable int imageId , @AuthenticationPrincipal PrincipalDetails principalDetails){
-        likesService.좋아요취소(imageId , principalDetails.getUser().getId());
-        return new ResponseEntity<>(new CMRespDto<>(1,"좋아요 취소성공",null), HttpStatus.OK);
+    public ResponseEntity<?> unLikes(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        likesService.좋아요취소(imageId, principalDetails.getUser().getId());
+        return new ResponseEntity<>(new CMRespDto<>(1, "좋아요 취소성공", null), HttpStatus.OK);
     }
 
 
-
     @DeleteMapping("/api/user/board/{imageId}")
-    public ResponseEntity<?> storyContentDelete(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+    public ResponseEntity<?> storyContentDelete(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
         imageService.게시글삭제(imageId);
 
 
-        return new ResponseEntity<>(new CMRespDto<>(1,"삭제 성공" , null), HttpStatus.OK);
+        return new ResponseEntity<>(new CMRespDto<>(1, "삭제 성공", null), HttpStatus.OK);
     }
 
 

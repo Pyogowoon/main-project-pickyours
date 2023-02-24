@@ -24,12 +24,11 @@ public class SubscribeService {
 
     @Transactional
     public void 구독하기(int fromUserId, int toUserId) {
-        try{
+        try {
             subscribeRepository.mSubscribe(fromUserId, toUserId);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new CustomApiException("이미 구독한 상태입니다.");
         }
-
 
 
     }
@@ -41,7 +40,7 @@ public class SubscribeService {
     }
 
     @Transactional(readOnly = true)
-    public List<SubscribeDto> 구독리스트(int principalId , int pageUserId){
+    public List<SubscribeDto> 구독리스트(int principalId, int pageUserId) {
 
         StringBuffer sb = new StringBuffer();
         sb.append("SELECT u.id, u.username, u.profileImageUrl, ");

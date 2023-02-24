@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.UUID;
 
 
-
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -40,15 +39,15 @@ public class UserService {
     private String uploadFolder;
 
 
-
     @Transactional
     public User 회원수정(int id, User user) {
-        User userEntity = userRepository.findById(id).orElseThrow(()->
-        {return new CustomValidationApiException("찾을 수 없는 아이디 입니다.");});
+        User userEntity = userRepository.findById(id).orElseThrow(() ->
+        {
+            return new CustomValidationApiException("찾을 수 없는 아이디 입니다.");
+        });
 
 
-
-        if(user.getPassword().equals("")){
+        if (user.getPassword().equals("")) {
 
             userEntity.setName(user.getName());
             userEntity.setWebsite(user.getWebsite());
@@ -57,7 +56,7 @@ public class UserService {
             userEntity.setGender(user.getGender());
 
             return userEntity;
-        }else{
+        } else {
 
             userEntity.setName(user.getName());
 
@@ -79,11 +78,11 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public UserProfileDto 회원프로필(int pageUserId, int principalId){
+    public UserProfileDto 회원프로필(int pageUserId, int principalId) {
 
         UserProfileDto dto = new UserProfileDto();
 
-        User userEntity = userRepository.findById(pageUserId).orElseThrow(() ->{
+        User userEntity = userRepository.findById(pageUserId).orElseThrow(() -> {
             throw new CustomException("해당 유저 프로필 페이지는 찾을 수 없습니다.");
         });
 
@@ -91,34 +90,35 @@ public class UserService {
         dto.setPageOwnerState(pageUserId == principalId);
         dto.setImageCount(userEntity.getImages().size());
 
-         int subscribeState = subscribeRepository.mSubscribeState(principalId,pageUserId);
-         int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
+        int subscribeState = subscribeRepository.mSubscribeState(principalId, pageUserId);
+        int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
 
-        dto.setSubscribeState(subscribeState==1);
+        dto.setSubscribeState(subscribeState == 1);
         dto.setSubscribeCount(subscribeCount);
 
-        userEntity.getImages().forEach((image)->{
+        userEntity.getImages().forEach((image) -> {
             image.setLikeCount(image.getLikes().size());
         });
 
         return dto;
 
     }
+
     @Transactional
-    public User 회원프로필사진변경(int principalId , MultipartFile profileImageFile){
+    public User 회원프로필사진변경(int principalId, MultipartFile profileImageFile) {
         UUID uuid = UUID.randomUUID();
-        String imageFileName = uuid+"_"+profileImageFile.getOriginalFilename();
+        String imageFileName = uuid + "_" + profileImageFile.getOriginalFilename();
 
-        Path imageFilePath = Paths.get(uploadFolder+imageFileName);
+        Path imageFilePath = Paths.get(uploadFolder + imageFileName);
 
 
-        try{
+        try {
             Files.write(imageFilePath, profileImageFile.getBytes());
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        User userEntity = userRepository.findById(principalId).orElseThrow(()->{
+        User userEntity = userRepository.findById(principalId).orElseThrow(() -> {
             throw new CustomApiException("유저를 찾을 수 없습니다.");
         });
 
@@ -126,10 +126,11 @@ public class UserService {
         userEntity.setProfileImageUrl(imageFileName);
         return userEntity;
     }
-    public List<UserInfoMapping> 유저이름사진정보찾기(){
 
-       List<UserInfoMapping> user = userRepository.mFindUser();
-       return user;
+    public List<UserInfoMapping> 유저이름사진정보찾기() {
+
+        List<UserInfoMapping> user = userRepository.mFindUser();
+        return user;
     }
 }
 

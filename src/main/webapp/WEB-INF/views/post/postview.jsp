@@ -263,7 +263,7 @@
 
             <c:choose>
             <c:when test="${principal.user.username ==  list.commentUser}">
-             <span class="delete" onclick="deleteButton(${list.id})" style="cursor:pointer; cursor:hand;"> X</span>
+             <span class="delete" onclick="postCommentDelete(${list.id})" style="cursor:pointer; cursor:hand;"> X</span>
             </c:when>
             <c:otherwise>
          <span class="delete"> </span>
@@ -403,7 +403,7 @@
 
     <script src="/js/post/postview.js"></script>
 
-    <!-- <script src="/js/custom.js"></script> -->
+     <-- main js -->
 
 
 </body>

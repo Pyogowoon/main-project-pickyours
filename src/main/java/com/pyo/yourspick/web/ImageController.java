@@ -31,7 +31,6 @@ public class ImageController {
     }
 
 
-
     @GetMapping("/image/upload")
     public String upload() {
         return "image/upload";
@@ -49,14 +48,14 @@ public class ImageController {
 
 
     @PostMapping("/image")
-    public String imageUpload(ImageUploadDto imageUploadDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
+    public String imageUpload(ImageUploadDto imageUploadDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 
-        if(imageUploadDto.getFile().isEmpty()){
-            throw new CustomValidationException("이미지가 첨부되지 않았습니다.", null );
-        }else{
-            imageService.이미지업로드(imageUploadDto , principalDetails);
-            return "redirect:/user/"+principalDetails.getUser().getId();
+        if (imageUploadDto.getFile().isEmpty()) {
+            throw new CustomValidationException("이미지가 첨부되지 않았습니다.", null);
+        } else {
+            imageService.이미지업로드(imageUploadDto, principalDetails);
+            return "redirect:/user/" + principalDetails.getUser().getId();
         }
     }
 

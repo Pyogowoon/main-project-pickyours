@@ -21,12 +21,12 @@ public class CommentService {
 
 
     @Transactional
-    public Comment 댓글쓰기(int imageId, String content, int userId){
+    public Comment 댓글쓰기(int imageId, String content, int userId) {
 
         Image image = new Image();
         image.setId(imageId);
 
-        User userEntity = userRepository.findById(userId).orElseThrow(() ->{
+        User userEntity = userRepository.findById(userId).orElseThrow(() -> {
             throw new CustomApiException("아이디를 찾을 수 없습니다.");
         });
 
@@ -36,12 +36,12 @@ public class CommentService {
         comment.setImage(image);
         comment.setUser(userEntity);
 
-      return  commentRepository.save(comment);
+        return commentRepository.save(comment);
     }
 
     @Transactional
-    public void 댓글삭제(int userId){
+    public void 댓글삭제(int userId) {
 
-    commentRepository.deleteById(userId);
+        commentRepository.deleteById(userId);
     }
 }
