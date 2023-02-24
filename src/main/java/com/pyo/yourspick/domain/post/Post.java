@@ -24,10 +24,12 @@ public class Post {
     @Id
     private int id;
 
+
     @NotNull
     @Column(length = 100)
     private String title;
 
+    @Lob
     @NotNull
     @Column(length = 1000)
     private String content;
