@@ -4,6 +4,7 @@ import com.pyo.yourspick.config.auth.PrincipalDetails;
 import com.pyo.yourspick.domain.image.Image;
 import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
 import com.pyo.yourspick.domain.user.User;
+import com.pyo.yourspick.domain.user.UserInfoMapping;
 import com.pyo.yourspick.service.ImageService;
 import com.pyo.yourspick.service.SubscribeService;
 import com.pyo.yourspick.service.UserService;
@@ -18,43 +19,46 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Collections;
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
-public class UserController{
+public class UserController {
 
-   private final UserService userService;
+    private final UserService userService;
 
-   private final SubscribeService subscribeService;
+    private final SubscribeService subscribeService;
 
-   private final SubscribeRepository subscribeRepository;
+    private final SubscribeRepository subscribeRepository;
 
-   private final ImageService imageService;
+    private final ImageService imageService;
 
     @GetMapping("user/board")
-    public String board(@AuthenticationPrincipal PrincipalDetails principalDetails , @PageableDefault(size=3) Pageable pageable,Model model){
+    public String board(@AuthenticationPrincipal PrincipalDetails principalDetails, @PageableDefault(size = 3) Pageable pageable, Model model) {
         int userId = principalDetails.getUser().getId();
 
-        int subscribeState = subscribeRepository.mSubscribeState(userId,1);
-        if(subscribeState != 1){
+        int subscribeState = subscribeRepository.mSubscribeState(userId, 1);
+        if (subscribeState != 1) {
 
-            if(userId==1) {
+            if (userId == 1) {
 
                 subscribeService.구독하기(userId, userId);
-            }else{
-            subscribeService.구독하기(userId, 1);
-            subscribeService.구독하기(userId, userId);
+            } else {
+                subscribeService.구독하기(userId, 1);
+                subscribeService.구독하기(userId, userId);
             }
         }
-
-
-      model.addAttribute("user",userService.유저이름사진정보찾기());
+        List<UserInfoMapping> userFind = userService.유저이름사진정보찾기();
+        Collections.shuffle(userFind);
+        model.addAttribute("user", userFind);
 
         return "user/board";
     }
 
     @GetMapping("user/{pageUserId}")
-    public String profile(@PathVariable int pageUserId, Model model,@AuthenticationPrincipal PrincipalDetails principalDetails){
-        UserProfileDto dto = userService.회원프로필(pageUserId,principalDetails.getUser().getId());
+    public String profile(@PathVariable int pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        UserProfileDto dto = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
 
         model.addAttribute("dto", dto);
 
@@ -63,7 +67,7 @@ public class UserController{
     }
 
     @GetMapping("user/{id}/update")
-    public String update(@PathVariable int id , @AuthenticationPrincipal PrincipalDetails principalDetails){
+    public String update(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 
         return "user/update";
