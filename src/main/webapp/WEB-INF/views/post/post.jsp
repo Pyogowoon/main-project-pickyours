@@ -111,12 +111,12 @@
                                  </a>
 
                                 <!-- card body -->
-                                <div class="card-body">
-                                    <div class="small text-muted">${post.createDate}</div>
-                                    <h2 class="card-title h4" id="hangle">${post.title}</h2>
-                                    <h4 class="card-text" id="hangle"> ${post.content} </h4>
-                                    <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
-                                </div>
+                               <div class="card-body">
+                                   <div class="small text-muted"> ${post.createDate} </div>
+                                   <h2 class="card-title" id="hangle"> ${post.title} </h2>
+                                   <h4 class="card-text" id="hangle">  ${post.content}</h4>
+                                   <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
+                               </div>
                                  <!-- card body -->
 
                             </div>
