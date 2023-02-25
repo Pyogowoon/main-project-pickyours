@@ -43,7 +43,7 @@ public class UserService {
     public User 회원수정(int id, User user) {
         User userEntity = userRepository.findById(id).orElseThrow(() ->
         {
-            return new CustomValidationApiException("찾을 수 없는 아이디 입니다.");
+            throw new CustomValidationApiException("찾을 수 없는 아이디 입니다.");
         });
 
 

@@ -16,8 +16,8 @@ import java.util.Map;
 @Component
 @Aspect
 public class ValidationAdvice {
-
-    @Around("execution(* com.pyo.yourspick.web.api.*Controller.*(..))")
+   // @Around("execution(* com.pyo.yourspick.web.api.*Controller.*(..))")
+    @Around("execution(* com.pyo.yourspick.web.api.CommentApiController.*(..))")
     public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
         Object[] args = proceedingJoinPoint.getArgs();
@@ -31,35 +31,33 @@ public class ValidationAdvice {
                     for (FieldError error : bindingResult.getFieldErrors()) {
                         errorMap.put(error.getField(), error.getDefaultMessage());
                     }
-                    throw new CustomValidationApiException("유효성 검사 실패" , errorMap);
+                    throw new CustomValidationApiException("내용 입력해라" , errorMap);
                 }
             }
         }
         return proceedingJoinPoint.proceed();
     }
 
-//    @Around("execution(* com.pyo.yourspick.web.*Controller.*(..))")
-//    public Object advice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-//
-//        Object[] args = proceedingJoinPoint.getArgs();
-//        for (Object arg : args) {
-//            if (arg instanceof BindingResult) {
-//
-//                BindingResult bindingResult = (BindingResult) arg;
-//                if (bindingResult.hasErrors()) {
-//
-//                    Map<String, String> errorMap = new HashMap<>();
-//
-//
-//                    for (FieldError error : bindingResult.getFieldErrors()) {
-//                        errorMap.put(error.getField(), error.getDefaultMessage());
-//
-//                    }
-//
-//                   throw new CustomValidationException("유효성 검사 실패" , errorMap);
-//                }
-//            }
-//        }
-//        return proceedingJoinPoint.proceed();
-//    }
+    @Around("execution(* com.pyo.yourspick.web.api.UserApiController.*(..))")
+    public Object apiUpdateAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+
+        Object[] args = proceedingJoinPoint.getArgs();
+        for (Object arg : args) {
+            if (arg instanceof BindingResult) {
+
+                BindingResult bindingResult = (BindingResult) arg;
+                if (bindingResult.hasErrors()) {
+                    Map<String, String> errorMap = new HashMap<>();
+
+                    for (FieldError error : bindingResult.getFieldErrors()) {
+                        errorMap.put(error.getField(), error.getDefaultMessage());
+                    }
+                    throw new CustomValidationApiException("이름 , 유저네임, 이메일은 바뀔수없습니다." , errorMap);
+                }
+            }
+        }
+        return proceedingJoinPoint.proceed();
+    }
+
+
 }

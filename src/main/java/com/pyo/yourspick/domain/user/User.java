@@ -24,7 +24,7 @@ public class User {
     private int id;
 
 
-    @Column(unique = true , length = 100)
+    @Column(unique = true , length = 100, nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -35,6 +35,7 @@ public class User {
 
     private String website;
 
+    @Column(nullable = false)
     private String name;
 
     private String bio;

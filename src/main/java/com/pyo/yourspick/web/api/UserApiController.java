@@ -33,6 +33,17 @@ public class UserApiController {
     private final SubscribeService subscribeSerivce;
 
 
+
+    @GetMapping("/api/user/{pageUserId}/subscribe")
+    public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        List<SubscribeDto> subscribeDto = subscribeSerivce.구독리스트(principalDetails.getUser().getId(), pageUserId);
+
+        return new ResponseEntity<>(new CMRespDto<>(1, "구독 정보 리스트 가져오기 성공", subscribeDto), HttpStatus.OK);
+    }
+
+
+
     @PutMapping("/api/user/{id}")
     public CMRespDto<?> update(@Valid UserUpdateDto userUpdateDto
             , BindingResult bindingResult
@@ -45,13 +56,7 @@ public class UserApiController {
 
     }
 
-    @GetMapping("/api/user/{pageUserId}/subscribe")
-    public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
-        List<SubscribeDto> subscribeDto = subscribeSerivce.구독리스트(principalDetails.getUser().getId(), pageUserId);
-
-        return new ResponseEntity<>(new CMRespDto<>(1, "구독 정보 리스트 가져오기 성공", subscribeDto), HttpStatus.OK);
-    }
 
 
     @PutMapping("/api/user/{principalId}/profileImageUrl")

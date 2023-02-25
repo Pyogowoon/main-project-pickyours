@@ -45,15 +45,13 @@ public class PostApiController {
 
             postService.게시글저장(postDto, principalDetails, clotheImage, actorImage, video);
 
-            return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 실패", null), HttpStatus.OK);
+            return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 성공", null), HttpStatus.OK);
 
         }
     }
 
     @PostMapping("/api/post/likes/{postId}")
     public ResponseEntity<?> postLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        System.out.println("컨트롤러 도달");
-        System.out.println(postId);
         postService.좋아요하기(postId, principalDetails.getUser().getId());
 
         return new ResponseEntity<>(new CMRespDto<>(1, "좋아요 성공", null), HttpStatus.OK);

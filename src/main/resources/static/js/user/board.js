@@ -5,6 +5,7 @@
 	(3) 좋아요, 안좋아요
 	(4) 댓글쓰기
 	(5) 댓글삭제
+	(6) 콘텐츠 삭제
  */
 // (0) 현재 로그인한 사용자 아이디
 let principalId = $("#principalId").val();
@@ -60,7 +61,7 @@ function getStoryItem(image) {
     if (principalId == image.user.id || principalRole == "ADMIN" || principalRole == "SUPERADMIN") {
         item += `
 
-					     <button type="button" class onclick="contentsDelete(${image.id},principalId)" style="border:none;outline:none;background:white;margin-right:20px;">   <i class="fas fa-times"></i></button>
+					     <button type="button" class onclick="contentsDelete(${image.id},principalId)" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;">   <i class="fas fa-times"></i></button>
 					     `;
     }
     item += `
@@ -276,10 +277,10 @@ function deleteComment(userId) {
         return false;
     }
 }
-
+// (6) 콘텐츠 삭제
 function contentsDelete(imageId, principalId) {
 
-    confirm("정말 삭제하시겠습니까?")
+   if (confirm('정말 삭제하시겠습니까?')) {
 
     $.ajax({
 
@@ -297,5 +298,9 @@ function contentsDelete(imageId, principalId) {
     }).fail(error => {
         alert("삭제에 실패하였습니다. 관리자에게 문의하세요.")
     })
+
+    }else{
+    return false;
+    }
 
 }
