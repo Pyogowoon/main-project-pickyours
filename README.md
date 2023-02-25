@@ -84,7 +84,13 @@
  
  </details>
  
- ## 4. 주요 기능
+ ## 4. API 설계
+ <details>
+ <summary> <h3> API 설계 펼치기 </h3> </summary>
+ 
+ </details>
+ 
+ ## 5. 주요 기능
  
  이 서비스의 주요 기능은 블로그 + 소셜 서비스 입니다.
  사용자는 원하는 정보를 블로그 시스템을 통해 간편히 찾을 수 있고, 소셜 서비스를 통하여 상호간의 소통으로
@@ -109,18 +115,18 @@
   
   
  
- ## 5. Refactoring
+ ## 6. Refactoring
  
  <br/>
  
 
- ## 6. Troubleshooting
+ ## 7. Troubleshooting
  <br/>
  
- ## 7. 향후 개선 방안
+ ## 8. 향후 개선 방안
  
   DB 테이블 설계에서 FK 사용이 너무 잦음 - > JOIN 키로 바꿀 수 있도록
-  DTO의 Response , Request 분리 필요
+  DTO의 Response , Request 분리 필요 -> dto 정적팩토리 메소드를 쓸건지 Entity에 메서드를 만들것인지?
   
   
  
