@@ -33,17 +33,19 @@ public class PostApiController {
 
 
     @PostMapping("/api/post/postsave")
-    public ResponseEntity<?> postSave(@Valid PostDto postDto, @AuthenticationPrincipal PrincipalDetails principalDetails
+    public ResponseEntity<?> postSave(@Valid PostDto postDto, BindingResult bindingResult , @AuthenticationPrincipal PrincipalDetails principalDetails
     ) {
+
         if (postDto.getClotheImage().isEmpty() || postDto.getActorImage().isEmpty() || postDto.getVideo().isEmpty()) {
-            throw new CustomException("모든 항목을 입력해야 저장 가능합니다.");
+            return new ResponseEntity<>(new CMRespDto<>(-1, " 게시글 저장 실패", null), HttpStatus.BAD_REQUEST);
+
         } else {
 
             MultipartFile clotheImage = postDto.getClotheImage();
             MultipartFile actorImage = postDto.getActorImage();
             MultipartFile video = postDto.getVideo();
 
-            postService.게시글저장(postDto, principalDetails, clotheImage, actorImage, video);
+           Post postEntity = postService.게시글저장(postDto, principalDetails, clotheImage, actorImage, video);
 
             return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 성공", null), HttpStatus.OK);
 

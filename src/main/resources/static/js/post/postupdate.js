@@ -48,6 +48,7 @@ function setThumbnail(event) {
     reader.onload = function(event) {
         var img = document.createElement("img");
         img.setAttribute("src", event.target.result);
+         $('#imageContainer').empty();
         document.querySelector("div#imageContainer").appendChild(img);
     };
 
@@ -61,6 +62,7 @@ function setThumbnail2(event) {
     reader.onload = function(event) {
         var img = document.createElement("img");
         img.setAttribute("src", event.target.result);
+        $('#clothesContainer').empty();
         document.querySelector("div#clothesContainer").appendChild(img);
     };
 
@@ -74,6 +76,7 @@ function setThumbnailVideo(event) {
     reader.onload = function(event) {
         var img = document.createElement("video");
         img.setAttribute("src", event.target.result);
+           $('#videoContainer').empty();
         document.querySelector("div#videoContainer").appendChild(img);
     };
 

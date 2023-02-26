@@ -49,7 +49,7 @@ public class PostService {
 
 
     @Transactional
-    public void 게시글저장(PostDto postDto, PrincipalDetails principalDetails
+    public Post 게시글저장(PostDto postDto, PrincipalDetails principalDetails
             , MultipartFile clotheImage, MultipartFile actorImage, MultipartFile video) {
 
 
@@ -74,7 +74,7 @@ public class PostService {
         User user = principalDetails.getUser();
         Post post = postDto.toEntity(user, actorImageFileName, clotheImageFileName, videoFileName);
 
-        postRepository.save(post);
+       return postRepository.save(post);
 
     }
 

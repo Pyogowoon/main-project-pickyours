@@ -2,11 +2,12 @@
      유저마당 프로필
   (1) 유저 프로파일 페이지 구독하기, 구독취소
   (2) 구독자 정보 모달 보기
-  (3) 유저 프로필 사진 변경
-  (4) 사용자 정보 메뉴 열기 닫기
-  (5) 사용자 정보(회원정보, 로그아웃, 닫기) 모달
-  (6) 사용자 프로파일 이미지 메뉴(사진업로드, 취소) 모달
-  (7) 구독자 정보 모달 닫기
+  (3) 구독 정보 클릭시 나오는 모달
+  (4) 유저 프로필 사진 변경
+  (5) 사용자 정보 메뉴 열기 닫기
+  (6) 사용자 정보(회원정보, 로그아웃, 닫기) 모달
+  (7) 사용자 프로파일 이미지 메뉴(사진업로드, 취소) 모달
+  (8) 구독자 정보 모달 닫기
  */
 
 // (1) 유저 프로파일 페이지 구독하기, 구독취소
@@ -66,7 +67,7 @@ function subscribeInfoModalOpen(pageUserId) {
 
 
 }
-
+//(3) 구독 정보 클릭시 나오는 모달
 function getSubscribeModalItem(u) {
     let item = `
         <div class="subscribe__item" id="subscribeModalItem-${u.id}">
@@ -94,7 +95,7 @@ function getSubscribeModalItem(u) {
 }
 
 
-// (3) 유저 프로필 사진 변경
+// (4) 유저 프로필 사진 변경
 function profileImageUpload(pageUserId, principalId) {
     $("#userProfileImageInput").click();
 
@@ -143,7 +144,7 @@ function profileImageUpload(pageUserId, principalId) {
 }
 
 
-// (4) 사용자 정보 메뉴 열기 닫기
+// (5) 사용자 정보 메뉴 열기 닫기
 function popup(obj) {
     $(obj).css("display", "flex");
 }
@@ -153,17 +154,17 @@ function closePopup(obj) {
 }
 
 
-// (5) 사용자 정보(회원정보, 로그아웃, 닫기) 모달
+// (6) 사용자 정보(회원정보, 로그아웃, 닫기) 모달
 function modalInfo() {
     $(".modal-info").css("display", "none");
 }
 
-// (6) 사용자 프로파일 이미지 메뉴(사진업로드, 취소) 모달
+// (7) 사용자 프로파일 이미지 메뉴(사진업로드, 취소) 모달
 function modalImage() {
     $(".modal-image").css("display", "none");
 }
 
-// (7) 구독자 정보 모달 닫기
+// (8) 구독자 정보 모달 닫기
 function modalClose() {
     $(".modal-subscribe").css("display", "none");
     location.reload();

@@ -31,7 +31,7 @@ public class ValidationAdvice {
                     for (FieldError error : bindingResult.getFieldErrors()) {
                         errorMap.put(error.getField(), error.getDefaultMessage());
                     }
-                    throw new CustomValidationApiException("내용 입력해라" , errorMap);
+                    throw new CustomValidationApiException("내용을 입력해주세요." , errorMap);
                 }
             }
         }
@@ -59,5 +59,25 @@ public class ValidationAdvice {
         return proceedingJoinPoint.proceed();
     }
 
+    @Around("execution(* com.pyo.yourspick.web.api.PostApiController.*(..))")
+    public Object PostApiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+
+        Object[] args = proceedingJoinPoint.getArgs();
+        for (Object arg : args) {
+            if (arg instanceof BindingResult) {
+
+                BindingResult bindingResult = (BindingResult) arg;
+                if (bindingResult.hasErrors()) {
+                    Map<String, String> errorMap = new HashMap<>();
+
+                    for (FieldError error : bindingResult.getFieldErrors()) {
+                        errorMap.put(error.getField(), error.getDefaultMessage());
+                    }
+                    throw new CustomValidationApiException("모든 항목을 채워주세요." , errorMap);
+                }
+            }
+        }
+        return proceedingJoinPoint.proceed();
+    }
 
 }
