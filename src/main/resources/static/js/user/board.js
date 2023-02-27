@@ -29,7 +29,7 @@ function storyLoad() {
         console.log(res, "성공");
 
         res.data.content.forEach((image) => {
-
+                console.log(image);
 
             let storyItem = getStoryItem(image);
 
@@ -73,15 +73,17 @@ function getStoryItem(image) {
 				</div>
 
 				<div class="sl__item__img">
+				<a href="/user/boardview/${image.id}">
 					<img src="/upload/${image.postImageUrl}" style="width:65%; height:600px;" />
+					</a>
 				</div>
 
 				<div class="sl__item__contents">
 					<div class="sl__item__contents__icon">
 
 						<button>`;
-    if (image.likeState) {
-        item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>	`;
+    if (image.likeState) {   item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>
+     	`;
     } else {
         item += ` <i class="fa-heart far" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i> `;
     }

@@ -24,6 +24,11 @@ public class AuthService {
     public void 회원가입(User user) {
         String username = user.getUsername();
         User userEntity = userRepository.findByUsername(username);
+        User findName = userRepository.findByName(user.getName());
+        if (findName != null) {
+
+            throw new CustomValidationException("이미 존재하는 닉네임 입니다.", null);
+        }
 
         if (userEntity != null) {
             throw new CustomValidationException("이미 존재하는 아이디 입니다", null);

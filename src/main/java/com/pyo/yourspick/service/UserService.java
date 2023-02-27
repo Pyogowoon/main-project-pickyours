@@ -1,6 +1,11 @@
 package com.pyo.yourspick.service;
 
 
+import com.pyo.yourspick.config.auth.PrincipalDetails;
+import com.pyo.yourspick.domain.image.Image;
+import com.pyo.yourspick.domain.image.ImageRepository;
+import com.pyo.yourspick.domain.likes.Likes;
+import com.pyo.yourspick.domain.likes.LikesRepository;
 import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserInfoMapping;
@@ -13,6 +18,7 @@ import com.pyo.yourspick.web.dto.CMRespDto;
 import com.pyo.yourspick.web.dto.user.UserProfileDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +40,10 @@ public class UserService {
     private final SubscribeRepository subscribeRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final ImageRepository imageRepository;
+
+    private final LikesRepository likesRepository;
 
     @Value("${file.path}")
     private String uploadFolder;
@@ -127,10 +137,33 @@ public class UserService {
         return userEntity;
     }
 
+    @Transactional(readOnly = true)
     public List<UserInfoMapping> 유저이름사진정보찾기() {
 
         List<UserInfoMapping> user = userRepository.mFindUser();
         return user;
     }
+
+    @Transactional(readOnly = true)
+    public Image 상세보기(int imageId, int principalId) {
+        Image imageEntity = imageRepository.findById(imageId).orElseThrow(() -> {
+            throw new CustomException("아이디를 찾을 수 없습니다.");
+        });
+
+
+        /* 좋아요 이력 여부 확인 */
+        imageEntity.getLikes().forEach((s) -> {
+            if (s.getUser().getId() == principalId) {
+                imageEntity.setLikeState(true);
+
+            }
+
+
+        });
+
+        return imageEntity;
+    }
+
+
 }
 

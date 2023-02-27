@@ -9,6 +9,15 @@
 
 		<article class="story-list" id="storyList">
 
+<br/>
+   <div class="form-outline">
+         <form action="/board/search/title" method="get" name="search" id="searchForm">
+          <input type="search" id="form1" name="keyword" class="form-control" placeholder="찾으시는 닉네임을 입력해주세요." />
+        <button class="btn btn-primary" style="height:35px;width:60px;">
+                <i class="fas fa-search"></i>
+                  </button>
+                  </form>
+        </div>
 			<!--전체 리스트 아이템-->
 
 
@@ -21,7 +30,7 @@
 <aside>
 
 
-                <div class="back" onclick="javascript:location.href='/'" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
+                <div class="back" onclick="javascript:history.back()" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
 
 
 

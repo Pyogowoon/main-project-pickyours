@@ -35,7 +35,7 @@ public class User {
 
     private String website;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     private String bio;
@@ -51,6 +51,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OrderBy("id DESC")
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Image> images;

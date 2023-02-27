@@ -65,8 +65,31 @@ public class Post {
 
     private String createDate;
 
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"post"})
+    @OneToMany(mappedBy = "post", orphanRemoval = true)
+    private List<PostComment> postComment;
+
+    @JsonIgnoreProperties({"post"})
+    @OneToMany(mappedBy = "post")
+    private List<PostLikes> postLikes;
+
+
+    @Transient
+    private int likeState;
+
+    @Transient
+    private int likeUser;
+
+
+    @PrePersist
+    public void createDate() {
+        this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
     public void update(User user, String title, String content, String entryTitle, String entryContent
-    ,String actor, String job, String height, String weight){
+            , String actor, String job, String height, String weight) {
         this.user = user;
         this.title = title;
         this.content = content;
@@ -74,7 +97,7 @@ public class Post {
         this.entryContent = entryContent;
         this.actor = actor;
         this.job = job;
-        this.height= height;
+        this.height = height;
         this.weight = weight;
 
     }
@@ -94,29 +117,6 @@ public class Post {
         this.id = id;
 
     }
-    @OrderBy("id DESC")
-    @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post" , orphanRemoval = true )
-    private List<PostComment> postComment;
-
-    @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post")
-    private List<PostLikes> postLikes;
-
-
-    @Transient
-    private int likeState;
-
-    @Transient
-    private int likeUser;
-
-
-    @PrePersist
-    public void createDate(){
-        this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    }
-
-
 
 
 }

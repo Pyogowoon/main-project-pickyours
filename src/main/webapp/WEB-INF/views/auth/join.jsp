@@ -89,8 +89,8 @@
 
 
 
-					<div class="wrap-input100 validate-input" data-validate = "name is required">
-                    						<input class="input100" type="text" name="name" placeholder="Name" required="required" value="${valid.name}">
+					<div class="wrap-input100 validate-input" data-validate = "Nickname is required">
+                    						<input class="input100" type="text" name="name" placeholder="Nickname" required="required" value="${valid.name}">
                     						<span class="focus-input100"></span>
                     						<span class="symbol-input100">
                     							<i class="fa fa-user-circle-o" aria-hidden="true"></i>

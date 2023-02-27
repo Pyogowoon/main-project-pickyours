@@ -2,10 +2,13 @@ package com.pyo.yourspick.web;
 
 import com.pyo.yourspick.config.auth.PrincipalDetails;
 import com.pyo.yourspick.domain.image.Image;
+import com.pyo.yourspick.domain.likes.Likes;
+import com.pyo.yourspick.domain.post.Post;
 import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserInfoMapping;
 import com.pyo.yourspick.service.ImageService;
+import com.pyo.yourspick.service.LikesService;
 import com.pyo.yourspick.service.SubscribeService;
 import com.pyo.yourspick.service.UserService;
 import com.pyo.yourspick.web.dto.user.UserProfileDto;
@@ -31,6 +34,8 @@ public class UserController {
     private final SubscribeService subscribeService;
 
     private final SubscribeRepository subscribeRepository;
+
+    private final ImageService imageService;
 
 
     @GetMapping("user/board")
@@ -71,4 +76,29 @@ public class UserController {
 
         return "user/update";
     }
+
+    @GetMapping("user/boardview/{imageId}")
+    public String boardView(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+
+        Image imageEntity = userService.상세보기(imageId, principalDetails.getUser().getId());
+        model.addAttribute("image", imageEntity);
+
+        return "user/boardview";
+    }
+
+    @GetMapping("board/search/title")
+    public String boardSearch(String keyword, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+        System.out.println(keyword);
+
+        UserProfileDto dto = imageService.게시글검색(keyword, principalDetails.getUser().getId());
+
+
+        model.addAttribute("dto", dto);
+
+        model.addAttribute("keyword", keyword);
+
+        return "user/boardsearch";
+    }
+
+
 }
