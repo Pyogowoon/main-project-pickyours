@@ -3,9 +3,12 @@ package com.pyo.yourspick.handler.aop;
 
 import com.pyo.yourspick.handler.ex.CustomValidationApiException;
 import com.pyo.yourspick.handler.ex.CustomValidationException;
+import com.pyo.yourspick.web.dto.CMRespDto;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -31,7 +34,7 @@ public class ValidationAdvice {
                     for (FieldError error : bindingResult.getFieldErrors()) {
                         errorMap.put(error.getField(), error.getDefaultMessage());
                     }
-                    throw new CustomValidationApiException("내용을 입력해주세요." , errorMap);
+                    return new ResponseEntity<>(new CMRespDto<>(-1 ," 댓글을 입력해주세요." , null), HttpStatus.BAD_REQUEST);
                 }
             }
         }

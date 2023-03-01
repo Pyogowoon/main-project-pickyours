@@ -39,6 +39,29 @@ public class ImageService {
     private String uploadFolder;
 
 
+
+
+    @Transactional(readOnly = true)
+    public Page<Image> 유저마당메인(int principalId, Pageable pageable) {
+
+        Page<Image> images = imageRepository.mStory(principalId, pageable);
+
+        images.forEach((image) -> {
+
+            image.setLikeCount(image.getLikes().size());
+
+            image.getLikes().forEach((like) -> {
+                if (like.getUser().getId() == principalId) {
+                    image.setLikeState(true);
+                }
+
+            });
+
+        });
+
+        return images;
+    }
+
     @Transactional(readOnly = true)
     public void 이미지업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
         UUID uuid = UUID.randomUUID();
@@ -57,27 +80,6 @@ public class ImageService {
         Image image = imageUploadDto.toEntity(imageFileName, principalDetails.getUser());
         Image imageEntity = imageRepository.save(image);
 
-    }
-
-    @Transactional(readOnly = true)
-    public Page<Image> 이미지스토리(int principalId, Pageable pageable) {
-
-        Page<Image> images = imageRepository.mStory(principalId, pageable);
-
-        images.forEach((image) -> {
-
-            image.setLikeCount(image.getLikes().size());
-
-            image.getLikes().forEach((like) -> {
-                if (like.getUser().getId() == principalId) {
-                    image.setLikeState(true);
-                }
-
-            });
-
-        });
-
-        return images;
     }
 
     @Transactional(readOnly = true)

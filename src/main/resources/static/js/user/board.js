@@ -216,11 +216,11 @@ function addComment(imageId) {
     }
 
 
-
-    if (data.content === "") {
-        alert("댓글을 작성해주세요.");
-        return;
-    }
+//
+//    if (data.content === "") {
+//        alert("댓글을 작성해주세요.");
+//        return;
+//    }
 
     $.ajax({
         type: "post",
@@ -287,7 +287,7 @@ function contentsDelete(imageId, principalId) {
     $.ajax({
 
         type: "delete",
-        url: `/api/user/board/${imageId}`,
+        url: `/api/image/${imageId}/delete`,
         dataType: "json"
 
 

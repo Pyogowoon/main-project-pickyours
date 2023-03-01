@@ -28,7 +28,7 @@ public class ImageApiController {
     @GetMapping("/api/image")
     public ResponseEntity<?> imageStory(@AuthenticationPrincipal PrincipalDetails principalDetails,
                                         @PageableDefault(size = 3) Pageable pageable) {
-        Page<Image> images = imageService.이미지스토리(principalDetails.getUser().getId(), pageable);
+        Page<Image> images = imageService.유저마당메인(principalDetails.getUser().getId(), pageable);
 
         return new ResponseEntity<>(new CMRespDto<>(1, "리스트 로딩 완료", images), HttpStatus.OK);
     }
@@ -46,7 +46,7 @@ public class ImageApiController {
     }
 
 
-    @DeleteMapping("/api/user/board/{imageId}")
+    @DeleteMapping("/api/image/{imageId}/delete")
     public ResponseEntity<?> storyContentDelete(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
         imageService.게시글삭제(imageId);
