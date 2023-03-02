@@ -76,7 +76,7 @@ public class ValidationAdvice {
                     for (FieldError error : bindingResult.getFieldErrors()) {
                         errorMap.put(error.getField(), error.getDefaultMessage());
                     }
-                    throw new CustomValidationApiException("모든 항목을 채워주세요." , errorMap);
+                    return new ResponseEntity<>(new CMRespDto<>(-1 ," 모든 항목을 입력해주세요." , null), HttpStatus.BAD_REQUEST);
                 }
             }
         }
