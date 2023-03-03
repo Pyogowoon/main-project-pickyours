@@ -29,7 +29,7 @@
 
 
     <!-- bootstrap core css -->
-       <link rel="stylesheet" type="text/css" href="/css/index/bootstrap_main.css" />
+
        <!-- font awesome style -->
        <link href="/fonts/index/font-awesome-main.min.css" rel="stylesheet" />
        <!-- Custom styles for this template -->

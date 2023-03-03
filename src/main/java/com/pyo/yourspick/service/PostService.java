@@ -80,7 +80,8 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public Page<Post> 포스트로드(Pageable pageable) {
-        return postRepository.findAll(pageable);
+        Page<Post> post = postRepository.findAll(pageable);
+        return post;
     }
 
     @Transactional(readOnly = true)
@@ -97,7 +98,6 @@ public class PostService {
     public List<PostComment> 댓글불러오기(int postId) {
 
         List<PostComment> comment = postCommentRepository.findByPostId(postId);
-
 
         return comment;
     }
@@ -116,9 +116,7 @@ public class PostService {
     @Transactional
     public void 좋아요하기(int postId, int userId) {
 
-
-        int postLikes = postLikesRepository.mLikes(postId, userId);
-
+        postLikesRepository.mLikes(postId, userId);
 
     }
 

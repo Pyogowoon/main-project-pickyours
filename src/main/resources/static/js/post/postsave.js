@@ -26,7 +26,7 @@ function postSave(userId) {
 
     }).done(res => {
 
-//        location.href = "/post";
+       location.href = "/post";
 
     }).fail(error => {
 

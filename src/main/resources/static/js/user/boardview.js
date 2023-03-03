@@ -42,10 +42,10 @@ function toggleLike(imageId) {
             dataType: "json"
         }).done(res => {
 
-
             let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
             let likeCount = Number(likeCountStr) - 1;
             $(`#storyLikeCount-${imageId}`).text(likeCount);
+
         }).fail(error => {
             alert("좋아요 취소에 실패하였습니다. 관리자에게 문의하세요.")
         });

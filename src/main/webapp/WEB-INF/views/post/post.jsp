@@ -165,5 +165,6 @@
 
 
 
+<script src="/js/post/post.js"></script>
     </body>
 </html>

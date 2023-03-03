@@ -26,7 +26,6 @@ function storyLoad() {
         dataType: "json"
 
     }).done(res => {
-        console.log(res, "성공");
 
         res.data.content.forEach((image) => {
                 console.log(image);
@@ -190,7 +189,6 @@ function toggleLike(imageId) {
             dataType: "json"
         }).done(res => {
 
-
             let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
             let likeCount = Number(likeCountStr) - 1;
             $(`#storyLikeCount-${imageId}`).text(likeCount);
@@ -294,8 +292,6 @@ function contentsDelete(imageId, principalId) {
     }).done(res => {
 
         $(`#contentsItem-${imageId}`).remove();
-
-
 
     }).fail(error => {
         alert("삭제에 실패하였습니다. 관리자에게 문의하세요.")

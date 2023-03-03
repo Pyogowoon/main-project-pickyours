@@ -33,7 +33,6 @@ public class UserApiController {
     private final SubscribeService subscribeSerivce;
 
 
-
     @GetMapping("/api/user/{pageUserId}/subscribe")
     public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 

@@ -12,7 +12,7 @@ function update(userId, event) {
         dataType: "json"
 
     }).done(res => {
-        console.log(res, "성공");
+
         location.href = `/user/${userId}`;
 
     }).fail(error => {

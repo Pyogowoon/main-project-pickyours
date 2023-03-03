@@ -382,7 +382,7 @@
 
 
                             <div class="sidebar-widget sidebar-adv mb-5">
-                                <a href="#"><img src="/images/logo.png" alt="" class="img-fluid w-100"></a>
+                                <a href="#"><img src="/images/logo.png"  alt="" class="img-fluid" style="width:280px;"></a>
                             </div>
 
                         </div>

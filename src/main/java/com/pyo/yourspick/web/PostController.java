@@ -27,6 +27,15 @@ public class PostController {
     private final PostService postService;
 
 
+    @GetMapping("/post")
+    public String post(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+
+        model.addAttribute("post", postService.포스트로드(pageable));
+
+        return "post/post";
+    }
+
+
     @GetMapping("/post/postview/{id}")
     public String postview(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("post", postService.포스트상세보기(id));
@@ -36,13 +45,7 @@ public class PostController {
         return "post/postview";
     }
 
-    @GetMapping("/post")
-    public String post(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-        model.addAttribute("post", postService.포스트로드(pageable));
-
-        return "post/post";
-    }
 
     @GetMapping("/post/postsave")
     public String postsave() {

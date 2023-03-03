@@ -55,7 +55,6 @@ function subscribeInfoModalOpen(pageUserId) {
         dataType: "json"
 
     }).done(res => {
-        console.log(res.data);
 
         res.data.forEach((u) => {
             let item = getSubscribeModalItem(u);
