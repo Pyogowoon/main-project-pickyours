@@ -19,21 +19,20 @@
                 <!--사진업로드 로고 end-->
                 
                 <!--사진업로드 Form-->
-                <form class="upload-form" action="/image" method="post" enctype="multipart/form-data">
+                <form class="upload-form" id="imageUpdate" method="post" enctype="multipart/form-data">
                     <input  type="file" name="file"  onchange="imageChoose(this)"/>
                     <div class="upload-img">
-                        <img src="/images/person.jpeg" alt="" id="imageUploadPreview" />
+                        <img src="/upload/${image.postImageUrl}" alt="" id="imageUploadPreview" />
                     </div>
                     
                     <!--사진설명 + 업로드버튼-->
                     <div class="upload-form-detail">
-                   		 <input type="text" placeholder="사진설명" name="caption">
+                   		 <input type="text" name="caption" value="${image.caption}">
 
-                        <button class="cta blue" style="width:340px;height:40px;">업로드</button>
+                        <input type="button" class="cta blue" value="수정하기" style="width:340px;height:40px;" onclick="imageUpdate(${image.id})"/>
                     </div>
                     <!--사진설명end-->
-
-
+                    
                 </form>
                 <!--사진업로드 Form-->
             </section>
@@ -41,4 +40,4 @@
         </main>
         <br/><br/>
 	
-	<script src="/js/image/upload.js" ></script>
+	<script src="/js/image/imageupdate.js" ></script>

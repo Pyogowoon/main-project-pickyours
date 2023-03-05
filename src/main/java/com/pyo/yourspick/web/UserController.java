@@ -77,7 +77,7 @@ public class UserController {
         return "user/update";
     }
 
-    @GetMapping("user/boardview/{imageId}")
+    @GetMapping("user/board/{imageId}")
     public String boardView(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
 
         Image imageEntity = userService.상세보기(imageId, principalDetails.getUser().getId());
@@ -86,9 +86,9 @@ public class UserController {
         return "user/boardview";
     }
 
-    @GetMapping("board/search/title")
+    @GetMapping("/user/board/search/name")
     public String boardSearch(String keyword, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
-        System.out.println(keyword);
+
 
         UserProfileDto dto = imageService.게시글검색(keyword, principalDetails.getUser().getId());
 

@@ -5,6 +5,7 @@ import com.pyo.yourspick.config.auth.PrincipalDetails;
 import com.pyo.yourspick.domain.image.Image;
 import com.pyo.yourspick.domain.image.ImageRepository;
 import com.pyo.yourspick.domain.subscribe.SubscribeRepository;
+import com.pyo.yourspick.domain.user.Role;
 import com.pyo.yourspick.domain.user.User;
 import com.pyo.yourspick.domain.user.UserRepository;
 import com.pyo.yourspick.handler.ex.CustomApiException;
@@ -37,8 +38,6 @@ public class ImageService {
 
     @Value("${file.path}")
     private String uploadFolder;
-
-
 
 
     @Transactional(readOnly = true)
@@ -131,17 +130,80 @@ public class ImageService {
         return dto;
 
 
-//
-//
-//
-//       int keywordId = searchEntity.get(0).getId();
-//        Image images =imageRepository.findById(keywordId).orElseThrow(()->{
-//            throw new CustomException("해당 유저는 찾을 수 없습니다.");
-//        });
-//
-//
-//
-//       return images;
     }
+
+    @Transactional(readOnly = true)
+    public Image 이미지찾기(int imageId) {
+
+        Image imageEntity = imageRepository.findById(imageId).orElseThrow(() -> {
+            throw new CustomException("해당 유저가 없습니다.");
+        });
+
+        return imageEntity;
+    }
+
+    @Transactional
+    public Image 게시글수정(ImageUploadDto imageUploadDto, int imageId, PrincipalDetails principalDetails) {
+
+
+        Image imageEntity = imageRepository.findById(imageId).orElseThrow(() -> {
+            throw new CustomException("해당 게시물을 찾을 수 없습니다.");
+        });
+
+        int imageUserId = imageEntity.getUser().getId();
+        int principalId = principalDetails.getUser().getId();
+        String principalRole = principalDetails.getUser().getRole().toString();
+
+
+        UUID uuid = UUID.randomUUID();
+        String imageFileUrl = uuid + "_" + imageUploadDto.getFile().getOriginalFilename();
+
+        if (imageUserId == principalId || principalRole.equals("ADMIN")) {
+            if (imageUploadDto.getFile().isEmpty()) {
+
+                imageEntity.imageCaptionUpdate(
+                        imageUploadDto.getCaption()
+                );
+            } else if (imageUploadDto.getCaption().isEmpty()) {
+
+                imageEntity.imageImageUpdate(
+                        imageFileUrl
+                );
+
+                Path imageFilePath = Paths.get(uploadFolder + imageFileUrl);
+
+
+                try {
+                    Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+
+                imageEntity.imageAllUpdate(
+
+                        imageUploadDto.getCaption(),
+                        imageFileUrl
+                );
+                Path imageFilePath = Paths.get(uploadFolder + imageFileUrl);
+
+
+                try {
+                    Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        } else {
+            throw new CustomException("수정 할 권한이 없습니다.");
+        }
+
+        return imageEntity;
+    }
+
 
 }

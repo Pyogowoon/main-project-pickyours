@@ -59,4 +59,14 @@ public class ImageController {
         }
     }
 
+    @GetMapping("/image/upload/{imageId}")
+    public String imageUpdate(Model model, @PathVariable int imageId) {
+
+        Image imageFind = imageService.이미지찾기(imageId);
+
+        model.addAttribute("image", imageFind);
+
+        return "image/uploadupdate";
+    }
+
 }

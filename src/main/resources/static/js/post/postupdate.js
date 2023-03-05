@@ -12,7 +12,7 @@
 function postUpdate(postId) {
 
     let data = $("#postUpdate")[0];
-    console.log(data)
+//    console.log(data)
 
     let formData = new FormData(data);
 

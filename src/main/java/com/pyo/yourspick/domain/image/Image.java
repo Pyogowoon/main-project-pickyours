@@ -55,8 +55,23 @@ public class Image {
     private LocalDateTime createDate;
 
     @PrePersist
-    public void createDate(){
-            this.createDate = LocalDateTime.now();
+    public void createDate() {
+        this.createDate = LocalDateTime.now();
+    }
+
+    public void imageAllUpdate(String caption, String postImageUrl) {
+        this.caption = caption;
+        this.postImageUrl = postImageUrl;
+
+    }
+
+    public void imageCaptionUpdate(String caption) {
+        this.caption = caption;
+    }
+
+    public void imageImageUpdate(String postImageUrl) {
+        this.postImageUrl = postImageUrl;
+
     }
 
 }

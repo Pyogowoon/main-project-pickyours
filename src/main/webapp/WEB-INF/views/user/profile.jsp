@@ -95,11 +95,11 @@
 				<!--아이템들-->
 
   <c:forEach var="image" items="${dto.user.images}">
-				<div class="img-box" onclick="javascript:location.href='/user/boardview/${image.id}'">
-					<a href="/user/boardview/${image.id}"> <img src="/upload/${image.postImageUrl}"/>
+				<div class="img-box" onclick="javascript:location.href='/user/board/${image.id}'">
+					<a href="/user/board/${image.id}"> <img src="/upload/${image.postImageUrl}"/>
 					</a>
 					<div class="comment">
-						<a href="/user/boardview/${image.id}" class=""> <i class="fas fa-heart"></i><span>${image.likeCount}</span>
+						<a href="/user/board/${image.id}" class=""> <i class="fas fa-heart"></i><span>${image.likeCount}</span>
 						</a>
 					</div>
 				</div>

@@ -28,7 +28,6 @@ function storyLoad() {
     }).done(res => {
 
         res.data.content.forEach((image) => {
-                console.log(image);
 
             let storyItem = getStoryItem(image);
 
@@ -59,8 +58,10 @@ function getStoryItem(image) {
                         `;
     if (principalId == image.user.id || principalRole == "ADMIN" || principalRole == "SUPERADMIN") {
         item += `
-
-					     <button type="button" class onclick="contentsDelete(${image.id},principalId)" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;">   <i class="fas fa-times"></i></button>
+        <span class="crud">
+                       <button type="button" class onclick="location.href='/image/upload/${image.id}'" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;">  <i class="fa-solid fa-pen-to-square"></i></button>
+					     <button type="button" class onclick="contentsDelete(${image.id},principalId)" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;"><i class="fas fa-times"></i></button>
+					     </span>
 					     `;
     }
     item += `
@@ -72,7 +73,7 @@ function getStoryItem(image) {
 				</div>
 
 				<div class="sl__item__img">
-				<a href="/user/boardview/${image.id}">
+				<a href="/user/board/${image.id}">
 					<img src="/upload/${image.postImageUrl}" style="width:65%; height:600px;" />
 					</a>
 				</div>
@@ -277,6 +278,7 @@ function deleteComment(userId) {
         return false;
     }
 }
+
 // (6) 콘텐츠 삭제
 function contentsDelete(imageId, principalId) {
 
@@ -285,7 +287,7 @@ function contentsDelete(imageId, principalId) {
     $.ajax({
 
         type: "delete",
-        url: `/api/image/${imageId}/delete`,
+        url: `/api/image/${imageId}`,
         dataType: "json"
 
 

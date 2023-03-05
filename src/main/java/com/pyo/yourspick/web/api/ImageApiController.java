@@ -6,6 +6,7 @@ import com.pyo.yourspick.domain.image.Image;
 import com.pyo.yourspick.service.ImageService;
 import com.pyo.yourspick.service.LikesService;
 import com.pyo.yourspick.web.dto.CMRespDto;
+import com.pyo.yourspick.web.dto.image.ImageUploadDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,13 +47,22 @@ public class ImageApiController {
     }
 
 
-    @DeleteMapping("/api/image/{imageId}/delete")
+    @DeleteMapping("/api/image/{imageId}")
     public ResponseEntity<?> storyContentDelete(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
         imageService.게시글삭제(imageId);
 
 
         return new ResponseEntity<>(new CMRespDto<>(1, "삭제 성공", null), HttpStatus.OK);
+    }
+
+    @PutMapping("/api/image/{imageId}")
+    public ResponseEntity<?> storyContentUpdate(ImageUploadDto imageUploadDto, @PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        imageService.게시글수정(imageUploadDto, imageId, principalDetails);
+
+        return new ResponseEntity<>(new CMRespDto<>(1, "수정 성공", null), HttpStatus.OK);
+
     }
 
 

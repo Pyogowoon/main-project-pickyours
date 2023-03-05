@@ -11,7 +11,7 @@
 
 <br/>
    <div class="form-outline">
-         <form action="/board/search/title" method="get" name="search" id="searchForm">
+         <form action="/user/board/search/name" method="get" name="search" id="searchForm">
           <input type="search" id="form1" name="keyword" class="form-control" placeholder="찾으시는 닉네임을 입력해주세요." />
         <button class="btn btn-primary" style="height:35px;width:60px;">
                 <i class="fas fa-search"></i>
