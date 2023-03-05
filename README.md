@@ -119,6 +119,8 @@
  ## 6. Refactoring
  
  <br/>
+ 6-1 domain 의 Setter 사용 줄이기
+  JPA 의 더티체킹을 이용한 Update 방식에서 Setter를 사용하지 않는 방법을 모색 -> 메서드를 사용
  
 
  ## 7. Troubleshooting
