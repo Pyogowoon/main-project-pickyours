@@ -77,13 +77,23 @@
  <li> AWS</li>
  <li>Linux</li>
  
- ## 3. ERD 설계 
+ ## 3. DB 설계 
  <details>
  <summary> <h3> ERD 이미지 펼치기 </h3> </summary>
  
  <img src="./src/main/resources/static/images/ERD.png">
  
  </details>
+ 
+ 
+  <details>
+ <summary> <h3> DB 구성 펼치기 </h3> </summary>
+ 
+ 
+ </details>
+ 
+ 
+ 
  
  ## 4. API 설계
  <details>
