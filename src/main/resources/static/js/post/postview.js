@@ -35,7 +35,7 @@ function postComment(postId) {
     $.ajax({
 
         type: "post",
-        url: `/api/post/comment/${postId}`,
+        url: `/api/post/comment`,
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -117,7 +117,7 @@ function toggleLike(postId) {
         $.ajax({
 
             type: "post",
-            url: `/api/post/likes/${postId}`,
+            url: `/api/post/${postId}/likes`,
             dataType: " json"
 
         }).done(res => {
@@ -154,7 +154,7 @@ function toggleUnLike(postId) {
         $.ajax({
 
             type: "delete",
-            url: `/api/post/likes/${postId}`,
+            url: `/api/post/${postId}/likes`,
             dataType: "json"
 
         }).done(res => {
@@ -195,7 +195,7 @@ function postDelete(postId) {
 
         $.ajax({
             type: "delete",
-            url: `/api/post/delete/${postId}`,
+            url: `/api/post/${postId}`,
             dataType: "json"
 
         }).done(res => {

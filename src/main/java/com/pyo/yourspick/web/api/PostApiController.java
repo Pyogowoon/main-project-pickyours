@@ -45,7 +45,7 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 불러오기 성공", post), HttpStatus.OK);
     }
 
-    @PostMapping("/api/post/postsave")
+    @PostMapping("/api/post")
     public ResponseEntity<?> postSave(@Valid PostDto postDto, BindingResult bindingResult, @AuthenticationPrincipal PrincipalDetails principalDetails
     ) {
 
@@ -65,21 +65,21 @@ public class PostApiController {
         }
     }
 
-    @PostMapping("/api/post/likes/{postId}")
+    @PostMapping("/api/post/{postId}/likes")
     public ResponseEntity<?> postLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         postService.좋아요하기(postId, principalDetails.getUser().getId());
 
         return new ResponseEntity<>(new CMRespDto<>(1, "좋아요 성공", null), HttpStatus.OK);
     }
 
-    @DeleteMapping("/api/post/likes/{postId}")
+    @DeleteMapping("/api/post/{postId}/likes")
     public ResponseEntity<?> postUnLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         postService.좋아요취소하기(postId, principalDetails.getUser().getId());
 
         return new ResponseEntity<>(new CMRespDto<>(1, "좋아요취소 성공", null), HttpStatus.OK);
     }
 
-    @PutMapping("/api/post/postupdate/{postId}")
+    @PutMapping("/api/post/{postId}")
     public ResponseEntity<?> postUpdate(PostUpdateDto postUpdateDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
                                         @PathVariable int postId) {
 
@@ -93,7 +93,7 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, "수정 성공", postEntity), HttpStatus.OK);
     }
 
-    @DeleteMapping("/api/post/delete/{postId}")
+    @DeleteMapping("/api/post/{postId}")
     public ResponseEntity<?> postDelete(@PathVariable int postId) {
         postService.게시글삭제(postId);
 

@@ -18,7 +18,7 @@ function postUpdate(postId) {
 
     $.ajax({
         type: "PUT",
-        url: `/api/post/postupdate/${postId}`,
+        url: `/api/post/${postId}`,
         data: formData,
         contentType: false,
         processData: false,

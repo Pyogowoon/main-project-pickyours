@@ -36,15 +36,14 @@ public class PostController {
     }
 
 
-    @GetMapping("/post/postview/{id}")
-    public String postview(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        model.addAttribute("post", postService.포스트상세보기(id));
-        model.addAttribute("postComment", postService.댓글불러오기(id));
-        model.addAttribute("postLikes", postService.좋아요목록(principalDetails.getUser().getId(), id));
+    @GetMapping("/post/postview/{postId}")
+    public String postview(@PathVariable int postId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        model.addAttribute("post", postService.포스트상세보기(postId));
+        model.addAttribute("postComment", postService.댓글불러오기(postId));
+        model.addAttribute("postLikes", postService.좋아요목록(principalDetails.getUser().getId(), postId));
 
         return "post/postview";
     }
-
 
 
     @GetMapping("/post/postsave")

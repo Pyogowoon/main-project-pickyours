@@ -18,7 +18,7 @@ function postSave(userId) {
     $.ajax({
         type: "post",
         data: formData,
-        url: "/api/post/postsave",
+        url: "/api/post",
         contentType: false,
         processData: false,
         enctype: "multipart/form-data",
