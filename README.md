@@ -114,6 +114,13 @@
  내용
  </details>
   
+  <details>
+ <summary> <h2> 유효성 검사 </h2> </summary>
+ 
+ 
+ 내용
+ </details>
+  
   
  
  ## 6. Refactoring
