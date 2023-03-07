@@ -89,6 +89,26 @@
   <details>
  <summary> <h3> DB 구성 펼치기 </h3> </summary>
  
+ <img src="./src/main/resources/static/images/readme/DB_User.png">
+ 
+ <img src="./src/main/resources/static/images/readme/DB_User_Image.png">
+ 
+ <img src="./src/main/resources/static/images/readme/DB_User_Comment.png">
+ 
+ <img src="./src/main/resources/static/images/readme/DB_User_Likes.png">
+ 
+ <img src="./src/main/resources/static/images/readme/DB_User_Subscribe.png">
+ 
+ 
+ 
+ <img src="./src/main/resources/static/images/readme/DB_Post.png">
+ 
+ <img src="./src/main/resources/static/images/readme/DB_Post_PostLikes.png">
+ 
+ 
+ <img src="./src/main/resources/static/images/readme/DB_Post_PostComment.png">
+ 
+
  
  </details>
  
@@ -98,6 +118,16 @@
  ## 4. API 설계
  <details>
  <summary> <h3> API 설계 펼치기 </h3> </summary>
+ 
+ <img src="./src/main/resources/static/images/readme/User_API.png">
+ 
+ <img src="./src/main/resources/static/images/readme/Blog_API.png">
+  
+ <img src="./src/main/resources/static/images/readme/Login_API.png">
+   
+ <img src="./src/main/resources/static/images/readme/Subscribe_API.png">
+    
+ <img src="./src/main/resources/static/images/readme/Likes_API.png">
  
  </details>
  
