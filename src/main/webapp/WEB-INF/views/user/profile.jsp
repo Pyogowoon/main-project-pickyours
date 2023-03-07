@@ -61,7 +61,7 @@
 
 
 				<button class="modi" onclick="popup('.modal-info')">
-					<i class="fas fa-cog"></i>
+				<i class="fa-sharp fa-solid fa-gear"></i>
 				</button>
 			</div>
 

@@ -13,6 +13,7 @@ function postSave(userId) {
 
     let data = $("#postSave")[0];
 
+
     let formData = new FormData(data);
 
     $.ajax({

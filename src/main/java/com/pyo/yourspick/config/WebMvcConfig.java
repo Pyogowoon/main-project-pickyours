@@ -9,7 +9,7 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-
+    /* yml에 적힌 경로 */
     @Value("${file.path}")
     private String uploadFolder;
 
@@ -25,7 +25,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
     }
-    /* */
+
 }
 
 

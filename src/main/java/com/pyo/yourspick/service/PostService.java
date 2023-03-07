@@ -41,27 +41,27 @@ public class PostService {
 
     private final PostLikesRepository postLikesRepository;
 
-    private final UserRepository userRepository;
-
 
     @Value("${file.path}")
     private String uploadFolder;
 
-
+    /* 게시글 저장 */
     @Transactional
     public Post 게시글저장(PostDto postDto, PrincipalDetails principalDetails
             , MultipartFile clotheImage, MultipartFile actorImage, MultipartFile video) {
 
-
+        /* 중복 방지용 임의 값 부여 */
         UUID uuid = UUID.randomUUID();
         String actorImageFileName = uuid + "_" + actorImage.getOriginalFilename();
         String clotheImageFileName = uuid + "_" + clotheImage.getOriginalFilename();
         String videoFileName = uuid + "_" + video.getOriginalFilename();
 
+        /* 파일의 경로 찾기 */
         Path actorImageFilePath = Paths.get(uploadFolder + actorImageFileName);
         Path clotheImageFilePath = Paths.get(uploadFolder + clotheImageFileName);
         Path videoFilePath = Paths.get(uploadFolder + videoFileName);
 
+        /* 지정한 경로에 Byte화 해서 저장 */
         try {
             Files.write(actorImageFilePath, actorImage.getBytes());
             Files.write(clotheImageFilePath, clotheImage.getBytes());
@@ -70,69 +70,19 @@ public class PostService {
             e.printStackTrace();
 
         }
-
+        /* Builder 패턴 실행 */
         User user = principalDetails.getUser();
         Post post = postDto.toEntity(user, actorImageFileName, clotheImageFileName, videoFileName);
 
-       return postRepository.save(post);
+        return postRepository.save(post);
 
     }
-
-    @Transactional(readOnly = true)
-    public Page<Post> 포스트로드(Pageable pageable) {
-        Page<Post> post = postRepository.findAll(pageable);
-        return post;
-    }
-
-    @Transactional(readOnly = true)
-    public Post 포스트상세보기(int postId) {
-
-        Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
-            throw new CustomException("게시글을 찾을 수 없습니다");
-        });
-
-        return postEntity;
-    }
-
-    @Transactional(readOnly = true)
-    public List<PostComment> 댓글불러오기(int postId) {
-
-        List<PostComment> comment = postCommentRepository.findByPostId(postId);
-
-        return comment;
-    }
-
-
-    @Transactional(readOnly = true)
-    public PostLikes 좋아요목록(int userId, int postId) {
-
-        PostLikes postLikes = postLikesRepository.findByUserIdAndPostId(userId, postId);
-
-
-        return postLikes;
-    }
-
-
-    @Transactional
-    public void 좋아요하기(int postId, int userId) {
-
-        postLikesRepository.mLikes(postId, userId);
-
-    }
-
-    @Transactional
-    public void 좋아요취소하기(int postId, int userId) {
-
-        postLikesRepository.mUnLikes(userId, postId);
-
-    }
-
     @Transactional
     public Post 게시글수정(PostUpdateDto postUpdateDto, MultipartFile actorImage,
                       MultipartFile clotheImage, MultipartFile video, PrincipalDetails principalDetails, int postId) {
 
         Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
-            throw new CustomApiException("아이디 찾기 불가");
+            throw new CustomApiException("아이디를 찾을 수 없습니다.");
         });
 
 
@@ -187,6 +137,57 @@ public class PostService {
 
 
     }
+
+
+    @Transactional(readOnly = true)
+    public Page<Post> 포스트로드(Pageable pageable) {
+        Page<Post> post = postRepository.findAll(pageable);
+        return post;
+    }
+
+    @Transactional(readOnly = true)
+    public Post 포스트상세보기(int postId) {
+
+        Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
+            throw new CustomException("게시글을 찾을 수 없습니다");
+        });
+
+        return postEntity;
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostComment> 댓글불러오기(int postId) {
+
+        List<PostComment> comment = postCommentRepository.findByPostId(postId);
+
+        return comment;
+    }
+
+
+    @Transactional(readOnly = true)
+    public PostLikes 좋아요목록(int userId, int postId) {
+
+        PostLikes postLikes = postLikesRepository.findByUserIdAndPostId(userId, postId);
+
+
+        return postLikes;
+    }
+
+
+    @Transactional
+    public void 좋아요하기(int postId, int userId) {
+
+        postLikesRepository.mLikes(postId, userId);
+
+    }
+
+    @Transactional
+    public void 좋아요취소하기(int postId, int userId) {
+
+        postLikesRepository.mUnLikes(userId, postId);
+
+    }
+
 
     @Transactional
     public void 게시글삭제(int postId) {

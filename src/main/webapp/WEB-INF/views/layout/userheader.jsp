@@ -65,10 +65,10 @@
 							<i class="fas fa-home"></i>
 						</a></li>
 					<li class="navi-item"><a href="/image/popular">
-							<i class="far fa-compass"></i>
+							<i class="fa-solid fa-heart"></i>
 						</a></li>
 					<li class="navi-item"><a href="/user/${principal.user.id}">
-							<i class="far fa-user"></i>
+							<i class="fa-sharp fa-solid fa-user"></i>
 						</a></li>
 				</ul>
 			</nav>

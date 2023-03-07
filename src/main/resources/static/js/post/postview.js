@@ -35,7 +35,7 @@ function postComment(postId) {
     $.ajax({
 
         type: "post",
-        url: `/api/post/comment`,
+        url: `/api/post/comment/${postId}`,
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json"

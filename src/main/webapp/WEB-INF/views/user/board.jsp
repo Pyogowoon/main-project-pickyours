@@ -39,7 +39,7 @@
                 <span class="recTitle">다른사람도 구독해보세요!</span>
 
 
-                 <c:forEach var="item" items="${user}" begin="0" end="5">
+                 <c:forEach var="item" items="${user}" begin="0" end="3">
                      <div class="subs">
                 <br/>
                <img class="profile-image" src="/upload/${item.profileImageUrl}" style="width:50px;height:50px;"
