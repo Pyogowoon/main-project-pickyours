@@ -30,7 +30,7 @@
 <aside>
 
 
-                <div class="back" onclick="javascript:history.back()" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
+                <div class="back" onclick="javascript:history.back()" style="cursor:pointer" ><img src="/images/left.png" style="height: 56px;width:56px"></div>
 
 
 

@@ -2,6 +2,7 @@
     (1) 좋아요, 안좋아요
     (2) 댓글달기
     (3) 댓글삭제
+    (4) 콘텐츠 삭제
 
 
 */
@@ -129,4 +130,31 @@ function deleteComment(userId) {
     } else {
         return false;
     }
+}
+// (4) 콘텐츠 삭제
+function contentsDelete(imageId, principalId) {
+
+
+   if (confirm('정말 삭제하시겠습니까?')) {
+
+    $.ajax({
+
+        type: "delete",
+        url: `/api/image/${imageId}`,
+        dataType: "json"
+
+
+    }).done(res => {
+
+        $(`#contentsItem-${imageId}`).remove();
+         location.href = "/user/"+principalId+"";
+
+    }).fail(error => {
+        alert("삭제에 실패하였습니다. 관리자에게 문의하세요.")
+    })
+
+    }else{
+    return false;
+    }
+
 }

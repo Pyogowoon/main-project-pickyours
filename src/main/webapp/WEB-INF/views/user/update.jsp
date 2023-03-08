@@ -63,7 +63,7 @@
 					<div class="item__title"></div>
 					<div class="item__input">
 						<span><b>개인정보</b></span> <span>비즈니스나 반려동물 등에 사용된 계정인 경우에도
-							회원님의 개인 정보를 입력하세요. 공개 프로필에는 포함되지 않습니다.</span>
+							회원님의 개인 정보를 입력하지마세요. 해당 프로필은 공개처리 됩니다.</span>
 					</div>
 				</div>
 				<div class="content-item__08">
