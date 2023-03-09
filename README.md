@@ -170,7 +170,59 @@
  
  </details>
  
- ## 5. 기능 하이라이트
+ 
+ ## 5. 기능 설명
+ 
+ > Pickyours 의 기능은 크게 유저마당, 게시판 으로 나뉘어져있습니다.
+ 
+  > 해당 기능 설명 란 에서는 사진 첨부를 통한 기능을 간단하게 설명합니다.
+ 
+ 
+  <details>
+  
+  <summary> <H2> 1. INDEX 및 로그인 </H2> </summary>
+  
+  <img src="./src/main/resources/static/images/readme/readme_index.png">
+  
+  
+  <br/>
+  
+  > 인덱스입니다. Header와 Footer , 간단한 Carousel 기능 탑재했습니다.
+  
+  <br/>
+  
+  ## 2. 로그인
+  
+ 
+  <img src="./src/main/resources/static/images/readme/readme_login2.png">
+  
+  > 로그인 입니다. 카카오톡 로그인, 네이버 로그인이 가능하며, 회원가입이 가능합니다.
+ 
+
+  <img src="./src/main/resources/static/images/readme/readme_login_fail.png">
+
+
+   
+   > 로그인 실패 시 유효성 검사입니다. 간단한 경고문을 출력합니다.
+   
+   <br/>
+   
+  <img src="./src/main/resources/static/images/readme/readme_join.png">
+  
+  
+  
+  
+  
+  
+  
+  </details>
+ 
+ 
+ 
+ 
+ 
+
+ # 6. 기능 하이라이트
  
 <details>
  <summary> <H2>블로그 포스팅 </h2></summary> 
