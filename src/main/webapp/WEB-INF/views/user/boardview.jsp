@@ -17,7 +17,11 @@
 
                     <div class="sl__item__contents__delete">
                         <span onclick="location.href='/user/${image.user.id}'">${image.user.name} </span>
-                        <button type="button" class onclick="contentsDelete(${image.id},${principal.user.id})" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;">   <i class="fas fa-times"></i></button>
+
+                         <span class="crud">
+                                               <button type="button" class onclick="location.href='/image/upload/${image.id}'" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;">  <i class="fa-solid fa-pen-to-square"></i></button>
+                        					     <button type="button" class onclick="contentsDelete(${image.id},principalId)" style="border:none;outline:none;background:white;margin-right:20px;cursor:pointer; cursor:hand;"><i class="fas fa-times"></i></button>
+                        					     </span>
                     </div>
 
 
