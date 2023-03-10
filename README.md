@@ -848,18 +848,228 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 </details>
 
-<details>
- <summary> <h2> 소셜 서비스 </h2> </summary>
- 
- 
- 내용
- </details>
+
   
   <details>
- <summary> <h2> 유효성 검사 </h2> </summary>
+ <summary> <h2> 유효성 검사 AOP </h2> </summary>
+ 
+ ## 1. 유효성 검사 AOP
+ 
+  Validation 검사인 @Valid 어노테이션 사용 후 발생하는 모든 유효성 검사를 자동화 시키고자 했습니다. 
+  <br/>
+  Controller 에서 Validation 검사를 실시할 때 BindingResult 처리를 하면서 발생하는 코드의 중복( 공통적인 if문 사용 )을 줄이기 위해 리팩터링
+  <br/>
+  
+   2가지의 조건을 고려하며 기능을 구현했습니다.
+   
+- BindingResult 발생 시 커스텀한 Exception 으로 상황에 따라 본인이 의도한대로 예외처리 하기. (주로 간단한 예외처리는 alert창을 띄웠습니다.)
+    
+- 유저 로그인 같이 중요한 유효성 검사는 자동화 처리 하지않음.
+
+<br/>
+  <br/>
+
+## 1-1. ExceptionHandler
+- 첫번째로 ExceptionHandler 기능을 구현했습니다.  [Exception Handler 코드 보기](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/java/com/pyo/yourspick/handler/ControllerExceptionHandler.java)
+
+
+
+```java
+
+
+
+@RestController
+@ControllerAdvice
+public class ControllerExceptionHandler {
+
+    
+    /* 유효성 예외처리 - 간단한 Alert 알림 */
+    @ExceptionHandler(CustomValidationException.class)
+    public String validationException(CustomValidationException e) {
+
+        if (e.getErrorMap() == null) {
+            return Script.back(e.getMessage());
+        } else {
+            return Script.back(e.getErrorMap().toString());
+        }
+    }
+
+    /* 유효성 예외처리 - API Bad Request 리턴 */
+    @ExceptionHandler(CustomValidationApiException.class)
+    public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
+
+        return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
+
+    }
+
+    /* 예외처리 - API 에서의 예외처리 */
+    @ExceptionHandler(CustomApiException.class)
+    public ResponseEntity<?> apiException(CustomApiException e) {
+
+        return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), null), HttpStatus.BAD_REQUEST);
+
+    }
+
+    /* 예외처리 - 단순 예외처리 */
+    @ExceptionHandler(CustomException.class)
+    public String exception(CustomException e) {
+        return Script.back(e.getMessage());
+    }
+
+
+}
+
+```
+> 각각 역할에 따라 Custom Excpetion 기능을 만들었고 주로 ErrorMap, Message를 담은 생성자를 가집니다.
+
+
+ - 특히 간단한 예외처리에 사용되는 Script.back() 메서드는 주로 간단한 Alert 알림처리를 return 하는 class 를 만들어 사용했습니다.
+ 
+ ```java
+ 
+ public class Script {
+
+    public static String back(String msg){
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("<script>");
+        sb.append("alert('"+msg+"');");
+        sb.append("history.back();");
+        sb.append("</script>");
+        return sb.toString();
+    }
+
+}
+
+```
+
+
+## 1-2. 유효성 검사 리팩터링 전 ( AOP 사용 X )
+
+ - 리팩터링 전의 코드입니다.
+ - AOP 기능 구현으로 부가기능을 분리하고자 하는 의도입니다.
+
+<br/>
+  <br/>
+  
+  - ### PostCommentApiController
+
+ 
+ ```java
+ 
+ @PostMapping("/api/comment")
+    public ResponseEntity<?> commentSave(@Valid @RequestBody CommentDto commentDto, BindingResult bindingResult, @AuthenticationPrincipal PrincipalDetails principalDetails){
+    
+    /* Error 발생시 BindingResult 처리 */
+        if(bindingResult.hasErrors()){
+            Map<String , String> errorMap = new HashMap<>();
+
+            for(FieldError error : bindingResult.getFieldErrors()){
+                errorMap.put(error.getField(), error.getDefaultMessage());
+            }
+            /* 커스텀 예외처리 */
+            throw new CustomValidationApiException("유효성 검사 실패" , errorMap);
+        }
+        
+          /* 댓글 쓰기 로직 실행 */
+        Comment comment = commentService.댓글쓰기(commentDto.getImageId(), commentDto.getContent() , principalDetails.getUser().getId());
+        
+         /* 댓글 쓰기 완료 HttpStatus 리턴 */
+        return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기 완료",comment), HttpStatus.CREATED);
  
  
- 내용
+ ```
+
+> 모든 유효성 검사를 실시하는 로직에 if문을 통하여 BindingResult 로 error를 찾아 담아주는 중복 코드를 사용하고 있었습니다.
+
+ - 이 과정을 공통적으로 처리할 AOP 를 구현했습니다.
+ 
+ <br/>
+  <br/>
+ 
+ - ### ValidationAdvice 
+ - [전체 코드보기 : ValidationAdvice](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/java/com/pyo/yourspick/handler/aop/ValidationAdvice.java)
+ 
+ ```java
+
+@Component
+@Aspect
+public class ValidationAdvice {
+
+    /* Around 사용으로 호출 가로채기 */
+    @Around("execution(* com.pyo.yourspick.web.api.CommentApiController.*(..))")
+    public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+
+        /* proceedingJoinPoint 를 통한 BindingResult 인스턴스의 실행 감지 */
+        Object[] args = proceedingJoinPoint.getArgs();
+        for (Object arg : args) {
+            /* BindingResult 감지 */
+            if (arg instanceof BindingResult) {
+
+                BindingResult bindingResult = (BindingResult) arg;
+                /* BindingResult에 Error 감지 */
+                if (bindingResult.hasErrors()) {
+                    Map<String, String> errorMap = new HashMap<>();
+
+                    /* Error를 ErroeMap 에 put */
+                    for (FieldError error : bindingResult.getFieldErrors()) {
+                        errorMap.put(error.getField(), error.getDefaultMessage());
+                    }
+                    return new ResponseEntity<>(new CMRespDto<>(-1 ," 댓글을 입력해주세요." , null), HttpStatus.BAD_REQUEST);
+                }
+            }
+        }
+        /* proceed 메서드 호출 */
+        return proceedingJoinPoint.proceed();
+    }
+    
+    
+   ```
+   
+  > ProceedingJoinPoint 를 사용하여 BindingResult 발생 시 호출을 낚아채서 처리하는 기능을 구현했습니다.
+
+<br/>
+  <br/>
+
+   ## 1-3. 유효성 검사 리팩터링 후 ( AOP 사용 )
+    
+   - 리팩터링 후 코드입니다.
+   
+   <br/>
+    
+  ```java
+  
+  
+      @PostMapping("/api/comment")
+    public ResponseEntity<?> commentSave(@Valid @RequestBody CommentDto commentDto, BindingResult bindingResult, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        /* 댓글 쓰기 로직 서비스 */
+        Comment comment = commentService.댓글쓰기(commentDto.getImageId(), commentDto.getContent(), principalDetails.getUser().getId());
+
+        /* 댓글 쓰기 완료 HttpStatus 리턴 */
+        return new ResponseEntity<>(new CMRespDto<>(1, "댓글쓰기 완료", comment), HttpStatus.CREATED);
+
+    }
+  
+  ```
+    
+   > 더이상 컨트롤러에서 if문을 사용하지 않습니다.
+    
+    
+    
+    
+  
+ </details>
+ 
+ <details>
+ <summary> <h2> 소셜 서비스 </h2> </summary>
+ 
+ ## 1. 유저마당 - 구독리스트 불러오기
+ 
+ -
+ 
+ 
+ 
  </details>
   
   
