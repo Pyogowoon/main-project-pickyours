@@ -195,6 +195,9 @@
  > Pickyours 의 기능은 크게 유저마당, 블로그 게시판 으로 나뉘어져있습니다.
  
   > 해당 기능 설명 란 에서는 사진 첨부를 통한 기능을 간단하게 설명합니다.
+  
+   <br/>
+  <br/>
  
  
   <details> 
@@ -497,9 +500,12 @@
  > 중요한 기능을 설명과 코드를 함께 적었습니다.
  
   > 또한 리팩터링 한 코드는 리팩터링 과정도 함께 적었습니다.
+  
+  <br/>
+    <br/>
  
 <details>
- <summary> <H2>블로그 포스팅 </h2></summary> 
+ <summary> <H2>블로그 포스팅  </h2></summary> 
 
 <!-- summary 아래 한칸 공백 두어야함 -->
 ## 1. 멀티파츠 첨부기능
@@ -848,10 +854,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 </details>
 
+ <br/>
+  <br/>
+
 
   
   <details>
- <summary> <h2> 유효성 검사 AOP </h2> </summary>
+ <summary> <h2> 유효성 검사 AOP  </h2> </summary>
  
  ## 1. 유효성 검사 AOP
  
@@ -1061,22 +1070,165 @@ public class ValidationAdvice {
   
  </details>
  
+  <br/>
+  <br/>
+ 
  <details>
- <summary> <h2> 소셜 서비스 </h2> </summary>
+ <summary> <h2> 소셜 서비스 펼치기 </h2> </summary>
  
  ## 1. 유저마당 - 구독리스트 불러오기
+
+ - 소셜 서비스에서 중요하다고 생각한 코드는 구독리스트 불러오기 입니다.
+ - 해당 부분은 리팩터링 의 과정은 없지만 JPA에 대한 새로운 시선을 가지게 되었습니다.
  
- -
+ <br/>
+ 
+ ## 1-1. SubscribeRepository 
+ 
+ ```java
+ 
+ public interface SubscribeRepository extends JpaRepository<Subscribe, Integer> {
+
+        /* 구독하기 쿼리 */
+    @Modifying
+    @Query(value = "INSERT INTO Subscribe(fromUserId ,toUserId,createDate) VALUES( :fromUserId, :toUserId, now())", nativeQuery = true)
+    int mSubscribe(@Param("fromUserId") int fromUserId, @Param("toUserId") int toUserId);
+
+        /* 구독취소 쿼리 */
+    @Modifying
+    @Query(value = "DELETE FROM Subscribe WHERE fromUserId = :fromUserId AND toUserId = :toUserId", nativeQuery = true)
+    int mUnSubscribe(@Param("fromUserId") int fromUserId, @Param("toUserId") int toUserId);
+
+
+     /*구독 여부 확인 쿼리 */
+    @Query(value = "SELECT COUNT(*) FROM Subscribe WHERE fromUserId = :principalId AND toUserId = :pageUserId", nativeQuery = true)
+    int mSubscribeState(@Param("principalId") int principalId, @Param("pageUserId") int pageUserId);
+
+    /* 구독 횟수 확인 쿼리 */
+    @Query(value = "SELECT COUNT(*) FROM Subscribe WHERE fromUserId = :pageUserId", nativeQuery = true)
+    int mSubscribeCount(@Param("pageUserId") int pageUserId);
+
+
+}
+
+ 
+ ```
+ > 그동안 간단한 쿼리는 모두 Native SQL Query를 사용 했습니다.
+ 
+ - 그러나 제가 사용한 구독리스트 불러오기 쿼리는 if문도 사용되고, 스칼라 서브쿼리도 사용하였고, Join 도 사용하였습니다.
+ - 더군다나 쿼리가 Subscribe를 리턴 하지 않기때문에 extends한 JpaRepository에서 사용할 수 없었습니다. (user를 리턴하고있기 때문에)
+ - 그렇기 때문에 평소와 같은 Native SQL Query를 사용해서 Entity에 접근하는 것이 아닌 DTO 에서 해결하는  DTO Mapping 을 시도했습니다.
+ 
+ 
+ ## 1-2. SubscribeService (DTO Mapping) [SubscribeService 모든 코드보기 : ](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/java/com/pyo/yourspick/service/SubscribeService.java)
+ 
+ 
+ ```java
+ 
+ @Transactional(readOnly = true)
+    public List<SubscribeDto> 구독리스트(int principalId, int pageUserId) {
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("SELECT u.id, u.name, u.profileImageUrl, ");
+        sb.append("if ((SELECT 1 FROM subscribe WHERE fromUserId = ? AND toUserId = u.id), 1,0) subscribeState, ");
+        sb.append("if ((?=u.id), 1, 0) equalUserState ");
+        sb.append("FROM user u INNER JOIN subscribe s ");
+        sb.append("ON u.id = s.toUserId ");
+        sb.append("WHERE s.fromUserId = ?");
+
+        /* 쿼리 완성 */
+        Query query = em.createNativeQuery(sb.toString())
+                .setParameter(1, principalId)
+                .setParameter(2, principalId)
+                .setParameter(3, pageUserId);
+
+        /* 쿼리 실행 결과 */
+
+        List<Object[]> results = query.getResultList();
+        List<SubscribeDto> subscribeDtos = results.stream()
+                .map(o -> new SubscribeDto(o))
+                .collect(Collectors.toList());
+
+
+        return subscribeDtos;
+
+    }
+
+}
+ 
+ 
+ ```
+ - EntityManager 를 DI 한 후 createNativeQuery를 사용한 후
+ - 실행 결과를 Dto 에 담아 리턴하였습니다.
+ - 그동안 사용한 JPA의 Named Query, Native Query 와 다른 방법을 경험해본 기회였으며
+ - 추후 입사하여 더욱 복잡해질 Query를 만약 JPA로 해야한다면 어떻게 타계해야 할지 생각 해봐야겠다는 생각을 가지게되었습니다.
+ 
+ 
  
  
  
  </details>
+ 
+  <br/>
+  <br/>
   
   
 
 
- ## 7. Troubleshooting
+ # 7. Troubleshooting
  <br/>
+ 
+ <details>
+ 
+ <summary> <h2> </h2> </summary>
+ 
+ </details>
+ 
+ 
+ <br/>
+  <br/>
+ 
+  
+ <details>
+ 
+ <summary> <h2> </h2> </summary>
+ 
+ </details>
+ 
+ 
+ 
+  <br/>
+    <br/>
+    
+    
+  
+ <details>
+ 
+ <summary> <h2> </h2> </summary>
+ 
+ </details>
+ 
+  <br/>
+  <br/>
+ 
+  
+ <details>
+ 
+ <summary> <h2> </h2> </summary>
+ 
+ </details>
+ 
+ 
+  <br/>
+  <br/>
+ 
+  
+ <details>
+ 
+ <summary> <h2> </h2> </summary>
+ 
+ </details>
+ 
  
  ## 8. 향후 개선 방안
  
