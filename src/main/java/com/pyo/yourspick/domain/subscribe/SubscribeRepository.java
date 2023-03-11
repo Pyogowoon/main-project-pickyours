@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface SubscribeRepository extends JpaRepository<Subscribe, Integer> {
 
         /* 구독하기 쿼리 */
@@ -25,5 +27,6 @@ public interface SubscribeRepository extends JpaRepository<Subscribe, Integer> {
     /* 구독 횟수 확인 쿼리 */
     @Query(value = "SELECT COUNT(*) FROM Subscribe WHERE fromUserId = :pageUserId", nativeQuery = true)
     int mSubscribeCount(@Param("pageUserId") int pageUserId);
+
 
 }

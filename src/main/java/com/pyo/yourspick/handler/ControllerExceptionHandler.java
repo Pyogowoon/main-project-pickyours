@@ -19,6 +19,8 @@ import java.util.Map;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
+
+    /* 유효성 예외처리 - 간단한 Alert 알림 */
     @ExceptionHandler(CustomValidationException.class)
     public String validationException(CustomValidationException e) {
 
@@ -29,6 +31,7 @@ public class ControllerExceptionHandler {
         }
     }
 
+    /* 유효성 예외처리 - API Bad Request 리턴 */
     @ExceptionHandler(CustomValidationApiException.class)
     public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
 
@@ -36,6 +39,7 @@ public class ControllerExceptionHandler {
 
     }
 
+    /* 예외처리 - API 에서의 예외처리 */
     @ExceptionHandler(CustomApiException.class)
     public ResponseEntity<?> apiException(CustomApiException e) {
 
@@ -43,6 +47,7 @@ public class ControllerExceptionHandler {
 
     }
 
+    /* 예외처리 - 단순 예외처리 */
     @ExceptionHandler(CustomException.class)
     public String exception(CustomException e) {
         return Script.back(e.getMessage());
