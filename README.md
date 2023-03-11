@@ -1158,8 +1158,7 @@ public class ValidationAdvice {
  
  
  ```
- - EntityManager 를 DI 한 후 createNativeQuery를 사용한 후
- - 실행 결과를 Dto 에 담아 리턴하였습니다.
+ - EntityManager 를 DI 한 후 createNativeQuery를 사용한 후  실행 결과를 Dto 에 담아 리턴
  - 그동안 사용한 JPA의 Named Query, Native Query 와 다른 방법을 경험해본 기회였으며
  - 추후 입사하여 더욱 복잡해질 Query를 만약 JPA로 해야한다면 어떻게 타계해야 할지 생각 해봐야겠다는 생각을 가지게되었습니다.
  
@@ -1180,7 +1179,7 @@ public class ValidationAdvice {
  
  <details>
  
- <summary> <h2> </h2> </summary>
+ <summary> <h2> Spring Security 의 싸이클 오류 </h2> </summary>
  
  </details>
  
@@ -1191,7 +1190,7 @@ public class ValidationAdvice {
   
  <details>
  
- <summary> <h2> </h2> </summary>
+ <summary> <h2> Spring Security 의 다량의 Redirection 발생 오류 </h2> </summary>
  
  </details>
  
@@ -1204,7 +1203,7 @@ public class ValidationAdvice {
   
  <details>
  
- <summary> <h2> </h2> </summary>
+ <summary> <h2> 댓글이 달린 게시글이 삭제안되는 문제 ( JPA 에서의 외래키 연관관계 ) </h2> </summary>
  
  </details>
  
@@ -1214,20 +1213,14 @@ public class ValidationAdvice {
   
  <details>
  
- <summary> <h2> </h2> </summary>
+ <summary> <h2> JPA 의 무한참조 오류  </h2> </summary>
  
  </details>
  
  
   <br/>
   <br/>
- 
-  
- <details>
- 
- <summary> <h2> </h2> </summary>
- 
- </details>
+
  
  
  ## 8. 향후 개선 방안
