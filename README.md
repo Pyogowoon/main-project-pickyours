@@ -1175,11 +1175,33 @@ public class ValidationAdvice {
 
 
  # 7. Troubleshooting
+
+> 개발 하며 발생한 오류를 해결한 과정을 정리했습니다.
+
+> 주로 기술적으로 발생한 오류만 기입했습니다.
  <br/>
  
  <details>
  
  <summary> <h2> Spring Security 의 싸이클 오류 </h2> </summary>
+
+ - 오류 내용 :
+
+<img src="./src/main/resources/static/images/readme/readme_trouble.png">
+<br/>
+
+> Spring Security의 설정을 담고있는 SecurityConfig 클래스와 OAuth2.0 서비스를 담고있는 Oauth2DetailService 간의 사이클 오류 
+
+### 오류 발생 원인 :
+
+- 해당 오류는 SecurityConfig 의 패스워드 암호화 (BCrypt) 와 OAuth2DetailService에 BCrypt를 DI 함으로써 발생한 오류입니다.
+- 즉 SecurityConfig 에서 BCrypt 를 참조 -> Oauth2DetailService 에서 BCrypt를 참조하기 위해 SecurityConfig를 참조로 인한 무한 참조 오류
+
+### 해결 방법 (2가지) :
+
+- apllication.yml 에서 allow-circular-references: true 설정하기 
+- 근본적인 원인인 BCrypt의 DI 의존성주입을 없애고, new 객체로 만들어서 해결 ( 본인 선택 )
+- [자세한 설명은 본인 기술 블로그 ( Tistory )](https://pyogowoon.tistory.com/119)
  
  </details>
  
@@ -1191,6 +1213,71 @@ public class ValidationAdvice {
  <details>
  
  <summary> <h2> Spring Security 의 다량의 Redirection 발생 오류 </h2> </summary>
+
+- 오류 내용 :
+
+<img src="./src/main/resources/static/images/readme/readme_redirection.png">
+<br/>
+
+ > Spring Security의 설정을 담고있는 SecurityConfig 클래스 에서의 설정으로 인해 생긴 문제.
+
+ ### 오류 발생 원인 :
+
+ - 본인의 경우 해당 페이지를 Security 로그인을 발생시켰지만, 해당 페이지로 갈 권한이 없는 경우
+ - Java 코드로 설명하면
+
+```java
+
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig {
+
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/","/board")
+                .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/auth/signin");
+//                .loginProcessingUrl("/user/loginProc")
+//                .defaultSuccessUrl("/");
+
+        return http.build();
+    }
+
+```
+ - 로그인 페이지는 /auth/signin 으로 설정해놓았지만 /auth 로 갈 권한이 없기 때문에 무한 Redirection 발생 
+
+### 해결 방법 :
+
+```java
+   @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/","/board","/auth")
+                .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/auth/signin");
+//                .loginProcessingUrl("/user/loginProc")
+//                .defaultSuccessUrl("/");
+
+        return http.build();
+    }
+
+
+```
+ - permitAll 에 해당하는 antMatchers 에 /auth 를 추가함으로써 /auth/~~ 에 권한부여
  
  </details>
  
