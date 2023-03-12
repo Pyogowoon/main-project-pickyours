@@ -46,7 +46,7 @@
  
 ##
 
-# 개요
+# 1. 개요
 
 - 프로젝트 명칭 : Pickyours 
 
@@ -128,8 +128,12 @@
  
  
 # 3. DB 설계 
+> 프로젝트의 데이터베이스 ERD 와 전체적인 구성 입니다.
+
+<br/>
+  <br/>
  <details>
-     <summary> <h3> ERD 이미지 펼치기 </h3> </summary>
+     <summary> <h2> ERD 이미지 펼치기 </h2> </summary>
  
  <img src="./src/main/resources/static/images/ERD.png">
  
@@ -137,7 +141,7 @@
  
  
   <details>
-     <summary> <h3> DB 구성 펼치기 </h3> </summary>
+     <summary> <h2> DB 구성 펼치기 </h2> </summary>
  
  <img src="./src/main/resources/static/images/readme/DB_User.png">
  
@@ -170,8 +174,12 @@
  
  
  # 4. API 설계
+ > 프로젝트의 API 설계도 입니다.
+ 
+ <br/>
+  <br/>
  <details>
- <summary> <h3> API 설계 펼치기 </h3> </summary>
+ <summary> <h2> API 설계 펼치기 </h2> </summary>
  
  <img src="./src/main/resources/static/images/readme/User_API.png">
  
@@ -1184,6 +1192,7 @@ public class ValidationAdvice {
  <details>
  
  <summary> <h2> Spring Security 의 싸이클 오류 </h2> </summary>
+<br/>
 
  - 오류 내용 :
 
@@ -1213,6 +1222,8 @@ public class ValidationAdvice {
  <details>
  
  <summary> <h2> Spring Security 의 다량의 Redirection 발생 오류 </h2> </summary>
+
+<br/>
 
 - 오류 내용 :
 
@@ -1277,7 +1288,8 @@ public class SecurityConfig {
 
 
 ```
- - permitAll 에 해당하는 antMatchers 에 /auth 를 추가함으로써 /auth/~~ 에 권한부여
+ - permitAll 에 해당하는 antMatchers 에 /auth 를 추가함으로써 /auth/~~ 에 권한부여로 해결.
+ - [자세한 설명은 본인 기술 블로그 ( Tistory )](https://pyogowoon.tistory.com/102)
  
  </details>
  
@@ -1290,7 +1302,45 @@ public class SecurityConfig {
   
  <details>
  
- <summary> <h2> 댓글이 달린 게시글이 삭제안되는 문제 ( JPA 에서의 외래키 연관관계 ) </h2> </summary>
+ <summary> <h2> 댓글, 좋아요 달린 게시글이 삭제 안되는 문제 ( JPA 에서의 외래키 연관관계 ) </h2> </summary>
+
+<br/>
+
+- 오류 내용 :
+
+ <img src="./src/main/resources/static/images/readme/readme_fkdelete.png">
+
+ > 흔히 겪는 문제인 외래키 연관 데이터 삭제 불가 에러
+
+
+### 오류 발생 원인 :
+
+ -  게시글과 댓글이 서로 연관관계에 있음, Mybatis 의 경우 따로 쿼리에 CASCADE 설정을 하면 해결 
+ -  현재 프로젝트가 순수 JPA로 진행되었기 때문에 Mybatis 처럼 쿼리에 직접적으로 CASCADE 설정을 할 수 없는 상황
+
+
+### 오류 해결 방법 :
+
+```java
+
+
+
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
+    private List<Likes> likes;
+
+    @OrderBy("id DESC")
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
+    private List<Comment> comments;
+
+
+```
+ > 게시글의 도메인(Entity)
+
+- 도메인의 연관관계를 갖는 부분에 mappedBy ="" 를 통해 연관관계의 주인을 정의 한 후
+- orphanRemoval = true 를 통해 부모 엔티티 삭제 시 자식 엔티티도 삭제하는 설정을 해줘서 오류를 해결.
+- [자세한 설명은 본인 기술 블로그 ( Tistory )](https://pyogowoon.tistory.com/135)
+
+
  
  </details>
  
@@ -1301,6 +1351,40 @@ public class SecurityConfig {
  <details>
  
  <summary> <h2> JPA 의 무한참조 오류  </h2> </summary>
+<br/>
+
+- 오류 내용 : 
+
+ <img src="./src/main/resources/static/images/readme/readme_jackson2.png">
+
+> StackOverFlow 에러 ( Infinite Recursion )
+
+### 오류 발생 원인 :
+
+- JPA 에서 발생하는 대표적인 오류로 양방향 관계 맵핑 시 발생하는 무한참조 오류.
+- 양방향 관계 ( ManyToOne 혹은 OneToMany ) 에서 서로가 서로를 계속 참조하는 상황
+
+### 오류 해결 방법 : 
+
+```java
+
+ @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
+    private List<Likes> likes;
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
+    private List<Comment> comments;
+
+
+```
+ > Domain 에서 @JsonIgnoreProperties 어노테이션 설정
+
+- @JsonIgnoreProperties("변수 이름") 을 설정함으로서 해당 필드를 JSON 파싱 하지 않도록 설정.
+- 개인적으로는 Rombok의 @Data의 사용을 조심해야겠다는 생각이 들었음 (Rombok의 @Data에 포함된 ToString 메서드 역시 StackOverFlow를 
+- - [자세한 설명은 본인 기술 블로그 ( Tistory )](https://pyogowoon.tistory.com/61)
+
  
  </details>
  
@@ -1309,11 +1393,7 @@ public class SecurityConfig {
   <br/>
 
  
- 
- ## 8. 향후 개선 방안
- 
-  DB 테이블 설계에서 FK 사용이 너무 잦음 - > JOIN 키로 바꿀 수 있도록
-  DTO의 Response , Request 분리 필요 -> dto 정적팩토리 메소드를 쓸건지 Entity에 메서드를 만들것인지?
+
   
   
  
