@@ -238,3 +238,5 @@ function actorToggle() {
     $(".shopInfo").css("display", "none");
     $(".actorInfo").toggle();
 }
+
+
