@@ -77,25 +77,30 @@ public class PostService {
         return postRepository.save(post);
 
     }
+
+    /* 게시글 수정 */
     @Transactional
     public Post 게시글수정(PostUpdateDto postUpdateDto, MultipartFile actorImage,
                       MultipartFile clotheImage, MultipartFile video, PrincipalDetails principalDetails, int postId) {
 
+        /* 게시글의 ID찾기 */
         Post postEntity = postRepository.findById(postId).orElseThrow(() -> {
             throw new CustomApiException("아이디를 찾을 수 없습니다.");
         });
 
 
+        /* 중복 방지용 임의 값 부여 */
         UUID uuid = UUID.randomUUID();
         String actorImageFileName = uuid + "_" + actorImage.getOriginalFilename();
         String clotheImageFileName = uuid + "_" + clotheImage.getOriginalFilename();
         String videoFileName = uuid + "_" + video.getOriginalFilename();
 
-
+        /* 파일의 경로 찾기 */
         Path actorImageFilePath = Paths.get(uploadFolder + actorImageFileName);
         Path clotheImageFilePath = Paths.get(uploadFolder + clotheImageFileName);
         Path videoFilePath = Paths.get(uploadFolder + videoFileName);
 
+        /* 지정한 경로에 Byte화 해서 저장 */
         try {
             Files.write(actorImageFilePath, actorImage.getBytes());
             Files.write(clotheImageFilePath, clotheImage.getBytes());
@@ -105,6 +110,7 @@ public class PostService {
 
         }
 
+        /* 게시글 수정 로직 */
         User userEntity = principalDetails.getUser();
 
         postEntity.update(
@@ -119,23 +125,25 @@ public class PostService {
                 postUpdateDto.getWeight()
         );
 
-
+        /* actorImage 변경 감지 */
         if (!actorImage.getOriginalFilename().isEmpty()) {
+
             postEntity.leftImageUpdate(actorImageFileName);
-
         }
 
+        /* clotheImage 변경 감지 */
         if (!clotheImage.getOriginalFilename().isEmpty()) {
+
             postEntity.rightImageUpdate(clotheImageFileName);
-
         }
+
+        /* video 변경 감지 */
         if (!video.getOriginalFilename().isEmpty()) {
+
             postEntity.videoUpdate(videoFileName);
-
         }
+
         return postEntity;
-
-
     }
 
 

@@ -29,7 +29,10 @@ public class CommentApiController {
     @PostMapping("/api/comment")
     public ResponseEntity<?> commentSave(@Valid @RequestBody CommentDto commentDto, BindingResult bindingResult, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
+        /* 댓글 쓰기 로직 서비스 */
         Comment comment = commentService.댓글쓰기(commentDto.getImageId(), commentDto.getContent(), principalDetails.getUser().getId());
+
+        /* 댓글 쓰기 완료 HttpStatus 리턴 */
         return new ResponseEntity<>(new CMRespDto<>(1, "댓글쓰기 완료", comment), HttpStatus.CREATED);
 
     }

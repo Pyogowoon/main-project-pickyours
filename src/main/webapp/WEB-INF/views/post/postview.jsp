@@ -273,13 +273,13 @@
 
                         <div class="comment-area-box media-${list.id}">
 
-                            <img alt="" src="/upload/${post.user.profileImageUrl}" onerror="this.src='/images/person.jpeg'" style="height: 70px;width:90px" class="img-fluid float-left mr-3 mt-2">
+                            <img alt="" src="/upload/${list.user.profileImageUrl}" onerror="this.src='/images/person.jpeg'" style="height: 70px;width:90px" class="img-fluid float-left mr-3 mt-2">
 
 
 
                            <!-- 댓글 박스 -->
                             <div class="media-body ml-4" >
-                                <h4 class="mb-0">${list.commentUser}</h4>
+                                <h4 class="mb-0" id='hangle'>${list.user.name}</h4>
                                 <span class="date-comm font-sm text-capitalize text-color"> <i
                                         class="fa-solid fa-clock"></i>${list.createDate} </span>
 
@@ -296,11 +296,12 @@
 
 
                         </div>
+                                     </span>
                           <!-- 댓글 박스 area End-->
                                  </c:forEach>
 
 
-                                </span>
+
                                 <!--댓글 동적 박스 End-->
                     </div>
                     <!-- comment 전체 박스 End -->
@@ -313,7 +314,7 @@
                                 <textarea class="form-control mb-3" id="postContent" name="content" cols="30" rows="5"
                                     placeholder="Comment"></textarea>
                                 <input type="hidden" name="profile" id="profileImage" value="${post.user.profileImageUrl}"/>
-                                <input type="hidden" name="username" id="profileUsername" value="${principal.user.username}"/>
+                                <input type="hidden" name="username" id="profileUsername" value="${principal.user.name}"/>
                         <input class="btn btn-primary" type="button"
                         onclick="postComment(${post.id})"
                                                 value="Submit Message">

@@ -27,7 +27,7 @@
                     
                     <!--사진설명 + 업로드버튼-->
                     <div class="upload-form-detail">
-                   		 <input type="text" placeholder="사진설명" name="caption">
+                   		 <input type="text"  placeholder="사진설명" name="caption">
 
                         <button class="cta blue" style="width:340px;height:40px;">업로드</button>
                     </div>

@@ -43,8 +43,9 @@ function postComment(postId) {
 
     }).done(res => {
 
+            console.log(res.data);
         let comment = res.data.content;
-        let user = res.data.commentUser;
+        let user = res.data.user.name;
         let profile = res.data.user.profileImageUrl;
         let createDate = res.data.createDate;
         let onerror = "this.src='/images/person.jpeg";
@@ -60,14 +61,15 @@ function postComment(postId) {
             "<span class='delete' onclick='postCommentDelete(" + commentId + ")' style='cursor:pointer; cursor:hand;'>X</span>" +
             "<img alt='' src='/upload/" + profile + "' onerror=" + onerror + "' style='height: 70px;width:90px' class='img-fluid float-left mr-3 mt-2'>" +
             "<div class=media-body ml-4>" +
-            "<h4 class='mb-0'>" + user + "</h4>" +
+            "<h4 class='mb-0' id='hangle'>" + user + "</h4>" +
             "<span class='date-comm font-sm text-capitalize text-color'><i class='fa-solid fa-clock'></i>" + createDate + "</span>" +
             "<div class='comment-content mt-1' id='commentContent'>" +
             "<p class='hangle'>" + comment + "</p>" +
             "</div>" +
             "</br>" +
             "</div>" +
-            "</div>"
+            "</div>" +
+            "</span>"
         );
 
         content.val('');

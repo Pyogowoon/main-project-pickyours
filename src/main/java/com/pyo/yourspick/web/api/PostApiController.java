@@ -79,14 +79,15 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, "좋아요취소 성공", null), HttpStatus.OK);
     }
 
+    /* 게시글 수정 기능 */
     @PutMapping("/api/post/{postId}")
     public ResponseEntity<?> postUpdate(PostUpdateDto postUpdateDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
                                         @PathVariable int postId) {
 
+        /* 멀티파트파일 getData 값 */
         MultipartFile actorImage = postUpdateDto.getActorImage();
         MultipartFile clotheImage = postUpdateDto.getClotheImage();
         MultipartFile video = postUpdateDto.getVideo();
-
 
         Post postEntity = postService.게시글수정(postUpdateDto, actorImage, clotheImage, video, principalDetails, postId);
 

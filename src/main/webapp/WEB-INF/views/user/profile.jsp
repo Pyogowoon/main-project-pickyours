@@ -39,7 +39,7 @@
                <c:choose>
 
                  <c:when test="${dto.pageOwnerState}">
-                    <button class="cta" onclick="location.href='/image/upload'">사진등록</button>
+                    <button class="cta" onclick="location.href='/image/upload'">게시글 등록</button>
                  </c:when>
 
                      <c:otherwise>
