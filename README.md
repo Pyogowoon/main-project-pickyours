@@ -1394,8 +1394,9 @@ public class SecurityConfig {
   
   # 8. Refactoring 
   
-  > 리팩터링 및 업데이트
+  > 리팩터링 및 업데이트 현황입니다.
   <br/>
+  [개발과정 에서의 업데이트 현황 보기](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/resources/static/images/readme/Pickyours_patch_note.txt)
   
  -  #### 2023. 02. 22    업데이트 - 전체적인 Update 관련 로직을 변경했습니다 ( Setter -> Entity 에서 Method 를 사용하는 방식 채택 )
   
