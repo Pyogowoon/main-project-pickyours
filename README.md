@@ -1405,6 +1405,7 @@ public class SecurityConfig {
   
  - #### 23. 02. 27 업데이트 - SSL 인증을 통한 도메인의 HTTPS 연결이 가능해졌습니다.
 
+ - #### 23. 03. 17 JWT 작업 진행중
  
 
   
