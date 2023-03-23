@@ -1411,7 +1411,7 @@ public class SecurityConfig {
  
   # 9. 추후 개선사항
 
-   - #### SMP 구축하기
+   - #### SMTP 구축하기
  
 
   
