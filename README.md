@@ -18,31 +18,6 @@
  <br/>
     <br/>
      
-
-
-
-## Contacts
-
- 이메일 주소
- 
- sh5814367@gmail.com
- 
- H.P.
- 
- 010 - 2217 - 4367
- 
- BLOG
- 
- <https://pyogowoon.tistory.com/>
- 
- GITHUB
- 
- <https://github.com/pyogowoon>
- 
-  <br/>
-    <br/>
-      <br/>
- 
  
 ##
 
