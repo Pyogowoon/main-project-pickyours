@@ -62,7 +62,7 @@ public class PostController {
 
 
     @GetMapping("/post/search/title")
-    public String postSearch(String keyword, Model model, @PageableDefault(size = 7, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String postSearch(String keyword, Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
         Page<Post> postSearch = postService.게시글검색(keyword, pageable);
 

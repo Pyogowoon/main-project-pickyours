@@ -143,10 +143,11 @@
                 </c:when>
 
                 <c:otherwise>
+                <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=0">first</a></li>
                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number-1}">Previous</a></li>
                 </c:otherwise>
                 </c:choose>
-                 <c:forEach var="i" begin="1" end="${postSearch.totalPages}">
+                 <c:forEach var="i" begin="${postSearch.number+1}" end="${postSearch.number+10}">
                             <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${i-1}">${i}</a></li>
                         </c:forEach>
                 <c:choose>
@@ -155,6 +156,7 @@
                 </c:when>
                 <c:otherwise>
                  <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+1}">Next</a></li>
+                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+11}">+10 Next</a></li>
                 </c:otherwise>
                 </c:choose>
 

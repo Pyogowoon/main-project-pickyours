@@ -72,7 +72,7 @@ public class Post {
     private List<PostComment> postComment;
 
     @JsonIgnoreProperties({"post"})
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",  orphanRemoval = true)
     private List<PostLikes> postLikes;
 
 

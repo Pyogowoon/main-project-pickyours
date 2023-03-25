@@ -134,25 +134,73 @@
                  <!-- 페이징 버튼 -->
                 <ul class="pagination justify-content-center">
 
+
                 <c:choose>
                 <c:when test="${post.first}">
                  <li class="page-item disabled"><a class="page-link" href="?page=${post.number-1}">Previous</a></li>
                 </c:when>
 
+
                 <c:otherwise>
+                    <li class="page-item"><a class="page-link" href="?page=0">first</a></li>
                 <li class="page-item"><a class="page-link" href="?page=${post.number-1}">Previous</a></li>
                 </c:otherwise>
+
                 </c:choose>
-                 <c:forEach var="i" begin="1" end="${post.totalPages}">
-                            <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
-                        </c:forEach>
+
+
+
                 <c:choose>
+
+                    <c:when test="${post.number <= post.totalPages-5}">
+                    <c:forEach var="i" begin="${post.number+1}" end="${post.number+5}">
+                                                <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                                            </c:forEach>
+
+                    </c:when>
+
+                    <c:when test ="${post.number == post.totalPages}">
+                     <li class="page-item"><a class="page-link" href="?page=${post.totalPages}">${post.totalPages}</a></li>
+                    </c:when>
+
+
+                    <c:otherwise>
+
+                 <c:forEach var="i" begin="${post.number+1}" end="${post.totalPages}" varStatus="status">
+                 <c:choose>
+                    <c:when test="${post.number < post.totalPages}">
+                            <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                            </c:when>
+
+
+                            <c:otherwise>
+
+
+                            </c:otherwise>
+
+                            </c:choose>
+                        </c:forEach>
+                        </c:otherwise>
+
+
+                        </c:choose>
+
+                <c:choose>
+
                 <c:when test="${post.last}">
                  <li class="page-item disabled"><a class="page-link" href="?page=${post.number+1}">Next</a></li>
                 </c:when>
+
+
+
                 <c:otherwise>
                  <li class="page-item"><a class="page-link" href="?page=${post.number+1}">Next</a></li>
+
+                <c:if test="${post.totalPages > 12 }">
+                 <li class="page-item"><a class="page-link" href="?page=${post.number+6}">+5 Next </a></li>
+                </c:if>
                 </c:otherwise>
+
                 </c:choose>
 
                 <!-- 페이징 버튼 End -->
