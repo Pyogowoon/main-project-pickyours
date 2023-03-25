@@ -4,6 +4,7 @@
   
 ### 의류 정보 및 유저 소셜서비스를 통합한 개인 프로젝트 입니다.
  ## 23.02.27 Update - 이제 Https 로 접속 가능합니다.
+ 
 ## <https://www.pickyours.co.kr>
 
 게시글 저장과 모든 수정/삭제 기능을 사용하기 위해선 ADMIN 계정이 필요합니다.
@@ -13,38 +14,13 @@
 임시 Pwd : 관리자12!
  
  계정을 사용해주세요. 감사합니다.
-##
+
 <br/>
  <br/>
     <br/>
      
+ 
 
-
-
-## Contacts
-
- 이메일 주소
- 
- sh5814367@gmail.com
- 
- H.P.
- 
- 010 - 2217 - 4367
- 
- BLOG
- 
- <https://pyogowoon.tistory.com/>
- 
- GITHUB
- 
- <https://github.com/pyogowoon>
- 
-  <br/>
-    <br/>
-      <br/>
- 
- 
-##
 
 # 1. 개요
 
@@ -1388,6 +1364,57 @@ public class SecurityConfig {
  
  </details>
  
+ <br/>
+  <br/>
+   
+ <details>
+ 
+ <summary> <h2> AWS EC2 간헐적인 무한 프리징 오류 </h2> </summary>
+ 
+<br/>
+
+ - 오류 내용 : EC2 서버가 간헐적으로 ( 작동 후 2시간정도 소요 ) 무한 프리징에 걸리는 오류입니다. ( 에러메세지는 없습니다 ) 
+ <br/>
+  <br/>
+ 
+ ### 오류 발생 원인
+ 
+ - EC2 프리티어를 사용하면서 낮은 스펙의 메모리(t2.nano)로 인해 서비스 운영 시 메모리 한계점에 금방 도달
+ - 메모리가 한계점 도달 시 EC2 의 CPU 사용률이 매우 급격하게 증가하여 사용률 100% 도달로 인한 무한 프리징
+ 
+   <img src="./src/main/resources/static/images/readme/ec2_cpu.png">
+   
+   > 메모리 한계점 도달 시 CPU 사용률이 매우 급격하게 증가하여 99.9%에 도달하고, EC2 서버의 무한 프리징을 유발 
+   
+### 오류 해결 방법
+
+  - ubuntu 를 통한 EC2 인스턴스에 메모리 Swap 설정
+  
+  <br/>
+  
+  
+  ```linux
+  
+  dd if=/dev/zero of=/root/swapfile bs=1k count=2000000 conv=excl
+chmod 600 /root/swapfile
+mkswap /root/swapfile
+swapon /root/swapfile
+free -h
+ vi /etc/fstab
+ /root/swapfile swap swap auto 0 0
+ 
+  ```
+ > 블럭사이즈가 1MB, 블럭 갯수가 2000K ( 2GB ) 인 빈파일을 만들고 해당 폴더를 Swap 파일로 설정 후 fstab 에 값을 추가해서 Swap 파일 자동 실행 설정.
+ 
+ <img src="./src/main/resources/static/images/readme/ec2_cpu2.png">
+ <br/>
+ 
+  - 결과적으로 Swap 메모리 2GB 가 생성되었습니다. t2.nano 에 할당된 메모리가 모두 소진 시 HDD의 2GB 만큼을 메모리로 사용합니다. (물론 약간 느립니다.)
+  - 메모리 부족 문제를 일시적으로 해결했습니다. 추후 서비스의 규모가 커진다면 스케일 업 방식 혹은 스케일 아웃 방식을 고려해야하겠습니다.
+  
+
+ 
+ </details>
  
   <br/>
   <br/>
@@ -1401,7 +1428,7 @@ public class SecurityConfig {
   
  -  #### 2023. 02. 22    업데이트 - 전체적인 Update 관련 로직을 변경했습니다 ( Setter -> Entity 에서 Method 를 사용하는 방식 채택 )
   
- - #### 23. 02.    업데이트 - 동일한 계정 유저의 상위 댓글 삭제시 모든 댓글이 삭제되는 문제를 수정하였습니다.
+ - #### 23. 02. 24   업데이트 - 동일한 계정 유저의 상위 댓글 삭제시 모든 댓글이 삭제되는 문제를 수정하였습니다.
   
  - #### 23. 02. 27 업데이트 - SSL 인증을 통한 도메인의 HTTPS 연결이 가능해졌습니다.
 
@@ -1415,6 +1442,10 @@ public class SecurityConfig {
   # 9. 추후 개선사항
 
    - #### SMTP 구축하기
+   
+   - #### 대규모 트래픽 발생 시 로드밸런싱 사용 후 JWT 토큰 사용 고려 ( 현재 JWT 토큰 설정 작업은 완료상태 )
+   
+   - #### DB 의 규모가 커진다면 인덱스 최적화 고려
  
 
   
