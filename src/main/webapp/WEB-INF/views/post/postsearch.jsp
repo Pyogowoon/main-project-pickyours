@@ -146,17 +146,54 @@
                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=0">first</a></li>
                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number-1}">Previous</a></li>
                 </c:otherwise>
+
                 </c:choose>
-                 <c:forEach var="i" begin="${postSearch.number+1}" end="${postSearch.number+10}">
-                            <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${i-1}">${i}</a></li>
-                        </c:forEach>
+
                 <c:choose>
-                <c:when test="${postSearch.last}">
+
+                <c:when test="${postSearch.number <= postSearch.totalPages-5}">
+
+                 <c:forEach var="i" begin="${postSearch.number+1}" end="${postSearch.number+5}">
+                <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${i-1}">${i}</a></li>
+                        </c:forEach>
+
+                    </c:when>
+
+                <c:when test="${postSearch.number == postSearch.totalPages}">
                  <li class="page-item disabled"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+1}">Next</a></li>
                 </c:when>
+
+                <c:otherwise>
+
+                 <c:forEach var="i" begin="${postSearch.number+1}" end="${postSearch.totalPages}" varStatus="status">
+                 <c:choose>
+                   <c:when test="${postSearch.number < postSearch.totalPages}">
+                    <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                    </c:when>
+
+                    <c:otherwise>
+
+                    </c:otherwise>
+
+                    </c:choose>
+                    </c:forEach>
+                    </c:otherwise>
+
+                    </c:choose>
+
+                    <c:choose>
+     <c:when test="${postSearch.last}">
+
+     <li class="page-item disabled"><a class="page-link" href="?page=${postSearch.number+1}">Next</a></li>
+    </c:when>
+
+
                 <c:otherwise>
                  <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+1}">Next</a></li>
-                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+11}">+10 Next</a></li>
+
+                 <c:if test="${postSearch.totalPages > 12 }">
+                 <li class="page-item"><a class="page-link" href="/post/search/title?keyword=${keyword}&page=${postSearch.number+6}">+5 Next</a></li>
+                </c:if>
                 </c:otherwise>
                 </c:choose>
 

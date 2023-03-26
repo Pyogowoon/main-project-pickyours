@@ -54,6 +54,7 @@ public class SecurityConfig {
                 .userInfoEndpoint()
                 .userService(oauth2DetailsService);
 
+
         return http.build();
     }
     /*        */

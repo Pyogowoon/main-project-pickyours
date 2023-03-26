@@ -404,7 +404,7 @@
 
     <script src="/js/post/postview.js"></script>
 
-     <-- main js -->
+     <!-- main js -->
 
 
 </body>
