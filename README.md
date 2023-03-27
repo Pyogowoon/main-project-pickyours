@@ -3,6 +3,10 @@
 <br/>
   
 ### 의류 정보 및 유저 소셜서비스를 통합한 개인 프로젝트 입니다.
+
+<br/>
+  <br/>
+  
  ## 23.02.27 Update - 이제 Https 로 접속 가능합니다.
  
 ## <https://www.pickyours.co.kr>
