@@ -41,3 +41,5 @@
         <br/><br/>
 	
 	<script src="/js/image/imageupdate.js" ></script>
+	<script src="/js/user/fontawesome.js"></script>
+    <script src="/js/user/jquery.js"></script>

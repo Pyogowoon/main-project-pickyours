@@ -75,8 +75,8 @@
 
                         <div class="card-body">
                             <div class="small text-muted">createDate : ${post.createDate} </div>
-                            <h2 class="card-title">title : ${post.title} </h2>
-                            <p class="card-text"> content : ${post.content}</p>
+                            <h2 class="card-title" id="hangle">title : ${post.title} </h2>
+                            <h4 class="card-text" id="hangle"> content : ${post.content}</p>
                             <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
                         </div>
                     </div>
@@ -113,8 +113,8 @@
                                 <!-- card body -->
                                 <div class="card-body">
                                     <div class="small text-muted">${post.createDate}</div>
-                                    <h2 class="card-title h4">title : ${post.title}</h2>
-                                    <p class="card-text">content : 내용</p>
+                                    <h2 class="card-title" id="hangle">title : ${post.title}</h2>
+                                    <h4 class="card-text" id="hangle">content : 내용</p>
                                     <a class="btn btn-primary" href="/post/postview/${post.id}">Read more →</a>
                                 </div>
                                  <!-- card body -->
@@ -206,6 +206,10 @@
 
 
 <script src="/js/post/post.js"></script>
+ <script src="/js/post/bootstrap.js"></script>
+       <script src="/js/post/bootstrapbundle.js"></script>
+         <script src="/js/post/popper.js"></script>
+           <script src="/js/post/fontawesome.js"></script>
 
     </body>
 </html>

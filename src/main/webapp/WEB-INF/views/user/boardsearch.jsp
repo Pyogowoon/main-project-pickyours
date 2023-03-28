@@ -158,5 +158,7 @@
 
 
 <script src="/js/user/profile.js"></script>
+<script src="/js/user/fontawesome.js"></script>
+<script src="/js/user/jquery.js"></script>
 
 <!--   <%@ include file="../layout/footer.jsp"%>  -->

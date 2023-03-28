@@ -104,3 +104,5 @@
 
 
 <script src="/js/user/update.js"></script>
+<script src="/js/user/fontawesome.js"></script>
+<script src="/js/user/jquery.js"></script>

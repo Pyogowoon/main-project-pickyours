@@ -62,5 +62,7 @@
 
 
 <script src="/js/user/board.js"></script>
+<script src="/js/user/fontawesome.js"></script>
+<script src="/js/user/jquery.js"></script>
 </body>
 </html>

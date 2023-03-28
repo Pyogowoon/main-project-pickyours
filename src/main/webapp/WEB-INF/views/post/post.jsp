@@ -214,5 +214,9 @@
 
 
 <script src="/js/post/post.js"></script>
+ <script src="/js/post/bootstrap.js"></script>
+       <script src="/js/post/bootstrapbundle.js"></script>
+         <script src="/js/post/popper.js"></script>
+           <script src="/js/post/fontawesome.js"></script>
     </body>
 </html>

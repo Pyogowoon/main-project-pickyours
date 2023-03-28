@@ -53,7 +53,12 @@ public class SecurityConfig {
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(oauth2DetailsService);
-
+        http
+                .headers()
+                .xssProtection()
+                .and()
+                .contentSecurityPolicy("script-src-elem 'self'");
+       /* script-src-elem*/
 
         return http.build();
     }

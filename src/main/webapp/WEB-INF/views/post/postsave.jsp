@@ -24,7 +24,7 @@
 
         <div class="form-group">
               <label for="content"> 쇼핑몰 정보(링크와 설명) </label>
-              <textarea class="form-control summernote" name="entryContent" rows="1" id="entryContent" required></textarea>
+              <textarea class="form-control summernote" name="entryContent" rows="1" placeholder="Enter info" id="entryContent" required></textarea>
             </div>
 
          <div class="form-group">
@@ -95,6 +95,11 @@
     </script>
 
 <script src="/js/post/postsave.js"></script>
+ <script src="/js/post/bootstrap.js"></script>
+       <script src="/js/post/bootstrapbundle.js"></script>
+         <script src="/js/post/popper.js"></script>
+           <script src="/js/post/fontawesome.js"></script>
+              <script src="/js/post/summernote.js"></script>
 
 
 

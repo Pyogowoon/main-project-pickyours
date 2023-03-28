@@ -20,6 +20,7 @@
 
     <!-- postsave css -->
  <link rel="stylesheet" href="/css/post/postsave.css">
+ <link rel="stylesheet" href="/css/post/summernote.css">
     <!-- postsave End -->
 
      <!-- 아이콘 css -->
@@ -29,11 +30,15 @@
      <!-- Post save -->
 
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
       <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
+      <!-- CDN 문제해결, 현재 사용 X
       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+            -->
 
 <!-- Post save End -->
 
@@ -134,10 +139,11 @@
 
 
 
-
+ <!-- JS 현재 사용 안함
     <script src="/js/header/popper.min.js"></script>
     <script src="/js/header/bootstrap.min.js"></script>
     <script src="/js/header/jquery.sticky.js"></script>
     <script src="/js/header/header.js"></script>
+    -->
   </body>
 </html>

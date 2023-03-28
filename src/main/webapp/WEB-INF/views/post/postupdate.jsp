@@ -3,6 +3,7 @@
 <%@include file="../layout/postheader.jsp" %>
 
 
+
    <form method="post" id="postUpdate" enctype="multipart/form-data" >
 
     <div class="container">
@@ -89,6 +90,11 @@
     </script>
 
 <script src="/js/post/postupdate.js"></script>
+  <script src="/js/post/bootstrap.js"></script>
+       <script src="/js/post/bootstrapbundle.js"></script>
+         <script src="/js/post/popper.js"></script>
+           <script src="/js/post/fontawesome.js"></script>
+              <script src="/js/post/summernote.js"></script>
 
 
 
