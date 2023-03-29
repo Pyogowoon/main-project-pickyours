@@ -1423,6 +1423,106 @@ free -h
   <br/>
   <br/>
   
+   <details>
+ 
+ <summary> <h2> XSS 공격 방지 기능의 CDN 불허 문제 </h2> </summary>
+ 
+ <br/>
+ 
+  - 오류 내용 :
+  
+   <img src="./src/main/resources/static/images/readme/XSS_error1.png">
+   
+   <br/>
+  
+  
+  
+  >  XSS 방지 기능을 추가하면서, Security Config 에 XSS 관련 설정을 추가한 후 CDN 먹통과 Ajax를 통한 JSON 데이터가 넘어오지못하는 오류, 댓글 입력도 안되고 사진도 넘어오질못하는 상황.
+  
+  <br/>
+  
+  #### 오류 발생 원인 
+  <br/>
+   
+  #### 스프링 시큐리티 설정 [코드링크 : SecurityConfig ](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/java/com/pyo/yourspick/config/SecurityConfig.java)
+  
+  ```java
+  
+@RequiredArgsConstructor
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig {
+
+  @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+                                                
+                                                .
+                                                .
+                                                .
+                                                                             
+            http.headers()
+                .xssProtection()
+                .and()
+                .contentSecurityPolicy("script-src 'self'");
+ 
+
+        return http.build();
+    }
+   
+  ```
+  
+   - CSP 설정으로 인한 CDN 차단과 JSON 데이터가 넘어오질못하는 복합적 상황
+   
+     <img src="./src/main/resources/static/images/readme/XSS_error2.png">
+     
+      <br/>
+      
+  - 위의 사진 개발자 모드의 조언에 의하면, SHA-256 ( 해시코드 ) 사용과 , Unsafe-inline 키워드를 사용하길 권장합니다. 하지만
+     
+  #### SHA-256 ( 해시코드 ) 사용
+     
+
+     
+  ```java
+     
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous" ></script>
+    
+  ```
+     
+ - 해시코드를 사용해본 결과 위의 사진과 오류가 동일합니다. 
+     
+ #### Unsafe-inline 키워드 사용
+     
+ - Unsafe-inline 사용시 XSS 공격에 노출됩니다.
+ 
+ <br/>
+ 
+ #### 오류 해결 방법
+ 
+ - 첫번째로 모든 CDN을 직접 JS 코드로 변경했습니다. CDN을 사용 못하는것이 아쉽지만 구글링과 영어 문서를 여러개 찾아봐도 CDN을 사용하면서 JSON데이터를 받아오는 방법을 찾지 못했습니다. 그렇기 때문에 모든 CDN을 제거 후 Javascript 코드로 변경하였습니다.
+ 
+ - 두번째로 Security Config의 Content Security Policy(CSP)의 키워드를 script-src -> script-src-elem 으로 변경하였습니다. 사실 이 키워드를 변경함으로써 작동하는 논리적인 이유를 찾지 못했습니다. Script의 유효한 요소만 작동하게 한다고 영문서에 적혀있지만, 사실 논리적인 이해가 힘든것 같습니다. 이 경험은 추후에 발생할 문제의 교두보로 삼을 예정입니다.
+ 
+  <img src="./src/main/resources/static/images/readme/XSS_resolve.png">
+  
+ <br/>
+ 
+ - 결과적으로 XSS 공격을 통한 Script 공격을 방지할 수 있게 되었습니다.
+ 
+ - 공격을 위한 의도적인 Script 문은 이제 공백으로 대체됩니다.
+  
+  
+  </details>
+  
+  <br/>
+    <br/>
+  
+  
+  
+  
+  
   # 8. Refactoring 
   
   > 리팩터링 및 업데이트 현황입니다.
@@ -1430,7 +1530,7 @@ free -h
 
  -  [개발과정 에서의 업데이트 현황 보기](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/resources/static/images/readme/Pickyours_patch_note.txt)
   
- -  #### 2023. 02. 22    업데이트 - 전체적인 Update 관련 로직을 변경했습니다 ( Setter -> Entity 에서 Method 를 사용하는 방식 채택 )
+ - #### 23. 02. 22  업데이트 - 전체적인 Update 관련 로직을 변경했습니다 ( Setter -> Entity 에서 Method 를 사용하는 방식 채택 )
   
  - #### 23. 02. 24   업데이트 - 동일한 계정 유저의 상위 댓글 삭제시 모든 댓글이 삭제되는 문제를 수정하였습니다.
   
@@ -1438,12 +1538,15 @@ free -h
 
  - #### 23. 03. 17 JWT 토큰 작업 진행중 // 추후 확장을 위해 토큰인증기반 로그인 방식을 구현중입니다. 현재 JWT 토큰의 틀과 설정 작업은 완료되었습니다(40% 완성)
  
- - #### 23. 03. 25 업데이트 - 게시판 페이징 처리를 개선했습니다 ( 모두 불러오는 기존 방식에서 5개씩 가져오는 방식으로 개선 )
+ - #### 23. 03. 25 업데이트 - 게시판 페이징 처리를 개선했습니다. ( 모두 불러오는 기존 방식에서 5개씩 가져오는 방식으로 개선 )
+ 
+ - #### 23. 03. 28 업데이트 - XSS 공격 방지 기능을 추가했습니다.
  
  
  <br/>
   <br/>
     <br/>
+    
  
   # 9. 추후 개선사항
   
@@ -1453,7 +1556,7 @@ free -h
    
    - #### 대규모 트래픽 발생 시 로드밸런싱 사용 후 JWT 토큰 사용 고려 ( 현재 JWT 토큰 설정 작업은 완료상태 )
    
-   - #### XSS 필터 구축
+   
  
 
   
