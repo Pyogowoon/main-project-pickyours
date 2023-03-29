@@ -58,7 +58,7 @@ public class SecurityConfig {
                 .xssProtection()
                 .and()
                 .contentSecurityPolicy("script-src-elem 'self'");
-       /* script-src-elem*/
+       /* script-src-elem */
 
         return http.build();
     }
