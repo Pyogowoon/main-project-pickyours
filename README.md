@@ -1556,6 +1556,8 @@ public class SecurityConfig {
    
    - #### 대규모 트래픽 발생 시 로드밸런싱 사용 후 JWT 토큰 사용 고려 ( 현재 JWT 토큰 설정 작업은 완료상태 )
    
+   - #### 현재 Readme 프로젝트 설명란 GIF 작업중.
+   
    
  
 
