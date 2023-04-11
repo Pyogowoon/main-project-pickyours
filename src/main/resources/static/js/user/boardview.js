@@ -147,7 +147,7 @@ function contentsDelete(imageId, principalId) {
     }).done(res => {
 
         $(`#contentsItem-${imageId}`).remove();
-         location.href = "/user/"+principalId+"";
+         location.href = "/user/board";
 
     }).fail(error => {
         alert("삭제에 실패하였습니다. 관리자에게 문의하세요.")
