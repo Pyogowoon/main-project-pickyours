@@ -69,7 +69,7 @@
 				<ul>
 					<li><a href=""> 게시물<span>${dto.imageCount}</span>
 					</a></li>
-					<li><a href="javascript:subscribeInfoModalOpen(${dto.user.id});"> 구독정보<span>${dto.subscribeCount}</span>
+					<li onclick="subscribeInfoModalOpen(${dto.user.id})"><a>구독정보<span>${dto.subscribeCount}</span>
 					</a></li>
 				</ul>
 			</div>
@@ -160,5 +160,3 @@
 <script src="/js/user/profile.js"></script>
 <script src="/js/user/fontawesome.js"></script>
 <script src="/js/user/jquery.js"></script>
-
-<!--   <%@ include file="../layout/footer.jsp"%>  -->
