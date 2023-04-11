@@ -153,7 +153,7 @@
                                 <div class="post-body">
                                     <div class="entry-content">
 
-                                       <h1 class="hangle">${post.content} </h1>
+                                       <h3 class="hangle">${post.content} </h3>
 
                                        <br/>
                                        <br/>
