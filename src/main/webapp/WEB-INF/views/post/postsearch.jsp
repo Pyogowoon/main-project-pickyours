@@ -68,9 +68,9 @@
 
                         <a href="/post/postview/${post.id}">
                         <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"
-                         style="height: 400px;width:425px;margin:10px;"  alt="..." />
+                         style="height: 600px;width:425px;margin:10px;"  alt="..." />
                         <img class="card-img-top" src="/upload/${post.postImageUrlRight}"
-                         style="height: 400px;width:425px;margin:10px;"  alt="..." />
+                         style="height: 600px;width:425px;margin:10px;"  alt="..." />
                          </a>
 
                         <div class="card-body">
@@ -105,9 +105,9 @@
                             <div class="card mb-4">
                                 <a href="/post/postview/${post.id}">
                                 <img class="card-img-top" src="/upload/${post.postImageUrlLeft}"
-                                 style="height: 300px;width:270px" alt="..." />
+                                 style="height:500px;width:270px" alt="..." />
                                  <img class="card-img-top" src="/upload/${post.postImageUrlRight}"
-                                  style="height: 300px;width:270px" alt="..." />
+                                  style="height: 500px;width:270px" alt="..." />
                                  </a>
 
                                 <!-- card body -->
