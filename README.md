@@ -1064,7 +1064,7 @@ public class ValidationAdvice {
   <br/>
  
  <details>
- <summary> <h2> 소셜 서비스 펼치기 </h2> </summary>
+ <summary> <h2> 소셜 서비스 </h2> </summary>
  
  ## 1. 유저마당 - 구독리스트 불러오기
 
@@ -1520,7 +1520,43 @@ public class SecurityConfig {
   
   <br/>
     <br/>
+    
+  <details>
+ 
+ <summary> <h2> XSS 공격 방지 기능 Lucy XSS filter 로 전면 수정 </h2> </summary>
+ 
+ <br/>
+ 
+ - 오류 내용 :
+ 
+ 
+ <img src="./src/main/resources/static/images/readme/non_alert.png"> 
   
+  <br/>
+  
+  > Config 방식으로 XSS 방지 기능을 추가한 후, 작동에는 문제가 없었지만, Exception 발생 시 Alert 창이 뜨지 않는다.
+  
+  <br/>
+      
+  - 해당 문제는 SecurityConfig 에서 설정한 Content Security Policy(이하 CSP) 에서 Script-src 설정(자바스크립트 관련)을 "self" ( 자신 도메인만 허용 ) 하였습니다.
+  
+  - 이렇게 할 경우 인라인 스크립트는 모두 거부되기 때문에, 본인은 XSS를 통한 Script문 공격을 막고 스크립트가 필요한 경우만 설정으로 허용하는 것이 당초 의도였습니다.
+  
+  - 그러나 문제점은 제가 구현한 기능 대부분의 Exception발생 시 Aop기능을 통해 alert창을 띄워주는 로직인데, 이 로직이 모두 막혔다는 것 입니다.
+  
+  <br/>
+  
+  <img src="./src/main/resources/static/images/readme/csp_error0.png"> 
+  
+  <br/>
+  
+  > 해석 : Config에 의해 스크립트문이 거부되었음, Script문을 사용하기 위해선 Unsafe-inline 키워드와 hash코드를 추가할 것
+  
+ 
+  </details>
+  
+  <br/>
+    <br/>
   
   
   
@@ -1546,7 +1582,7 @@ public class SecurityConfig {
  
  - #### 23. 04. 11 업데이트 - XSS 공격 방지 기능 추가 후 유저마당의 구독정보창이 뜨지않는 오류를 해결 했습니다.
  
- - #### 23. 04. 14 업데이트 - XSS 공격 방지 기능의 로직을 전면 수정했습니다. ( 기존의 Config에서 설정하는 방식 -> Filter로 특수문자 필터하는 방식으로 수정 )
+ - #### 23. 04. 14 업데이트 - XSS 공격 방지 기능의 로직을 전면 수정했습니다. ( 기존의 Config에서 설정하는 방식 -> Lucy Xss Filter로 특수문자 필터하는 방식으로 수정 )
  
  
  <br/>
