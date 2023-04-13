@@ -3,6 +3,7 @@
 	
 	<%@ include file="../layout/userheader.jsp" %>
 
+
     <!--사진 업로드페이지 중앙배치-->
         <main class="uploadContainer">
          <div class="back" onclick="javascript:history.back()" ><img src="/images/left.png" style="height: 56px;width:56px"></div>

@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
 <title>Pick yours! 유저마당 입니다.</title>
 
 <script src="/js/user/jquery.js"></script>

@@ -6,8 +6,6 @@
 
 */
 
-
-
 // (1) 스토리 이미지 업로드를 위한 사진 선택 로직
 function imageChoose(obj) {
 	let f = obj.files[0];
