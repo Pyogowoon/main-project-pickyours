@@ -1530,9 +1530,9 @@ public class SecurityConfig {
 
  -  [개발과정 에서의 업데이트 현황 보기](https://github.com/Pyogowoon/main-project-pickyours/blob/master/src/main/resources/static/images/readme/Pickyours_patch_note.txt)
   
- - #### 23. 02. 22  업데이트 - 전체적인 Update 관련 로직을 변경했습니다 ( Setter -> Entity 에서 Method 를 사용하는 방식 채택 )
+ - #### 23. 02. 22 업데이트 - 전체적인 Update 관련 로직을 변경했습니다 ( Setter -> Entity 에서 Method 를 사용하는 방식 채택 )
   
- - #### 23. 02. 24   업데이트 - 동일한 계정 유저의 상위 댓글 삭제시 모든 댓글이 삭제되는 문제를 수정하였습니다.
+ - #### 23. 02. 24 업데이트 - 동일한 계정 유저의 상위 댓글 삭제시 모든 댓글이 삭제되는 문제를 수정하였습니다.
   
  - #### 23. 02. 27 업데이트 - SSL 인증을 통한 도메인의 HTTPS 연결이 가능해졌습니다.
 
@@ -1542,7 +1542,9 @@ public class SecurityConfig {
  
  - #### 23. 03. 28 업데이트 - XSS 공격 방지 기능을 추가했습니다.
  
- - #### 23. 04. 11 업데이트 - XSS 공격 방지 기능 추가 후 구독정보창이 뜨지않는 오류를 해결 했습니다.
+ - #### 23. 04. 11 업데이트 - XSS 공격 방지 기능 추가 후 유저마당의 구독정보창이 뜨지않는 오류를 해결 했습니다.
+ 
+ - #### 23. 04. 14 업데이트 - XSS 공격 방지 기능의 로직을 전면 수정했습니다. ( 기존의 Config에서 설정하는 방식 -> Filter로 특수문자 필터하는 방식으로 수정 )
  
  
  <br/>
@@ -1553,8 +1555,7 @@ public class SecurityConfig {
   # 9. 추후 개선사항
   
   > 추후 이뤄질 업데이트 입니다.
-
-   - #### SMTP 구축하기
+  
    
    - #### 대규모 트래픽 발생 시 로드밸런싱 사용 후 JWT 토큰 사용 고려 ( 현재 JWT 토큰 설정 작업은 완료상태 )
    
