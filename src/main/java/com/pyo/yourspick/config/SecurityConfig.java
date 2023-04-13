@@ -56,8 +56,8 @@ public class SecurityConfig {
 //        http
 //                .headers()
 //                .xssProtection()
-//                .and()
-//                .contentSecurityPolicy("script-src 'self'");
+//               .and()
+//                .contentSecurityPolicy("script-src-elem 'self'");
 //       /* .contentSecurityPolicy("script-src-elem 'self'");*/
 
         return http.build();
