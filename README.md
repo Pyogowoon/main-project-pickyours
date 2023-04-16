@@ -1070,6 +1070,7 @@ public class ValidationAdvice {
 
  - 소셜 서비스에서 중요하다고 생각한 코드는 구독리스트 불러오기 입니다.
  - 해당 부분은 리팩터링 의 과정은 없지만 JPA에 대한 새로운 시선을 가지게 되었습니다.
+ - 또한 새로운 방식인 Native Query 의 Dto Mapping 을 사용해보았습니다.
  
  <br/>
  
