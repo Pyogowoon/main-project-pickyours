@@ -21,6 +21,7 @@ public class PostCommentService {
     private final PostCommentRepository postCommentRepository;
     private final UserRepository userRepository;
 
+    /* 댓글 달기 로직 */
     public PostComment 댓글달기(int userId, String content, int postId) {
 
         User userEntity = userRepository.findById(userId).orElseThrow(() -> {
@@ -29,7 +30,7 @@ public class PostCommentService {
         Post post = new Post();
         post.setId(postId);
 
-
+        /* 댓글 달기 로직, 간단하게 객체 구현 후 데이터 넣는 방식 */
         PostComment postComment = new PostComment();
         postComment.setUser(userEntity);
         postComment.setContent(content);
@@ -47,8 +48,8 @@ public class PostCommentService {
 
     }
 
+    /* 댓글 삭제 로직*/
     public void 댓글삭제(int commentId) {
-
 
         postCommentRepository.deleteById(commentId);
 

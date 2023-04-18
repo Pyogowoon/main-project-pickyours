@@ -11,6 +11,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 @Configuration
 public class AppConfig {
 
+    /* ObjectMapper 를 사용하기 위한 Config */
     @Bean
     @Primary
     public ObjectMapper objectMapper() {

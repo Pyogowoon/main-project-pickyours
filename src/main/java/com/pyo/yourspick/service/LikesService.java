@@ -19,6 +19,7 @@ public class LikesService {
     private final LikesRepository likesRepository;
 
 
+    /* 좋아요 로직 */
     @Transactional
     public void 좋아요(int imageId, int principalId) {
         likesRepository.mLikes(imageId, principalId);
@@ -26,6 +27,7 @@ public class LikesService {
 
     }
 
+    /* 좋아요 취소 로직 */
     @Transactional
     public void 좋아요취소(int imageId, int principalId) {
         likesRepository.mUnLikes(imageId, principalId);

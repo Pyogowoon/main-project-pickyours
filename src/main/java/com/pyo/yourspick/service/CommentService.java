@@ -20,6 +20,7 @@ public class CommentService {
     private final UserRepository userRepository;
 
 
+    /* 댓글 쓰기 로직 */
     @Transactional
     public Comment 댓글쓰기(int imageId, String content, int userId) {
 
@@ -30,7 +31,7 @@ public class CommentService {
             throw new CustomApiException("아이디를 찾을 수 없습니다.");
         });
 
-
+        /* 간단하고 민감하지않은 정보이므로 간단한 new 객체를 통해 데이터를 집어넣는 로직 */
         Comment comment = new Comment();
         comment.setContent(content);
         comment.setImage(image);
@@ -39,6 +40,7 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
+    /* 댓글 삭제 */
     @Transactional
     public void 댓글삭제(int userId) {
 

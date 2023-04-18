@@ -45,10 +45,13 @@ public class UserService {
 
     private final LikesRepository likesRepository;
 
+
+    /* 업로드 폴더의 Path 설정 */
     @Value("${file.path}")
     private String uploadFolder;
 
 
+    /* 회원 정보 수정 로직 */
     @Transactional
     public User 회원수정(int id, User user) {
         User userEntity = userRepository.findById(id).orElseThrow(() ->
@@ -56,7 +59,7 @@ public class UserService {
             throw new CustomValidationApiException("찾을 수 없는 아이디 입니다.");
         });
 
-
+        /* 패스워드 미 입력시 ( 일반적인 정보 수정 ) */
         if (user.getPassword().equals("")) {
 
             userEntity.setName(user.getName());
@@ -66,6 +69,7 @@ public class UserService {
             userEntity.setGender(user.getGender());
 
             return userEntity;
+            /* 패스워드 입력시 ( 패스워드 수정 ) */
         } else {
 
             userEntity.setName(user.getName());
@@ -87,6 +91,7 @@ public class UserService {
 
     }
 
+    /* 회원의 프로필 불러오는 로직 */
     @Transactional(readOnly = true)
     public UserProfileDto 회원프로필(int pageUserId, int principalId) {
 
@@ -114,6 +119,7 @@ public class UserService {
 
     }
 
+    /* 회원 프로필 사진 변경 */
     @Transactional
     public User 회원프로필사진변경(int principalId, MultipartFile profileImageFile) {
         UUID uuid = UUID.randomUUID();
@@ -137,6 +143,7 @@ public class UserService {
         return userEntity;
     }
 
+    /* 유저 이름으로 검색하는 로직*/
     @Transactional(readOnly = true)
     public List<UserInfoMapping> 유저이름사진정보찾기() {
 
@@ -144,6 +151,8 @@ public class UserService {
         return user;
     }
 
+
+    /* 게시글 상세보기 페이지 */
     @Transactional(readOnly = true)
     public Image 상세보기(int imageId, int principalId) {
         Image imageEntity = imageRepository.findById(imageId).orElseThrow(() -> {

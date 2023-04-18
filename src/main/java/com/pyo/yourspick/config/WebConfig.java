@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     private final ObjectMapper objectMapper;
 
-    //Lucy Xss filter 적용
+    /* Lucy Xss filter 적용 */
     @Bean
     public FilterRegistrationBean xssFilterBean() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
@@ -26,6 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
         return registrationBean;
     }
 
+    /* JSON 데이터 -> Http 변환 */
     @Bean
     public MappingJackson2HttpMessageConverter jsonEscapeConverter() {
         ObjectMapper copy = objectMapper.copy();

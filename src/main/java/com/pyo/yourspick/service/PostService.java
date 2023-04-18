@@ -41,7 +41,7 @@ public class PostService {
 
     private final PostLikesRepository postLikesRepository;
 
-
+    /* 업로드 폴더의 Path 설정 */
     @Value("${file.path}")
     private String uploadFolder;
 
@@ -147,12 +147,14 @@ public class PostService {
     }
 
 
+    /* 게시글 불러오기 */
     @Transactional(readOnly = true)
     public Page<Post> 포스트로드(Pageable pageable) {
         Page<Post> post = postRepository.findAll(pageable);
         return post;
     }
 
+    /* 게시글 상세보기 */
     @Transactional(readOnly = true)
     public Post 포스트상세보기(int postId) {
 
@@ -163,6 +165,7 @@ public class PostService {
         return postEntity;
     }
 
+    /* 댓글 불러오기 */
     @Transactional(readOnly = true)
     public List<PostComment> 댓글불러오기(int postId) {
 
@@ -171,7 +174,7 @@ public class PostService {
         return comment;
     }
 
-
+    /* 좋아요 정보 불러오기 */
     @Transactional(readOnly = true)
     public PostLikes 좋아요목록(int userId, int postId) {
 
@@ -181,7 +184,7 @@ public class PostService {
         return postLikes;
     }
 
-
+    /* 좋아요 */
     @Transactional
     public void 좋아요하기(int postId, int userId) {
 
@@ -189,6 +192,7 @@ public class PostService {
 
     }
 
+    /* 좋아요 취소 */
     @Transactional
     public void 좋아요취소하기(int postId, int userId) {
 
@@ -196,7 +200,7 @@ public class PostService {
 
     }
 
-
+    /* 게시글 삭제 */
     @Transactional
     public void 게시글삭제(int postId) {
 
@@ -204,6 +208,7 @@ public class PostService {
 
     }
 
+    /* 게시글 검색하는 로직 */
     @Transactional(readOnly = true)
     public Page<Post> 게시글검색(String keyword, Pageable pageable) {
 

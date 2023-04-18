@@ -1,4 +1,4 @@
-package com.pyo.yourspick.config;
+package com.pyo.yourspick.config.jwtconfig;
 
 /* 일시적으로 중지
 @Configuration

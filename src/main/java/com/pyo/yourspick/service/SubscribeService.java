@@ -22,6 +22,7 @@ public class SubscribeService {
     private final SubscribeRepository subscribeRepository;
     private final EntityManager em;
 
+    /* 유저 구독하는 로직 */
     @Transactional
     public void 구독하기(int fromUserId, int toUserId) {
         try {
@@ -33,6 +34,7 @@ public class SubscribeService {
 
     }
 
+    /* 구독 취소 */
     @Transactional
     public void 구독취소하기(int fromUserId, int toUserId) {
         subscribeRepository.mUnSubscribe(fromUserId, toUserId);
@@ -42,6 +44,7 @@ public class SubscribeService {
     @Transactional(readOnly = true)
     public List<SubscribeDto> 구독리스트(int principalId, int pageUserId) {
 
+        /* DTO Mapping 을 위한 Native Query */
         StringBuffer sb = new StringBuffer();
         sb.append("SELECT u.id, u.name, u.profileImageUrl, ");
         sb.append("if ((SELECT 1 FROM Subscribe WHERE fromUserId = ? AND toUserId = u.id), 1,0) subscribeState, ");
