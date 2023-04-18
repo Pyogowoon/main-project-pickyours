@@ -7,7 +7,7 @@
 <br/>
   <br/>
   
- ## 23.02.27 Update - 이제 Https 로 접속 가능합니다.
+ ## 23.02.27 Update - Https 로 접속 가능합니다.
  
 ## <https://www.pickyours.co.kr>
 
