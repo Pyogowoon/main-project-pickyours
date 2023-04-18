@@ -27,6 +27,7 @@ public class PostCommentApicontroller {
     private final PostCommentService postCommentService;
 
 
+    /* 게시글의 댓글 요청 */
     @PostMapping("/api/post/comment/{postId}")
     public ResponseEntity<?> postComment(@Valid @RequestBody PostCommentDto postCommentDto, BindingResult bindingResult,
                                          @AuthenticationPrincipal PrincipalDetails principalDetails
@@ -39,6 +40,7 @@ public class PostCommentApicontroller {
 
     }
 
+    /* 게시글의 댓글 삭제 요청 */
     @DeleteMapping("/api/post/comment/{commentId}")
     public ResponseEntity<?> postCommentDelete(@PathVariable int commentId) {
 

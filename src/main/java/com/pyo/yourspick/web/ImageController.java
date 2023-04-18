@@ -25,17 +25,20 @@ public class ImageController {
     private final ImageService imageService;
 
 
+    /* 인덱스 */
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
 
+    /* 게시글 업로드 페이지 */
     @GetMapping("/image/upload")
     public String upload() {
         return "image/upload";
     }
 
+    /* 인기사진 페이지  */
     @GetMapping("/image/popular")
     public String popular(Model model) {
 
@@ -46,7 +49,7 @@ public class ImageController {
         return "image/popular";
     }
 
-
+    /* 이미지 업로드 요청 */
     @PostMapping("/image")
     public String imageUpload(ImageUploadDto imageUploadDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
@@ -59,6 +62,7 @@ public class ImageController {
         }
     }
 
+    /* 게시글 수정 시 이미지 업로드 요청 */
     @GetMapping("/image/upload/{imageId}")
     public String imageUpdate(Model model, @PathVariable int imageId) {
 

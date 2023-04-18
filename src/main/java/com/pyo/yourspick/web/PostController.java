@@ -27,6 +27,7 @@ public class PostController {
     private final PostService postService;
 
 
+    /* 게시글 페이지 */
     @GetMapping("/post")
     public String post(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
@@ -36,6 +37,7 @@ public class PostController {
     }
 
 
+    /* 게시글 상세보기 페이지 */
     @GetMapping("/post/postview/{postId}")
     public String postview(@PathVariable int postId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("post", postService.포스트상세보기(postId));
@@ -45,14 +47,14 @@ public class PostController {
         return "post/postview";
     }
 
-
+    /* 게시글 저장 페이지 */
     @GetMapping("/post/postsave")
     public String postsave() {
 
         return "post/postsave";
     }
 
-
+    /* 게시글 업데이트 페이지 */
     @GetMapping("/post/postupdate/{postId}")
     public String postUpdate(@PathVariable int postId, Model model) {
         model.addAttribute("post", postService.포스트상세보기(postId));
@@ -61,6 +63,7 @@ public class PostController {
     }
 
 
+    /* 게시글 검색 페이지 */
     @GetMapping("/post/search/title")
     public String postSearch(String keyword, Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 

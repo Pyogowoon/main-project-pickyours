@@ -28,6 +28,7 @@ public class AuthController {
     private final AuthService authService;
 
 
+    /* 로그인 요청 */
     @GetMapping("/auth/signin")
     public String signin(@RequestParam(value = "error", required = false) String error,
                          @RequestParam(value = "exception", required = false) String exception,
@@ -38,13 +39,14 @@ public class AuthController {
         return "auth/signin";
     }
 
-
+    /* 회원가입 요청 */
     @GetMapping("/auth/join")
     public String join() {
 
         return "auth/join";
     }
 
+    /* 회원가입 시 유효성 검사 */
     @PostMapping("/auth/join")
     public String userJoin(@Valid JoinDto joinDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {

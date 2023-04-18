@@ -26,6 +26,8 @@ public class ImageApiController {
     private final ImageService imageService;
     private final LikesService likesService;
 
+
+    /* 유저마당 메인페이지의 이미지 불러오기 요청 */
     @GetMapping("/api/image")
     public ResponseEntity<?> imageStory(@AuthenticationPrincipal PrincipalDetails principalDetails,
                                         @PageableDefault(size = 3) Pageable pageable) {
@@ -34,12 +36,14 @@ public class ImageApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, "리스트 로딩 완료", images), HttpStatus.OK);
     }
 
+    /* 유저마당의  좋아요 요청 */
     @PostMapping("/api/image/{imageId}/likes")
     public ResponseEntity<?> likes(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         likesService.좋아요(imageId, principalDetails.getUser().getId());
         return new ResponseEntity<>(new CMRespDto<>(1, "좋아요 성공", null), HttpStatus.OK);
     }
 
+    /* 유저마당의 좋아요 취소 요청 */
     @DeleteMapping("/api/image/{imageId}/likes")
     public ResponseEntity<?> unLikes(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         likesService.좋아요취소(imageId, principalDetails.getUser().getId());
@@ -47,6 +51,7 @@ public class ImageApiController {
     }
 
 
+    /* 유저마당의 게시글 삭제 요청 */
     @DeleteMapping("/api/image/{imageId}")
     public ResponseEntity<?> storyContentDelete(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
@@ -56,6 +61,7 @@ public class ImageApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, "삭제 성공", null), HttpStatus.OK);
     }
 
+    /* 유저마당의 게시글 수정 요청 */
     @PutMapping("/api/image/{imageId}")
     public ResponseEntity<?> storyContentUpdate(ImageUploadDto imageUploadDto, @PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 

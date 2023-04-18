@@ -33,6 +33,7 @@ public class UserApiController {
     private final SubscribeService subscribeSerivce;
 
 
+    /* 구독 리스트 불러오기 요청 */
     @GetMapping("/api/user/{pageUserId}/subscribe")
     public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
@@ -42,7 +43,7 @@ public class UserApiController {
     }
 
 
-
+    /* 회원 수정 요청 */
     @PutMapping("/api/user/{id}")
     public CMRespDto<?> update(@Valid UserUpdateDto userUpdateDto
             , BindingResult bindingResult
@@ -56,8 +57,7 @@ public class UserApiController {
     }
 
 
-
-
+    /* 회원 프로필 사진 변경 요청*/
     @PutMapping("/api/user/{principalId}/profileImageUrl")
     public ResponseEntity<?> profileImageUrlUpdate(@PathVariable int principalId, MultipartFile profileImageFile,
                                                    @AuthenticationPrincipal PrincipalDetails principalDetails) {

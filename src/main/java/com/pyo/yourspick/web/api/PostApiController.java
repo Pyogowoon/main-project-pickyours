@@ -36,6 +36,7 @@ public class PostApiController {
     private final PostService postService;
 
 
+    /* 게시글 불러오는 요청 */
     @GetMapping("/api/post")
     public ResponseEntity<?> post(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
@@ -45,26 +46,30 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 불러오기 성공", post), HttpStatus.OK);
     }
 
+    /* 게시글 저장 요청 */
     @PostMapping("/api/post")
     public ResponseEntity<?> postSave(@Valid PostDto postDto, BindingResult bindingResult, @AuthenticationPrincipal PrincipalDetails principalDetails
     ) {
 
+        /* 게시글 저장 시 인물사진 / 옷 사진 / 비디오 영상 이 하나라도 비어있을 경우 반환 로직 */
         if (postDto.getClotheImage().isEmpty() || postDto.getActorImage().isEmpty() || postDto.getVideo().isEmpty()) {
             return new ResponseEntity<>(new CMRespDto<>(-1, " 게시글 저장 실패", null), HttpStatus.BAD_REQUEST);
 
+            /* 게시글 저장 시 요청사항 충족 시 */
         } else {
 
             MultipartFile clotheImage = postDto.getClotheImage();
             MultipartFile actorImage = postDto.getActorImage();
             MultipartFile video = postDto.getVideo();
 
-           Post postEntity = postService.게시글저장(postDto, principalDetails, clotheImage, actorImage, video);
+            Post postEntity = postService.게시글저장(postDto, principalDetails, clotheImage, actorImage, video);
 
             return new ResponseEntity<>(new CMRespDto<>(1, " 게시글 저장 성공", null), HttpStatus.OK);
 
         }
     }
 
+    /* 게시글 좋아요 요청 */
     @PostMapping("/api/post/{postId}/likes")
     public ResponseEntity<?> postLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         postService.좋아요하기(postId, principalDetails.getUser().getId());
@@ -72,6 +77,7 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, "좋아요 성공", null), HttpStatus.OK);
     }
 
+    /* 게시글 좋아요 취소 요청 */
     @DeleteMapping("/api/post/{postId}/likes")
     public ResponseEntity<?> postUnLikes(@PathVariable int postId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         postService.좋아요취소하기(postId, principalDetails.getUser().getId());
@@ -94,6 +100,7 @@ public class PostApiController {
         return new ResponseEntity<>(new CMRespDto<>(1, "수정 성공", postEntity), HttpStatus.OK);
     }
 
+    /* 게시글 삭제 요청 */
     @DeleteMapping("/api/post/{postId}")
     public ResponseEntity<?> postDelete(@PathVariable int postId) {
         postService.게시글삭제(postId);
