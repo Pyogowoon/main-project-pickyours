@@ -1151,7 +1151,7 @@ public class ValidationAdvice {
  ```
  - EntityManager 를 DI 한 후 createNativeQuery를 사용한 후  실행 결과를 Dto 에 담아 리턴
  - 그동안 사용한 JPA의 Named Query, Native Query 와 다른 방법을 경험해본 기회였으며
- - 추후 입사하여 더욱 복잡해질 Query를 만약 JPA로 해야한다면 어떻게 타계해야 할지 생각 해봐야겠다는 생각을 가지게되었습니다.
+ - 추후  더욱 복잡해질 Query를 만약 JPA로 해야한다면 어떻게 타계해야 할지 생각 해봐야겠다는 생각을 가지게되었습니다.
  
  
  
