@@ -49,7 +49,7 @@
   
   * 유효성 검사 : AOP 처리
   
-  * 기타 : XSS 공격 방지 
+  * 기타 : XSS 공격 방지 필터
  
  
 <br/>
@@ -1528,14 +1528,14 @@ public class SecurityConfig {
  
  <br/>
  
- - 오류 내용 :
+ - ### 오류 내용 :
  
  
  <img src="./src/main/resources/static/images/readme/non_alert.png"> 
   
   <br/>
   
-  > Config 방식으로 XSS 방지 기능을 추가한 후, 작동에는 문제가 없었지만, Exception 발생 시 Alert 창이 뜨지 않는다.
+  > Config 방식으로 XSS 방지 기능을 추가한 후, 작동에는 문제가 없었지만, Exception 발생 시 Alert 창이 뜨지 않는다. 또한 인라인스크립트 관련 모든것이 작동 X
   
   <br/>
       
@@ -1553,7 +1553,167 @@ public class SecurityConfig {
   
   > 해석 : Config에 의해 스크립트문이 거부되었음, Script문을 사용하기 위해선 Unsafe-inline 키워드와 hash코드를 추가할 것
   
+  <br/>
+  
+  ```html
+  
+  <meta http-equiv="Content-Security-Policy" content="script-src-elem 'self' 'unsafe-inline' 'sha256-lpb0F1ct0B2NXIUiAvGf7Yle1hwfJqhsQdRYFs+UQTM=' ">
+  
+  ```
+  
+  > Unsafe-inline 키워드와 Hash 코드를 추가하기 위해 <meta> 태그를 통해 CSP의 설정을 개별적으로 설정했습니다.
+  
+  <br/>
+  
+  - <meta> 태그로 CSP 설정 추가 후
+  
+   <img src="./src/main/resources/static/images/readme/csp_error.png"> 
  
+  <br/>
+   
+  > 해당 <meta> 태그를 통해 개발자모드 에러 콘솔에서 지시한 사항대로 설정을 해도 적용 되지 않았습니다. 또한 세부적인 설정에 변화를 줘도 여전히 작동하지 않습니다.
+    
+   
+  <br/>
+  
+  
+  - ### 오류 해결 방법 : 
+  
+  <br/>
+  
+  - 오류를 해결하기 위해 Security Config으로 설정하던 기존의 방식을 과감히 버리는 선택을 했습니다.
+  - Security Config 방식 -> Lucy Xss Filter 방식으로 변경하였습니다.
+  
+  <br/>
+  
+  - ### Lucy Xss Filter 도입으로 추가된 코드( 의존성 추가, Lucy 사용을 위한 XML 파일 추가 등은 생략 했습니다. )
+  
+  <br/>
+ 
+  ### AppConfig
+  
+  ```java
+  
+  
+@Configuration
+public class AppConfig {
+
+    /* ObjectMapper 를 사용하기 위한 Config */
+    @Bean
+    @Primary
+    public ObjectMapper objectMapper() {
+        return new Jackson2ObjectMapperBuilder()
+                .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                .modules(new JavaTimeModule())
+                .timeZone("Asia/Seoul")
+                .build();
+    }
+}
+  
+  ```
+  
+  <br/>
+  
+   
+  - AppConfig 클래스를 생성하여 ObjectMapper 사용하기 위한 클래스
+  - ObjectMapper 를 사용한 이유는 Jackson 라이브러리를 사용하기 위함입니다. (JSON 파싱하기위해)
+  
+  <br/>
+  
+  ### WebConfig
+  
+  ```java
+  @Configuration
+@RequiredArgsConstructor
+public class WebConfig implements WebMvcConfigurer {
+
+    private final ObjectMapper objectMapper;
+
+    /* Lucy Xss filter 적용 */
+    @Bean
+    public FilterRegistrationBean xssFilterBean() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new XssEscapeServletFilter());
+        registrationBean.setOrder(Ordered.LOWEST_PRECEDENCE);
+        registrationBean.addUrlPatterns("*.do", "*.jsp");
+        return registrationBean;
+    }
+
+    /* JSON 데이터 -> Http 변환 */
+    @Bean
+    public MappingJackson2HttpMessageConverter jsonEscapeConverter() {
+        ObjectMapper copy = objectMapper.copy();
+        copy.getFactory().setCharacterEscapes(new HtmlCharacterEscapes());
+        return new MappingJackson2HttpMessageConverter(copy);
+    }
+
+}
+  
+  
+  ```
+  <br/>
+  
+  - Lucy 필터를 적용해주는 class파일입니다.
+  - 본인 프로젝트에서 저장/수정 컨텐츠는 Ajax를 통한 JSON으로 통신하기에, Jackson 라이브러리를 사용하여 JSON -> HTTP변환 컨버터를 사용하였습니다. (ObjectMapper를 DI한 이유)
+  
+  <br/>
+  
+  ### HtmlCharacterEscapes
+  
+  ```java
+  
+  
+public class HtmlCharacterEscapes extends CharacterEscapes {
+    private final int[] asciiEscapes;
+
+    public HtmlCharacterEscapes() {
+        /*  XSS 방지 처리할 특수 문자 지정 */
+        asciiEscapes = CharacterEscapes.standardAsciiEscapesForJSON();
+        asciiEscapes['<'] = CharacterEscapes.ESCAPE_CUSTOM;
+        asciiEscapes['>'] = CharacterEscapes.ESCAPE_CUSTOM;
+        asciiEscapes['\"'] = CharacterEscapes.ESCAPE_CUSTOM;
+        asciiEscapes['('] = CharacterEscapes.ESCAPE_CUSTOM;
+        asciiEscapes[')'] = CharacterEscapes.ESCAPE_CUSTOM;
+        asciiEscapes['#'] = CharacterEscapes.ESCAPE_CUSTOM;
+        asciiEscapes['\''] = CharacterEscapes.ESCAPE_CUSTOM;
+    }
+
+    @Override
+    public int[] getEscapeCodesForAscii() {
+        return asciiEscapes;
+    }
+
+    @Override
+    public SerializableString getEscapeSequence(int ch) {
+        return new SerializedString(StringEscapeUtils.escapeHtml4(Character.toString((char) ch)));
+    }
+}
+  
+  
+  ```
+  
+  - 방지처리할 특수문자를 지정하는 클래스입니다.
+  - 결론적으로 일부 특수문자를 필터링하는 방식입니다.
+  
+  <br/>
+  
+  - ### 오류 해결 
+  
+  <br/>
+  
+  
+   <img src="./src/main/resources/static/images/readme/xss_def.png">
+   
+  <br/>
+
+
+   > 특수문자를 필터링 처리하였기 때문에, <script> 문에 반응하지 않습니다.
+  
+  
+  
+  
+  
+    
   </details>
   
   <br/>
