@@ -406,9 +406,9 @@
 
 <img src="./src/main/resources/static/images/readme/readme_post2.png">
 
-> 페이징 기능 적용
-  > 게시판 페이지 까지는 비 로그인 유저도 진입 가능합니다. 
-    > 게시글 등록과 수정 및 삭제는 ADMIN 만이 권한을 가집니다.
+> 페이징 기능이 적용되어있으며, 게시판 페이지( 현재 페이지 ) 까지는 비 로그인 유저도 진입 가능합니다. 
+
+  > 게시글 등록과 수정 및 삭제는 ADMIN 만이 권한을 가집니다.
 
  <br/>
     <br/>
@@ -438,7 +438,7 @@
     <br/>
   
 
-<img src="./src/main/resources/static/images/readme/readme_postview4.png">
+![post_video](https://user-images.githubusercontent.com/102788831/234012824-35cffc98-e9ac-48cf-af22-105517929688.gif)
 
 > 비디오 재생을 클릭 시 나오는 토글입니다.
   > 좌측 상단을 통해 옷 정보와 인물 정보를 토글 형태로 볼수있습니다. 토글된 형태는 영상 우측에 붙어서 나타납니다.
