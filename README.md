@@ -209,11 +209,7 @@
   
   <br/>
     <br/>
-  
-![carousel](https://user-images.githubusercontent.com/102788831/234071269-d0a66ead-83c7-46c9-913a-0f7045b620e5.gif)
-    
-    <br/>
-      <br/>
+
     
 ![carosel-re](https://user-images.githubusercontent.com/102788831/234075933-7dbd9bd6-bb9d-4e9f-804c-c5d647099b70.gif)
 
