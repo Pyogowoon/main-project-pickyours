@@ -193,6 +193,7 @@
   <details> 
   
 <summary> <H2> 사진 설명 펼치기 </H2> </summary>
+  <hr/>
   
   <br/>
     <br/>
@@ -210,6 +211,13 @@
     <br/>
   
 ![carousel](https://user-images.githubusercontent.com/102788831/234071269-d0a66ead-83c7-46c9-913a-0f7045b620e5.gif)
+    
+    <br/>
+      <br/>
+    
+![carosel-re](https://user-images.githubusercontent.com/102788831/234075933-7dbd9bd6-bb9d-4e9f-804c-c5d647099b70.gif)
+
+
   
   
   <br/>
@@ -327,12 +335,6 @@
       <br/>
  
  
- 
- <img src="./src/main/resources/static/images/readme/readme_user3.png">
-
- 
-  > 프로필 사진 클릭 시 프로필 사진 변경이 가능합니다. 그 외 회원정보 수정, 사진 등록을 통한 게시글 등록이 가능합니다.
-  
   <br/>
     <br/>
       <br/>
@@ -343,7 +345,8 @@
     <br/>
   
   
- <img src="./src/main/resources/static/images/readme/readme_user_profileupdate.png">
+![pupdate](https://user-images.githubusercontent.com/102788831/234078673-ecdb3145-cd06-4dfc-b9a3-5be23496ce4e.gif)
+
  
  > 회원 정보 변경입니다. *로 표시된 Not Null처리된 데이터를 제외한 데이터는 자유롭게 변경 가능합니다.
  
@@ -357,8 +360,7 @@
    <br/>
     <br/>
   
- 
- <img src="./src/main/resources/static/images/readme/readme_user_upload.png">
+![upload](https://user-images.githubusercontent.com/102788831/234079076-5c3e6587-8f08-45ad-b557-7b267b342c03.gif)
  
  > 게시글 업로드 페이지입니다. 사진과 함께 간단한 텍스트를 입력할 수 있습니다.
  
@@ -372,7 +374,7 @@
     <br/>
   
  
- <img src="./src/main/resources/static/images/readme/readme_user_update.png">
+![update](https://user-images.githubusercontent.com/102788831/234080156-727d76e0-c9e7-4f02-9c40-cf88bf2d619b.gif)
  
  
  
@@ -388,7 +390,7 @@
     <br/>
   
  
-  <img src="./src/main/resources/static/images/readme/readme_user_delete.png">
+ ![delete](https://user-images.githubusercontent.com/102788831/234080271-a15fd808-31a8-4048-82f4-0c58d5c9b544.gif)
   
   > 게시글 삭제 입니다. 간단한 Confirm 창을 띄워 동의를 구한 후 삭제합니다.
   
@@ -474,10 +476,47 @@
 <img src="./src/main/resources/static/images/readme/readme_postsave2.png">
 
 > ADMIN 권한을 가진 유저가 게시판을 저장합니다.
-  > 모든 항목은 Not Null 처리되어있습니다, 이를 충족하지 못할 시 Alert창이 실행됩니다.
-    > 사진과 영상 첨부는 미리보기를 통해 볼 수 있습니다.
+    
+ <br/>
+     <br/>
+    
+ ![postsave](https://user-images.githubusercontent.com/102788831/234082375-c263a705-31aa-4ea1-9d99-9ef79fedd640.gif)
 
+    
+ > 모든 항목은 Not Null 처리되어있습니다, 이를 충족하지 못할 시 Alert창이 실행됩니다.
+    
+  > 사진과 영상 첨부는 미리보기를 통해 볼 수 있습니다.
+    
+ <br/>
+  <br/>
+    
+    
+## 4-4. 게시판 수정하기 
+    
 
+<br/>
+ <br/>
+    
+    
+ ![postupdate](https://user-images.githubusercontent.com/102788831/234083819-54c9c3ea-a07d-4b95-b7bb-291ad9bdccaa.gif)
+    
+  
+ > 게시글 수정입니다. 바꾸고 싶은 항목만 바꿀 수 있습니다.
+
+ <br/>
+  <br/>
+    
+
+## 4-4. 게시판 삭제하기 
+    
+
+  <br/>
+    <br/>
+    
+ ![postdelete](https://user-images.githubusercontent.com/102788831/234083837-135593f3-f70a-4afb-ba8b-9620c087be81.gif)
+    
+ > 게시글 삭제하기 입니다. confirm을 통해 요청 후 삭제합니다.
+    
 
 </details>
 
@@ -488,6 +527,7 @@
   <br/>
     <br/>
       <br/>
+      <hr/>
 
 
 
