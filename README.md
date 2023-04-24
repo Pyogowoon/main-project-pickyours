@@ -194,6 +194,9 @@
   
 <summary> <H2> 사진 설명 펼치기 </H2> </summary>
   
+  <br/>
+    <br/>
+  
 
    
 
@@ -206,12 +209,12 @@
   <br/>
     <br/>
   
-  <img src="./src/main/resources/static/images/readme/readme_index.png">
+![carousel](https://user-images.githubusercontent.com/102788831/234071269-d0a66ead-83c7-46c9-913a-0f7045b620e5.gif)
   
   
   <br/>
   
-  > 인덱스입니다. Header와 Footer , 간단한 Carousel 기능 탑재했습니다.
+  > 인덱스입니다. 간단한 Carousel 기능으로 컨텐츠를 안내합니다.
   
   <br/>
     <br/>
@@ -225,7 +228,7 @@
   
   
  
-  <img src="./src/main/resources/static/images/readme/readme_login2.png">
+![social](https://user-images.githubusercontent.com/102788831/234071627-9e4cf096-21a9-46a6-8c08-1b55e6e44327.gif)
   
   > 로그인 입니다. 카카오톡 로그인, 네이버 로그인이 가능하며, 회원가입이 가능합니다.
   
@@ -239,11 +242,11 @@
     <br/>
   
 
-  <img src="./src/main/resources/static/images/readme/readme_login_fail.png">
+  ![loginfail_resize](https://user-images.githubusercontent.com/102788831/234071756-7a574146-82d1-4a63-a930-1f7b55265c16.gif)
 
 
    
-   > 로그인 실패 시 유효성 검사입니다. 간단한 경고문을 출력합니다.
+   > 로그인 실패 시 유효성 검사입니다. 상황에 맞는 간단한 경고문을 출력합니다.
    
    <br/>
     <br/>
@@ -275,21 +278,32 @@
  <summary> <H2> 유저마당 부분 펼치기 </H2> </summary>
   
   
- ## 3. 유저마당
+ ## 3. 유저마당 메인
  
    <br/>
     <br/>
   
  
- <img src="./src/main/resources/static/images/readme/readme_usermain.png">
+![scroll](https://user-images.githubusercontent.com/102788831/234071931-fa05e4e1-7cd5-428c-9328-a1a6ebee0578.gif)
  
   > 유저마당 메인 입니다. 회원부터 사용 가능하며 유저 상호간의 소통이 가능합니다.
   
-  > 사진 클릭 시 상세보기 페이지로 이동하며, 우측 상단 아이콘을 통해 유저마당메인페이지 / 인기사진페이지 / 프로필페이지 로 이동 가능합니다.
   
   > 검색 , 댓글 , 좋아요, 게시글 수정, 게시글 삭제 기능을 사용할 수 있으며 스크롤페이징 전략을 사용했습니다.
   
-  > 또한 우측 메뉴바에서 랜덤한 유저의 페이지에 접근할 수 있습니다.
+   <br/>
+    <br/>
+   
+![mainpage](https://user-images.githubusercontent.com/102788831/234072143-f8fc1711-f9a2-4f3c-bf55-f46be828774d.gif)
+   
+  > 우측 상단 네비게이션 바 를 이용하여 인기페이지, 내 프로필 페이지로 이동할 수 있습니다.
+   
+   <br/>
+    <br/>
+   
+![random](https://user-images.githubusercontent.com/102788831/234073095-cd14e5dc-a4f1-4da1-811e-eb6e48c3506b.gif)
+  
+  > 우측 메뉴바로 무작위 유저의 프로필에 접근할 수 있습니다.
   
   <br/>
     <br/>
@@ -301,14 +315,12 @@
    <br/>
     <br/>
   
- <img src="./src/main/resources/static/images/readme/readme_user2.png">
+![profile](https://user-images.githubusercontent.com/102788831/234073964-088e3672-0726-4ac9-b716-36f6f5ff4883.gif)
  
   
- > 프로필 페이지 입니다.
- 
  > 해당 유저가 올린 이미지를 간략히 볼수있고, 클릭 시 상세보기 페이지로 이동합니다.
  
- > 또한 게시글의 좋아요 갯수, 해당 유저가 올린 게시글의 갯수, 해당 유저의 구독 정보를 볼 수 있습니다.
+ >  해당 유저의 구독 정보를 볼 수 있으며, 유저의 게시글 좋아요 갯수를 볼 수 있습니다.
  
   <br/>
     <br/>
