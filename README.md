@@ -1769,8 +1769,69 @@ public class HtmlCharacterEscapes extends CharacterEscapes {
   
   <br/>
     <br/>
+    
+       
+  <details>
+ 
+ <summary> <h2> JPA Batch Size 설정으로 인한 쿼리 최적화 (기존 6번 -> 2번으로 쿼리 최적화 ) </h2> </summary>
+ 
+ - 변경내용 : 
+ 
+
+ 
+ <img src="./src/main/resources/static/images/readme/batch_before.png">
+ 
+ > 유저마당 메인페이지에 진입 시 혹은 스크롤 페이징 이용 시 동일 쿼리 3번 실행.
+ 
+ > 이유는 1스크롤당 3개의 게시글을 불러오기 때문
+ 
+ > 오류는 아님. OneToMany ( 1:N ) 연관관계인 Likes(좋아요),Comments(댓글)이 게시물 1개당 1개씩 불러와지므로 총 3번 발생하는 것
+ 
+ - 조치방법 :
+ 
+ ```java
+ 
+    @org.hibernate.annotations.BatchSize(size = 3)
+    @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
+    private List<Likes> likes;
+
+    @org.hibernate.annotations.BatchSize(size = 3)
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image", orphanRemoval = true)
+    private List<Comment> comments;
+ 
+ 
+ ```
+   
+> OneToMany 연관관계에 hibernate 가 제공하는 BatchSize 어노테이션을 추가해주었다. (사이즈는 3으로 설정.) 
+
+<br/>
+  <br/>
   
+   <img src="./src/main/resources/static/images/readme/batch_after.png">
+ 
+> 결과적으로 쿼리가 6개 실행 -> 2개 실행으로 줄은 모습
+
+- 결과 :
+
+    <img src="./src/main/resources/static/images/readme/batch_before2.png">
+    
+> BatchSize 적용 이전
+
+<br/>
+  <br/>
   
+   <img src="./src/main/resources/static/images/readme/batch_after2.png">
+
+> BatchSize 적용 이후, Where 문에 IN 쿼리가 추가된 모습.
+ 
+ 
+  </details>
+  
+  <br/>
+    <br/>
   
   
   # 8. Refactoring 
@@ -1796,7 +1857,7 @@ public class HtmlCharacterEscapes extends CharacterEscapes {
  
  - #### 23. 04. 14 업데이트 - XSS 공격 방지 기능의 로직을 전면 수정했습니다. ( 기존의 Config에서 설정하는 방식 -> Lucy Xss Filter로 특수문자 필터하는 방식으로 수정 )
  
- - #### 23. 04. 28 업데이트 - JPA 최적화로 인한 쿼리 성능 향상
+ - #### 23. 04. 28 업데이트 - JPA 쿼리 최적화로 인한 쿼리 성능 향상( 스크롤 페이징 당 쿼리 6개발생 -> 2개 발생으로 업데이트 )
  
  
  <br/>
