@@ -34,11 +34,12 @@ public class Image {
     @JoinColumn(name = "userId")
     private User user;
 
-
+    @org.hibernate.annotations.BatchSize(size = 3)
     @JsonIgnoreProperties({"image"})
     @OneToMany(mappedBy = "image", orphanRemoval = true)
     private List<Likes> likes;
 
+    @org.hibernate.annotations.BatchSize(size = 3)
     @OrderBy("id DESC")
     @JsonIgnoreProperties({"image"})
     @OneToMany(mappedBy = "image", orphanRemoval = true)
