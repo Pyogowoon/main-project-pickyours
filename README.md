@@ -1871,7 +1871,7 @@ public class HtmlCharacterEscapes extends CharacterEscapes {
  
   # 9. 추후 개선사항
   
-  > 추후 이뤄질 업데이트 입니다.
+  > 추후 개선사항 입니다.
   
    
    - #### 대규모 트래픽 발생 시 로드밸런싱 사용 후 JWT 토큰 사용 고려 ( 현재 JWT 토큰 설정 작업은 완료상태이며, 기능은 미완성입니다. )
