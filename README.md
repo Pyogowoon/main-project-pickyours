@@ -1243,7 +1243,7 @@ public class ValidationAdvice {
 ### 오류 발생 원인 :
 
 - 해당 오류는 SecurityConfig 의 패스워드 암호화 (BCrypt) 와 OAuth2DetailService에 BCrypt를 DI 함으로써 발생한 오류입니다.
-- 즉 SecurityConfig 에서 BCrypt 를 참조 -> Oauth2DetailService 에서 BCrypt를 참조하기 위해 SecurityConfig를 참조로 인한 무한 참조 오류
+- 즉 SecurityConfig 에서 BCrypt 를 참조 -> Oauth2DetailService 에서 BCrypt를 참조하기 위해 SecurityConfig를 참조로 인한 순환 참조 오류
 
 ### 해결 방법 (2가지) :
 
